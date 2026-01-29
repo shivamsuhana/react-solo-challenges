@@ -35,10 +35,89 @@ Build a simple Next.js app with:
 3. Verify pages load correctly
 4. Check that navigation works smoothly
 
-## Help & completion
+---
 
-- **Full learner guide**: See repo root [LEARNER_GUIDE.md](../../../../../LEARNER_GUIDE.md). Exact criteria: this folder's `requirements.md`. No solution code is provided; you must implement it.
+## Technical Requirements (What Will Be Reviewed)
+
+### Functional Requirements
+
+1. ✅ Must have `app/page.tsx` (home page)
+2. ✅ Must have `app/about/page.tsx` (about page)
+3. ✅ Must use Server Components (default, no 'use client')
+4. ✅ Must use Next.js `Link` component for navigation
+5. ✅ Must have proper App Router structure
+6. ✅ Pages must render correctly
+7. ✅ Navigation must work between pages
+
+### Code Quality Requirements
+
+1. ✅ Must use TypeScript with proper type annotations
+2. ✅ Must follow Next.js conventions and best practices
+3. ✅ Code must pass ESLint checks (no errors, warnings allowed)
+4. ✅ No console.log, console.error, or console.warn statements in production code
+5. ✅ Code must be readable and well-structured
+6. ✅ Variable and function names must be descriptive and follow camelCase convention
+
+### Architecture Requirements
+
+1. ✅ Must use App Router structure (`app/` directory)
+2. ✅ Must use Server Components (no 'use client' directive unless needed)
+3. ✅ Must use Next.js `Link` component for navigation (not anchor tags)
+4. ✅ Must follow Next.js file-based routing conventions
+5. ✅ Must use proper folder structure (`app/page.tsx`, `app/about/page.tsx`)
+6. ✅ Components must be functional components (not class components)
+
+### Best Practices Requirements
+
+1. ✅ Must use Server Components by default (no 'use client' unless needed)
+2. ✅ Navigation must use Next.js `Link` component (not regular anchor tags)
+3. ✅ Page components must be properly exported (default export)
+4. ✅ Must follow Next.js App Router file naming conventions
+5. ✅ Code must be organized in proper folder structure
+6. ✅ Must use TypeScript for all components
+7. ✅ Must follow Next.js best practices for Server Components
+8. ✅ Code must be maintainable and follow single responsibility principle
+9. ✅ Must handle navigation properly (client-side routing)
+10. ✅ Components must be properly structured and readable
+
+### Industry Standards
+
+The following industry standards will be checked:
+
+- **TypeScript**: Proper type safety and type annotations
+- **Next.js Patterns**: App Router, Server Components, file-based routing
+- **Code Style**: ESLint compliance, consistent formatting
+- **Naming Conventions**: camelCase for variables/functions, PascalCase for components
+- **Component Design**: Server Components, proper Next.js structure
+- **Navigation**: Proper use of Next.js Link component
+- **File Structure**: Following Next.js App Router conventions
+
+### Scoring
+
+- Functional correctness: 40%
+- Code quality: 25%
+- Architecture: 20%
+- Best practices: 10%
+- AI review: 5%
+
+**Important**: Review will **ONLY check what's specified above**. No hidden requirements.
+
+---
+
+## Learning Hints (no solution code)
+
+- **Server Components**: By default, all components in App Router are Server Components. No 'use client' directive needed.
+- **Navigation**: Use Next.js `Link` component from `next/link` for client-side navigation.
+- **File-based routing**: Create `app/about/page.tsx` to create `/about` route automatically.
+
+## Help & Completion
+
+- **Full learner guide**: See repo root [LEARNER_GUIDE.md](../../../../../LEARNER_GUIDE.md).
+- **Setup**: If you haven't run setup yet, go to repo root and run `npm run setup` to install all dependencies and Playwright browsers.
 
 ## Next Steps
 
-After visual verification, run `npm run review` to check technical requirements.
+1. **Read this file** - All requirements are listed above
+2. **Implement the pages** - Follow the instructions and requirements
+3. **Verify visually** - Run `npm run dev` and check navigation
+4. **Run review** - `npm run review -- --challenge=01-server-components` to get scored

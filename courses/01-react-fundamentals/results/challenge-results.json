@@ -1,175 +1,115 @@
 [
   {
-    "challengeId": "03-state-management",
-    "challengeName": "State Management with Context",
-    "timestamp": "2026-01-29T13:04:13.884Z",
+    "challengeId": "01-user-profile",
+    "challengeName": "User Profile Component",
+    "timestamp": "2026-01-29T13:13:57.098Z",
     "scores": {
-      "functionalTests": 100,
-      "codeQuality": 98,
-      "architecture": 25,
-      "bestPractices": 83.3,
+      "functionalTests": 60,
+      "codeQuality": 100,
+      "architecture": 0,
+      "bestPractices": 100,
       "e2eTests": 0,
       "aiReview": 83
     },
-    "totalScore": 70.83000000000001,
-    "passed": true,
+    "totalScore": 55.15,
+    "passed": false,
     "errors": [],
     "warnings": [],
     "testResults": {
-      "score": 100,
-      "passed": true,
+      "score": 60,
+      "passed": false,
       "totalTests": 5,
-      "passedTests": 5,
-      "failedTests": 0,
+      "passedTests": 3,
+      "failedTests": 2,
       "details": [
         {
           "assertionResults": [
             {
               "ancestorTitles": [
                 "",
-                "Challenge 03: State Management with Context"
+                "Challenge 01: User Profile Component"
               ],
-              "fullName": " Challenge 03: State Management with Context should provide theme context",
+              "fullName": " Challenge 01: User Profile Component should render user name",
               "status": "passed",
-              "title": "should provide theme context",
-              "duration": 35,
+              "title": "should render user name",
+              "duration": 32,
               "failureMessages": []
             },
             {
               "ancestorTitles": [
                 "",
-                "Challenge 03: State Management with Context"
+                "Challenge 01: User Profile Component"
               ],
-              "fullName": " Challenge 03: State Management with Context should default to light theme",
+              "fullName": " Challenge 01: User Profile Component should render user email",
               "status": "passed",
-              "title": "should default to light theme",
-              "duration": 5,
+              "title": "should render user email",
+              "duration": 6,
               "failureMessages": []
             },
             {
               "ancestorTitles": [
                 "",
-                "Challenge 03: State Management with Context"
+                "Challenge 01: User Profile Component"
               ],
-              "fullName": " Challenge 03: State Management with Context should toggle theme",
+              "fullName": " Challenge 01: User Profile Component should render follow button",
               "status": "passed",
-              "title": "should toggle theme",
-              "duration": 183,
+              "title": "should render follow button",
+              "duration": 98,
               "failureMessages": []
             },
             {
               "ancestorTitles": [
                 "",
-                "Challenge 03: State Management with Context"
+                "Challenge 01: User Profile Component"
               ],
-              "fullName": " Challenge 03: State Management with Context should persist theme to localStorage",
-              "status": "passed",
-              "title": "should persist theme to localStorage",
-              "duration": 63,
-              "failureMessages": []
+              "fullName": " Challenge 01: User Profile Component should toggle follow button state",
+              "status": "failed",
+              "title": "should toggle follow button state",
+              "duration": 104,
+              "failureMessages": [
+                "expect(element).toHaveTextContent()\n\nExpected element to have text content:\n  /following/i\nReceived:\n  Follow"
+              ],
+              "location": {
+                "line": 42,
+                "column": 20
+              }
             },
             {
               "ancestorTitles": [
                 "",
-                "Challenge 03: State Management with Context"
+                "Challenge 01: User Profile Component"
               ],
-              "fullName": " Challenge 03: State Management with Context should load theme from localStorage on mount",
-              "status": "passed",
-              "title": "should load theme from localStorage on mount",
-              "duration": 3,
-              "failureMessages": []
+              "fullName": " Challenge 01: User Profile Component should use useState for button state",
+              "status": "failed",
+              "title": "should use useState for button state",
+              "duration": 4,
+              "failureMessages": [
+                "expected '/**\\r\\n * Challenge 01: User Profile …' to contain 'useState'"
+              ],
+              "location": {
+                "line": 54,
+                "column": 27
+              }
             }
           ],
-          "startTime": 1769691857204,
-          "endTime": 1769691857493,
-          "status": "passed",
+          "startTime": 1769692439907,
+          "endTime": 1769692440151,
+          "status": "failed",
           "message": "",
-          "name": "D:/Workspace/Projects/SOLO/Challenge-Engine/courses/01-react-fundamentals/project/tests/challenge-03.test.tsx"
+          "name": "D:/Workspace/Projects/SOLO/Challenge-Engine/courses/01-react-fundamentals/project/tests/challenge-01.test.tsx"
         }
-      ]
+      ],
+      "error": "Command failed: npm test -- D:\\Workspace\\Projects\\SOLO\\Challenge-Engine\\courses\\01-react-fundamentals\\project\\tests\\challenge-01.test.tsx --run --reporter=json"
     },
     "lintResults": {
-      "score": 98,
+      "score": 100,
       "passed": true,
-      "totalIssues": 1,
+      "totalIssues": 0,
       "errors": 0,
-      "warnings": 1,
+      "warnings": 0,
       "details": [
         {
-          "filePath": "D:\\Workspace\\Projects\\SOLO\\Challenge-Engine\\courses\\01-react-fundamentals\\project\\src\\App.tsx",
-          "messages": [],
-          "suppressedMessages": [],
-          "errorCount": 0,
-          "fatalErrorCount": 0,
-          "warningCount": 0,
-          "fixableErrorCount": 0,
-          "fixableWarningCount": 0,
-          "usedDeprecatedRules": [
-            {
-              "ruleId": "no-extra-semi",
-              "replacedBy": []
-            },
-            {
-              "ruleId": "no-mixed-spaces-and-tabs",
-              "replacedBy": []
-            }
-          ]
-        },
-        {
-          "filePath": "D:\\Workspace\\Projects\\SOLO\\Challenge-Engine\\courses\\01-react-fundamentals\\project\\src\\components\\ThemeToggle.tsx",
-          "messages": [],
-          "suppressedMessages": [],
-          "errorCount": 0,
-          "fatalErrorCount": 0,
-          "warningCount": 0,
-          "fixableErrorCount": 0,
-          "fixableWarningCount": 0,
-          "usedDeprecatedRules": [
-            {
-              "ruleId": "no-extra-semi",
-              "replacedBy": []
-            },
-            {
-              "ruleId": "no-mixed-spaces-and-tabs",
-              "replacedBy": []
-            }
-          ]
-        },
-        {
-          "filePath": "D:\\Workspace\\Projects\\SOLO\\Challenge-Engine\\courses\\01-react-fundamentals\\project\\src\\contexts\\ThemeContext.tsx",
-          "messages": [
-            {
-              "ruleId": "react-refresh/only-export-components",
-              "severity": 1,
-              "message": "Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components.",
-              "line": 39,
-              "column": 17,
-              "nodeType": "Identifier",
-              "messageId": "namedExport",
-              "endLine": 39,
-              "endColumn": 25
-            }
-          ],
-          "suppressedMessages": [],
-          "errorCount": 0,
-          "fatalErrorCount": 0,
-          "warningCount": 1,
-          "fixableErrorCount": 0,
-          "fixableWarningCount": 0,
-          "source": "/**\r\n * Challenge 03: State Management with Context\r\n * Replace this stub with your implementation.\r\n * Requirements: ThemeProvider, useTheme, theme state (light/dark), persist to localStorage.\r\n */\r\n\r\nimport { createContext, useContext, useState, useEffect, ReactNode } from 'react';\r\n\r\ntype Theme = 'light' | 'dark';\r\n\r\ninterface ThemeContextType {\r\n  theme: Theme;\r\n  toggleTheme: () => void;\r\n}\r\n\r\nconst ThemeContext = createContext<ThemeContextType | undefined>(undefined);\r\n\r\nexport function ThemeProvider({ children }: { children: ReactNode }) {\r\n  const [theme, setTheme] = useState<Theme>('light');\r\n\r\n  useEffect(() => {\r\n    const stored = localStorage.getItem('theme') as Theme | null;\r\n    if (stored === 'light' || stored === 'dark') setTheme(stored);\r\n  }, []);\r\n\r\n  useEffect(() => {\r\n    localStorage.setItem('theme', theme);\r\n  }, [theme]);\r\n\r\n  const toggleTheme = () => setTheme((t) => (t === 'light' ? 'dark' : 'light'));\r\n\r\n  return (\r\n    <ThemeContext.Provider value={{ theme, toggleTheme }}>\r\n      {children}\r\n    </ThemeContext.Provider>\r\n  );\r\n}\r\n\r\nexport function useTheme() {\r\n  const ctx = useContext(ThemeContext);\r\n  if (!ctx) throw new Error('useTheme must be used within ThemeProvider');\r\n  return ctx;\r\n}\r\n",
-          "usedDeprecatedRules": [
-            {
-              "ruleId": "no-extra-semi",
-              "replacedBy": []
-            },
-            {
-              "ruleId": "no-mixed-spaces-and-tabs",
-              "replacedBy": []
-            }
-          ]
-        },
-        {
-          "filePath": "D:\\Workspace\\Projects\\SOLO\\Challenge-Engine\\courses\\01-react-fundamentals\\project\\src\\main.tsx",
+          "filePath": "D:\\Workspace\\Projects\\SOLO\\Challenge-Engine\\courses\\01-react-fundamentals\\project\\src\\components\\UserProfile.tsx",
           "messages": [],
           "suppressedMessages": [],
           "errorCount": 0,
@@ -191,163 +131,82 @@
       ]
     },
     "architectureResults": {
-      "score": 25,
+      "score": 0,
       "passed": false,
-      "patternsFound": [
-        "createContext",
-        "useContext",
-        "Provider",
-        "localStorage",
-        "Provider"
-      ],
+      "patternsFound": [],
       "patternsMissing": [
-        "customHook",
-        "createContext",
-        "useContext",
-        "Provider",
-        "customHook",
-        "localStorage",
-        "createContext",
-        "useContext",
-        "customHook",
-        "localStorage",
-        "createContext",
-        "useContext",
-        "Provider",
-        "customHook",
-        "localStorage"
+        "functionalComponent",
+        "useState",
+        "props"
       ],
       "details": [
         {
-          "file": "src/contexts/ThemeContext.tsx",
-          "patternsFound": [
-            "createContext",
-            "useContext",
-            "Provider",
-            "localStorage"
-          ],
-          "patternsMissing": [
-            "customHook"
-          ]
-        },
-        {
-          "file": "src/components/ThemeToggle.tsx",
+          "file": "src/components/UserProfile.tsx",
           "patternsFound": [],
           "patternsMissing": [
-            "createContext",
-            "useContext",
-            "Provider",
-            "customHook",
-            "localStorage"
-          ]
-        },
-        {
-          "file": "src/App.tsx",
-          "patternsFound": [
-            "Provider"
-          ],
-          "patternsMissing": [
-            "createContext",
-            "useContext",
-            "customHook",
-            "localStorage"
-          ]
-        },
-        {
-          "file": "src/main.tsx",
-          "patternsFound": [],
-          "patternsMissing": [
-            "createContext",
-            "useContext",
-            "Provider",
-            "customHook",
-            "localStorage"
+            "functionalComponent",
+            "useState",
+            "props"
           ]
         }
       ]
     },
     "bestPracticesResults": {
-      "score": 83.3,
+      "score": 100,
       "passed": true,
       "issues": [],
       "details": [
         {
-          "file": "src/contexts/ThemeContext.tsx",
+          "file": "src/components/UserProfile.tsx",
           "issues": [],
           "score": 100
-        },
-        {
-          "file": "src/components/ThemeToggle.tsx",
-          "issues": [],
-          "score": 100
-        },
-        {
-          "file": "src/App.tsx",
-          "issues": [],
-          "score": 100
-        },
-        {
-          "file": "src/main.tsx",
-          "issues": [
-            {
-              "type": "typescript",
-              "message": "Missing type annotations - requirement: Context must be properly typed with TypeScript interface",
-              "severity": "warning"
-            },
-            {
-              "type": "typescript",
-              "message": "Missing type annotations - requirement: **TypeScript**: Proper type safety, ContextType interface",
-              "severity": "warning"
-            }
-          ],
-          "score": 33.3
         }
       ]
     },
     "e2eResults": {
       "score": 0,
       "passed": false,
-      "error": "Command failed: npx playwright test D:\\Workspace\\Projects\\SOLO\\Challenge-Engine\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-03.spec.ts --reporter=json",
+      "error": "Command failed: npx playwright test D:\\Workspace\\Projects\\SOLO\\Challenge-Engine\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-01.spec.ts --reporter=json",
       "details": [],
       "note": "E2E tests require the app to be running. Make sure to run \"npm run dev\" first, or tests will run automatically via Playwright webServer config."
     },
     "aiReviewResults": {
-      "challengeId": "03-state-management",
-      "timestamp": "2026-01-29T13:04:23.289Z",
+      "challengeId": "01-user-profile",
+      "timestamp": "2026-01-29T13:14:06.678Z",
       "score": 83,
       "feedback": [],
       "strengths": [
-        "The code is well-structured and easy to follow, with clear separation of concerns between the ThemeContext and ThemeToggle components.",
-        "The use of TypeScript and React hooks is well-implemented, making the code more maintainable and efficient.",
-        "The code includes a clear and concise explanation of the requirements and implementation details, making it easier to understand and review."
+        "Proper use of TypeScript with type annotations for props and component",
+        "Correct implementation of functional component pattern with hooks",
+        "Good use of destructuring props in function parameters"
       ],
       "improvements": [
-        "The ThemeContext could benefit from additional type guards to ensure that the theme state is correctly updated and accessed.",
-        "The use of useEffect hooks could be improved by adding a dependency array to prevent unnecessary re-renders and improve performance.",
-        "The code could benefit from additional error handling and edge cases, such as handling cases where the theme state is not initialized correctly or the localStorage is not available."
+        "Consider adding a loading state or error handling for the avatar image",
+        "Add a clear and consistent styling for the component using a CSS framework or utility-first CSS",
+        "Implement the follow button toggle state using a state hook and update the button text accordingly"
       ],
-      "readability": 85,
-      "maintainability": 80,
-      "overall": "The code is well-structured and well-implemented, with clear separation of concerns and efficient use of React hooks. However, there are some areas for improvement, such as adding additional type guards and error handling, to make the code more robust and maintainable."
+      "readability": 80,
+      "maintainability": 85,
+      "overall": "The provided code is a good start for the user profile component. It demonstrates a good understanding of React and TypeScript fundamentals. However, there are a few areas that need improvement to make the component more robust and user-friendly."
     },
     "aiResults": {
-      "challengeId": "03-state-management",
-      "timestamp": "2026-01-29T13:04:23.289Z",
+      "challengeId": "01-user-profile",
+      "timestamp": "2026-01-29T13:14:06.678Z",
       "score": 83,
       "feedback": [],
       "strengths": [
-        "The code is well-structured and easy to follow, with clear separation of concerns between the ThemeContext and ThemeToggle components.",
-        "The use of TypeScript and React hooks is well-implemented, making the code more maintainable and efficient.",
-        "The code includes a clear and concise explanation of the requirements and implementation details, making it easier to understand and review."
+        "Proper use of TypeScript with type annotations for props and component",
+        "Correct implementation of functional component pattern with hooks",
+        "Good use of destructuring props in function parameters"
       ],
       "improvements": [
-        "The ThemeContext could benefit from additional type guards to ensure that the theme state is correctly updated and accessed.",
-        "The use of useEffect hooks could be improved by adding a dependency array to prevent unnecessary re-renders and improve performance.",
-        "The code could benefit from additional error handling and edge cases, such as handling cases where the theme state is not initialized correctly or the localStorage is not available."
+        "Consider adding a loading state or error handling for the avatar image",
+        "Add a clear and consistent styling for the component using a CSS framework or utility-first CSS",
+        "Implement the follow button toggle state using a state hook and update the button text accordingly"
       ],
-      "readability": 85,
-      "maintainability": 80,
-      "overall": "The code is well-structured and well-implemented, with clear separation of concerns and efficient use of React hooks. However, there are some areas for improvement, such as adding additional type guards and error handling, to make the code more robust and maintainable."
+      "readability": 80,
+      "maintainability": 85,
+      "overall": "The provided code is a good start for the user profile component. It demonstrates a good understanding of React and TypeScript fundamentals. However, there are a few areas that need improvement to make the component more robust and user-friendly."
     }
   }
 ]

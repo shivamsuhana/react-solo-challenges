@@ -46,7 +46,7 @@ The other scores (code quality, architecture) are additional quality checks. Low
 ### Improving Scores
 
 - **Code Quality**: Fix ESLint errors/warnings in your challenge files
-- **Architecture**: Ensure you're using the required patterns (check `requirements.md`)
+- **Architecture**: Ensure you're using the required patterns (check README.md Technical Requirements section)
 - **E2E Tests**: Install Playwright browsers: `npx playwright install`
 - **Best Practices**: Follow React/TypeScript conventions
 

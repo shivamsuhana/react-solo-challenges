@@ -13,8 +13,9 @@ The review engine uses **ONLY** these sources:
    - `patternsRequired` - Which architecture patterns to check
    - `scoring` - Weight distribution
 
-2. **`requirements.md`** - Defines:
-   - Functional requirements
+2. **`README.md`** - Defines (all in one file):
+   - Challenge instructions and overview
+   - Functional requirements (in "Technical Requirements" section)
    - Code quality requirements
    - Architecture requirements
    - Best practices requirements
@@ -28,7 +29,7 @@ The review engine uses **ONLY** these sources:
 
 ### 2. Code Quality (25%)
 - ✅ **ONLY checks files in `filesToCheck`** (not all project files)
-- ✅ **ONLY runs ESLint if specified in `requirements.md`**
+- ✅ **ONLY runs ESLint if specified in README.md (Technical Requirements section)**
 - ✅ If no ESLint requirement, returns 100%
 
 ### 3. Architecture (20%)
@@ -37,7 +38,7 @@ The review engine uses **ONLY** these sources:
 - ✅ If no patterns required, returns 100%
 
 ### 4. Best Practices (10%)
-- ✅ **ONLY checks requirements from `requirements.md`** (Best Practices section)
+- ✅ **ONLY checks requirements from README.md** (Best Practices Requirements section)
 - ✅ If no best practices requirements, returns 100%
 - ✅ Examples: "No console.log", "Use TypeScript", "Functional component pattern"
 
@@ -59,7 +60,7 @@ The review engine uses **ONLY** these sources:
 }
 ```
 
-**requirements.md:**
+**README.md (Technical Requirements section):**
 - Code Quality: "Code must pass ESLint checks"
 - Best Practices: "No console.log statements in production code"
 
@@ -72,11 +73,11 @@ The review engine uses **ONLY** these sources:
 
 **The review ONLY checks what's explicitly mentioned in:**
 - Challenge `metadata.json`
-- Challenge `requirements.md`
+- Challenge `README.md` (Technical Requirements section)
 - Challenge test files
 
 **The review does NOT check:**
-- Generic best practices not in requirements
+- Generic best practices not in README.md
 - Patterns not in `patternsRequired`
 - Files not in `filesToCheck`
 - Concepts not mentioned in challenge instructions

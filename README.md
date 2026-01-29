@@ -115,7 +115,7 @@ npm run review:changed
 - **Dashboard**: Refresh or results appear automatically
 - **Files**: Check `courses/01-react-fundamentals/results/challenge-results.json`
 
-**Note**: Review scores are based **ONLY** on what's specified in each challenge's `requirements.md`. See `REVIEW_SCOPE_CHANGES.md` for details.
+**Note**: Review scores are based **ONLY** on what's specified in each challenge's `README.md` (Technical Requirements section). See `REVIEW_SCOPE_CHANGES.md` for details.
 - **Progress**: See `PROGRESS.md` in repo root (auto-updated)
 
 ### 5. Continue Working
@@ -248,7 +248,7 @@ If AI key is not set, AI review is skipped (score = 0) and other layers still ru
 2. **Verify functionality** → Interact with features in browser
 3. **Run review** (dashboard or command) → Get comprehensive scoring
 
-**Important**: Review will **ONLY check what's specified** in each challenge's `requirements.md` file. All code quality guidelines, best practices, and industry standards are clearly listed in the requirements file. No hidden requirements!
+**Important**: Review will **ONLY check what's specified** in each challenge's `README.md` file (Technical Requirements section). All code quality guidelines, best practices, and industry standards are clearly listed in the README. No hidden requirements!
 
 ---
 
@@ -263,7 +263,7 @@ courses/01-react-fundamentals/
 │   ├── challenges/       → Challenge instructions
 │   │   ├── 01-user-profile/
 │   │   │   ├── README.md        → Instructions (markdown)
-│   │   │   ├── requirements.md  → Exact requirements
+│   │   │   └── README.md  → Instructions + Technical Requirements (all in one file)
 │   │   │   └── metadata.json    → Challenge config
 │   └── tests/            → Test files (don't edit)
 ├── review-engine/        → Automated review system
@@ -328,9 +328,9 @@ After running a review, results are saved to:
 → See `REVIEW_SCORING_EXPLAINED.md` for details on why E2E score might be 0%
 
 **Review scores seem low**
-→ Review **ONLY checks what's in challenge `requirements.md`** - no hidden requirements
+→ Review **ONLY checks what's in challenge `README.md` (Technical Requirements section)** - no hidden requirements
 → See `REVIEW_SCOPE_CHANGES.md` for how review scope works
-→ All code quality guidelines and best practices are listed in requirements files
+→ All code quality guidelines and best practices are listed in README files
 
 **AI review shows 0%**
 → Set `GROQ_API_KEY` in `.env` file (see "Enable AI Review" above)

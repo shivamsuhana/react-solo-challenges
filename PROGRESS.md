@@ -1,16 +1,16 @@
 # Learning Progress
 
-**Last updated:** 1/29/2026, 6:36:33 PM
+**Last updated:** 1/29/2026, 6:44:07 PM
 
 ## Pathway Summary
 
 | Metric | Value |
 |--------|-------|
 | Pathway | Modern React Engineer |
-| Overall Score | 38.2% |
-| Completion | 11.1% |
+| Overall Score | 33.1% |
+| Completion | 0% |
 | Badge | none |
-| Challenges | 1 / 9 |
+| Challenges | 0 / 9 |
 
 ## Courses
 
@@ -18,13 +18,13 @@
 
 | Metric | Value |
 |--------|-------|
-| Score | 70.8% |
-| Completion | 33.3% |
+| Score | 55.2% |
+| Completion | 0% |
 | Badge | none |
 
 | Challenge | Status | Score | Last Run |
 |-----------|--------|-------|----------|
-| State Management with Context (03-state-management) | ✅ Passed | 70.8% | 1/29/2026, 6:34:13 PM |
+| User Profile Component (01-user-profile) | ❌ Not passed | 55.2% | 1/29/2026, 6:43:57 PM |
 
 ### RTK Query (02-rtk-query)
 

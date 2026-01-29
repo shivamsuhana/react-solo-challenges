@@ -1,20 +1,22 @@
 {
   "courseId": "01-react-fundamentals",
   "courseName": "React Fundamentals",
-  "lastUpdated": "2026-01-29T13:04:24.438Z",
+  "lastUpdated": "2026-01-29T13:14:07.731Z",
   "totalChallenges": 3,
-  "completedChallenges": 1,
-  "averageScore": 70.83000000000001,
-  "completionPercentage": 33.33333333333333,
+  "completedChallenges": 0,
+  "averageScore": 55.15,
+  "completionPercentage": 0,
   "badgeLevel": "none",
   "challengeResults": [
     {
-      "challengeId": "03-state-management",
-      "challengeName": "State Management with Context",
-      "score": 70.83000000000001,
-      "passed": true
+      "challengeId": "01-user-profile",
+      "challengeName": "User Profile Component",
+      "score": 55.15,
+      "passed": false
     }
   ],
   "skillStrengths": [],
-  "improvementAreas": []
+  "improvementAreas": [
+    "User Profile Component"
+  ]
 }

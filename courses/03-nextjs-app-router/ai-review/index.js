@@ -47,6 +47,14 @@ export async function reviewCodeWithAI(challengeId, filesToReview, projectDir) {
   };
 
   try {
+    // Load challenge README.md for context
+    const challengeDir = join(projectDir, 'challenges', challengeId);
+    const readmePath = join(challengeDir, 'README.md');
+    let challengeContext = '';
+    if (existsSync(readmePath)) {
+      challengeContext = readFileSync(readmePath, 'utf-8');
+    }
+
     // Read all files to review
     const codeSnippets = [];
     for (const file of filesToReview) {
@@ -77,7 +85,7 @@ export async function reviewCodeWithAI(challengeId, filesToReview, projectDir) {
     }
 
     // Prepare prompt
-    const prompt = buildReviewPrompt(challengeId, codeSnippets);
+    const prompt = buildReviewPrompt(challengeId, codeSnippets, challengeContext);
 
     // Call Groq API
     const aiResponse = await callGroqAPI(prompt);
@@ -99,13 +107,17 @@ export async function reviewCodeWithAI(challengeId, filesToReview, projectDir) {
   }
 }
 
-function buildReviewPrompt(challengeId, codeSnippets) {
+function buildReviewPrompt(challengeId, codeSnippets, challengeContext = '') {
   const codeContext = codeSnippets.map(s => 
     `File: ${s.file}\n\`\`\`typescript\n${s.content}\n\`\`\``
   ).join('\n\n');
 
-  return `You are an expert Next.js App Router and React code reviewer. Review the following code for challenge "${challengeId}".
+  const contextSection = challengeContext
+    ? `\n\n## Challenge Instructions and Requirements:\n${challengeContext.substring(0, 3000)}\n`
+    : '';
 
+  return `You are an expert Next.js App Router and React code reviewer. Review the following code for challenge "${challengeId}".
+${contextSection}
 ${codeContext}
 
 Provide a structured review focusing on:

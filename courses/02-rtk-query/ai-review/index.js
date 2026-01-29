@@ -7,8 +7,7 @@
  * 
  * IMPORTANT: This review only runs if functional tests pass.
  * It receives:
- * - Challenge instructions (README.md)
- * - Challenge requirements (requirements.md)
+ * - Challenge instructions and requirements (README.md - merged file)
  * - All user-created code files
  * 
  * Provides sophisticated feedback based on actual implementation vs requirements.
@@ -61,20 +60,25 @@ export async function reviewCodeWithAI(challengeId, challengeMetadata, projectDi
   };
 
   try {
-    // 1. Load challenge instructions and requirements
+    // 1. Load challenge instructions and requirements from README.md (merged file)
     const challengeDir = join(projectDir, 'challenges', challengeId);
     const readmePath = join(challengeDir, 'README.md');
-    const requirementsPath = join(challengeDir, 'requirements.md');
     
     let challengeInstructions = '';
     let challengeRequirements = '';
 
     if (existsSync(readmePath)) {
-      challengeInstructions = readFileSync(readmePath, 'utf-8');
-    }
-
-    if (existsSync(requirementsPath)) {
-      challengeRequirements = readFileSync(requirementsPath, 'utf-8');
+      const readmeContent = readFileSync(readmePath, 'utf-8');
+      // Split README into instructions (before Technical Requirements) and requirements (after)
+      const requirementsMatch = readmeContent.match(/## Technical Requirements \(What Will Be Reviewed\)/);
+      if (requirementsMatch) {
+        const splitIndex = requirementsMatch.index;
+        challengeInstructions = readmeContent.substring(0, splitIndex);
+        challengeRequirements = readmeContent.substring(splitIndex);
+      } else {
+        // If no Technical Requirements section, use entire README as instructions
+        challengeInstructions = readmeContent;
+      }
     }
 
     // 2. Read all user-created code files

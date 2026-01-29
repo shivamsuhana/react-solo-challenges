@@ -1,35 +1,35 @@
 {
-  "lastUpdated": "2026-01-29T13:06:33.454Z",
+  "lastUpdated": "2026-01-29T13:14:07.859Z",
   "pathway": {
     "name": "Modern React Engineer",
     "version": "1.0.0",
-    "overallScore": 38.2,
-    "completionPercentage": 11.1,
+    "overallScore": 33.1,
+    "completionPercentage": 0,
     "badgeLevel": "none",
     "totalChallenges": 9,
-    "completedChallenges": 1
+    "completedChallenges": 0
   },
   "courses": {
     "01-react-fundamentals": {
       "courseId": "01-react-fundamentals",
       "courseName": "React Fundamentals",
-      "averageScore": 70.83000000000001,
-      "completionPercentage": 33.33333333333333,
+      "averageScore": 55.15,
+      "completionPercentage": 0,
       "badgeLevel": "none",
       "totalChallenges": 3,
-      "completedChallenges": 1,
+      "completedChallenges": 0,
       "challenges": {
-        "03-state-management": {
-          "challengeId": "03-state-management",
-          "challengeName": "State Management with Context",
-          "passed": true,
-          "score": 70.83000000000001,
-          "lastRun": "2026-01-29T13:04:13.884Z",
+        "01-user-profile": {
+          "challengeId": "01-user-profile",
+          "challengeName": "User Profile Component",
+          "passed": false,
+          "score": 55.15,
+          "lastRun": "2026-01-29T13:13:57.098Z",
           "scores": {
-            "functionalTests": 100,
-            "codeQuality": 98,
-            "architecture": 25,
-            "bestPractices": 83.3,
+            "functionalTests": 60,
+            "codeQuality": 100,
+            "architecture": 0,
+            "bestPractices": 100,
             "e2eTests": 0,
             "aiReview": 83
           }

@@ -55,6 +55,76 @@ Create an RTK Query API slice that fetches users from the mock API. You'll need 
 4. Check the Redux DevTools to see the API state
 5. Verify loading states appear during fetch
 
+---
+
+## Technical Requirements (What Will Be Reviewed)
+
+### Functional Requirements
+
+1. ✅ Must create RTK Query API slice using `createApi`
+2. ✅ Must define `baseQuery` (can use `fetchBaseQuery` or custom)
+3. ✅ Must define `getUsers` endpoint
+4. ✅ Must integrate API slice reducer into Redux store
+5. ✅ Must use generated hooks (`useGetUsersQuery`) in component
+6. ✅ Must handle loading state
+7. ✅ Must handle error state
+8. ✅ Must display user data in the UI
+
+### Code Quality Requirements
+
+1. ✅ Must use TypeScript with proper type annotations
+2. ✅ API slice must be properly typed (endpoints, responses)
+3. ✅ Code must pass ESLint checks (no errors, warnings allowed)
+4. ✅ No console.log, console.error, or console.warn statements in production code
+5. ✅ Code must be readable and well-structured
+6. ✅ Variable and function names must be descriptive and follow camelCase convention
+
+### Architecture Requirements
+
+1. ✅ API slice must be in `src/api/usersApi.ts` (or appropriate location)
+2. ✅ Must use RTK Query patterns (`createApi`, `fetchBaseQuery`)
+3. ✅ Store must include API reducer in `reducerPath`
+4. ✅ Component must use RTK Query generated hooks (e.g., `useGetUsersQuery`)
+5. ✅ Must follow RTK Query best practices
+6. ✅ Must use functional component pattern (not class component)
+
+### Best Practices Requirements
+
+1. ✅ API slice must be properly configured with `baseQuery`
+2. ✅ Endpoint names must be descriptive and follow RTK Query conventions
+3. ✅ Must handle loading, error, and success states properly
+4. ✅ Component must use destructured hook results (e.g., `const { data, isLoading, error } = useGetUsersQuery()`)
+5. ✅ Error handling must be implemented (display error messages or fallback UI)
+6. ✅ Loading states must be shown to users
+7. ✅ Must use TypeScript interfaces/types for API responses
+8. ✅ Code must follow RTK Query documentation patterns
+9. ✅ Store configuration must be correct (API reducer included)
+10. ✅ Component must be self-contained and maintainable
+
+### Industry Standards
+
+The following industry standards will be checked:
+
+- **TypeScript**: Proper type safety, API response types
+- **RTK Query Patterns**: createApi, fetchBaseQuery, generated hooks
+- **Code Style**: ESLint compliance, consistent formatting
+- **Naming Conventions**: camelCase for variables/functions, PascalCase for components
+- **State Management**: Proper RTK Query integration, store configuration
+- **Error Handling**: Graceful handling of API errors
+- **Component Design**: Proper separation of concerns, reusable patterns
+
+### Scoring
+
+- Functional correctness: 40%
+- Code quality: 25%
+- Architecture: 20%
+- Best practices: 10%
+- AI review: 5%
+
+**Important**: Review will **ONLY check what's specified above**. No hidden requirements.
+
+---
+
 ## Learning Hints (no solution code)
 
 - **RTK Query setup**: Use `createApi` from `@reduxjs/toolkit/query/react`. The API slice needs `baseQuery` (use `fetchBaseQuery` or create a custom one that calls `mockApi.getUsers()`).
@@ -63,13 +133,14 @@ Create an RTK Query API slice that fetches users from the mock API. You'll need 
 - **Using the hook**: In `UsersList`, call `useGetUsersQuery()`. It returns `{ data, isLoading, error }`. Handle all three states.
 - **Mock server**: The `mockServer.ts` file provides `mockApi.getUsers()` which returns a Promise. You can use it in a custom `baseQuery` or configure `fetchBaseQuery` to call it.
 
-**No solution code provided** - you must implement it yourself.
-
-## Help & completion
+## Help & Completion
 
 - **Full learner guide**: See repo root [LEARNER_GUIDE.md](../../../../../LEARNER_GUIDE.md) — what help you get vs what you must do yourself.
-- **Exact requirements**: This folder's `requirements.md` defines what is scored. No solution code is provided; you must implement it.
+- **Setup**: If you haven't run setup yet, go to repo root and run `npm run setup` to install all dependencies and Playwright browsers.
 
 ## Next Steps
 
-After visual verification, run `npm run review` to check technical requirements.
+1. **Read this file** - All requirements are listed above
+2. **Implement the API slice** - Follow the instructions and requirements
+3. **Verify visually** - Run `npm run dev` and check `/challenge/01-api-setup`
+4. **Run review** - `npm run review -- --challenge=01-api-setup` to get scored

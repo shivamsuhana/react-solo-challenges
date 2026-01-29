@@ -234,11 +234,11 @@ function loadChallengeMetadata(challengeId) {
   }
   const metadata = JSON.parse(readFileSync(metadataPath, 'utf-8'));
   
-  // Load requirements.md if it exists
-  const requirementsPath = join(PROJECT_DIR, 'challenges', challengeId, 'requirements.md');
-  if (existsSync(requirementsPath)) {
-    const requirementsContent = readFileSync(requirementsPath, 'utf-8');
-    metadata.requirements = parseRequirements(requirementsContent);
+  // Load README.md for requirements (merged from requirements.md)
+  const readmePath = join(PROJECT_DIR, 'challenges', challengeId, 'README.md');
+  if (existsSync(readmePath)) {
+    const readmeContent = readFileSync(readmePath, 'utf-8');
+    metadata.requirements = parseRequirements(readmeContent);
   }
   
   return metadata;
@@ -252,23 +252,30 @@ function parseRequirements(content) {
     bestPractices: []
   };
   
+  if (!content) {
+    return requirements;
+  }
+  
   let currentSection = null;
   const lines = content.split('\n');
   
   for (const line of lines) {
-    // Detect section headers
-    if (line.includes('## Functional Requirements')) {
+    // Detect section headers - look for "Technical Requirements" section
+    if (line.includes('## Technical Requirements')) {
+      // Reset to look for subsections
+      currentSection = null;
+    } else if (line.includes('### Functional Requirements')) {
       currentSection = 'functional';
-    } else if (line.includes('## Code Quality Requirements')) {
+    } else if (line.includes('### Code Quality Requirements')) {
       currentSection = 'codeQuality';
-    } else if (line.includes('## Architecture Requirements')) {
+    } else if (line.includes('### Architecture Requirements')) {
       currentSection = 'architecture';
-    } else if (line.includes('## Best Practices') || line.includes('## Best Practice')) {
+    } else if (line.includes('### Best Practices Requirements')) {
       currentSection = 'bestPractices';
-    } else if (currentSection && line.trim().startsWith('-') || line.trim().match(/^\d+\./)) {
+    } else if (currentSection && (line.trim().startsWith('-') || line.trim().startsWith('✅') || line.trim().match(/^\d+\./))) {
       // Extract requirement text (remove checkbox, number, etc.)
-      const requirement = line.replace(/^[-*]\s*/, '').replace(/^\d+\.\s*/, '').replace(/✅\s*/, '').trim();
-      if (requirement) {
+      const requirement = line.replace(/^[-*✅]\s*/, '').replace(/^\d+\.\s*/, '').replace(/✅\s*/, '').trim();
+      if (requirement && requirements[currentSection]) {
         requirements[currentSection].push(requirement);
       }
     }
