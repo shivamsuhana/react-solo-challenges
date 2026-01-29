@@ -71,8 +71,43 @@ jobs:
         working-directory: courses/03-nextjs-app-router/project
         run: npx playwright install --with-deps chromium
 
-      - name: Run Global Review Engine
-        run: node global-review/run-all-reviews.js
+      - name: Get changed challenges
+        id: changed-challenges
+        run: |
+          # Get changed files compared to previous commit (for push events)
+          # For PRs, compare against base branch
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            BASE_SHA="${{ github.event.pull_request.base.sha }}"
+            CHANGED_FILES=$(git diff --name-only $BASE_SHA HEAD 2>/dev/null || echo "")
+          else
+            # For push events, compare against previous commit
+            CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD 2>/dev/null || echo "")
+          fi
+          
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No changes detected, running all reviews"
+            echo "run-all=true" >> $GITHUB_OUTPUT
+          else
+            echo "Changed files detected, running reviews for changed challenges only"
+            echo "run-all=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run Review for Changed Challenges
+        if: steps.changed-challenges.outputs.run-all == 'false'
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            BASE_SHA="${{ github.event.pull_request.base.sha }}"
+            node scripts/run-review-changed.js --ref $BASE_SHA
+          else
+            node scripts/run-review-changed.js --ref HEAD~1
+          fi
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+
+      - name: Run All Reviews (if no changes detected)
+        if: steps.changed-challenges.outputs.run-all == 'true'
+        run: |
+          node global-review/run-all-reviews.js
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
 

@@ -94,13 +94,6 @@ The following industry standards will be checked:
 - **Error Handling**: Graceful handling of localStorage errors
 - **Component Design**: Proper separation of concerns, reusable context pattern
 
-### Scoring
-
-- Functional correctness: 40%
-- Code quality: 25%
-- Architecture: 20%
-- Best practices: 10%
-- AI review: 5%
 
 **Important**: Review will **ONLY check what's specified above**. No hidden requirements.
 
@@ -114,7 +107,7 @@ The following industry standards will be checked:
 
 ## Help & Completion
 
-- **Full learner guide**: See repo root [LEARNER_GUIDE.md](../../../../../LEARNER_GUIDE.md).
+- **Full guide**: See repo root [README.md](../../../../../README.md) for setup, workflow, and completion policy.
 - **Setup**: If you haven't run setup yet, go to repo root and run `npm run setup` to install all dependencies and Playwright browsers.
 
 ## Next Steps

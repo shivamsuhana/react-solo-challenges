@@ -19,15 +19,17 @@ export async function runE2ETests(challengeId, projectDir) {
   }
 
   try {
-    // Run Playwright tests for the specific challenge
-    // Playwright config should handle starting the dev server
+    // Run Playwright tests for the specific challenge.
+    // CI=1 ensures Playwright always starts the app via webServer (no manual "npm run dev" needed).
+    const env = { ...process.env, CI: '1' };
     const output = execSync(
       `npx playwright test ${testFile} --reporter=json`,
       { 
         cwd: projectDir,
         encoding: 'utf-8',
         stdio: ['pipe', 'pipe', 'pipe'],
-        timeout: 120000 // 2 minutes timeout
+        timeout: 120000, // 2 minutes (includes app startup)
+        env
       }
     );
 
@@ -79,12 +81,15 @@ export async function runE2ETests(challengeId, projectDir) {
       // Could not parse output
     }
 
+    const needsBrowsers = /Executable doesn't exist|browserType\.launch|playwright install/i.test(error.message || '');
     return {
       score: 0,
       passed: false,
       error: error.message,
       details: [],
-      note: 'E2E tests require the app to be running. Make sure to run "npm run dev" first, or tests will run automatically via Playwright webServer config.'
+      note: needsBrowsers
+        ? 'Playwright browsers not installed. Run from repo root: npm run setup (or in project: npx playwright install).'
+        : 'E2E failed. The app is started automatically by Playwright (webServer in playwright.config).'
     };
   }
 }

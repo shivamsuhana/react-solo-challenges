@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 /**
  * Aggregates all course results into learner-results/progress.json
- * and generates PROGRESS.md with current progress.
+ * and updates README evidence (course + root).
  */
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -14,7 +15,6 @@ const ROOT_DIR = join(__dirname, '..');
 const PATHWAY_CONFIG = join(ROOT_DIR, 'pathway-review', 'pathway-config.json');
 const LEARNER_RESULTS = join(ROOT_DIR, 'learner-results');
 const PROGRESS_JSON = join(LEARNER_RESULTS, 'progress.json');
-const PROGRESS_MD = join(ROOT_DIR, 'PROGRESS.md');
 
 function loadPathway() {
   if (!existsSync(PATHWAY_CONFIG)) return { pathwayName: 'Pathway', courses: [] };
@@ -122,58 +122,19 @@ function aggregateProgress() {
   return progress;
 }
 
-function generateProgressMarkdown(progress) {
-  const lines = [
-    '# Learning Progress',
-    '',
-    `**Last updated:** ${new Date(progress.lastUpdated).toLocaleString()}`,
-    '',
-    '## Pathway Summary',
-    '',
-    `| Metric | Value |`,
-    `|--------|-------|`,
-    `| Pathway | ${progress.pathway.name} |`,
-    `| Overall Score | ${progress.pathway.overallScore}% |`,
-    `| Completion | ${progress.pathway.completionPercentage}% |`,
-    `| Badge | ${progress.pathway.badgeLevel} |`,
-    `| Challenges | ${progress.pathway.completedChallenges} / ${progress.pathway.totalChallenges} |`,
-    '',
-    '## Courses',
-    '',
-  ];
-
-  for (const [courseId, course] of Object.entries(progress.courses)) {
-    lines.push(`### ${course.courseName} (${courseId})`);
-    lines.push('');
-    lines.push(`| Metric | Value |`);
-    lines.push(`|--------|-------|`);
-    lines.push(`| Score | ${Math.round((course.averageScore || 0) * 10) / 10}% |`);
-    lines.push(`| Completion | ${Math.round((course.completionPercentage || 0) * 10) / 10}% |`);
-    lines.push(`| Badge | ${course.badgeLevel} |`);
-    lines.push('');
-    lines.push('| Challenge | Status | Score | Last Run |');
-    lines.push('|-----------|--------|-------|----------|');
-    for (const [chId, ch] of Object.entries(course.challenges)) {
-      const status = ch.passed ? '✅ Passed' : '❌ Not passed';
-      const lastRun = ch.lastRun ? new Date(ch.lastRun).toLocaleString() : '-';
-      const scoreStr = ch.score != null ? `${Math.round(ch.score * 10) / 10}%` : '-';
-      lines.push(`| ${ch.challengeName} (${chId}) | ${status} | ${scoreStr} | ${lastRun} |`);
-    }
-    lines.push('');
-  }
-
-  return lines.join('\n');
-}
-
 function main() {
   if (!existsSync(LEARNER_RESULTS)) {
     mkdirSync(LEARNER_RESULTS, { recursive: true });
   }
   const progress = aggregateProgress();
   writeFileSync(PROGRESS_JSON, JSON.stringify(progress, null, 2));
-  writeFileSync(PROGRESS_MD, generateProgressMarkdown(progress));
+  try {
+    execSync('node scripts/update-readme-evidence.js', { cwd: ROOT_DIR, stdio: 'pipe' });
+    console.log('✅ README evidence updated');
+  } catch (_) {
+    console.log('⚠️  update-readme-evidence.js skipped');
+  }
   console.log('✅ Progress updated:', PROGRESS_JSON);
-  console.log('✅ PROGRESS.md updated');
 }
 
 main();

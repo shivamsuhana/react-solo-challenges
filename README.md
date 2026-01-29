@@ -68,6 +68,35 @@ npm run dev
 
 ---
 
+
+
+
+
+
+
+
+
+
+## 📈 Progress Summary
+
+**Last updated:** 1/29/2026, 7:52:16 PM
+
+### Pathway
+
+| Metric | Value |
+|--------|-------|
+| Challenges completed | 1 / 9 (11.1%) |
+| Overall score | 40.4% |
+
+### By course
+
+| Course | Completed | Score | Status |
+|--------|-----------|-------|--------|
+| React Fundamentals | 1/3 (0.3%) | 77.3% | Pass |
+| RTK Query | 0/3 (0%) | 21.9% | Fail |
+| Next.js App Router | 0/3 (0%) | 22.5% | Fail |
+
+
 ## 📋 Your Workflow
 
 ### 1. Pick a Challenge
@@ -115,8 +144,8 @@ npm run review:changed
 - **Dashboard**: Refresh or results appear automatically
 - **Files**: Check `courses/01-react-fundamentals/results/challenge-results.json`
 
-**Note**: Review scores are based **ONLY** on what's specified in each challenge's `README.md` (Technical Requirements section). See `REVIEW_SCOPE_CHANGES.md` for details.
-- **Progress**: See `PROGRESS.md` in repo root (auto-updated)
+**Note**: Review scores are based **ONLY** on what's specified in each challenge's `README.md` (Technical Requirements section).
+- **Progress**: Shown in this README (Progress Summary) and in `learner-results/progress.json` (auto-updated when you run review).
 
 ### 5. Continue Working
 
@@ -213,11 +242,12 @@ If AI key is not set, AI review is skipped (score = 0) and other layers still ru
 |---------|--------------|
 | `npm run dashboard:build` | Build dashboard UI (one-time) |
 | `npm run dashboard` | Start dashboard server (port 7700) |
+| `npm run dashboard:dev` | Dev mode: API on 7700 + UI with hot reload on 5174 |
 | `npm run review:all` | Review all courses (pathway-level) |
 | `npm run review:changed` | Review only challenges whose code changed (smart) |
 | `npm run review:course -- --course=01-react-fundamentals` | Review all challenges in one course |
 | `npm run review:challenge -- --course=01-react-fundamentals --challenge=01-user-profile` | Review one challenge |
-| `npm run progress:update` | Rebuild progress.json and PROGRESS.md |
+| `npm run progress:update` | Rebuild progress.json and README evidence |
 | `npm run test:ai-review` | Test AI review connection |
 | `npm run setup` | Install all dependencies (first-time setup) |
 
@@ -286,7 +316,7 @@ courses/01-react-fundamentals/
 - ❌ Implementation examples
 - ❌ Step-by-step code walkthroughs
 
-**Completion is strict**: Your code must pass the automated review (score ≥ 60%). See [LEARNER_GUIDE.md](./LEARNER_GUIDE.md) for details.
+**Completion is strict**: Your code must pass the automated review (score ≥ 60%).
 
 ---
 
@@ -298,7 +328,7 @@ After running a review, results are saved to:
 - **Course level**: `courses/{course}/results/course-summary.json`
 - **AI feedback**: `courses/{course}/results/ai-feedback.json`
 - **Pathway level**: `pathway-review/pathway-summary.json`
-- **Progress**: `learner-results/progress.json` and `PROGRESS.md`
+- **Progress**: `learner-results/progress.json` and README evidence (this file + course project READMEs)
 
 **View in dashboard** or open JSON files to see detailed scores.
 
@@ -325,12 +355,11 @@ After running a review, results are saved to:
 **E2E tests fail**
 → Install Playwright browsers: `cd {course}/project && npx playwright install`
 → This is a one-time setup. After installation, E2E tests will work.
-→ See `REVIEW_SCORING_EXPLAINED.md` for details on why E2E score might be 0%
+→ E2E score can be 0% if Playwright browsers are not installed (`npx playwright install`)
 
 **Review scores seem low**
 → Review **ONLY checks what's in challenge `README.md` (Technical Requirements section)** - no hidden requirements
-→ See `REVIEW_SCOPE_CHANGES.md` for how review scope works
-→ All code quality guidelines and best practices are listed in README files
+→ All code quality guidelines and best practices are listed in challenge README files
 
 **AI review shows 0%**
 → Set `GROQ_API_KEY` in `.env` file (see "Enable AI Review" above)
@@ -351,15 +380,10 @@ After running a review, results are saved to:
 
 ---
 
-## 📖 More Documentation
+## 📖 Other READMEs
 
-- **[LEARNER_GUIDE.md](./LEARNER_GUIDE.md)** - Help vs strict completion policy
-- **[QUICK_START.md](./QUICK_START.md)** - Quick workflow guide
-- **[SETUP_GUIDE.md](./SETUP_GUIDE.md)** - Detailed setup instructions
-- **[COMMANDS.md](./COMMANDS.md)** - Complete command reference
-- **[ENVIRONMENT_SETUP.md](./ENVIRONMENT_SETUP.md)** - Environment variables (GROQ_API_KEY)
-- **[TROUBLESHOOTING.md](./TROUBLESHOOTING.md)** - Detailed troubleshooting
-- **[dashboard/README.md](./dashboard/README.md)** - Dashboard-specific docs
+- **[dashboard/README.md](./dashboard/README.md)** - Dashboard setup and usage
+- **[scripts/README.md](./scripts/README.md)** - Scripts and commands
 
 ---
 
@@ -370,7 +394,7 @@ This system provides:
 - ✅ **3 courses** with real, runnable applications
 - ✅ **9 challenges** (3 per course) - basic to advanced progression
 - ✅ **Automated review** - 6-layer comprehensive evaluation
-- ✅ **Progress tracking** - Auto-updated progress.json and PROGRESS.md
+- ✅ **Progress tracking** - Auto-updated progress.json and README evidence
 - ✅ **Dashboard UI** - View progress, instructions, run reviews
 - ✅ **AI review** - Qualitative feedback via Groq API (optional)
 - ✅ **Hot reload** - Instant feedback while coding

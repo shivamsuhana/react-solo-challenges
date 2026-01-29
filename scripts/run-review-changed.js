@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Runs review only for challenges whose code has changed (git diff).
- * Then updates progress and PROGRESS.md.
+ * Then updates progress and README evidence.
  */
 
 import { execSync } from 'child_process';
@@ -18,7 +18,15 @@ function getChangedFiles(ref = null) {
   const gitDir = join(ROOT_DIR, '.git');
   if (!existsSync(gitDir)) return [];
   try {
-    const cmd = ref ? `git diff --name-only ${ref}` : 'git diff --name-only HEAD';
+    let cmd;
+    if (ref === '--root' || ref === '--root HEAD') {
+      // First commit: compare against empty tree
+      cmd = 'git diff --name-only --root HEAD';
+    } else if (ref) {
+      cmd = `git diff --name-only ${ref} HEAD`;
+    } else {
+      cmd = 'git diff --name-only HEAD';
+    }
     const output = execSync(cmd, { cwd: ROOT_DIR, encoding: 'utf-8' });
     return output.trim().split(/\n/).filter(Boolean).map(f => f.replace(/\\/g, '/'));
   } catch (e) {

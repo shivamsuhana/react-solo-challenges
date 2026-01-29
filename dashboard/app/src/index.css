@@ -156,6 +156,120 @@ body { margin: 0; }
 .detail-panel .results table { width: 100%; border-collapse: collapse; }
 .detail-panel .results th, .detail-panel .results td { padding: 0.4rem 0.5rem; text-align: left; border-bottom: 1px solid #ffedd5; }
 .detail-panel .back { margin-bottom: 1rem; }
+
+/* Review results – full breakdown */
+.review-results {
+  margin-top: 1.5rem;
+  border-top: 1px solid #ffedd5;
+  padding-top: 1.25rem;
+}
+.review-results h3 { margin: 0 0 1rem; font-size: 1.15rem; color: #1c1917; }
+.review-results h4 {
+  margin: 1.25rem 0 0.5rem;
+  font-size: 1rem;
+  color: #9a3412;
+  font-weight: 600;
+}
+.review-results h4:first-of-type { margin-top: 0.75rem; }
+
+.results-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin-bottom: 1rem;
+}
+.results-summary-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.results-summary-row strong { min-width: 6rem; }
+
+.results-table-wrap {
+  overflow-x: auto;
+  margin: 0.5rem 0 1rem;
+  border: 1px solid #fed7aa;
+  border-radius: 6px;
+  background: #fff;
+}
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.results-table th,
+.results-table td {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #ffedd5;
+}
+.results-table th {
+  background: #fff7ed;
+  color: #9a3412;
+  font-weight: 600;
+}
+.results-table tr:last-child td { border-bottom: none; }
+
+.result-layer {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #fff7ed;
+  border-radius: 6px;
+  border-left: 4px solid #fed7aa;
+}
+.result-layer-ai {
+  border-left-color: #ea580c;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(234, 88, 12, 0.08);
+}
+.result-layer-score {
+  font-size: 0.9rem;
+  color: #9a3412;
+  margin-bottom: 0.5rem;
+}
+.result-layer-error {
+  color: #721c24;
+  background: #f8d7da;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin: 0.5rem 0 0;
+}
+.result-issue {
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #ffedd5;
+}
+.result-issue strong { font-size: 0.9rem; color: #1c1917; }
+.result-issue-msg {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+  color: #78716c;
+  line-height: 1.4;
+}
+.result-ai-overall {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #1c1917;
+}
+.result-ai-list {
+  margin-top: 0.75rem;
+}
+.result-ai-list strong { display: block; font-size: 0.9rem; color: #9a3412; margin-bottom: 0.25rem; }
+.result-ai-list ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+.result-ai-list li {
+  margin: 0.2rem 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #44403c;
+}
+
 .detail-panel .back button {
   padding: 0.4rem 0.8rem;
   background: #ea580c;
@@ -172,3 +286,54 @@ body { margin: 0; }
 .breadcrumb { font-size: 0.9rem; color: #9a3412; margin-bottom: 0.5rem; }
 .breadcrumb a { color: #c2410c; text-decoration: none; }
 .breadcrumb a:hover { text-decoration: underline; }
+
+.pathway-progress {
+  background: #fff;
+  padding: 1.25rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(234, 88, 12, 0.08);
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--orange-500);
+}
+.pathway-progress h2 {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+  color: #1c1917;
+}
+
+.progress-bar-container {
+  margin-top: 0.5rem;
+}
+.progress-bar {
+  width: 100%;
+  height: 24px;
+  background: #ffedd5;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #fed7aa;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ea580c 0%, #f97316 100%);
+  transition: width 0.3s ease;
+  border-radius: 12px;
+}
+.progress-bar-label {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #9a3412;
+  text-align: center;
+}
+.progress-bar-label-small {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: #9a3412;
+}
+
+.course-progress-bar-container {
+  max-width: 400px;
+}
+.course-progress-bar-container .progress-bar {
+  height: 16px;
+}

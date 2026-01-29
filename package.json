@@ -14,7 +14,13 @@
     "setup": "node scripts/setup.js",
     "test": "echo \"Run tests in individual course projects\"",
     "dashboard": "cd dashboard && node server.js",
-    "dashboard:build": "cd dashboard/app && npm install && npm run build"
+    "dashboard:build": "cd dashboard/app && npm install && npm run build",
+    "dashboard:api": "cd dashboard && node server.js",
+    "dashboard:ui:dev": "cd dashboard/app && npm run dev",
+    "dashboard:dev": "concurrently -n api,ui -c blue,green \"npm run dashboard:api\" \"npm run dashboard:ui:dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   },
   "keywords": [
     "education",

@@ -6,6 +6,8 @@ This is a **real, runnable React application** with Redux Toolkit Query where yo
 
 ### 1. Install Dependencies
 
+**Note:** If you haven't run setup yet, go to repo root and run `npm run setup` first to install all dependencies and Playwright browsers.
+
 ```bash
 npm install
 ```
@@ -42,6 +44,20 @@ npm run review
 # Review specific challenge
 npm run review -- --challenge=01-api-setup
 ```
+
+
+## 📊 Progress Evidence
+
+*Auto-updated when you run review. Last run: 1/29/2026, 6:35:55 PM*
+
+| Metric | Value |
+|--------|-------|
+| Challenges completed | 0 / 3 (0%) |
+| Average score | 21.9% |
+
+| Challenge | Status |
+|-----------|--------|
+| API Setup and Basic Fetching | Fail |
 
 ## 📋 Challenge Workflow
 

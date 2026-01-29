@@ -6,6 +6,8 @@ This is a **real, runnable React application** where you'll work on challenges b
 
 ### 1. Install Dependencies
 
+**Note:** If you haven't run setup yet, go to repo root and run `npm run setup` first to install all dependencies and Playwright browsers.
+
 ```bash
 npm install
 ```
@@ -42,6 +44,20 @@ npm run review
 # Review specific challenge
 npm run review -- --challenge=01-user-profile
 ```
+
+
+## 📊 Progress Evidence
+
+*Auto-updated when you run review. Last run: 1/29/2026, 7:52:16 PM*
+
+| Metric | Value |
+|--------|-------|
+| Challenges completed | 1 / 3 (33.3%) |
+| Average score | 77.3% |
+
+| Challenge | Status |
+|-----------|--------|
+| User Profile Component | Pass |
 
 ## 📋 Challenge Workflow
 

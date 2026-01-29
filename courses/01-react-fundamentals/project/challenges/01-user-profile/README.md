@@ -89,14 +89,6 @@ The following industry standards will be checked:
 - **Component Design**: Single responsibility, reusability, proper prop interfaces
 - **Error Handling**: Graceful handling of edge cases (optional props, etc.)
 
-### Scoring
-
-- Functional correctness: 40%
-- Code quality: 25%
-- Architecture: 20%
-- Best practices: 10%
-- AI review: 5%
-
 **Important**: Review will **ONLY check what's specified above**. No hidden requirements.
 
 ---
@@ -109,7 +101,7 @@ The following industry standards will be checked:
 
 ## Help & Completion
 
-- **Full learner guide**: See repo root [LEARNER_GUIDE.md](../../../../../LEARNER_GUIDE.md) — what help you get vs what you must do yourself.
+- **Full guide**: See repo root [README.md](../../../../../README.md) for setup, workflow, and completion policy.
 - **Setup**: If you haven't run setup yet, go to repo root and run `npm run setup` to install all dependencies and Playwright browsers.
 
 ## Next Steps

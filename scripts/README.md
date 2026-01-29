@@ -15,10 +15,11 @@ Utility scripts for Challenge Engine management.
 
 ### Review & Progress Scripts
 - `run-review-all.sh` / `run-review-all.bat` - Run reviews for all courses
-- `run-review-changed.js` - Run review **only for challenges whose code changed** (git diff). Updates progress and PROGRESS.md. Use: `npm run review:changed`
+- `run-review-changed.js` - Run review **only for challenges whose code changed** (git diff). Updates progress and README evidence. Use: `npm run review:changed`
 - `run-review-course.js` - Run review for one course. Use: `npm run review:course -- --course=<courseId>`
 - `run-review-challenge.js` - Run review for one challenge. Use: `npm run review:challenge -- --course=<id> --challenge=<id>`
-- `update-progress.js` - Rebuild `learner-results/progress.json` and `PROGRESS.md` from course results. Use: `npm run progress:update`
+- `update-progress.js` - Rebuild `learner-results/progress.json` and README evidence from course results. Use: `npm run progress:update`
+- `update-readme-evidence.js` - Update README evidence (completion %, average score, pass/fail) in course project READMEs and root README. Called automatically by review engines and `update-progress.js`. Optional: `node scripts/update-readme-evidence.js --course=<courseId>` to update one course only.
 - `get-changed-challenges.js` - List challenges affected by changed files (git diff). Outputs JSON. Optional: `--ref origin/main`
 - `on-push-review-changed.sh` / `.bat` - Optional git pre-push hook to run review for changed challenges
 

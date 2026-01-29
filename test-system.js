@@ -79,7 +79,6 @@ for (const courseId of courses) {
     for (const challenge of challenges) {
       const challengeDir = join(challengesDir, challenge);
       test(`    ${challenge} README.md exists`, existsSync(join(challengeDir, 'README.md')), 'README.md missing');
-      test(`    ${challenge} requirements.md exists`, existsSync(join(challengeDir, 'requirements.md')), 'requirements.md missing');
       test(`    ${challenge} metadata.json exists`, existsSync(join(challengeDir, 'metadata.json')), 'metadata.json missing');
     }
   } else {

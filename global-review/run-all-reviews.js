@@ -97,6 +97,12 @@ async function main() {
     JSON.stringify(aiInsights, null, 2)
   );
 
+  // Refresh README evidence (pathway + all course READMEs)
+  try {
+    execSync('node scripts/update-readme-evidence.js', { cwd: ROOT_DIR, stdio: 'pipe' });
+    console.log('✅ README evidence updated');
+  } catch (_) { /* ignore */ }
+
   console.log('\n' + '='.repeat(60));
   console.log('📊 Pathway Summary');
   console.log('='.repeat(60));

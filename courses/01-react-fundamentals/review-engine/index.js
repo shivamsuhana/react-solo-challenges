@@ -20,6 +20,7 @@ import { runLinting } from './linter.js';
 import { checkArchitecture } from './architecture-checker.js';
 import { checkBestPractices } from './best-practices.js';
 import { reviewCodeWithAI } from '../ai-review/index.js';
+import { generateCourseSummary } from '../../../global-review/course-summary-generator.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -107,11 +108,12 @@ async function main() {
   console.log(`Badge Level: ${courseSummary.badgeLevel}`);
   console.log(`\n✅ Results saved to: ${RESULTS_DIR}`);
 
-  // Update pathway-level progress and PROGRESS.md
+  // Update pathway-level progress and course README evidence
   try {
     const REPO_ROOT = join(COURSE_DIR, '..', '..');
     execSync(`node "${join(REPO_ROOT, 'scripts', 'update-progress.js')}"`, { cwd: REPO_ROOT, stdio: 'pipe' });
-  } catch (_) { /* ignore if update-progress not available */ }
+    execSync(`node "${join(REPO_ROOT, 'scripts', 'update-readme-evidence.js')}" --course=${config.courseId}`, { cwd: REPO_ROOT, stdio: 'pipe' });
+  } catch (_) { /* ignore if scripts not available */ }
 }
 
 async function reviewChallenge(challenge, config) {
@@ -129,14 +131,27 @@ async function reviewChallenge(challenge, config) {
   };
 
   try {
-    // 1. Functional Tests (40%)
+    // 1. Functional Tests (35%)
     console.log('\n🧪 Running functional tests...');
     const testResults = await runTests(challenge.id, PROJECT_DIR);
     result.scores.functionalTests = testResults.score;
     result.testResults = testResults;
     console.log(`   Score: ${testResults.score.toFixed(1)}%`);
+    console.log(`   Passed: ${testResults.passedTests || 0}/${testResults.totalTests || 0} tests`);
+    if (testResults.failedTests > 0) {
+      console.log(`   ❌ ${testResults.failedTests} test(s) failed`);
+      if (testResults.details && testResults.details.length > 0) {
+        testResults.details.forEach(test => {
+          if (test.status === 'failed') {
+            console.log(`      - ${test.name || 'Test'}: ${test.failureMessages?.[0]?.split('\n')[0] || 'Failed'}`);
+          }
+        });
+      }
+    } else if (testResults.totalTests > 0) {
+      console.log(`   ✅ All tests passed!`);
+    }
 
-    // 2. Code Quality - Linting (25%)
+    // 2. Code Quality - Linting (15%)
     console.log('\n🔍 Running code quality checks...');
     const lintResults = await runLinting(challengeMetadata.filesToCheck, PROJECT_DIR, challengeMetadata);
     result.scores.codeQuality = lintResults.score;
@@ -145,8 +160,27 @@ async function reviewChallenge(challenge, config) {
       console.log(`   ${lintResults.note}`);
     }
     console.log(`   Score: ${lintResults.score.toFixed(1)}%`);
+    if (lintResults.errors > 0 || lintResults.warnings > 0) {
+      console.log(`   ⚠️  Found ${lintResults.errors || 0} error(s) and ${lintResults.warnings || 0} warning(s)`);
+      if (lintResults.details && lintResults.details.length > 0) {
+        lintResults.details.forEach(file => {
+          if (file.messages && file.messages.length > 0) {
+            const fileName = file.filePath.split(/[/\\]/).pop();
+            file.messages.slice(0, 3).forEach(msg => {
+              const severity = msg.severity === 2 ? '❌ Error' : '⚠️  Warning';
+              console.log(`      ${severity} in ${fileName}:${msg.line}: ${msg.message}`);
+            });
+            if (file.messages.length > 3) {
+              console.log(`      ... and ${file.messages.length - 3} more issue(s)`);
+            }
+          }
+        });
+      }
+    } else if (lintResults.score === 100) {
+      console.log(`   ✅ No code quality issues found!`);
+    }
 
-    // 3. Architecture Checks (20%)
+    // 3. Architecture Checks (10%)
     console.log('\n🏗️  Checking architecture...');
     const archResults = await checkArchitecture(challengeMetadata, PROJECT_DIR);
     result.scores.architecture = archResults.score;
@@ -162,6 +196,17 @@ async function reviewChallenge(challenge, config) {
       console.log(`   ${bpResults.note}`);
     }
     console.log(`   Score: ${bpResults.score.toFixed(1)}%`);
+    if (bpResults.issues && bpResults.issues.length > 0) {
+      console.log(`   ⚠️  Found ${bpResults.issues.length} issue(s):`);
+      bpResults.issues.slice(0, 3).forEach(issue => {
+        console.log(`      - ${issue.message || issue.type || 'Issue'}`);
+      });
+      if (bpResults.issues.length > 3) {
+        console.log(`      ... and ${bpResults.issues.length - 3} more issue(s)`);
+      }
+    } else if (bpResults.score === 100 && !bpResults.note) {
+      console.log(`   ✅ All best practices requirements met!`);
+    }
 
     // 5. E2E Tests (Visual/Interaction Verification) - 15%
     console.log('\n🎭 Running E2E tests (Playwright - visual verification)...');
@@ -179,7 +224,7 @@ async function reviewChallenge(challenge, config) {
       result.e2eResults = { error: error.message };
     }
 
-    // 6. AI Review (5%)
+    // 6. AI Review (15%)
     console.log('\n🤖 Running AI code review...');
     try {
       const aiResults = await reviewCodeWithAI(
@@ -191,6 +236,12 @@ async function reviewChallenge(challenge, config) {
       result.aiReviewResults = aiResults;
       result.aiResults = aiResults; // Also store as aiResults for compatibility
       console.log(`   Score: ${(aiResults.score || 0).toFixed(1)}%`);
+      if (aiResults.strengths && aiResults.strengths.length > 0) {
+        console.log(`   ✅ Strengths: ${aiResults.strengths.slice(0, 2).join(', ')}`);
+      }
+      if (aiResults.improvements && aiResults.improvements.length > 0) {
+        console.log(`   💡 Improvements: ${aiResults.improvements.slice(0, 2).join(', ')}`);
+      }
     } catch (error) {
       console.log(`   ⚠️  AI review skipped: ${error.message}`);
       result.scores.aiReview = 0; // Score 0 if AI review fails
@@ -234,7 +285,7 @@ function loadChallengeMetadata(challengeId) {
   }
   const metadata = JSON.parse(readFileSync(metadataPath, 'utf-8'));
   
-  // Load README.md for requirements (merged from requirements.md)
+  // Load README.md for challenge guidelines and technical requirements
   const readmePath = join(PROJECT_DIR, 'challenges', challengeId, 'README.md');
   if (existsSync(readmePath)) {
     const readmeContent = readFileSync(readmePath, 'utf-8');
@@ -284,50 +335,6 @@ function parseRequirements(content) {
   return requirements;
 }
 
-function generateCourseSummary(challengeResults, config) {
-  const totalChallenges = config.challenges.length;
-  const completedChallenges = challengeResults.filter(r => r.passed).length;
-  const averageScore = challengeResults.reduce((sum, r) => sum + r.totalScore, 0) / challengeResults.length;
-  const completionPercentage = (completedChallenges / totalChallenges) * 100;
-
-  // Determine badge level
-  let badgeLevel = 'none';
-  if (averageScore >= 90 && completionPercentage === 100) {
-    badgeLevel = 'gold';
-  } else if (averageScore >= 75 && completionPercentage >= 75) {
-    badgeLevel = 'silver';
-  } else if (averageScore >= 60 && completionPercentage >= 50) {
-    badgeLevel = 'bronze';
-  }
-
-  // Identify strengths and improvements
-  const strengths = challengeResults
-    .filter(r => r.totalScore >= 80)
-    .map(r => r.challengeName);
-
-  const improvements = challengeResults
-    .filter(r => r.totalScore < 70)
-    .map(r => r.challengeName);
-
-  return {
-    courseId: config.courseId,
-    courseName: config.courseName,
-    lastUpdated: new Date().toISOString(),
-    totalChallenges,
-    completedChallenges,
-    averageScore: averageScore || 0,
-    completionPercentage: completionPercentage || 0,
-    badgeLevel,
-    challengeResults: challengeResults.map(r => ({
-      challengeId: r.challengeId,
-      challengeName: r.challengeName,
-      score: r.totalScore,
-      passed: r.passed
-    })),
-    skillStrengths: strengths,
-    improvementAreas: improvements
-  };
-}
 
 main().catch(error => {
   console.error('❌ Fatal error:', error);

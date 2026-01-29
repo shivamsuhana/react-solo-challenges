@@ -43,9 +43,62 @@ type Challenge = {
   lastRun?: string | null;
 };
 
+/** Review result from challenge-results.json – full per-layer data */
+type ReviewResult = {
+  totalScore?: number;
+  passed?: boolean;
+  scores?: Record<string, number>;
+  testResults?: {
+    score: number;
+    passed: boolean;
+    totalTests?: number;
+    passedTests?: number;
+    failedTests?: number;
+    details?: Array<{ assertionResults?: Array<{ title: string; status: string; failureMessages?: string[] }>; message?: string; name?: string }>;
+    error?: string;
+  };
+  lintResults?: {
+    score: number;
+    passed: boolean;
+    totalIssues?: number;
+    errors?: number;
+    warnings?: number;
+    details?: Array<{ filePath: string; messages?: Array<{ line: number; message: string; severity?: number }> }>;
+  };
+  architectureResults?: {
+    score: number;
+    passed: boolean;
+    patternsFound?: string[];
+    patternsMissing?: string[];
+    details?: Array<{ file: string; patternsFound?: string[]; patternsMissing?: string[] }>;
+  };
+  bestPracticesResults?: {
+    score: number;
+    passed: boolean;
+    issues?: Array<{ message?: string; type?: string } | string>;
+    details?: Array<{ file: string; issues?: Array<{ message?: string } | string>; score: number }>;
+  };
+  e2eResults?: {
+    score: number;
+    passed: boolean;
+    error?: string;
+    note?: string;
+    details?: unknown[];
+  };
+  aiReviewResults?: {
+    score: number;
+    readability?: number;
+    maintainability?: number;
+    strengths?: string[];
+    improvements?: string[];
+    overall?: string;
+    error?: string;
+  };
+};
+
 type ChallengeDetail = Challenge & {
   instructions: string;
-  result: Record<string, unknown> | null;
+  result: ReviewResult | null;
   aiFeedback: Record<string, unknown> | null;
 };
 
@@ -187,32 +240,48 @@ export default function App() {
       </header>
 
       {progress && (
-        <section className="progress-summary">
-          <div className="progress-card">
-            <strong>Pathway</strong>
-            <span>{pathway.name || '—'}</span>
-          </div>
-          <div className="progress-card">
-            <strong>Overall Score</strong>
-            <span>{pathway.overallScore ?? 0}%</span>
-          </div>
-          <div className="progress-card">
-            <strong>Completion</strong>
-            <span>{pathway.completionPercentage ?? 0}%</span>
-          </div>
-          <div className="progress-card">
-            <strong>Badge</strong>
-            <span>{pathway.badgeLevel || 'none'}</span>
-          </div>
-          <div className="progress-card">
-            <strong>Challenges</strong>
-            <span>{pathway.completedChallenges ?? 0} / {pathway.totalChallenges ?? 0}</span>
-          </div>
-          <div className="progress-card">
-            <strong>Last updated</strong>
-            <span style={{ fontSize: '0.9rem' }}>{lastUpdated}</span>
-          </div>
-        </section>
+        <>
+          <section className="progress-summary">
+            <div className="progress-card">
+              <strong>Pathway</strong>
+              <span>{pathway.name || '—'}</span>
+            </div>
+            <div className="progress-card">
+              <strong>Overall Score</strong>
+              <span>{pathway.overallScore ?? 0}%</span>
+            </div>
+            <div className="progress-card">
+              <strong>Completion</strong>
+              <span>{pathway.completionPercentage ?? 0}%</span>
+            </div>
+            <div className="progress-card">
+              <strong>Badge</strong>
+              <span>{pathway.badgeLevel || 'none'}</span>
+            </div>
+            <div className="progress-card">
+              <strong>Challenges</strong>
+              <span>{pathway.completedChallenges ?? 0} / {pathway.totalChallenges ?? 0}</span>
+            </div>
+            <div className="progress-card">
+              <strong>Last updated</strong>
+              <span style={{ fontSize: '0.9rem' }}>{lastUpdated}</span>
+            </div>
+          </section>
+          <section className="pathway-progress">
+            <h2>Overall Pathway Progress</h2>
+            <div className="progress-bar-container">
+              <div className="progress-bar">
+                <div 
+                  className="progress-bar-fill" 
+                  style={{ width: `${pathway.completionPercentage ?? 0}%` }}
+                />
+              </div>
+              <div className="progress-bar-label">
+                {pathway.completedChallenges ?? 0} / {pathway.totalChallenges ?? 0} challenges completed ({pathway.completionPercentage ?? 0}%)
+              </div>
+            </div>
+          </section>
+        </>
       )}
 
       {error && <div className="error">{error}</div>}
@@ -225,17 +294,34 @@ export default function App() {
           ) : (
             <>
               <div className="card-list">
-                {courses.map((c) => (
-                  <div key={c.id} className="card">
-                    <div>
-                      <h3>{c.name}</h3>
-                      <div className="meta">
-                        Score: {c.averageScore ?? '—'}% · Completion: {c.completionPercentage ?? '—'}% · Badge: {c.badgeLevel ?? '—'}
+                {courses.map((c) => {
+                  const courseProgress = progress?.courses?.[c.id];
+                  const passed = courseProgress?.completedChallenges ?? 0;
+                  const total = courseProgress?.totalChallenges ?? 0;
+                  const completion = total > 0 ? Math.round((passed / total) * 100) : 0;
+                  return (
+                    <div key={c.id} className="card">
+                      <div style={{ flex: 1 }}>
+                        <h3>{c.name}</h3>
+                        <div className="meta">
+                          Score: {c.averageScore ?? '—'}% · Completion: {c.completionPercentage ?? '—'}% · Badge: {c.badgeLevel ?? '—'}
+                        </div>
+                        <div className="course-progress-bar-container" style={{ marginTop: '0.75rem' }}>
+                          <div className="progress-bar">
+                            <div 
+                              className="progress-bar-fill" 
+                              style={{ width: `${completion}%` }}
+                            />
+                          </div>
+                          <div className="progress-bar-label-small">
+                            {passed} / {total} challenges passed
+                          </div>
+                        </div>
                       </div>
+                      <button type="button" onClick={() => openChallenges(c)}>View challenges</button>
                     </div>
-                    <button type="button" onClick={() => openChallenges(c)}>View challenges</button>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
               {coursesTotalPages > 1 && (
                 <div className="pagination">
@@ -336,28 +422,232 @@ export default function App() {
             </>
           )}
           {detail.result && (
-            <>
-              <h3>Last results</h3>
-              <div className="results">
-                <table>
-                  <tbody>
-                    <tr><td>Total score</td><td>{String((detail.result as Record<string, unknown>).totalScore)}%</td></tr>
-                    <tr><td>Passed</td><td>{(detail.result as Record<string, unknown>).passed ? 'Yes' : 'No'}</td></tr>
-                  </tbody>
-                </table>
+            <div className="review-results">
+              <h3>Review results</h3>
+              <div className="results-summary">
+                <div className="results-summary-row">
+                  <strong>Total score</strong>
+                  <span>{typeof detail.result.totalScore === 'number' ? `${detail.result.totalScore.toFixed(1)}%` : '—'}</span>
+                </div>
+                <div className="results-summary-row">
+                  <strong>Passed</strong>
+                  <span className={`badge ${detail.result.passed ? 'passed' : 'failed'}`}>
+                    {detail.result.passed ? 'Yes' : 'No'}
+                  </span>
+                </div>
               </div>
-            </>
-          )}
-          {detail.aiFeedback && (detail.aiFeedback as Record<string, unknown>).overall && (
-            <>
-              <h3>AI feedback</h3>
-              <p>{(detail.aiFeedback as Record<string, unknown>).overall as string}</p>
-            </>
-          )}
-          {detail.aiFeedback && (detail.aiFeedback as Record<string, unknown>).error && (
-            <p className="meta" style={{ marginTop: '0.5rem' }}>
-              AI review skipped: set GROQ_API_KEY to enable. Other layers (tests, lint, architecture, best practices, E2E) still run.
-            </p>
+
+              {detail.result.scores && Object.keys(detail.result.scores).length > 0 && (
+                <>
+                  <h4>Score breakdown</h4>
+                  <div className="results-table-wrap">
+                    <table className="results-table">
+                      <thead>
+                        <tr>
+                          <th>Layer</th>
+                          <th>Score</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {(['functionalTests', 'codeQuality', 'architecture', 'bestPractices', 'e2eTests', 'aiReview'] as const).map((key) => {
+                          const labels: Record<string, string> = {
+                            functionalTests: 'Functional tests',
+                            codeQuality: 'Code quality (lint)',
+                            architecture: 'Architecture',
+                            bestPractices: 'Best practices',
+                            e2eTests: 'E2E tests',
+                            aiReview: 'AI review',
+                          };
+                          const v = detail.result!.scores![key];
+                          return typeof v === 'number' ? (
+                            <tr key={key}>
+                              <td>{labels[key] ?? key}</td>
+                              <td>{v.toFixed(0)}%</td>
+                            </tr>
+                          ) : null;
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                </>
+              )}
+
+              {detail.result.testResults && (
+                <section className="result-layer">
+                  <h4>Functional tests</h4>
+                  <div className="result-layer-score">
+                    Score: {detail.result.testResults.score.toFixed(0)}%
+                    {detail.result.testResults.totalTests != null && (
+                      <> · {detail.result.testResults.passedTests ?? 0}/{detail.result.testResults.totalTests} passed</>
+                    )}
+                  </div>
+                  {detail.result.testResults.error && (
+                    <p className="result-layer-error">{detail.result.testResults.error}</p>
+                  )}
+                  {detail.result.testResults.details?.map((suite, i) => (
+                    <div key={i}>
+                      {suite.assertionResults?.filter((a) => a.status === 'failed').map((a, j) => (
+                        <div key={j} className="result-issue">
+                          <strong>{a.title}</strong>
+                          {a.failureMessages?.map((msg, k) => (
+                            <p key={k} className="result-issue-msg">{msg}</p>
+                          ))}
+                        </div>
+                      ))}
+                      {suite.message && <p className="result-issue-msg">{suite.message}</p>}
+                    </div>
+                  ))}
+                </section>
+              )}
+
+              {detail.result.lintResults && (
+                <section className="result-layer">
+                  <h4>Code quality (lint)</h4>
+                  <div className="result-layer-score">
+                    Score: {detail.result.lintResults.score.toFixed(0)}%
+                    {detail.result.lintResults.errors != null && detail.result.lintResults.warnings != null && (
+                      <> · {detail.result.lintResults.errors} error(s), {detail.result.lintResults.warnings} warning(s)</>
+                    )}
+                  </div>
+                  {detail.result.lintResults.details?.map((file, i) => (
+                    file.messages?.length ? (
+                      <div key={i} className="result-issue">
+                        <strong>{file.filePath.replace(/^.*[/\\]/, '')}</strong>
+                        {file.messages.map((m, j) => (
+                          <p key={j} className="result-issue-msg">Line {m.line}: {m.message}</p>
+                        ))}
+                      </div>
+                    ) : null
+                  ))}
+                </section>
+              )}
+
+              {detail.result.architectureResults && (
+                <section className="result-layer">
+                  <h4>Architecture</h4>
+                  <div className="result-layer-score">
+                    Score: {detail.result.architectureResults.score.toFixed(0)}%
+                  </div>
+                  {detail.result.architectureResults.patternsMissing?.length ? (
+                    <>
+                      <p className="result-issue-msg">
+                        Patterns expected but not found: <strong>{detail.result.architectureResults.patternsMissing.join(', ')}</strong>.
+                        Add these patterns to your code as required by the challenge.
+                      </p>
+                      <p className="result-issue-msg" style={{ marginTop: '0.25rem', fontSize: '0.85rem' }}>
+                        Hint: <code>useState</code> = React state hook; <code>props</code> = component props; <code>functionalComponent</code> = function component (not class).
+                      </p>
+                    </>
+                  ) : null}
+                  {detail.result.architectureResults.details?.map((d, i) => (
+                    (d.patternsMissing?.length || d.patternsFound?.length) ? (
+                      <div key={i} className="result-issue">
+                        <strong>{d.file}</strong>
+                        {d.patternsMissing?.length ? (
+                          <p className="result-issue-msg">Missing: {d.patternsMissing.join(', ')}</p>
+                        ) : null}
+                        {d.patternsFound?.length ? (
+                          <p className="result-issue-msg">Found: {d.patternsFound.join(', ')}</p>
+                        ) : null}
+                      </div>
+                    ) : null
+                  ))}
+                </section>
+              )}
+
+              {detail.result.bestPracticesResults && (
+                <section className="result-layer">
+                  <h4>Best practices</h4>
+                  <div className="result-layer-score">
+                    Score: {detail.result.bestPracticesResults.score.toFixed(0)}%
+                  </div>
+                  {detail.result.bestPracticesResults.issues?.map((issue, i) => (
+                    <p key={i} className="result-issue-msg">• {typeof issue === 'string' ? issue : (issue as { message?: string }).message ?? 'Issue'}</p>
+                  ))}
+                  {detail.result.bestPracticesResults.details?.map((d, i) => (
+                    d.issues?.length ? (
+                      <div key={i} className="result-issue">
+                        <strong>{d.file}</strong>
+                        {d.issues.map((issue, j) => (
+                          <p key={j} className="result-issue-msg">• {typeof issue === 'string' ? issue : (issue as { message?: string }).message ?? 'Issue'}</p>
+                        ))}
+                      </div>
+                    ) : null
+                  ))}
+                </section>
+              )}
+
+              {detail.result.e2eResults && (
+                <section className="result-layer">
+                  <h4>E2E tests</h4>
+                  <div className="result-layer-score">
+                    Score: {detail.result.e2eResults.score.toFixed(0)}%
+                  </div>
+                  {detail.result.e2eResults.error && (
+                    <p className="result-layer-error">{detail.result.e2eResults.error}</p>
+                  )}
+                  {detail.result.e2eResults.note && (
+                    <p className="result-issue-msg">{detail.result.e2eResults.note}</p>
+                  )}
+                  {(detail.result.e2eResults as { details?: unknown[] }).details?.length ? (
+                    <p className="result-issue-msg">See test output for failed steps.</p>
+                  ) : null}
+                </section>
+              )}
+
+              {(detail.result.aiReviewResults || detail.aiFeedback) && (
+                <section className="result-layer result-layer-ai">
+                  <h4>AI review</h4>
+                  {(() => {
+                    const ai = detail.result.aiReviewResults || (detail.aiFeedback as Record<string, unknown>);
+                    if (!ai) return null;
+                    if (ai.error) {
+                      return (
+                        <p className="result-layer-error">
+                          AI review skipped: set GROQ_API_KEY to enable. Other layers still run.
+                        </p>
+                      );
+                    }
+                    return (
+                      <>
+                        <div className="result-layer-score">
+                          Score: {typeof ai.score === 'number' ? `${ai.score}%` : '—'}
+                          {typeof ai.readability === 'number' && (
+                            <> · Readability: {ai.readability}%</>
+                          )}
+                          {typeof ai.maintainability === 'number' && (
+                            <> · Maintainability: {ai.maintainability}%</>
+                          )}
+                        </div>
+                        {ai.overall && (
+                          <p className="result-ai-overall">{ai.overall as string}</p>
+                        )}
+                        {Array.isArray(ai.strengths) && ai.strengths.length > 0 && (
+                          <div className="result-ai-list">
+                            <strong>Strengths</strong>
+                            <ul>
+                              {(ai.strengths as string[]).map((s, i) => (
+                                <li key={i}>{s}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                        {Array.isArray(ai.improvements) && ai.improvements.length > 0 && (
+                          <div className="result-ai-list">
+                            <strong>Improvements</strong>
+                            <ul>
+                              {(ai.improvements as string[]).map((s, i) => (
+                                <li key={i}>{s}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </>
+                    );
+                  })()}
+                </section>
+              )}
+            </div>
           )}
         </div>
       )}
