@@ -286,6 +286,14 @@ export default function App() {
   const pathway = progress?.pathway || {};
   const lastUpdated = progress?.lastUpdated ? new Date(progress.lastUpdated).toLocaleString() : '—';
 
+  // Helper function to get progress bar color class based on score
+  const getScoreColorClass = (score: number | null | undefined): string => {
+    if (score == null) return 'score-pending';
+    if (score < 50) return 'score-red';
+    if (score < 80) return 'score-yellow';
+    return 'score-green';
+  };
+
   return (
     <div className="app">
       {progress && view === 'courses' && (
@@ -454,21 +462,35 @@ export default function App() {
                     ch.name.toLowerCase().includes(challengeSearch.toLowerCase()) ||
                     ch.id.toLowerCase().includes(challengeSearch.toLowerCase())
                   )
-                  .map((ch) => (
-                  <div key={ch.id} className="card">
-                    <div>
-                      <h3>{ch.name}</h3>
-                      <div className="meta">
-                        <span className={`badge ${ch.passed ? 'passed' : ch.score != null ? 'failed' : 'pending'}`}>
-                          {ch.passed ? 'Passed' : ch.score != null ? 'Not passed' : 'Not run'}
-                        </span>
-                        {ch.score != null && ` · Score: ${Math.round(ch.score)}%`}
-                        {ch.lastRun && ` · Last run: ${new Date(ch.lastRun).toLocaleString()}`}
+                  .map((ch) => {
+                    const score = ch.score != null ? Math.round(ch.score) : null;
+                    const scoreColorClass = getScoreColorClass(ch.score);
+                    return (
+                      <div key={ch.id} className="card">
+                        <div style={{ flex: 1 }}>
+                          <h3>{ch.name}</h3>
+                          <div className="meta">
+                            <span className={`badge ${ch.passed ? 'passed' : ch.score != null ? 'failed' : 'pending'}`}>
+                              {ch.passed ? 'Passed' : ch.score != null ? 'Not passed' : 'Not run'}
+                            </span>
+                            {score != null && ` · Score: ${score}%`}
+                            {ch.lastRun && ` · Last run: ${new Date(ch.lastRun).toLocaleString()}`}
+                          </div>
+                          {score != null && (
+                            <div className="challenge-score-progress" style={{ marginTop: '0.5rem' }}>
+                              <div className={`score-progress-bar ${scoreColorClass}`}>
+                                <div 
+                                  className="score-progress-fill" 
+                                  style={{ width: `${score}%` }}
+                                />
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                        <button type="button" onClick={() => openDetail(ch.id)}>Details</button>
                       </div>
-                    </div>
-                    <button type="button" onClick={() => openDetail(ch.id)}>Details</button>
-                  </div>
-                ))}
+                    );
+                  })}
               </div>
               {challengesTotalPages > 1 && (
                 <div className="pagination">
@@ -543,8 +565,18 @@ export default function App() {
                 <span className={`badge ${detail.passed ? 'passed' : detail.score != null ? 'failed' : 'pending'}`}>
                   {detail.passed ? '✓ Passed' : detail.score != null ? '✗ Not passed' : '○ Not run'}
                 </span>
-                {detail.score != null && <span className="detail-score">Score: {detail.score}%</span>}
+                {detail.score != null && <span className="detail-score">Score: {Math.round(detail.score)}%</span>}
               </div>
+              {detail.score != null && (
+                <div className="challenge-score-progress" style={{ marginTop: '0.75rem' }}>
+                  <div className={`score-progress-bar ${getScoreColorClass(detail.score)}`}>
+                    <div 
+                      className="score-progress-fill" 
+                      style={{ width: `${Math.round(detail.score)}%` }}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
             <button
               type="button"

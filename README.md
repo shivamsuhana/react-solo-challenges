@@ -20,6 +20,7 @@ This will:
 - ✅ Install all course project dependencies
 - ✅ Install all review engine dependencies
 - ✅ Install Playwright browsers for E2E tests
+- ✅ **(Learners)** Configure git remotes: **upstream** = course repo, **origin** = your repo (you may be prompted for your repo URL)
 
 **Takes 3-5 minutes** - grab a coffee ☕
 
@@ -65,6 +66,64 @@ npm run dev
 - ✅ Dashboard running at http://localhost:7700 (Terminal 1)
 - ✅ Course app running in browser (Terminal 2)
 - ✅ Hot reload enabled - changes appear instantly
+
+---
+
+## 👤 For learners: Git remotes (origin & upstream)
+
+If you’re a **learner** using this repo, set things up so:
+
+- **origin** = your own repo (where you push your challenge work).
+- **upstream** = the course repo (where new courses and updates come from).
+
+`npm run setup` will add **upstream** automatically and, if you cloned the course repo, prompt you for **your repo URL** and set it as **origin**. You can also set or fix remotes manually as below.
+
+### Check your remotes
+
+```bash
+git remote -v
+```
+
+You should see:
+
+- **origin** → your repo (e.g. `https://github.com/YOUR_USERNAME/your-repo.git`)
+- **upstream** → course repo (`https://github.com/sparkplustech/challenge-engine-react.git`)
+
+### Set remotes manually (if needed)
+
+**If you cloned the course repo** (so `origin` still points to us):
+
+```bash
+# Add course repo as upstream
+git remote add upstream https://github.com/sparkplustech/challenge-engine-react.git
+
+# Point origin to YOUR repo (replace with your actual URL)
+git remote set-url origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+```
+
+**If you forked first** (so `origin` already points to your fork):
+
+```bash
+# Add course repo as upstream
+git remote add upstream https://github.com/sparkplustech/challenge-engine-react.git
+```
+
+### Push your work to your repo (origin)
+
+```bash
+git add .
+git commit -m "Complete challenge 01-user-profile"
+git push -u origin main
+```
+
+### Pull new courses or updates from the course repo (upstream)
+
+```bash
+git fetch upstream
+git merge upstream/main
+# Optional: push the merged changes to your repo
+git push origin main
+```
 
 ---
 

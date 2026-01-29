@@ -4,7 +4,7 @@
   line-height: 1.5;
   font-weight: 400;
   color: #1c1917;
-  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  background: #ffffff;
   min-height: 100vh;
   --orange-500: #f97316;
   --orange-600: #ea580c;
@@ -17,7 +17,7 @@
   --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
 }
 * { box-sizing: border-box; }
-body { margin: 0; }
+body { margin: 0; background: #fff; }
 #root { min-height: 100vh; }
 
 .app {
@@ -466,7 +466,9 @@ body { margin: 0; }
 }
 .result-layer-ai .result-layer-header {
   background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  color: #9a3412;
 }
+.result-layer-ai .result-layer-header:hover { color: #c2410c; }
 .result-layer-ai .result-layer-content {
   background: #fff;
 }
@@ -702,4 +704,34 @@ body { margin: 0; }
 }
 .course-progress-bar-container .progress-bar {
   height: 16px;
+}
+
+/* Challenge score progress bars - small and color-coded */
+.challenge-score-progress {
+  max-width: 200px;
+}
+.score-progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.score-progress-fill {
+  height: 100%;
+  transition: width 0.3s ease;
+  border-radius: 4px;
+}
+.score-progress-bar.score-red .score-progress-fill {
+  background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
+}
+.score-progress-bar.score-yellow .score-progress-fill {
+  background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%);
+}
+.score-progress-bar.score-green .score-progress-fill {
+  background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+}
+.score-progress-bar.score-pending .score-progress-fill {
+  background: #9ca3af;
 }

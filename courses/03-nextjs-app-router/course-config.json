@@ -29,7 +29,7 @@
     "aiReview": 0.15
   },
   "requirements": {
-    "minScore": 60,
+    "minScore": 80,
     "minCompletion": 100
   }
 }
