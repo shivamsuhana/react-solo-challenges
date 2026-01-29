@@ -4,10 +4,18 @@
  * AI Review Layer for RTK Query Course
  * 
  * Uses Groq API (Llama 3.1 8B) to provide qualitative code review
+ * 
+ * IMPORTANT: This review only runs if functional tests pass.
+ * It receives:
+ * - Challenge instructions (README.md)
+ * - Challenge requirements (requirements.md)
+ * - All user-created code files
+ * 
+ * Provides sophisticated feedback based on actual implementation vs requirements.
  */
 
-import { readFileSync, existsSync } from 'fs';
-import { join, dirname } from 'path';
+import { readFileSync, existsSync, readdirSync, statSync } from 'fs';
+import { join, dirname, extname } from 'path';
 import { fileURLToPath } from 'url';
 
 // Load .env from repo root if it exists
@@ -30,10 +38,16 @@ const GROQ_API_KEY = process.env.GROQ_API_KEY || '';
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 const MODEL = 'llama-3.1-8b-instant';
 
+// File extensions to include in code review
+const CODE_EXTENSIONS = ['.ts', '.tsx', '.js', '.jsx'];
+
 /**
  * Reviews code using AI for qualitative feedback
+ * @param {string} challengeId - Challenge ID
+ * @param {object} challengeMetadata - Challenge metadata (includes filesToCheck, patternsRequired, etc.)
+ * @param {string} projectDir - Project directory path
  */
-export async function reviewCodeWithAI(challengeId, filesToReview, projectDir) {
+export async function reviewCodeWithAI(challengeId, challengeMetadata, projectDir) {
   const results = {
     challengeId,
     timestamp: new Date().toISOString(),
@@ -47,27 +61,60 @@ export async function reviewCodeWithAI(challengeId, filesToReview, projectDir) {
   };
 
   try {
-    // Read all files to review
-    const codeSnippets = [];
-    for (const file of filesToReview) {
-      const filePath = join(projectDir, file);
-      if (existsSync(filePath)) {
-        const content = readFileSync(filePath, 'utf-8');
-        codeSnippets.push({
-          file,
-          content: content.substring(0, 5000) // Limit content size
-        });
+    // 1. Load challenge instructions and requirements
+    const challengeDir = join(projectDir, 'challenges', challengeId);
+    const readmePath = join(challengeDir, 'README.md');
+    const requirementsPath = join(challengeDir, 'requirements.md');
+    
+    let challengeInstructions = '';
+    let challengeRequirements = '';
+
+    if (existsSync(readmePath)) {
+      challengeInstructions = readFileSync(readmePath, 'utf-8');
+    }
+
+    if (existsSync(requirementsPath)) {
+      challengeRequirements = readFileSync(requirementsPath, 'utf-8');
+    }
+
+    // 2. Read all user-created code files
+    const codeFiles = [];
+    const missingFiles = [];
+    
+    for (const filePath of challengeMetadata.filesToCheck || []) {
+      const fullPath = join(projectDir, filePath);
+      if (existsSync(fullPath)) {
+        const content = readFileSync(fullPath, 'utf-8');
+        // Only include if it's a code file and has meaningful content
+        if (CODE_EXTENSIONS.includes(extname(fullPath)) && content.trim().length > 0) {
+          codeFiles.push({
+            file: filePath,
+            content: content.substring(0, 8000) // Limit to 8KB per file
+          });
+        }
+      } else {
+        missingFiles.push(filePath);
       }
     }
 
-    if (codeSnippets.length === 0) {
+    // 3. Discover additional files user might have created in relevant directories
+    const additionalFiles = discoverAdditionalFiles(challengeMetadata, projectDir);
+    for (const file of additionalFiles) {
+      // Avoid duplicates
+      if (!codeFiles.some(f => f.file === file.file)) {
+        codeFiles.push(file);
+      }
+    }
+
+    if (codeFiles.length === 0) {
       return {
         ...results,
-        error: 'No files found to review'
+        error: 'No code files found to review. User must create the required files first.',
+        score: 0
       };
     }
 
-    // Check if API key is available
+    // 4. Check if API key is available
     if (!GROQ_API_KEY) {
       return {
         ...results,
@@ -76,13 +123,20 @@ export async function reviewCodeWithAI(challengeId, filesToReview, projectDir) {
       };
     }
 
-    // Prepare prompt
-    const prompt = buildReviewPrompt(challengeId, codeSnippets);
+    // 5. Build sophisticated prompt with all context
+    const prompt = buildReviewPrompt(
+      challengeId,
+      challengeMetadata,
+      challengeInstructions,
+      challengeRequirements,
+      codeFiles,
+      missingFiles
+    );
 
-    // Call Groq API
+    // 6. Call Groq API
     const aiResponse = await callGroqAPI(prompt);
 
-    // Parse response
+    // 7. Parse response
     const parsedResponse = parseAIResponse(aiResponse);
 
     return {
@@ -94,37 +148,143 @@ export async function reviewCodeWithAI(challengeId, filesToReview, projectDir) {
   } catch (error) {
     return {
       ...results,
-      error: error.message
+      error: error.message,
+      score: 0
     };
   }
 }
 
-function buildReviewPrompt(challengeId, codeSnippets) {
-  const codeContext = codeSnippets.map(s => 
-    `File: ${s.file}\n\`\`\`typescript\n${s.content}\n\`\`\``
-  ).join('\n\n');
+/**
+ * Discover additional files user might have created
+ */
+function discoverAdditionalFiles(challengeMetadata, projectDir) {
+  const additionalFiles = [];
+  const checkedDirs = new Set();
 
-  return `You are an expert RTK Query and Redux Toolkit code reviewer. Review the following code for challenge "${challengeId}".
+  // Check directories mentioned in filesToCheck
+  for (const filePath of challengeMetadata.filesToCheck || []) {
+    const dir = dirname(filePath);
+    if (!checkedDirs.has(dir)) {
+      checkedDirs.add(dir);
+      const fullDir = join(projectDir, dir);
+      if (existsSync(fullDir)) {
+        try {
+          const files = readdirSync(fullDir);
+          for (const file of files) {
+            const fullPath = join(fullDir, file);
+            if (statSync(fullPath).isFile() && CODE_EXTENSIONS.includes(extname(file))) {
+              const relativePath = join(dir, file).replace(/\\/g, '/');
+              // Only include if not already in filesToCheck
+              if (!challengeMetadata.filesToCheck.includes(relativePath)) {
+                try {
+                  const content = readFileSync(fullPath, 'utf-8');
+                  if (content.trim().length > 0) {
+                    additionalFiles.push({
+                      file: relativePath,
+                      content: content.substring(0, 8000)
+                    });
+                  }
+                } catch (e) {
+                  // Skip files that can't be read
+                }
+              }
+            }
+          }
+        } catch (e) {
+          // Skip directories that can't be read
+        }
+      }
+    }
+  }
 
-${codeContext}
-
-Provide a structured review focusing on:
-1. Code readability (0-100 score)
-2. Maintainability (0-100 score)
-3. Strengths (list 2-3 key strengths)
-4. Areas for improvement (list 2-3 specific improvements)
-5. Overall assessment (brief paragraph)
-
-Format your response as JSON:
-{
-  "readability": <number>,
-  "maintainability": <number>,
-  "strengths": ["strength1", "strength2"],
-  "improvements": ["improvement1", "improvement2"],
-  "overall": "<brief assessment>"
-}`;
+  return additionalFiles;
 }
 
+/**
+ * Build sophisticated review prompt with all context
+ */
+function buildReviewPrompt(challengeId, challengeMetadata, instructions, requirements, codeFiles, missingFiles) {
+  const challengeName = challengeMetadata.challengeName || challengeId;
+  const skills = challengeMetadata.skills || [];
+  const patternsRequired = challengeMetadata.patternsRequired || [];
+
+  // Build code context
+  const codeContext = codeFiles.map(f => 
+    `File: ${f.file}\n\`\`\`typescript\n${f.content}\n\`\`\``
+  ).join('\n\n---\n\n');
+
+  // Build missing files note
+  const missingFilesNote = missingFiles.length > 0
+    ? `\n\n⚠️ NOTE: The following expected files are missing: ${missingFiles.join(', ')}. This may indicate incomplete implementation.`
+    : '';
+
+  // Build requirements summary
+  const requirementsSummary = requirements
+    ? `\n\n## Technical Requirements:\n${requirements.substring(0, 2000)}`
+    : '';
+
+  // Build instructions summary
+  const instructionsSummary = instructions
+    ? `\n\n## Challenge Instructions:\n${instructions.substring(0, 3000)}`
+    : '';
+
+  return `You are an expert RTK Query, Redux Toolkit, and TypeScript code reviewer. Review the following implementation for challenge "${challengeName}" (${challengeId}).
+
+## Challenge Context:
+- **Challenge ID**: ${challengeId}
+- **Skills Focus**: ${skills.join(', ')}
+- **Required Patterns**: ${patternsRequired.join(', ')}${instructionsSummary}${requirementsSummary}
+
+## User's Implementation:
+
+The following code files were created/modified by the user for this challenge:
+
+${codeContext}${missingFilesNote}
+
+## Review Task:
+
+Provide a comprehensive code review focusing on:
+
+1. **Requirement Compliance** (30%):
+   - Does the code meet all functional requirements?
+   - Are all required patterns implemented correctly?
+   - Are missing files a concern?
+
+2. **Code Quality** (25%):
+   - Readability: Is the code clear and well-structured?
+   - TypeScript usage: Proper types and interfaces?
+   - Code organization: Logical structure and separation of concerns?
+
+3. **RTK Query Best Practices** (25%):
+   - Correct use of createApi, fetchBaseQuery, endpoints
+   - Proper hook usage (useGetUsersQuery, etc.)
+   - Store integration and reducer setup
+   - Error and loading state handling
+
+4. **Maintainability** (20%):
+   - Is the code maintainable and extensible?
+   - Are there any code smells or anti-patterns?
+   - Could the code be improved for future changes?
+
+## Output Format:
+
+Provide your review as JSON:
+
+{
+  "readability": <number 0-100>,
+  "maintainability": <number 0-100>,
+  "strengths": ["specific strength 1", "specific strength 2", "specific strength 3"],
+  "improvements": ["specific improvement 1 with file reference", "specific improvement 2 with file reference", "specific improvement 3 with file reference"],
+  "overall": "<2-3 sentence assessment focusing on requirement compliance and RTK Query best practices>",
+  "requirementCompliance": <number 0-100, how well requirements are met>
+}
+
+Be specific in your feedback. Reference specific files and code patterns. Focus on actionable improvements.`;
+}
+
+/**
+ * Call Groq API
+ */
 async function callGroqAPI(prompt) {
   const response = await fetch(GROQ_API_URL, {
     method: 'POST',
@@ -137,7 +297,7 @@ async function callGroqAPI(prompt) {
       messages: [
         {
           role: 'system',
-          content: 'You are an expert RTK Query, Redux Toolkit, and TypeScript code reviewer. Provide constructive, specific feedback.'
+          content: 'You are an expert RTK Query, Redux Toolkit, and TypeScript code reviewer. Provide detailed, specific, actionable feedback. Reference specific files and code patterns in your feedback.'
         },
         {
           role: 'user',
@@ -145,7 +305,7 @@ async function callGroqAPI(prompt) {
         }
       ],
       temperature: 0.3,
-      max_tokens: 1000
+      max_tokens: 1500 // Increased for more detailed feedback
     })
   });
 
@@ -163,12 +323,23 @@ async function callGroqAPI(prompt) {
   return content;
 }
 
+/**
+ * Parse AI response
+ */
 function parseAIResponse(response) {
   try {
     // Try to extract JSON from response
     const jsonMatch = response.match(/\{[\s\S]*\}/);
     if (jsonMatch) {
-      return JSON.parse(jsonMatch[0]);
+      const parsed = JSON.parse(jsonMatch[0]);
+      return {
+        readability: parsed.readability || 0,
+        maintainability: parsed.maintainability || 0,
+        strengths: parsed.strengths || [],
+        improvements: parsed.improvements || [],
+        overall: parsed.overall || '',
+        requirementCompliance: parsed.requirementCompliance || 0
+      };
     }
   } catch (error) {
     // Fallback parsing
@@ -177,16 +348,21 @@ function parseAIResponse(response) {
   // Fallback: extract information manually
   const readabilityMatch = response.match(/readability[:\s]+(\d+)/i);
   const maintainabilityMatch = response.match(/maintainability[:\s]+(\d+)/i);
+  const complianceMatch = response.match(/requirementCompliance[:\s]+(\d+)/i);
 
   return {
-    readability: readabilityMatch ? parseInt(readabilityMatch[1]) : 50,
-    maintainability: maintainabilityMatch ? parseInt(maintainabilityMatch[1]) : 50,
+    readability: readabilityMatch ? parseInt(readabilityMatch[1]) : 0,
+    maintainability: maintainabilityMatch ? parseInt(maintainabilityMatch[1]) : 0,
+    requirementCompliance: complianceMatch ? parseInt(complianceMatch[1]) : 0,
     strengths: extractList(response, /strengths?/i),
     improvements: extractList(response, /improvements?/i),
     overall: response.substring(0, 500)
   };
 }
 
+/**
+ * Extract list items from text
+ */
 function extractList(text, keyword) {
   const lines = text.split('\n');
   const list = [];
@@ -197,20 +373,36 @@ function extractList(text, keyword) {
       inList = true;
       continue;
     }
-    if (inList && (line.trim().startsWith('-') || line.trim().match(/^\d+\./))) {
-      list.push(line.trim().replace(/^[-•\d.]+\s*/, ''));
-      if (list.length >= 3) break;
+    if (inList && (line.trim().startsWith('-') || line.trim().match(/^\d+\./) || line.trim().startsWith('"'))) {
+      let item = line.trim().replace(/^[-•\d."]+\s*/, '').replace(/^["']|["']$/g, '');
+      if (item) {
+        list.push(item);
+        if (list.length >= 5) break; // Allow up to 5 items
+      }
     }
-    if (inList && line.trim() === '') {
+    if (inList && line.trim() === '' && list.length > 0) {
       break;
     }
   }
 
-  return list.length > 0 ? list : ['Code structure is reasonable'];
+  return list.length > 0 ? list : [];
 }
 
+/**
+ * Calculate AI score based on multiple factors
+ */
 function calculateAIScore(parsedResponse) {
-  const readability = parsedResponse.readability || 50;
-  const maintainability = parsedResponse.maintainability || 50;
-  return Math.round((readability + maintainability) / 2);
+  const readability = parsedResponse.readability || 0;
+  const maintainability = parsedResponse.maintainability || 0;
+  const requirementCompliance = parsedResponse.requirementCompliance || 0;
+
+  // Weighted average: requirement compliance is most important
+  // Since tests already passed, we focus on code quality
+  const score = Math.round(
+    (requirementCompliance * 0.4) +
+    (readability * 0.3) +
+    (maintainability * 0.3)
+  );
+
+  return Math.max(0, Math.min(100, score)); // Clamp between 0-100
 }

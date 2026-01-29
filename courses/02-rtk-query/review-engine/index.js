@@ -9,7 +9,7 @@
  * - Architecture checks (AST parsing)
  * - Best practices
  * - E2E tests (Playwright)
- * - AI review
+ * - AI review (only if functional tests pass)
  */
 
 import { execSync } from 'child_process';
@@ -137,6 +137,7 @@ async function reviewChallenge(challenge, config) {
     result.scores.functionalTests = testResults.score;
     result.testResults = testResults;
     console.log(`   Score: ${testResults.score.toFixed(1)}%`);
+    console.log(`   Passed: ${testResults.passedTests}/${testResults.totalTests} tests`);
 
     // 2. Code Quality - Linting (20%)
     console.log('\n🔍 Running code quality checks...');
@@ -175,22 +176,40 @@ async function reviewChallenge(challenge, config) {
       result.e2eResults = { error: error.message };
     }
 
-    // 6. AI Review (5%)
+    // 6. AI Review (5%) - ONLY RUN IF FUNCTIONAL TESTS PASS
     console.log('\n🤖 Running AI code review...');
-    try {
-      const aiResults = await reviewCodeWithAI(
-        challenge.id,
-        challengeMetadata.filesToCheck,
-        PROJECT_DIR
-      );
-      result.scores.aiReview = aiResults.score || 0;
-      result.aiReviewResults = aiResults;
-      result.aiResults = aiResults; // Also store as aiResults for compatibility
-      console.log(`   Score: ${(aiResults.score || 0).toFixed(1)}%`);
-    } catch (error) {
-      console.log(`   ⚠️  AI review skipped: ${error.message}`);
-      result.scores.aiReview = 0; // Score 0 if AI review fails
-      result.aiReviewResults = { error: error.message, score: 0 };
+    if (testResults.passed && testResults.passedTests > 0 && testResults.totalTests > 0) {
+      // All functional tests passed - proceed with AI review
+      try {
+        const aiResults = await reviewCodeWithAI(
+          challenge.id,
+          challengeMetadata,
+          PROJECT_DIR
+        );
+        result.scores.aiReview = aiResults.score || 0;
+        result.aiReviewResults = aiResults;
+        result.aiResults = aiResults; // Also store as aiResults for compatibility
+        console.log(`   Score: ${(aiResults.score || 0).toFixed(1)}%`);
+        if (aiResults.error) {
+          console.log(`   ⚠️  Note: ${aiResults.error}`);
+        }
+      } catch (error) {
+        console.log(`   ⚠️  AI review skipped: ${error.message}`);
+        result.scores.aiReview = 0;
+        result.aiReviewResults = { error: error.message, score: 0 };
+      }
+    } else {
+      // Functional tests did not pass - skip AI review
+      const reason = testResults.totalTests === 0 
+        ? 'No tests were run'
+        : `Functional tests must pass first (${testResults.passedTests}/${testResults.totalTests} passed)`;
+      console.log(`   ⏭️  AI review skipped: ${reason}`);
+      result.scores.aiReview = 0;
+      result.aiReviewResults = { 
+        error: reason,
+        score: 0,
+        skipped: true
+      };
     }
 
     // Calculate total score (comprehensive end-to-end)
