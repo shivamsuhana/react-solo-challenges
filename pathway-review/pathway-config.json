@@ -29,10 +29,6 @@
     "silver": {
       "minScore": 75,
       "minCompletion": 75
-    },
-    "gold": {
-      "minScore": 90,
-      "minCompletion": 100
     }
   },
   "scoring": {

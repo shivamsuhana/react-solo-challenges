@@ -31,14 +31,16 @@ export function calculateWeightedAverage(courseResults, weights) {
  * Determine badge level based on score and completion
  */
 export function determineBadgeLevel(score, completion, badgeLevels) {
-  if (score >= badgeLevels.gold.minScore && 
+  if (badgeLevels.gold && score >= badgeLevels.gold.minScore &&
       completion >= badgeLevels.gold.minCompletion) {
     return 'gold';
-  } else if (score >= badgeLevels.silver.minScore && 
-             completion >= badgeLevels.silver.minCompletion) {
+  }
+  if (badgeLevels.silver && score >= badgeLevels.silver.minScore &&
+      completion >= badgeLevels.silver.minCompletion) {
     return 'silver';
-  } else if (score >= badgeLevels.bronze.minScore && 
-             completion >= badgeLevels.bronze.minCompletion) {
+  }
+  if (badgeLevels.bronze && score >= badgeLevels.bronze.minScore &&
+      completion >= badgeLevels.bronze.minCompletion) {
     return 'bronze';
   }
   return 'none';

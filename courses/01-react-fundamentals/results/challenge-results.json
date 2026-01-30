@@ -2,16 +2,16 @@
   {
     "challengeId": "01-user-profile",
     "challengeName": "User Profile Component",
-    "timestamp": "2026-01-30T12:31:31.559Z",
+    "timestamp": "2026-01-30T15:13:52.474Z",
     "scores": {
       "functionalTests": 100,
       "codeQuality": 100,
       "architecture": 100,
       "bestPractices": 100,
-      "e2eTests": 0,
+      "e2eTests": 100,
       "aiReview": 94
     },
-    "totalScore": 84.1,
+    "totalScore": 99.1,
     "passed": true,
     "errors": [],
     "warnings": [],
@@ -32,7 +32,7 @@
               "fullName": " Challenge 01: User Profile Component should render user name",
               "status": "passed",
               "title": "should render user name",
-              "duration": 51,
+              "duration": 23,
               "failureMessages": []
             },
             {
@@ -43,7 +43,7 @@
               "fullName": " Challenge 01: User Profile Component should render user email",
               "status": "passed",
               "title": "should render user email",
-              "duration": 7,
+              "duration": 4,
               "failureMessages": []
             },
             {
@@ -54,7 +54,7 @@
               "fullName": " Challenge 01: User Profile Component should display avatar or placeholder",
               "status": "passed",
               "title": "should display avatar or placeholder",
-              "duration": 66,
+              "duration": 62,
               "failureMessages": []
             },
             {
@@ -65,7 +65,7 @@
               "fullName": " Challenge 01: User Profile Component should render follow button",
               "status": "passed",
               "title": "should render follow button",
-              "duration": 42,
+              "duration": 29,
               "failureMessages": []
             },
             {
@@ -76,7 +76,7 @@
               "fullName": " Challenge 01: User Profile Component should toggle follow button state",
               "status": "passed",
               "title": "should toggle follow button state",
-              "duration": 134,
+              "duration": 79,
               "failureMessages": []
             },
             {
@@ -87,12 +87,12 @@
               "fullName": " Challenge 01: User Profile Component should use useState for button state",
               "status": "passed",
               "title": "should use useState for button state",
-              "duration": 0,
+              "duration": 1,
               "failureMessages": []
             }
           ],
-          "startTime": 1769776293653,
-          "endTime": 1769776293953,
+          "startTime": 1769786034377,
+          "endTime": 1769786034575,
           "status": "passed",
           "message": "",
           "name": "D:/Workspace/Projects/SOLO/Challenge-Engine/courses/01-react-fundamentals/project/tests/challenge-01.test.tsx"
@@ -162,49 +162,307 @@
       ]
     },
     "e2eResults": {
-      "score": 0,
-      "passed": false,
-      "error": "Command failed: npx playwright test D:\\Workspace\\Projects\\SOLO\\Challenge-Engine\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-01.spec.ts --reporter=json",
-      "details": [],
-      "note": "E2E failed. The app is started automatically by Playwright (webServer in playwright.config)."
+      "score": 100,
+      "passed": true,
+      "totalTests": 7,
+      "passedTests": 7,
+      "failedTests": 0,
+      "details": [
+        {
+          "title": "challenge-01.spec.ts",
+          "file": "challenge-01.spec.ts",
+          "column": 0,
+          "line": 0,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Challenge 01: User Profile Component - E2E",
+              "file": "challenge-01.spec.ts",
+              "line": 10,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "should display user profile component on the page",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 275,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-30T15:14:00.582Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "77d07a436f655ce05c79-3626a3011c5e2689250a",
+                  "file": "challenge-01.spec.ts",
+                  "line": 16,
+                  "column": 3
+                },
+                {
+                  "title": "should display user name",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 210,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-30T15:14:00.962Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "77d07a436f655ce05c79-2276e043575b711f755b",
+                  "file": "challenge-01.spec.ts",
+                  "line": 21,
+                  "column": 3
+                },
+                {
+                  "title": "should display user email",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 218,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-30T15:14:01.187Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "77d07a436f655ce05c79-d18796acee28794c28cb",
+                  "file": "challenge-01.spec.ts",
+                  "line": 26,
+                  "column": 3
+                },
+                {
+                  "title": "should have a follow button",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 191,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-30T15:14:01.419Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "77d07a436f655ce05c79-ddcee85407348ac9ba42",
+                  "file": "challenge-01.spec.ts",
+                  "line": 31,
+                  "column": 3
+                },
+                {
+                  "title": "should toggle follow button when clicked",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 237,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-30T15:14:01.625Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "77d07a436f655ce05c79-a21c20f1a041d2ab67e7",
+                  "file": "challenge-01.spec.ts",
+                  "line": 36,
+                  "column": 3
+                },
+                {
+                  "title": "should have proper styling and layout",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 207,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-30T15:14:01.873Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "77d07a436f655ce05c79-b11a30f9307bb6ed0f5e",
+                  "file": "challenge-01.spec.ts",
+                  "line": 46,
+                  "column": 3
+                },
+                {
+                  "title": "should display avatar or placeholder",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 189,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-30T15:14:02.090Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "77d07a436f655ce05c79-f96d295d24c1d90c07f4",
+                  "file": "challenge-01.spec.ts",
+                  "line": 54,
+                  "column": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "screenshots": []
     },
     "aiReviewResults": {
       "challengeId": "01-user-profile",
-      "timestamp": "2026-01-30T12:31:40.205Z",
+      "timestamp": "2026-01-30T15:14:02.799Z",
       "score": 94,
       "feedback": [],
       "strengths": [
-        "The code is well-structured and easy to follow, with clear and concise variable names and function names.",
-        "The use of TypeScript and React hooks (useState) is well-implemented and follows best practices.",
-        "The component is well-organized, with a clear separation of concerns between the JSX and the state management logic."
+        "The code is well-structured and follows a clear, concise naming convention.",
+        "The use of TypeScript interfaces and type annotations is excellent for maintaining code quality and reducing errors.",
+        "The code adheres to the required architecture, using a functional component and destructuring props in the signature."
       ],
       "improvements": [
-        "Consider adding JSDoc comments to the function and variables to provide more context and make the code easier to understand.",
-        "The button styles could be extracted into a separate CSS file or a CSS-in-JS solution to keep the component code clean and focused on the logic.",
-        "The use of inline styles could be replaced with a CSS-in-JS solution or a CSS file to keep the component code clean and focused on the logic."
+        "Consider adding a default alt text to the image element to improve accessibility. Currently, the alt text is hardcoded to `${name} profile`, which may not be suitable for all cases.",
+        "The placeholder for the avatar could be improved by using a more visually appealing approach, such as a circular div with the first letter of the name. This would enhance the overall user experience.",
+        "The button's text could be improved by adding a more descriptive label, such as 'Follow/Unfollow' or 'Toggle Follow Status'. This would provide better context for users with visual impairments or those who rely on screen readers."
       ],
-      "readability": 92,
-      "maintainability": 95,
-      "overall": "The code is well-written, maintainable, and follows best practices. The component is well-organized, and the use of TypeScript and React hooks is well-implemented. With a few minor improvements, this code could be considered exemplary."
+      "readability": 95,
+      "maintainability": 92,
+      "overall": "The provided code is well-structured, maintainable, and adheres to the required architecture. However, there are some minor improvements that can be made to enhance accessibility, user experience, and code quality."
     },
     "aiResults": {
       "challengeId": "01-user-profile",
-      "timestamp": "2026-01-30T12:31:40.205Z",
+      "timestamp": "2026-01-30T15:14:02.799Z",
       "score": 94,
       "feedback": [],
       "strengths": [
-        "The code is well-structured and easy to follow, with clear and concise variable names and function names.",
-        "The use of TypeScript and React hooks (useState) is well-implemented and follows best practices.",
-        "The component is well-organized, with a clear separation of concerns between the JSX and the state management logic."
+        "The code is well-structured and follows a clear, concise naming convention.",
+        "The use of TypeScript interfaces and type annotations is excellent for maintaining code quality and reducing errors.",
+        "The code adheres to the required architecture, using a functional component and destructuring props in the signature."
       ],
       "improvements": [
-        "Consider adding JSDoc comments to the function and variables to provide more context and make the code easier to understand.",
-        "The button styles could be extracted into a separate CSS file or a CSS-in-JS solution to keep the component code clean and focused on the logic.",
-        "The use of inline styles could be replaced with a CSS-in-JS solution or a CSS file to keep the component code clean and focused on the logic."
+        "Consider adding a default alt text to the image element to improve accessibility. Currently, the alt text is hardcoded to `${name} profile`, which may not be suitable for all cases.",
+        "The placeholder for the avatar could be improved by using a more visually appealing approach, such as a circular div with the first letter of the name. This would enhance the overall user experience.",
+        "The button's text could be improved by adding a more descriptive label, such as 'Follow/Unfollow' or 'Toggle Follow Status'. This would provide better context for users with visual impairments or those who rely on screen readers."
       ],
-      "readability": 92,
-      "maintainability": 95,
-      "overall": "The code is well-written, maintainable, and follows best practices. The component is well-organized, and the use of TypeScript and React hooks is well-implemented. With a few minor improvements, this code could be considered exemplary."
+      "readability": 95,
+      "maintainability": 92,
+      "overall": "The provided code is well-structured, maintainable, and adheres to the required architecture. However, there are some minor improvements that can be made to enhance accessibility, user experience, and code quality."
     }
   }
 ]

@@ -99,6 +99,8 @@ type ChallengeDetail = Challenge & {
   aiFeedback: Record<string, unknown> | null;
 };
 
+type ChallengeFilter = 'all' | 'passed' | 'not-passed';
+
 export default function App() {
   const [progress, setProgress] = useState<Progress | null>(null);
   const [courses, setCourses] = useState<Course[]>([]);
@@ -118,6 +120,7 @@ export default function App() {
   const [instructionsCollapsed, setInstructionsCollapsed] = useState(true);
   const [courseSearch, setCourseSearch] = useState('');
   const [challengeSearch, setChallengeSearch] = useState('');
+  const [challengeFilter, setChallengeFilter] = useState<ChallengeFilter>('all');
 
   const fetchProgress = useCallback(async () => {
     try {
@@ -246,6 +249,7 @@ export default function App() {
   const openChallenges = (course: Course) => {
     setSelectedChallengeId(null);
     setChallengesPage(1);
+    setChallengeFilter('all');
     setSelectedCourse(course);
     setView('challenges');
   };
@@ -334,6 +338,16 @@ export default function App() {
               </div>
             </div>
           </section>
+          {/* Celebrations are visual only; no sound. */}
+          {pathway.totalChallenges != null && pathway.totalChallenges > 0 && pathway.completedChallenges === pathway.totalChallenges && (
+            <div className="celebration celebration-pathway" role="status" aria-live="polite">
+              <span className="celebration-icon">🏆</span>
+              <div>
+                <strong>Pathway complete!</strong>
+                <p>You&apos;ve passed all challenges. Amazing work!</p>
+              </div>
+            </div>
+          )}
         </>
       )}
 
@@ -431,6 +445,20 @@ export default function App() {
               </div>
             </section>
           )}
+          {progress.courses[selectedCourse.id] && (() => {
+            const cp = progress.courses[selectedCourse.id];
+            const total = cp.totalChallenges ?? 0;
+            const completed = cp.completedChallenges ?? 0;
+            return total > 0 && completed === total ? (
+              <div className="celebration celebration-course" role="status" aria-live="polite">
+                <span className="celebration-icon">⭐</span>
+                <div>
+                  <strong>Course complete!</strong>
+                  <p>All challenges in {selectedCourse.name} passed. Ready for the next course?</p>
+                </div>
+              </div>
+            ) : null;
+          })()}
           <div className="breadcrumb">
             <a href="#" onClick={(e) => { 
               e.preventDefault(); 
@@ -451,12 +479,40 @@ export default function App() {
               onChange={(e) => setChallengeSearch(e.target.value)}
             />
           </div>
+          <div className="challenge-tabs">
+            <button
+              type="button"
+              className={`tab ${challengeFilter === 'all' ? 'tab-active' : ''}`}
+              onClick={() => setChallengeFilter('all')}
+            >
+              All
+            </button>
+            <button
+              type="button"
+              className={`tab ${challengeFilter === 'passed' ? 'tab-active' : ''}`}
+              onClick={() => setChallengeFilter('passed')}
+            >
+              Passed
+            </button>
+            <button
+              type="button"
+              className={`tab ${challengeFilter === 'not-passed' ? 'tab-active' : ''}`}
+              onClick={() => setChallengeFilter('not-passed')}
+            >
+              Not passed
+            </button>
+          </div>
           {loading ? (
             <div className="loading">Loading challenges…</div>
           ) : (
             <>
               <div className="card-list">
                 {challenges
+                  .filter((ch) => {
+                    if (challengeFilter === 'passed') return ch.passed === true;
+                    if (challengeFilter === 'not-passed') return ch.passed !== true;
+                    return true;
+                  })
                   .filter((ch) =>
                     !challengeSearch ||
                     ch.name.toLowerCase().includes(challengeSearch.toLowerCase()) ||
@@ -520,10 +576,6 @@ export default function App() {
                 <div className="stat-item">
                   <span className="stat-label">Average Score</span>
                   <span className="stat-value">{Math.round(progress.courses[selectedCourse.id].averageScore || 0)}%</span>
-                </div>
-                <div className="stat-item">
-                  <span className="stat-label">Badge</span>
-                  <span className="stat-value badge-small">{progress.courses[selectedCourse.id].badgeLevel || 'none'}</span>
                 </div>
               </div>
               <div className="course-progress-bar-visual">
@@ -598,6 +650,15 @@ export default function App() {
               )}
             </button>
           </div>
+          {detail.passed && (
+            <div className="celebration celebration-challenge" role="status" aria-live="polite">
+              <span className="celebration-icon">✓</span>
+              <div>
+                <strong>Challenge passed</strong>
+                <p>Nice work — ready for the next one?</p>
+              </div>
+            </div>
+          )}
           {detail.instructions && (
             <section className="instructions-section">
               <h3 className="instructions-header" onClick={() => setInstructionsCollapsed(!instructionsCollapsed)}>

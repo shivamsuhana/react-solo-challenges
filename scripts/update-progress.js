@@ -108,15 +108,14 @@ function aggregateProgress() {
     : 0;
 
   const badgeLevels = pathway.badgeLevels || {};
-  if (progress.pathway.overallScore >= (badgeLevels.gold?.minScore ?? 90) &&
-      progress.pathway.completionPercentage >= (badgeLevels.gold?.minCompletion ?? 100)) {
-    progress.pathway.badgeLevel = 'gold';
-  } else if (progress.pathway.overallScore >= (badgeLevels.silver?.minScore ?? 75) &&
-             progress.pathway.completionPercentage >= (badgeLevels.silver?.minCompletion ?? 75)) {
+  if (badgeLevels.silver && progress.pathway.overallScore >= (badgeLevels.silver?.minScore ?? 75) &&
+      progress.pathway.completionPercentage >= (badgeLevels.silver?.minCompletion ?? 75)) {
     progress.pathway.badgeLevel = 'silver';
-  } else if (progress.pathway.overallScore >= (badgeLevels.bronze?.minScore ?? 60) &&
+  } else if (badgeLevels.bronze && progress.pathway.overallScore >= (badgeLevels.bronze?.minScore ?? 60) &&
              progress.pathway.completionPercentage >= (badgeLevels.bronze?.minCompletion ?? 50)) {
     progress.pathway.badgeLevel = 'bronze';
+  } else {
+    progress.pathway.badgeLevel = 'none';
   }
 
   return progress;

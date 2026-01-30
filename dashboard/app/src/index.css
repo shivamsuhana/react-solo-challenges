@@ -15,6 +15,7 @@
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
+  --progress-bar-transition: width 0.35s ease;
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: #fff; }
@@ -592,6 +593,36 @@ body { margin: 0; background: #fff; }
   color: #a8a29e;
 }
 
+.challenge-tabs {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.challenge-tabs .tab {
+  padding: 0.5rem 1rem;
+  border: 1px solid #fed7aa;
+  background: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #9a3412;
+  transition: all 0.2s ease;
+}
+.challenge-tabs .tab:hover {
+  background: #ffedd5;
+  border-color: #ea580c;
+}
+.challenge-tabs .tab.tab-active {
+  background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+  border-color: #ea580c;
+  color: #fff;
+}
+.challenge-tabs .tab.tab-active:hover {
+  background: linear-gradient(135deg, #c2410c 0%, #ea580c 100%);
+}
+
 .breadcrumb { font-size: 0.9rem; color: #9a3412; margin-bottom: 0.5rem; }
 .breadcrumb a { color: #c2410c; text-decoration: none; }
 .breadcrumb a:hover { text-decoration: underline; }
@@ -664,8 +695,9 @@ body { margin: 0; background: #fff; }
 }
 .progress-bar-fill-slim {
   height: 100%;
+  min-width: 0;
   background: linear-gradient(90deg, #ea580c 0%, #f97316 100%);
-  transition: width 0.3s ease;
+  transition: var(--progress-bar-transition);
   border-radius: 3px;
 }
 
@@ -683,8 +715,9 @@ body { margin: 0; background: #fff; }
 }
 .progress-bar-fill {
   height: 100%;
+  min-width: 0;
   background: linear-gradient(90deg, #ea580c 0%, #f97316 100%);
-  transition: width 0.3s ease;
+  transition: var(--progress-bar-transition);
   border-radius: 10px;
 }
 .progress-bar-label {
@@ -720,7 +753,8 @@ body { margin: 0; background: #fff; }
 }
 .score-progress-fill {
   height: 100%;
-  transition: width 0.3s ease;
+  min-width: 0;
+  transition: var(--progress-bar-transition);
   border-radius: 4px;
 }
 .score-progress-bar.score-red .score-progress-fill {
