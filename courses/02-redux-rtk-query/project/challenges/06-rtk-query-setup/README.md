@@ -10,7 +10,7 @@ Set up RTK Query by creating an API slice with `createApi` and `fetchBaseQuery` 
 
 ## What to do
 
-1. **API slice:** Create `src/api/apiSlice.ts`. Use `createApi` from `@reduxjs/toolkit/query/react` with `baseQuery` (e.g. `fetchBaseQuery({ baseUrl: '/api' })` or a custom function that calls your mock API). Define at least one query endpoint (e.g. `getUsers`) that returns a list. Use `endpoints: (builder) => ({ getUsers: builder.query<User[], void>({ query: () => '/users' }) })` or equivalent with your mock. Export the API slice and its hooks (e.g. `useGetUsersQuery`).
+1. **API slice:** Create `src/api/apiSlice.ts`. Use `createApi` from `@reduxjs/toolkit/query/react` with `baseQuery` (e.g. `fetchBaseQuery({ baseUrl: '/' })` or a custom function). Define at least one query endpoint (e.g. `getUsers`) that returns a list. For the mock API, you can use `queryFn: async () => ({ data: await mockApi.getUsers() })` instead of `query`; export the API slice and its hooks (e.g. `useGetUsersQuery`).
 2. **Store:** In `src/store/store.ts`, add the API reducer: `[apiSlice.reducerPath]: apiSlice.reducer`. Add the API middleware: `middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware)`.
 3. **Code:** TypeScript, pass ESLint, no `console.*`.
 
@@ -32,3 +32,9 @@ Pass threshold: weighted score ≥ 80%.
 - Create `src/api/apiSlice.ts` with createApi, baseQuery, and at least one query endpoint.
 - Add API reducer and middleware to store.
 - TypeScript; pass ESLint; no console statements.
+
+---
+
+## Verify and submit
+
+Run `npm run review -- --challenge=06-rtk-query-setup` to get scored.

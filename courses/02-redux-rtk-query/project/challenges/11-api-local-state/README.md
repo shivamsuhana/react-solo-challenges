@@ -10,7 +10,7 @@ Build a view that uses both RTK Query (e.g. getPosts) and a Redux slice (e.g. fi
 
 ## What to do
 
-1. **Filter slice:** Create `src/store/slices/filtersSlice.ts` with state like `{ sortBy: 'newest' }` or `{ filterUserId: null }`. Add reducers to update it. Add the slice to the store.
+1. **Filter slice:** Create `src/store/slices/filtersSlice.ts` with state like `{ sortBy: 'newest' }` or `{ filterUserId: null }`. Add reducers to update it. Add the slice to the store. Ensure your API slice has a `getPosts` query (add it in Ch08 or here if needed).
 2. **Component:** Create `src/components/PostsWithFilters.tsx`. Use `useGetPostsQuery()` for posts and `useAppSelector(state => state.filters)` (or your slice name). Compute a derived list: filter/sort the posts based on the slice state. Render the list and controls (dropdown or buttons) to change filter/sort. Use `data-testid="posts-with-filters"` and `data-testid="filter-controls"`.
 3. **App:** Render PostsWithFilters on `/challenge/11-api-local-state`.
 4. **Code:** TypeScript, pass ESLint, no `console.*`.
@@ -34,3 +34,9 @@ Pass threshold: weighted score ≥ 80%.
 - PostsWithFilters uses RTK Query for posts and slice for filter/sort; derives and displays filtered/sorted list.
 - Route /challenge/11-api-local-state renders the component.
 - TypeScript; pass ESLint; no console statements.
+
+---
+
+## Verify and submit
+
+Run `npm run review -- --challenge=11-api-local-state` to get scored.

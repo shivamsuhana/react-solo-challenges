@@ -1,10 +1,34 @@
-/**
- * Challenge 07: Queries. Stub: implement per challenges/07-queries/README.md
- */
+import { useGetUsersQuery } from '../api/apiSlice'
+import ErrorDisplay from './ErrorDisplay'
+
 export default function UsersList() {
+  const { data, isLoading, isError, error, refetch } = useGetUsersQuery()
+
+  if (isLoading) {
+    return (
+      <div data-testid="users-list" id="users-list">
+        <p data-testid="users-loading">Loading users...</p>
+      </div>
+    )
+  }
+
+  if (isError && error) {
+    return (
+      <div data-testid="users-list" id="users-list">
+        <ErrorDisplay error={error} onRetry={refetch} />
+      </div>
+    )
+  }
+
   return (
     <div data-testid="users-list" id="users-list">
-      <p>Implement useGetUsersQuery and display users with loading/error.</p>
+      <ul>
+        {data?.map((user) => (
+          <li key={user.id}>
+            {user.name} – {user.email} ({user.username})
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }

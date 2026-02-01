@@ -32,3 +32,9 @@ Pass threshold: weighted score ≥ 80%.
 - Export reducer and actions.
 - Add counter reducer to the store in `src/store/store.ts`.
 - TypeScript; pass ESLint; no console statements.
+
+---
+
+## Verify and submit
+
+Run `npm run review -- --challenge=02-first-slice` to get scored.

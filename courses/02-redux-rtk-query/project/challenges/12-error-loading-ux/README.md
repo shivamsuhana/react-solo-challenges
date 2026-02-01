@@ -32,3 +32,9 @@ Pass threshold: weighted score ≥ 80%.
 - ErrorDisplay component with error, onRetry, and required data-testids.
 - UsersList (or equivalent) uses refetch and ErrorDisplay for errors; loading indicator present.
 - TypeScript; pass ESLint; no console statements.
+
+---
+
+## Verify and submit
+
+Run `npm run review -- --challenge=12-error-loading-ux` to get scored.

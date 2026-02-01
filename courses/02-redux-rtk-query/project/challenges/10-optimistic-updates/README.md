@@ -31,3 +31,9 @@ Pass threshold: weighted score ≥ 80%.
 - Mutation with onQueryStarted that patches cache optimistically.
 - On failure, undo the cache patch (patchResult.undo() or equivalent).
 - TypeScript; pass ESLint; no console statements.
+
+---
+
+## Verify and submit
+
+Run `npm run review -- --challenge=10-optimistic-updates` to get scored.

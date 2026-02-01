@@ -12,7 +12,7 @@ Use RTK Query's tag system so that when data changes (e.g. after a mutation), th
 
 1. **Tag types:** In your API slice, define `tagTypes: ['User', 'Post']` (or similar) in the `createApi` options.
 2. **Query tags:** For each query endpoint (e.g. getUsers, getPosts), add `providesTags: (result) => result ? [...result.map(({ id }) => ({ type: 'User', id })), { type: 'User', id: 'LIST' }] : [{ type: 'User', id: 'LIST' }]` (adjust type and id to your entities).
-3. **Mutation invalidation:** For any mutation that changes user/post data, add `invalidatesTags: [{ type: 'User', id: 'LIST' }]` (or the tag type you use) so that after the mutation, getUsers/getPosts refetch.
+3. **Mutation invalidation:** For any mutation that changes user/post data, add `invalidatesTags: [{ type: 'User', id: 'LIST' }]` (or the tag type you use) so that after the mutation, getUsers/getPosts refetch. If you don't have a mutation yet, add one (e.g. `addPost`) so you can attach `invalidatesTags`; the form that uses it is in Ch09.
 4. **Code:** TypeScript, pass ESLint, no `console.*`.
 
 ---
@@ -34,3 +34,9 @@ Pass threshold: weighted score ≥ 80%.
 - providesTags on relevant query endpoints.
 - invalidatesTags on relevant mutation endpoints.
 - TypeScript; pass ESLint; no console statements.
+
+---
+
+## Verify and submit
+
+Run `npm run review -- --challenge=08-caching-refetch` to get scored.

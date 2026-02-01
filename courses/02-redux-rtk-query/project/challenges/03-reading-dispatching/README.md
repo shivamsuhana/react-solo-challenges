@@ -34,3 +34,9 @@ Pass threshold: weighted score ≥ 80%.
 - CounterView displays counter value and has Increment/Decrement buttons with the required data-testids.
 - Route `/challenge/03-reading-dispatching` renders CounterView.
 - TypeScript; pass ESLint; no console statements.
+
+---
+
+## Verify and submit
+
+Run `npm run review -- --challenge=03-reading-dispatching` to get scored.

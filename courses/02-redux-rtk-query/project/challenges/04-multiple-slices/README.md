@@ -31,3 +31,9 @@ Pass threshold: weighted score ≥ 80%.
 - Create `src/store/slices/uiSlice.ts` with createSlice (name 'ui', sidebarOpen, toggleSidebar).
 - Add ui reducer to store alongside counter.
 - TypeScript; pass ESLint; no console statements.
+
+---
+
+## Verify and submit
+
+Run `npm run review -- --challenge=04-multiple-slices` to get scored.

@@ -10,7 +10,7 @@ Handle async logic (e.g. fetching users) with Redux Toolkit's `createAsyncThunk`
 
 ## What to do
 
-1. **Thunk and slice:** Create `src/store/slices/usersSlice.ts`. Use `createAsyncThunk('users/fetchUsers', () => mockApi.getUsers())`. Use `createSlice` with `name: 'users'`, `initialState: { list: [], loading: false, error: null }`, and `extraReducers(builder)` that handle the thunk's pending (set loading true), fulfilled (set list, loading false), rejected (set error, loading false). Export the thunk and reducer.
+1. **Thunk and slice:** Create `src/store/slices/usersSlice.ts`. Import `mockApi` from `src/api/mockServer`. Use `createAsyncThunk('users/fetchUsers', () => mockApi.getUsers())`. Use `createSlice` with `name: 'users'`, `initialState: { list: [], loading: false, error: null }`, and `extraReducers(builder)` that handle the thunk's pending (set loading true), fulfilled (set list, loading false), rejected (set error, loading false). Export the thunk and reducer.
 2. **Store:** Add the users reducer to the store.
 3. **Component (optional for review):** A simple view that dispatches the thunk and shows loading/list/error is enough; or the review can check file content only.
 4. **Code:** TypeScript, pass ESLint, no `console.*`.
@@ -33,3 +33,9 @@ Pass threshold: weighted score ≥ 80%.
 - createSlice with extraReducers handling the thunk's three states.
 - Add users reducer to store.
 - TypeScript; pass ESLint; no console statements.
+
+---
+
+## Verify and submit
+
+Run `npm run review -- --challenge=05-async-thunks` to get scored.

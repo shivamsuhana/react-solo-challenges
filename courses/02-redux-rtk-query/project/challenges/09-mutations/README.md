@@ -34,3 +34,9 @@ Pass threshold: weighted score ≥ 80%.
 - Form component uses useMutation and submits; invalidates list tag.
 - Route /challenge/09-mutations renders the form.
 - TypeScript; pass ESLint; no console statements.
+
+---
+
+## Verify and submit
+
+Run `npm run review -- --challenge=09-mutations` to get scored.

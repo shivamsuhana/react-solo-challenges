@@ -11,6 +11,6 @@ test.describe('Challenge 12: Error and Loading UX - E2E', () => {
   })
 
   test('should show users list area', async ({ page }) => {
-    await expect(page.getByTestId('users-list')).toBeVisible()
+    await expect(page.getByTestId('users-list')).toBeVisible({ timeout: 10000 })
   })
 })

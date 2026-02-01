@@ -70,7 +70,7 @@ export async function reviewCodeWithAI(challengeId, challengeMetadata, projectDi
     if (existsSync(readmePath)) {
       const readmeContent = readFileSync(readmePath, 'utf-8');
       // Split README into instructions (before Technical Requirements) and requirements (after)
-      const requirementsMatch = readmeContent.match(/## Technical Requirements \(What Will Be Reviewed\)/);
+      const requirementsMatch = readmeContent.match(/## Technical Requirements(?: \(What Will Be Reviewed\))?/);
       if (requirementsMatch) {
         const splitIndex = requirementsMatch.index;
         challengeInstructions = readmeContent.substring(0, splitIndex);
@@ -371,9 +371,13 @@ function extractList(text, keyword) {
   const lines = text.split('\n');
   const list = [];
   let inList = false;
+  const matchesKeyword = (line) =>
+    typeof keyword === 'string'
+      ? line.toLowerCase().includes(keyword)
+      : keyword.test(line);
 
   for (const line of lines) {
-    if (line.toLowerCase().includes(keyword)) {
+    if (matchesKeyword(line)) {
       inList = true;
       continue;
     }

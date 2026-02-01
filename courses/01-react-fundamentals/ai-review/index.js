@@ -203,9 +203,13 @@ function extractList(text, keyword) {
   const lines = text.split('\n');
   const list = [];
   let inList = false;
+  const matchesKeyword = (line) =>
+    typeof keyword === 'string'
+      ? line.toLowerCase().includes(keyword)
+      : keyword.test(line);
 
   for (const line of lines) {
-    if (line.toLowerCase().includes(keyword)) {
+    if (matchesKeyword(line)) {
       inList = true;
       continue;
     }

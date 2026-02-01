@@ -113,7 +113,13 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
         }
       },
 
-      // Check for mutation
+      // Check for mutation (RTK Query: builder.mutation(...))
+      CallExpression(path) {
+        const callee = path.node.callee;
+        if (callee.type === 'MemberExpression' && callee.object?.name === 'builder' && callee.property?.name === 'mutation') {
+          foundPatterns.add('mutation');
+        }
+      },
       ObjectMethod(path) {
         if (path.node.key && path.node.key.name === 'mutation') {
           foundPatterns.add('mutation');
@@ -168,9 +174,10 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
     for (const pattern of patternsRequired) {
       const astName = patternAliases[pattern] || pattern;
       const foundByAst = foundPatterns.has(astName);
-      let foundByString = content.includes(pattern);
+      let foundByString = typeof pattern === 'string' && content.includes(pattern);
       if (!foundByString && pattern === 'useSelector') foundByString = content.includes('useAppSelector');
       if (!foundByString && pattern === 'useMutation') foundByString = content.includes('useAddPostMutation') || content.includes('useMutation');
+      if (!foundByString && pattern === 'useGetPostsQuery') foundByString = content.includes('useGetPostsQuery');
       if (foundByAst || foundByString) {
         patternsFound.push(pattern);
       } else {
@@ -181,7 +188,11 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
   } catch (error) {
     // If parsing fails, try simple string matching as fallback
     for (const pattern of patternsRequired) {
-      if (content.includes(pattern) || content.includes(pattern.replace(/([A-Z])/g, '-$1').toLowerCase())) {
+      let found = content.includes(pattern) || content.includes(pattern.replace(/([A-Z])/g, '-$1').toLowerCase());
+      if (!found && pattern === 'useSelector') found = content.includes('useAppSelector');
+      if (!found && pattern === 'useMutation') found = content.includes('useAddPostMutation');
+      if (!found && pattern === 'useGetPostsQuery') found = content.includes('useGetPostsQuery');
+      if (found) {
         patternsFound.push(pattern);
       } else {
         patternsMissing.push(pattern);

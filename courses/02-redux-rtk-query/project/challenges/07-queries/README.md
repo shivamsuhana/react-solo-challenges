@@ -34,3 +34,9 @@ Pass threshold: weighted score ≥ 80%.
 - UsersList uses generated query hook and handles loading, error, and data.
 - Route /challenge/07-queries renders UsersList.
 - TypeScript; pass ESLint; no console statements.
+
+---
+
+## Verify and submit
+
+Run `npm run review -- --challenge=07-queries` to get scored.

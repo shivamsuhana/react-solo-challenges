@@ -36,3 +36,9 @@ Pass threshold: weighted score ≥ 80%.
 - Export `store`, `RootState`, and `AppDispatch`.
 - In `src/main.tsx`, wrap the app with `<Provider store={store}>` from `react-redux`.
 - TypeScript; pass ESLint; no console statements.
+
+---
+
+## Verify and submit
+
+Run `npm run dev` and open the app; run `npm run review -- --challenge=01-store-setup` to get scored.
