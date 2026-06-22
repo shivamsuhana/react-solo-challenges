@@ -4,12 +4,16 @@ interface TaskCardProps {
   priority:'Low' | 'Medium' | 'High'
 }
 
-export default function TaskCard(_props: TaskCardProps) {
+export default function TaskCard(props: TaskCardProps) {
   return (
-    <article id="task-card">
+       <article id="task-card">
+      <h2>{props.title}</h2>
+      <p>{props.description}</p>
+      <p>Priority: {props.priority}</p>
+    </article>
+
 
       
-      
-    </article>
+    
   )
 }
