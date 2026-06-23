@@ -1,23 +1,23 @@
 {
-  "lastUpdated": "2026-06-23T10:19:28.735Z",
+  "lastUpdated": "2026-06-23T11:16:36.117Z",
   "pathway": {
     "name": "Modern React Engineer",
     "version": "1.0.0",
-    "overallScore": 30,
-    "completionPercentage": 17,
+    "overallScore": 30.1,
+    "completionPercentage": 18.9,
     "badgeLevel": "none",
     "totalChallenges": 53,
-    "completedChallenges": 9
+    "completedChallenges": 10
   },
   "courses": {
     "01-react-fundamentals": {
       "courseId": "01-react-fundamentals",
       "courseName": "React Fundamentals",
-      "averageScore": 90.9,
-      "completionPercentage": 39.1,
+      "averageScore": 91.2,
+      "completionPercentage": 43.5,
       "badgeLevel": "none",
       "totalChallenges": 23,
-      "completedChallenges": 9,
+      "completedChallenges": 10,
       "challenges": {
         "01-static-task-display": {
           "challengeId": "01-static-task-display",
@@ -151,6 +151,21 @@
             "architecture": 100,
             "bestPractices": 100,
             "e2eTests": 50,
+            "aiReview": 88
+          }
+        },
+        "10-useeffect-local-storage": {
+          "challengeId": "10-useeffect-local-storage",
+          "challengeName": "useEffect - Local Storage Persistence",
+          "passed": true,
+          "score": 93.2,
+          "lastRun": "2026-06-23T11:16:25.154Z",
+          "scores": {
+            "functionalTests": 100,
+            "codeQuality": 100,
+            "architecture": 50,
+            "bestPractices": 100,
+            "e2eTests": 100,
             "aiReview": 88
           }
         }

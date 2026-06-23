@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState ,useEffect} from 'react'
 import type { Dispatch, SetStateAction } from 'react'
 import type { Task } from './TaskList'
 import TaskList from './TaskList'
@@ -24,8 +24,14 @@ const priorityOrder: Record<string, number> = {
 }
 
 export default function TaskApp(props: TaskAppProps) {
+
+  
   const tasks = props.tasks ?? []
 
+  useEffect(() => {
+    localStorage.setItem('task-app-tasks', JSON.stringify(tasks))
+  }, [tasks])
+  
   const [filter, setFilter] = useState<'all' | 'active' | 'completed'>('all')
   const [sort, setSort] = useState('recently-added')
   const [editingId, setEditingId] = useState<string | number | null>(null)
