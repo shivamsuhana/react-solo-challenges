@@ -27,26 +27,21 @@ export default function TaskApp(props: TaskAppProps) {
   const tasks = props.tasks ?? []
 
   const [filter, setFilter] = useState<'all' | 'active' | 'completed'>('all')
-
   const [sort, setSort] = useState('recently-added')
 
-  const filteredTasks = filter === 'active'
-    ? tasks.filter(t => !t.completed)   
-    : filter === 'completed'
-    ? tasks.filter(t => t.completed)    
-    : tasks                             
 
-  
+  const [editingId, setEditingId] = useState<string | number | null>(null)
+
+  const filteredTasks = filter === 'active'
+    ? tasks.filter(t => !t.completed)
+    : filter === 'completed'
+    ? tasks.filter(t => t.completed)
+    : tasks
+
   const sortedTasks = [...filteredTasks].sort((a, b) => {
-    if (sort === 'priority-high-low') {
-      return priorityOrder[b.priority] - priorityOrder[a.priority]
-    }
-    if (sort === 'priority-low-high') {
-      return priorityOrder[a.priority] - priorityOrder[b.priority]
-    }
-    if (sort === 'alphabetical') {
-      return a.title.toLowerCase().localeCompare(b.title.toLowerCase())
-    }
+    if (sort === 'priority-high-low') return priorityOrder[b.priority] - priorityOrder[a.priority]
+    if (sort === 'priority-low-high') return priorityOrder[a.priority] - priorityOrder[b.priority]
+    if (sort === 'alphabetical') return a.title.toLowerCase().localeCompare(b.title.toLowerCase())
     return 0
   })
 
@@ -68,6 +63,15 @@ export default function TaskApp(props: TaskAppProps) {
     }
   }
 
+  function handleUpdateTask(id: string | number, updates: { title: string; description: string; priority: 'Low' | 'Medium' | 'High' }) {
+    if (props.setTasks) {
+
+      props.setTasks(prev => prev.map(t =>
+        t.id === id ? { ...t, ...updates } : t
+      ))
+    }
+  }
+
   return (
     <div>
       <p id="task-count">{countText}</p>
@@ -80,8 +84,8 @@ export default function TaskApp(props: TaskAppProps) {
         <FilterBar
           filter={filter}
           onFilterChange={setFilter}
-          sort={sort}             
-          onSortChange={setSort}   
+          sort={sort}
+          onSortChange={setSort}
         />
       )}
 
@@ -93,6 +97,10 @@ export default function TaskApp(props: TaskAppProps) {
         tasks={sortedTasks}
         onToggle={handleToggle}
         onDelete={props.onDelete}
+        onUpdateTask={handleUpdateTask}       
+        editingId={editingId}                
+        onEditStart={id => setEditingId(id)} 
+        onEditEnd={() => setEditingId(null)} 
       />
     </div>
   )

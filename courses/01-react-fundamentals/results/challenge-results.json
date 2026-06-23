@@ -2893,5 +2893,353 @@
       "maintainability": 90,
       "overall": "The code is well-structured, maintainable, and easy to follow. However, there are some areas for improvement, such as replacing the `priorityOrder` object with a more robust data structure and refactoring the `handleDelete` function. Overall, the code is a good example of how to write clean, maintainable, and efficient code in React and TypeScript."
     }
+  },
+  {
+    "challengeId": "08-task-editing",
+    "challengeName": "Task Editing",
+    "timestamp": "2026-06-23T09:59:37.115Z",
+    "scores": {
+      "functionalTests": 66.7,
+      "codeQuality": 100,
+      "architecture": 100,
+      "bestPractices": 100,
+      "e2eTests": 100,
+      "aiReview": 83
+    },
+    "totalScore": 85.795,
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "testResults": {
+      "score": 66.7,
+      "passed": false,
+      "totalTests": 3,
+      "passedTests": 2,
+      "failedTests": 1,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 08: Task Editing"
+              ],
+              "fullName": " Challenge 08: Task Editing TaskCard should render title and description",
+              "status": "failed",
+              "title": "TaskCard should render title and description",
+              "duration": 14,
+              "failureMessages": [
+                "Unable to find an element with the text: Original. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.\n\nIgnored nodes: comments, script, style\n\u001b[36m<body>\u001b[39m\n  \u001b[36m<div>\u001b[39m\n    \u001b[36m<article\u001b[39m\n      \u001b[33mid\u001b[39m=\u001b[32m\"task-card\"\u001b[39m\n    \u001b[36m>\u001b[39m\n      \u001b[36m<input\u001b[39m\n        \u001b[33mtype\u001b[39m=\u001b[32m\"text\"\u001b[39m\n        \u001b[33mvalue\u001b[39m=\u001b[32m\"Original\"\u001b[39m\n      \u001b[36m/>\u001b[39m\n      \u001b[36m<input\u001b[39m\n        \u001b[33mtype\u001b[39m=\u001b[32m\"text\"\u001b[39m\n        \u001b[33mvalue\u001b[39m=\u001b[32m\"Desc\"\u001b[39m\n      \u001b[36m/>\u001b[39m\n      \u001b[36m<select>\u001b[39m\n        \u001b[36m<option\u001b[39m\n          \u001b[33mvalue\u001b[39m=\u001b[32m\"Low\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mLow\u001b[0m\n        \u001b[36m</option>\u001b[39m\n        \u001b[36m<option\u001b[39m\n          \u001b[33mvalue\u001b[39m=\u001b[32m\"Medium\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mMedium\u001b[0m\n        \u001b[36m</option>\u001b[39m\n        \u001b[36m<option\u001b[39m\n          \u001b[33mvalue\u001b[39m=\u001b[32m\"High\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mHigh\u001b[0m\n        \u001b[36m</option>\u001b[39m\n      \u001b[36m</select>\u001b[39m\n      \u001b[36m<button>\u001b[39m\n        \u001b[0mSave\u001b[0m\n      \u001b[36m</button>\u001b[39m\n      \u001b[36m<button>\u001b[39m\n        \u001b[0mCancel\u001b[0m\n      \u001b[36m</button>\u001b[39m\n    \u001b[36m</article>\u001b[39m\n  \u001b[36m</div>\u001b[39m\n\u001b[36m</body>\u001b[39m"
+              ],
+              "location": {
+                "line": 37,
+                "column": 19
+              }
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 08: Task Editing"
+              ],
+              "fullName": " Challenge 08: Task Editing TaskList should pass tasks to TaskCard",
+              "status": "passed",
+              "title": "TaskList should pass tasks to TaskCard",
+              "duration": 3,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 08: Task Editing"
+              ],
+              "fullName": " Challenge 08: Task Editing TaskList should have id=\"task-list\"",
+              "status": "passed",
+              "title": "TaskList should have id=\"task-list\"",
+              "duration": 1,
+              "failureMessages": []
+            }
+          ],
+          "startTime": 1782208777974,
+          "endTime": 1782208777992,
+          "status": "failed",
+          "message": "",
+          "name": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/tests/challenge-08.test.tsx"
+        }
+      ],
+      "error": "Command failed: npm test -- /Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/tests/challenge-08.test.tsx --run --reporter=json"
+    },
+    "lintResults": {
+      "score": 100,
+      "passed": true,
+      "totalIssues": 0,
+      "errors": 0,
+      "warnings": 0,
+      "details": [
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/src/App.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/src/components/TaskApp.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/src/components/TaskCard.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/src/components/TaskList.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        }
+      ]
+    },
+    "architectureResults": {
+      "score": 100,
+      "passed": true,
+      "patternsFound": [
+        "functionalComponent",
+        "props"
+      ],
+      "patternsMissing": [],
+      "details": [
+        {
+          "file": "src/components/TaskCard.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "props"
+          ],
+          "patternsMissing": []
+        },
+        {
+          "file": "src/components/TaskList.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "props"
+          ],
+          "patternsMissing": []
+        },
+        {
+          "file": "src/components/TaskApp.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "props"
+          ],
+          "patternsMissing": []
+        },
+        {
+          "file": "src/App.tsx",
+          "patternsFound": [
+            "functionalComponent"
+          ],
+          "patternsMissing": [
+            "props"
+          ]
+        }
+      ]
+    },
+    "bestPracticesResults": {
+      "score": 100,
+      "passed": true,
+      "issues": [],
+      "details": [],
+      "note": "No best practices requirements specified in challenge"
+    },
+    "e2eResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "details": [
+        {
+          "title": "challenge-08.spec.ts",
+          "file": "challenge-08.spec.ts",
+          "column": 0,
+          "line": 0,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Challenge 08: Task Editing - E2E",
+              "file": "challenge-08.spec.ts",
+              "line": 3,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "should display task list",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 357,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-23T09:59:40.583Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "cc4b1dfc0eb6cfe77aae-cb64637ff3c6f55e28d3",
+                  "file": "challenge-08.spec.ts",
+                  "line": 8,
+                  "column": 3
+                },
+                {
+                  "title": "should display task form when showForm is true",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 104,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-23T09:59:41.337Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "cc4b1dfc0eb6cfe77aae-28af603b43d105b62584",
+                  "file": "challenge-08.spec.ts",
+                  "line": 12,
+                  "column": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "screenshots": []
+    },
+    "aiReviewResults": {
+      "challengeId": "08-task-editing",
+      "timestamp": "2026-06-23T09:59:41.490Z",
+      "score": 83,
+      "feedback": [],
+      "strengths": [
+        "The code is well-structured and follows a consistent naming convention.",
+        "The use of TypeScript and functional components is well-implemented.",
+        "The code is well-documented with clear and concise comments."
+      ],
+      "improvements": [
+        "The `TaskCard` component has a lot of state variables and event handlers. Consider breaking it down into smaller, more manageable components.",
+        "The `TaskApp` component has a lot of props and event handlers. Consider using a more modular approach to handle these events.",
+        "The code could benefit from more unit tests to ensure that all the functionality is working correctly."
+      ],
+      "readability": 85,
+      "maintainability": 80,
+      "overall": "The code is well-structured and well-documented, but could benefit from some refactoring to make it more maintainable and efficient."
+    },
+    "aiResults": {
+      "challengeId": "08-task-editing",
+      "timestamp": "2026-06-23T09:59:41.490Z",
+      "score": 83,
+      "feedback": [],
+      "strengths": [
+        "The code is well-structured and follows a consistent naming convention.",
+        "The use of TypeScript and functional components is well-implemented.",
+        "The code is well-documented with clear and concise comments."
+      ],
+      "improvements": [
+        "The `TaskCard` component has a lot of state variables and event handlers. Consider breaking it down into smaller, more manageable components.",
+        "The `TaskApp` component has a lot of props and event handlers. Consider using a more modular approach to handle these events.",
+        "The code could benefit from more unit tests to ensure that all the functionality is working correctly."
+      ],
+      "readability": 85,
+      "maintainability": 80,
+      "overall": "The code is well-structured and well-documented, but could benefit from some refactoring to make it more maintainable and efficient."
+    }
   }
 ]

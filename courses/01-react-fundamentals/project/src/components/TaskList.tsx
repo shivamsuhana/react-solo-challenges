@@ -17,7 +17,11 @@ const HARDCODED_TASKS: Task[] = [
 interface TaskListProps {
   tasks?: Task[]
   onToggle?: (id: string | number) => void
-  onDelete?: (id: string | number) => void //i am taking these functions from the uper level (TaskApp)
+  onDelete?: (id: string | number) => void
+  onUpdateTask?: (id: string | number, updates: { title: string; description: string; priority: 'Low' | 'Medium' | 'High' }) => void
+  editingId?: string | number | null   
+  onEditStart?: (id: string | number) => void 
+  onEditEnd?: () => void                        
 }
 
 export default function TaskList(props: TaskListProps) {
@@ -28,15 +32,17 @@ export default function TaskList(props: TaskListProps) {
       {list.map(task => (
         <TaskCard
           key={task.id}
-          id={task.id}                //id is obiously needed to verify during deletion 
+          id={task.id}
           title={task.title}
           description={task.description}
           priority={task.priority}
           completed={task.completed}
           onToggle={props.onToggle ? () => props.onToggle!(task.id) : undefined}
-
-          //agar TaskApp ne onDelete bheja h to pass karega TskCard ko
-          onDelete={props.onDelete ? props.onDelete : undefined}
+          onDelete={props.onDelete}
+          onUpdateTask={props.onUpdateTask} 
+          editingId={props.editingId}        
+          onEditStart={props.onEditStart}    
+          onEditEnd={props.onEditEnd}       
         />
       ))}
     </section>

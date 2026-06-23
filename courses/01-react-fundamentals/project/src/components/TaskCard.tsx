@@ -1,23 +1,95 @@
+import { useState } from 'react'
+
 interface TaskCardProps {
+  id: string | number
   title: string
   description: string
   priority: 'Low' | 'Medium' | 'High'
   completed?: boolean
   onToggle?: () => void
-  onDelete?: (id: string | number) => void 
-  id?: string | number                      
+  onDelete?: (id: string | number) => void
+  onUpdateTask?: (id: string | number, updates: { title: string; description: string; priority: 'Low' | 'Medium' | 'High' }) => void
+  editingId?: string | number | null     
+  onEditStart?: (id: string | number) => void   
+  onEditEnd?: () => void                         
 }
 
 export default function TaskCard(props: TaskCardProps) {
 
-  
-  function handleDelete() {
-   
-    const confirmed = window.confirm("Are you sure?")
+  const [editTitle, setEditTitle] = useState(props.title)
+  const [editDescription, setEditDescription] = useState(props.description)
+  const [editPriority, setEditPriority] = useState(props.priority)
+  const [editError, setEditError] = useState('')
 
-    if (confirmed && props.onDelete && props.id !== undefined) {
-      props.onDelete(props.id)
+  const isEditing = props.editingId === props.id
+
+  function handleEditStart() {
+    setEditTitle(props.title)           
+    setEditDescription(props.description) 
+    setEditPriority(props.priority)     
+    setEditError('')                   
+    if (props.onEditStart) {
+      props.onEditStart(props.id)       
     }
+  }
+
+  function handleSave() {
+    if (editTitle.trim() === '') {
+      setEditError('Title is required')
+      return  
+    }
+    if (props.onUpdateTask) {
+      props.onUpdateTask(props.id, {
+        title: editTitle,
+        description: editDescription,
+        priority: editPriority,
+      })
+    }
+    if (props.onEditEnd) {
+      props.onEditEnd()
+    }
+  }
+
+  function handleCancel() {
+    setEditError('')  
+    if (props.onEditEnd) {
+      props.onEditEnd() 
+    }
+  }
+
+  if (isEditing) {
+    return (
+      <article id="task-card" data-completed={props.completed}>
+
+        <input
+          type="text"
+          value={editTitle}
+          onChange={e => setEditTitle(e.target.value)}
+        />
+
+        {editError && <p>{editError}</p>}
+
+        <input
+          type="text"
+          value={editDescription}
+          onChange={e => setEditDescription(e.target.value)}
+        />
+
+        <select
+          value={editPriority}
+          onChange={e => setEditPriority(e.target.value as 'Low' | 'Medium' | 'High')}
+        >
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+
+        <button onClick={handleSave}>Save</button>
+
+        <button onClick={handleCancel}>Cancel</button>
+
+      </article>
+    )
   }
 
   return (
@@ -41,8 +113,16 @@ export default function TaskCard(props: TaskCardProps) {
 
       <p>Priority: {props.priority}</p>
 
+      {props.onUpdateTask && (
+        <button onClick={handleEditStart}>Edit</button>
+      )}
+
       {props.onDelete && (
-        <button onClick={handleDelete}>Delete</button>
+        <button onClick={() => {
+          if (props.onDelete && props.id !== undefined) {
+            props.onDelete(props.id)
+          }
+        }}>Delete</button>
       )}
 
     </article>
