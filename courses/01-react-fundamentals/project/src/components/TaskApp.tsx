@@ -1,9 +1,9 @@
-import { useState } from 'react' 
+import { useState } from 'react'
 import type { Dispatch, SetStateAction } from 'react'
 import type { Task } from './TaskList'
 import TaskList from './TaskList'
 import TaskForm from './TaskForm'
-import FilterBar from './FilterBar'  
+import FilterBar from './FilterBar'
 
 interface TaskAppProps {
   tasks?: Task[]
@@ -17,19 +17,38 @@ interface TaskAppProps {
   linkToTaskDetail?: boolean
 }
 
+const priorityOrder: Record<string, number> = {
+  High: 3,
+  Medium: 2,
+  Low: 1,
+}
+
 export default function TaskApp(props: TaskAppProps) {
   const tasks = props.tasks ?? []
 
   const [filter, setFilter] = useState<'all' | 'active' | 'completed'>('all')
 
-  // filter 'active' hai to sirf incomplete tasks
-  // filter 'completed' hai to sirf complete tasks
-  // filter 'all' hai to saare tasks
+  const [sort, setSort] = useState('recently-added')
+
   const filteredTasks = filter === 'active'
-    ? tasks.filter(t => !t.completed)
+    ? tasks.filter(t => !t.completed)   
     : filter === 'completed'
-    ? tasks.filter(t => t.completed)
-    : tasks
+    ? tasks.filter(t => t.completed)    
+    : tasks                             
+
+  
+  const sortedTasks = [...filteredTasks].sort((a, b) => {
+    if (sort === 'priority-high-low') {
+      return priorityOrder[b.priority] - priorityOrder[a.priority]
+    }
+    if (sort === 'priority-low-high') {
+      return priorityOrder[a.priority] - priorityOrder[b.priority]
+    }
+    if (sort === 'alphabetical') {
+      return a.title.toLowerCase().localeCompare(b.title.toLowerCase())
+    }
+    return 0
+  })
 
   const countText = props.countFormat === 'completed'
     ? `${tasks.filter(t => t.completed).length} of ${tasks.length} completed`
@@ -59,17 +78,19 @@ export default function TaskApp(props: TaskAppProps) {
 
       {props.showFilterBar && (
         <FilterBar
-          filter={filter}              
-          onFilterChange={setFilter}  
+          filter={filter}
+          onFilterChange={setFilter}
+          sort={sort}             
+          onSortChange={setSort}   
         />
       )}
 
-      {filteredTasks.length === 0 && (
+      {sortedTasks.length === 0 && (
         <p id="filter-empty-message">No tasks match this filter</p>
       )}
 
       <TaskList
-        tasks={filteredTasks}
+        tasks={sortedTasks}
         onToggle={handleToggle}
         onDelete={props.onDelete}
       />
