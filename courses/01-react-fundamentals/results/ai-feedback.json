@@ -224,5 +224,28 @@
       "maintainability": 90,
       "overall": "The code is well-structured and follows good practices, but there are some areas for improvement to make it more robust and efficient. With some minor adjustments, it can be even more maintainable and scalable."
     }
+  },
+  {
+    "challengeId": "11-useeffect-debounced-search",
+    "challengeName": "useEffect - Debounced Search",
+    "aiReview": {
+      "challengeId": "11-useeffect-debounced-search",
+      "timestamp": "2026-06-23T11:36:38.638Z",
+      "score": 83,
+      "feedback": [],
+      "strengths": [
+        "The code is well-organized and follows a consistent structure.",
+        "The use of TypeScript and functional components is a good practice.",
+        "The code includes proper error handling and edge cases."
+      ],
+      "improvements": [
+        "Some of the variable names could be more descriptive, such as `rawSearch` and `debouncedSearch`.",
+        "The `useEffect` hook could be refactored to reduce the number of dependencies and improve performance.",
+        "The code could benefit from more comments and explanations for complex logic."
+      ],
+      "readability": 85,
+      "maintainability": 80,
+      "overall": "The code is well-structured and follows good practices, but there are areas for improvement to make it more maintainable and efficient."
+    }
   }
 ]

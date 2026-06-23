@@ -31,12 +31,22 @@ export default function TaskApp(props: TaskAppProps) {
   useEffect(() => {
     localStorage.setItem('task-app-tasks', JSON.stringify(tasks))
   }, [tasks])
-  
+
   const [filter, setFilter] = useState<'all' | 'active' | 'completed'>('all')
   const [sort, setSort] = useState('recently-added')
   const [editingId, setEditingId] = useState<string | number | null>(null)
+  const [rawSearch, setRawSearch] = useState('')
+  const [debouncedSearch, setDebouncedSearch] = useState('')
 
-  const [search, setSearch] = useState('')
+   const isSearching = rawSearch !== debouncedSearch
+
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setDebouncedSearch(rawSearch)  
+    }, 300)
+    return () => clearTimeout(timeout)
+  }, [rawSearch]) 
 
   const filteredTasks = filter === 'active'
     ? tasks.filter(t => !t.completed)
@@ -45,9 +55,9 @@ export default function TaskApp(props: TaskAppProps) {
     : tasks
 
   //search filter function
-  const searchedTasks = filteredTasks.filter(t =>
-    t.title.toLowerCase().includes(search.toLowerCase()) ||
-    t.description.toLowerCase().includes(search.toLowerCase())
+   const searchedTasks = filteredTasks.filter(t =>
+    t.title.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
+    t.description.toLowerCase().includes(debouncedSearch.toLowerCase())
   )
 
   const sortedTasks = [...searchedTasks].sort((a, b) => {
@@ -88,6 +98,10 @@ export default function TaskApp(props: TaskAppProps) {
     <div>
       <p id="task-count">{countText}</p>
 
+      {isSearching && (
+        <p id="searching-indicator">Searching...</p>
+      )}
+
       {props.showForm && (
         <TaskForm onAddTask={handleAddTask} />
       )}
@@ -98,8 +112,8 @@ export default function TaskApp(props: TaskAppProps) {
           onFilterChange={setFilter}
           sort={sort}
           onSortChange={setSort}
-          search={search}              // abhi kya search ho raha hai
-          onSearchChange={setSearch}   // search text badalne pe state update
+          search={rawSearch}              // input mein rawSearch dikhayrga
+          onSearchChange={setRawSearch}    // search text badalne pe state update krega
         />
       )}
 
