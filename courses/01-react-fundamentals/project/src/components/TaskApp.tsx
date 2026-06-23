@@ -28,9 +28,9 @@ export default function TaskApp(props: TaskAppProps) {
 
   const [filter, setFilter] = useState<'all' | 'active' | 'completed'>('all')
   const [sort, setSort] = useState('recently-added')
-
-
   const [editingId, setEditingId] = useState<string | number | null>(null)
+
+  const [search, setSearch] = useState('')
 
   const filteredTasks = filter === 'active'
     ? tasks.filter(t => !t.completed)
@@ -38,16 +38,23 @@ export default function TaskApp(props: TaskAppProps) {
     ? tasks.filter(t => t.completed)
     : tasks
 
-  const sortedTasks = [...filteredTasks].sort((a, b) => {
+  //search filter function
+  const searchedTasks = filteredTasks.filter(t =>
+    t.title.toLowerCase().includes(search.toLowerCase()) ||
+    t.description.toLowerCase().includes(search.toLowerCase())
+  )
+
+  const sortedTasks = [...searchedTasks].sort((a, b) => {
     if (sort === 'priority-high-low') return priorityOrder[b.priority] - priorityOrder[a.priority]
     if (sort === 'priority-low-high') return priorityOrder[a.priority] - priorityOrder[b.priority]
     if (sort === 'alphabetical') return a.title.toLowerCase().localeCompare(b.title.toLowerCase())
     return 0
   })
 
+
   const countText = props.countFormat === 'completed'
     ? `${tasks.filter(t => t.completed).length} of ${tasks.length} completed`
-    : `Showing ${filteredTasks.length} of ${tasks.length} tasks`
+    : `Showing ${sortedTasks.length} of ${tasks.length} tasks`
 
   function handleAddTask(task: Task) {
     if (props.setTasks) {
@@ -65,7 +72,6 @@ export default function TaskApp(props: TaskAppProps) {
 
   function handleUpdateTask(id: string | number, updates: { title: string; description: string; priority: 'Low' | 'Medium' | 'High' }) {
     if (props.setTasks) {
-
       props.setTasks(prev => prev.map(t =>
         t.id === id ? { ...t, ...updates } : t
       ))
@@ -86,21 +92,23 @@ export default function TaskApp(props: TaskAppProps) {
           onFilterChange={setFilter}
           sort={sort}
           onSortChange={setSort}
+          search={search}              // abhi kya search ho raha hai
+          onSearchChange={setSearch}   // search text badalne pe state update
         />
       )}
 
       {sortedTasks.length === 0 && (
-        <p id="filter-empty-message">No tasks match this filter</p>
+        <p id="filter-empty-message">No tasks found</p>
       )}
 
       <TaskList
         tasks={sortedTasks}
         onToggle={handleToggle}
         onDelete={props.onDelete}
-        onUpdateTask={handleUpdateTask}       
-        editingId={editingId}                
-        onEditStart={id => setEditingId(id)} 
-        onEditEnd={() => setEditingId(null)} 
+        onUpdateTask={handleUpdateTask}
+        editingId={editingId}
+        onEditStart={id => setEditingId(id)}
+        onEditEnd={() => setEditingId(null)}
       />
     </div>
   )
