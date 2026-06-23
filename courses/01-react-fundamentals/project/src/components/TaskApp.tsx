@@ -11,7 +11,7 @@ interface TaskAppProps {
   countFormat?: string
   showFilterBar?: boolean
   showStatsPanel?: boolean
-  onDelete?: (id: string | number) => void
+  onDelete?: (id: string | number) => void  
   linkToTaskDetail?: boolean
 }
 
@@ -32,7 +32,6 @@ export default function TaskApp(props: TaskAppProps) {
 
   function handleToggle(id: string | number) {
     if (props.setTasks) {
-
       props.setTasks(prev => prev.map(t =>
         t.id === id ? { ...t, completed: !t.completed } : t
       ))
@@ -47,7 +46,11 @@ export default function TaskApp(props: TaskAppProps) {
         <TaskForm onAddTask={handleAddTask} />
       )}
 
-      <TaskList tasks={tasks} onToggle={handleToggle} />
+      <TaskList
+        tasks={tasks}
+        onToggle={handleToggle}
+        onDelete={props.onDelete}  
+      />
     </div>
   )
 }

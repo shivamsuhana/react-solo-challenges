@@ -1763,5 +1763,420 @@
       "maintainability": 90,
       "overall": "The code is well-structured and follows good practices, but there are a few areas that need improvement. With some minor adjustments, the code can be even more maintainable and efficient."
     }
+  },
+  {
+    "challengeId": "05-task-deletion",
+    "challengeName": "Task Deletion",
+    "timestamp": "2026-06-23T08:41:36.350Z",
+    "scores": {
+      "functionalTests": 83.3,
+      "codeQuality": 100,
+      "architecture": 100,
+      "bestPractices": 100,
+      "e2eTests": 100,
+      "aiReview": 88
+    },
+    "totalScore": 92.355,
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "testResults": {
+      "score": 83.3,
+      "passed": false,
+      "totalTests": 6,
+      "passedTests": 5,
+      "failedTests": 1,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 05: Task Deletion"
+              ],
+              "fullName": " Challenge 05: Task Deletion TaskCard should render Delete button when onDelete and id provided",
+              "status": "passed",
+              "title": "TaskCard should render Delete button when onDelete and id provided",
+              "duration": 39,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 05: Task Deletion"
+              ],
+              "fullName": " Challenge 05: Task Deletion TaskCard should not render Delete button when onDelete not provided",
+              "status": "passed",
+              "title": "TaskCard should not render Delete button when onDelete not provided",
+              "duration": 1,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 05: Task Deletion"
+              ],
+              "fullName": " Challenge 05: Task Deletion TaskCard should call onDelete when Delete clicked and user confirms",
+              "status": "passed",
+              "title": "TaskCard should call onDelete when Delete clicked and user confirms",
+              "duration": 17,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 05: Task Deletion"
+              ],
+              "fullName": " Challenge 05: Task Deletion TaskCard should not call onDelete when user cancels confirmation",
+              "status": "passed",
+              "title": "TaskCard should not call onDelete when user cancels confirmation",
+              "duration": 13,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 05: Task Deletion"
+              ],
+              "fullName": " Challenge 05: Task Deletion TaskList should pass onDelete to TaskCard when provided",
+              "status": "passed",
+              "title": "TaskList should pass onDelete to TaskCard when provided",
+              "duration": 9,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 05: Task Deletion"
+              ],
+              "fullName": " Challenge 05: Task Deletion TaskList should show countText in #task-count",
+              "status": "failed",
+              "title": "TaskList should show countText in #task-count",
+              "duration": 3,
+              "failureMessages": [
+                "expect(received).toHaveTextContent()\n\nreceived value must be a Node.\n"
+              ],
+              "location": {
+                "line": 66,
+                "column": 51
+              }
+            }
+          ],
+          "startTime": 1782204097251,
+          "endTime": 1782204097333,
+          "status": "failed",
+          "message": "",
+          "name": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/tests/challenge-05.test.tsx"
+        }
+      ],
+      "error": "Command failed: npm test -- /Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/tests/challenge-05.test.tsx --run --reporter=json"
+    },
+    "lintResults": {
+      "score": 100,
+      "passed": true,
+      "totalIssues": 0,
+      "errors": 0,
+      "warnings": 0,
+      "details": [
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/src/App.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/src/components/TaskApp.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/src/components/TaskCard.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/src/components/TaskList.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        }
+      ]
+    },
+    "architectureResults": {
+      "score": 100,
+      "passed": true,
+      "patternsFound": [
+        "functionalComponent",
+        "props"
+      ],
+      "patternsMissing": [],
+      "details": [
+        {
+          "file": "src/components/TaskCard.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "props"
+          ],
+          "patternsMissing": []
+        },
+        {
+          "file": "src/components/TaskList.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "props"
+          ],
+          "patternsMissing": []
+        },
+        {
+          "file": "src/components/TaskApp.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "props"
+          ],
+          "patternsMissing": []
+        },
+        {
+          "file": "src/App.tsx",
+          "patternsFound": [
+            "functionalComponent"
+          ],
+          "patternsMissing": [
+            "props"
+          ]
+        }
+      ]
+    },
+    "bestPracticesResults": {
+      "score": 100,
+      "passed": true,
+      "issues": [],
+      "details": [],
+      "note": "No best practices requirements specified in challenge"
+    },
+    "e2eResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 3,
+      "passedTests": 3,
+      "failedTests": 0,
+      "details": [
+        {
+          "title": "challenge-05.spec.ts",
+          "file": "challenge-05.spec.ts",
+          "column": 0,
+          "line": 0,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Challenge 05: Task Deletion - E2E",
+              "file": "challenge-05.spec.ts",
+              "line": 3,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "should display task list",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 322,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-23T08:41:39.873Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "ec25b63e8ac6a5e53e87-ec0c2b7d330d2d117cff",
+                  "file": "challenge-05.spec.ts",
+                  "line": 8,
+                  "column": 3
+                },
+                {
+                  "title": "should display task count",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 105,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-23T08:41:40.583Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "ec25b63e8ac6a5e53e87-5b57ad5e79a105edfb8e",
+                  "file": "challenge-05.spec.ts",
+                  "line": 12,
+                  "column": 3
+                },
+                {
+                  "title": "should have Delete buttons when onDelete is passed from App",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 96,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-23T08:41:40.692Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "ec25b63e8ac6a5e53e87-a2ff53882f4a8f940c7a",
+                  "file": "challenge-05.spec.ts",
+                  "line": 16,
+                  "column": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "screenshots": []
+    },
+    "aiReviewResults": {
+      "challengeId": "05-task-deletion",
+      "timestamp": "2026-06-23T08:41:40.838Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "The code is well-structured and organized, with clear separation of concerns between components.",
+        "The use of TypeScript and functional components promotes code maintainability and readability.",
+        "The implementation of the delete functionality is straightforward and easy to understand."
+      ],
+      "improvements": [
+        "Some of the component props could be more descriptive, especially in the TaskCard component.",
+        "The handleDelete function in the App component could be extracted into a separate utility function for better reusability.",
+        "The use of window.confirm for deletion confirmation is not ideal, as it can be bypassed by users. Consider using a more robust confirmation mechanism."
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The code is well-structured and maintainable, with a good separation of concerns between components. However, there are some minor improvements that can be made to enhance the overall quality of the code."
+    },
+    "aiResults": {
+      "challengeId": "05-task-deletion",
+      "timestamp": "2026-06-23T08:41:40.838Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "The code is well-structured and organized, with clear separation of concerns between components.",
+        "The use of TypeScript and functional components promotes code maintainability and readability.",
+        "The implementation of the delete functionality is straightforward and easy to understand."
+      ],
+      "improvements": [
+        "Some of the component props could be more descriptive, especially in the TaskCard component.",
+        "The handleDelete function in the App component could be extracted into a separate utility function for better reusability.",
+        "The use of window.confirm for deletion confirmation is not ideal, as it can be bypassed by users. Consider using a more robust confirmation mechanism."
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The code is well-structured and maintainable, with a good separation of concerns between components. However, there are some minor improvements that can be made to enhance the overall quality of the code."
+    }
   }
 ]
