@@ -453,5 +453,448 @@
       "maintainability": 90,
       "overall": "The code is well-structured and follows good practices, but there are some areas for improvement to make it more maintainable and efficient."
     }
+  },
+  {
+    "challengeId": "02-dynamic-task-rendering",
+    "challengeName": "Dynamic Task Rendering",
+    "timestamp": "2026-06-23T06:34:49.073Z",
+    "scores": {
+      "functionalTests": 75,
+      "codeQuality": 100,
+      "architecture": 100,
+      "bestPractices": 100,
+      "e2eTests": 100,
+      "aiReview": 83
+    },
+    "totalScore": 88.7,
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "testResults": {
+      "score": 75,
+      "passed": false,
+      "totalTests": 4,
+      "passedTests": 3,
+      "failedTests": 1,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 02: Dynamic Task Rendering"
+              ],
+              "fullName": " Challenge 02: Dynamic Task Rendering should render tasks from tasks prop",
+              "status": "passed",
+              "title": "should render tasks from tasks prop",
+              "duration": 17,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 02: Dynamic Task Rendering"
+              ],
+              "fullName": " Challenge 02: Dynamic Task Rendering should display task count with id task-count",
+              "status": "failed",
+              "title": "should display task count with id task-count",
+              "duration": 5,
+              "failureMessages": [
+                "Unable to find an element with the text: 5 Tasks. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.\n\nIgnored nodes: comments, script, style\n\u001b[36m<body>\u001b[39m\n  \u001b[36m<div>\u001b[39m\n    \u001b[36m<section\u001b[39m\n      \u001b[33mid\u001b[39m=\u001b[32m\"task-list\"\u001b[39m\n    \u001b[36m>\u001b[39m\n      \u001b[36m<article\u001b[39m\n        \u001b[33mid\u001b[39m=\u001b[32m\"task-card\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<h2>\u001b[39m\n          \u001b[0mA\u001b[0m\n        \u001b[36m</h2>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mD1\u001b[0m\n        \u001b[36m</p>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mPriority: \u001b[0m\n          \u001b[0mHigh\u001b[0m\n        \u001b[36m</p>\u001b[39m\n      \u001b[36m</article>\u001b[39m\n      \u001b[36m<article\u001b[39m\n        \u001b[33mid\u001b[39m=\u001b[32m\"task-card\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<h2>\u001b[39m\n          \u001b[0mB\u001b[0m\n        \u001b[36m</h2>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mD2\u001b[0m\n        \u001b[36m</p>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mPriority: \u001b[0m\n          \u001b[0mMedium\u001b[0m\n        \u001b[36m</p>\u001b[39m\n      \u001b[36m</article>\u001b[39m\n      \u001b[36m<article\u001b[39m\n        \u001b[33mid\u001b[39m=\u001b[32m\"task-card\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<h2>\u001b[39m\n          \u001b[0mC\u001b[0m\n        \u001b[36m</h2>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mD3\u001b[0m\n        \u001b[36m</p>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mPriority: \u001b[0m\n          \u001b[0mLow\u001b[0m\n        \u001b[36m</p>\u001b[39m\n      \u001b[36m</article>\u001b[39m\n      \u001b[36m<article\u001b[39m\n        \u001b[33mid\u001b[39m=\u001b[32m\"task-card\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<h2>\u001b[39m\n          \u001b[0mD\u001b[0m\n        \u001b[36m</h2>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mD4\u001b[0m\n        \u001b[36m</p>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mPriority: \u001b[0m\n          \u001b[0mHigh\u001b[0m\n        \u001b[36m</p>\u001b[39m\n      \u001b[36m</article>\u001b[39m\n      \u001b[36m<article\u001b[39m\n        \u001b[33mid\u001b[39m=\u001b[32m\"task-card\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<h2>\u001b[39m\n          \u001b[0mE\u001b[0m\n        \u001b[36m</h2>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mD5\u001b[0m\n        \u001b[36m</p>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mPriority: \u001b[0m\n          \u001b[0mMedium\u001b[0m\n        \u001b[36m</p>\u001b[39m\n      \u001b[36m</article>\u001b[39m\n    \u001b[36m</section>\u001b[39m\n  \u001b[36m</div>\u001b[39m\n\u001b[36m</body>\u001b[39m"
+              ],
+              "location": {
+                "line": 37,
+                "column": 19
+              }
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 02: Dynamic Task Rendering"
+              ],
+              "fullName": " Challenge 02: Dynamic Task Rendering should use unique keys when mapping (no duplicate keys)",
+              "status": "passed",
+              "title": "should use unique keys when mapping (no duplicate keys)",
+              "duration": 1,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 02: Dynamic Task Rendering"
+              ],
+              "fullName": " Challenge 02: Dynamic Task Rendering should use map in TaskList",
+              "status": "passed",
+              "title": "should use map in TaskList",
+              "duration": 1,
+              "failureMessages": []
+            }
+          ],
+          "startTime": 1782196490002,
+          "endTime": 1782196490026,
+          "status": "failed",
+          "message": "",
+          "name": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/tests/challenge-02.test.tsx"
+        }
+      ],
+      "error": "Command failed: npm test -- /Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/tests/challenge-02.test.tsx --run --reporter=json"
+    },
+    "lintResults": {
+      "score": 100,
+      "passed": true,
+      "totalIssues": 0,
+      "errors": 0,
+      "warnings": 0,
+      "details": [
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/src/App.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/src/components/TaskCard.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/src/components/TaskList.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        }
+      ]
+    },
+    "architectureResults": {
+      "score": 100,
+      "passed": true,
+      "patternsFound": [
+        "functionalComponent",
+        "props",
+        "useState",
+        "arrayMethods"
+      ],
+      "patternsMissing": [],
+      "details": [
+        {
+          "file": "src/components/TaskCard.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "props"
+          ],
+          "patternsMissing": [
+            "useState",
+            "arrayMethods"
+          ]
+        },
+        {
+          "file": "src/components/TaskList.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "props",
+            "arrayMethods"
+          ],
+          "patternsMissing": [
+            "useState"
+          ]
+        },
+        {
+          "file": "src/App.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "useState",
+            "arrayMethods"
+          ],
+          "patternsMissing": [
+            "props"
+          ]
+        }
+      ]
+    },
+    "bestPracticesResults": {
+      "score": 100,
+      "passed": true,
+      "issues": [],
+      "details": [],
+      "note": "No best practices requirements specified in challenge"
+    },
+    "e2eResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 5,
+      "passedTests": 5,
+      "failedTests": 0,
+      "details": [
+        {
+          "title": "challenge-02.spec.ts",
+          "file": "challenge-02.spec.ts",
+          "column": 0,
+          "line": 0,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Challenge 02: Dynamic Task Rendering - E2E",
+              "file": "challenge-02.spec.ts",
+              "line": 3,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "should display task list",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 325,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-23T06:34:52.637Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "42dc79384a61c0717494-d5663a7cee91a0e51d85",
+                  "file": "challenge-02.spec.ts",
+                  "line": 8,
+                  "column": 3
+                },
+                {
+                  "title": "should display at least 5 tasks",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 105,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-23T06:34:53.381Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "42dc79384a61c0717494-fd4a59ac3d577a8e871f",
+                  "file": "challenge-02.spec.ts",
+                  "line": 13,
+                  "column": 3
+                },
+                {
+                  "title": "should display task count with id task-count",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 96,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-23T06:34:53.491Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "42dc79384a61c0717494-19624ddb392834ce3483",
+                  "file": "challenge-02.spec.ts",
+                  "line": 18,
+                  "column": 3
+                },
+                {
+                  "title": "should show 5 Tasks in count",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 96,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-23T06:34:53.591Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "42dc79384a61c0717494-5d2f38aac75c3e9b8cb8",
+                  "file": "challenge-02.spec.ts",
+                  "line": 24,
+                  "column": 3
+                },
+                {
+                  "title": "should display task titles from state",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 95,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-23T06:34:53.692Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "42dc79384a61c0717494-bcb65479652562f64a9c",
+                  "file": "challenge-02.spec.ts",
+                  "line": 28,
+                  "column": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "screenshots": []
+    },
+    "aiReviewResults": {
+      "challengeId": "02-dynamic-task-rendering",
+      "timestamp": "2026-06-23T06:34:53.837Z",
+      "score": 83,
+      "feedback": [],
+      "strengths": [
+        "The code is well-organized and follows a consistent naming convention.",
+        "The use of TypeScript and functional components is a good practice.",
+        "The code is relatively free of errors and warnings."
+      ],
+      "improvements": [
+        "The `TaskCard` component could benefit from a more robust validation of its props. Currently, it assumes that all props are present and valid, which could lead to runtime errors if not all props are provided.",
+        "The `TaskList` component could be improved by adding a loading state or an error handling mechanism when the `tasks` prop is not provided or is empty.",
+        "The code could benefit from more comments and documentation, especially in complex components like `TaskList` and `TaskApp`. This would make it easier for others to understand the code and its intent."
+      ],
+      "readability": 85,
+      "maintainability": 80,
+      "overall": "The code is well-structured and follows good practices, but could benefit from some improvements to make it more robust and maintainable. With some additional comments and validation, this code could be a great example of a well-written React application."
+    },
+    "aiResults": {
+      "challengeId": "02-dynamic-task-rendering",
+      "timestamp": "2026-06-23T06:34:53.837Z",
+      "score": 83,
+      "feedback": [],
+      "strengths": [
+        "The code is well-organized and follows a consistent naming convention.",
+        "The use of TypeScript and functional components is a good practice.",
+        "The code is relatively free of errors and warnings."
+      ],
+      "improvements": [
+        "The `TaskCard` component could benefit from a more robust validation of its props. Currently, it assumes that all props are present and valid, which could lead to runtime errors if not all props are provided.",
+        "The `TaskList` component could be improved by adding a loading state or an error handling mechanism when the `tasks` prop is not provided or is empty.",
+        "The code could benefit from more comments and documentation, especially in complex components like `TaskList` and `TaskApp`. This would make it easier for others to understand the code and its intent."
+      ],
+      "readability": 85,
+      "maintainability": 80,
+      "overall": "The code is well-structured and follows good practices, but could benefit from some improvements to make it more robust and maintainable. With some additional comments and validation, this code could be a great example of a well-written React application."
+    }
   }
 ]
