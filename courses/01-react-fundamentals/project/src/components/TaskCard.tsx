@@ -12,11 +12,13 @@ export default function TaskCard(props: TaskCardProps) {
 
   
   function handleDelete() {
-  
-  if (props.onDelete && props.id !== undefined) {
-    props.onDelete(props.id)
+   
+    const confirmed = window.confirm("Are you sure?")
+
+    if (confirmed && props.onDelete && props.id !== undefined) {
+      props.onDelete(props.id)
+    }
   }
-}
 
   return (
     <article id="task-card" data-completed={props.completed}>

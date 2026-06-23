@@ -1767,16 +1767,16 @@
   {
     "challengeId": "05-task-deletion",
     "challengeName": "Task Deletion",
-    "timestamp": "2026-06-23T08:41:36.350Z",
+    "timestamp": "2026-06-23T08:55:10.406Z",
     "scores": {
       "functionalTests": 83.3,
       "codeQuality": 100,
       "architecture": 100,
       "bestPractices": 100,
       "e2eTests": 100,
-      "aiReview": 88
+      "aiReview": 50
     },
-    "totalScore": 92.355,
+    "totalScore": 86.655,
     "passed": true,
     "errors": [],
     "warnings": [],
@@ -1808,7 +1808,7 @@
               "fullName": " Challenge 05: Task Deletion TaskCard should not render Delete button when onDelete not provided",
               "status": "passed",
               "title": "TaskCard should not render Delete button when onDelete not provided",
-              "duration": 1,
+              "duration": 2,
               "failureMessages": []
             },
             {
@@ -1830,7 +1830,7 @@
               "fullName": " Challenge 05: Task Deletion TaskCard should not call onDelete when user cancels confirmation",
               "status": "passed",
               "title": "TaskCard should not call onDelete when user cancels confirmation",
-              "duration": 13,
+              "duration": 14,
               "failureMessages": []
             },
             {
@@ -1841,7 +1841,7 @@
               "fullName": " Challenge 05: Task Deletion TaskList should pass onDelete to TaskCard when provided",
               "status": "passed",
               "title": "TaskList should pass onDelete to TaskCard when provided",
-              "duration": 9,
+              "duration": 10,
               "failureMessages": []
             },
             {
@@ -1852,7 +1852,7 @@
               "fullName": " Challenge 05: Task Deletion TaskList should show countText in #task-count",
               "status": "failed",
               "title": "TaskList should show countText in #task-count",
-              "duration": 3,
+              "duration": 2,
               "failureMessages": [
                 "expect(received).toHaveTextContent()\n\nreceived value must be a Node.\n"
               ],
@@ -1862,8 +1862,8 @@
               }
             }
           ],
-          "startTime": 1782204097251,
-          "endTime": 1782204097333,
+          "startTime": 1782204911287,
+          "endTime": 1782204911371,
           "status": "failed",
           "message": "",
           "name": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/tests/challenge-05.test.tsx"
@@ -2047,12 +2047,12 @@
                           "workerIndex": 0,
                           "parallelIndex": 0,
                           "status": "passed",
-                          "duration": 322,
+                          "duration": 323,
                           "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2026-06-23T08:41:39.873Z",
+                          "startTime": "2026-06-23T08:55:13.873Z",
                           "annotations": [],
                           "attachments": []
                         }
@@ -2086,7 +2086,7 @@
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2026-06-23T08:41:40.583Z",
+                          "startTime": "2026-06-23T08:55:14.564Z",
                           "annotations": [],
                           "attachments": []
                         }
@@ -2115,12 +2115,12 @@
                           "workerIndex": 0,
                           "parallelIndex": 0,
                           "status": "passed",
-                          "duration": 96,
+                          "duration": 105,
                           "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2026-06-23T08:41:40.692Z",
+                          "startTime": "2026-06-23T08:55:14.673Z",
                           "annotations": [],
                           "attachments": []
                         }
@@ -2142,41 +2142,33 @@
     },
     "aiReviewResults": {
       "challengeId": "05-task-deletion",
-      "timestamp": "2026-06-23T08:41:40.838Z",
-      "score": 88,
+      "timestamp": "2026-06-23T08:55:14.834Z",
+      "score": 50,
       "feedback": [],
       "strengths": [
-        "The code is well-structured and organized, with clear separation of concerns between components.",
-        "The use of TypeScript and functional components promotes code maintainability and readability.",
-        "The implementation of the delete functionality is straightforward and easy to understand."
+        "Code structure is reasonable"
       ],
       "improvements": [
-        "Some of the component props could be more descriptive, especially in the TaskCard component.",
-        "The handleDelete function in the App component could be extracted into a separate utility function for better reusability.",
-        "The use of window.confirm for deletion confirmation is not ideal, as it can be bypassed by users. Consider using a more robust confirmation mechanism."
+        "Code structure is reasonable"
       ],
-      "readability": 85,
-      "maintainability": 90,
-      "overall": "The code is well-structured and maintainable, with a good separation of concerns between components. However, there are some minor improvements that can be made to enhance the overall quality of the code."
+      "readability": 50,
+      "maintainability": 50,
+      "overall": "{\n  \"readability\": 85,\n  \"maintainability\": 90,\n  \"strengths\": [\n    \"The code is well-structured and follows a consistent naming convention.\",\n    \"The use of TypeScript and functional components makes the code more maintainable and efficient.\",\n    \"The code is well-documented with clear and concise comments.\"\n  ],\n  \"improvements\": [\n    \"In the `TaskCard` component, the `handleDelete` function can be simplified by removing the unnecessary `confirmed` variable and directly calling `props.onDe"
     },
     "aiResults": {
       "challengeId": "05-task-deletion",
-      "timestamp": "2026-06-23T08:41:40.838Z",
-      "score": 88,
+      "timestamp": "2026-06-23T08:55:14.834Z",
+      "score": 50,
       "feedback": [],
       "strengths": [
-        "The code is well-structured and organized, with clear separation of concerns between components.",
-        "The use of TypeScript and functional components promotes code maintainability and readability.",
-        "The implementation of the delete functionality is straightforward and easy to understand."
+        "Code structure is reasonable"
       ],
       "improvements": [
-        "Some of the component props could be more descriptive, especially in the TaskCard component.",
-        "The handleDelete function in the App component could be extracted into a separate utility function for better reusability.",
-        "The use of window.confirm for deletion confirmation is not ideal, as it can be bypassed by users. Consider using a more robust confirmation mechanism."
+        "Code structure is reasonable"
       ],
-      "readability": 85,
-      "maintainability": 90,
-      "overall": "The code is well-structured and maintainable, with a good separation of concerns between components. However, there are some minor improvements that can be made to enhance the overall quality of the code."
+      "readability": 50,
+      "maintainability": 50,
+      "overall": "{\n  \"readability\": 85,\n  \"maintainability\": 90,\n  \"strengths\": [\n    \"The code is well-structured and follows a consistent naming convention.\",\n    \"The use of TypeScript and functional components makes the code more maintainable and efficient.\",\n    \"The code is well-documented with clear and concise comments.\"\n  ],\n  \"improvements\": [\n    \"In the `TaskCard` component, the `handleDelete` function can be simplified by removing the unnecessary `confirmed` variable and directly calling `props.onDe"
     }
   }
 ]
