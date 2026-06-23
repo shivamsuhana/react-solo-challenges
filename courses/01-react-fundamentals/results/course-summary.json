@@ -1,11 +1,11 @@
 {
   "courseId": "01-react-fundamentals",
   "courseName": "React Fundamentals",
-  "lastUpdated": "2026-06-23T08:55:16.729Z",
+  "lastUpdated": "2026-06-23T09:05:20.687Z",
   "totalChallenges": 23,
-  "completedChallenges": 5,
-  "averageScore": 90.5,
-  "completionPercentage": 21.7,
+  "completedChallenges": 6,
+  "averageScore": 90.6,
+  "completionPercentage": 26.1,
   "badgeLevel": "none",
   "challengeResults": [
     {
@@ -37,6 +37,12 @@
       "challengeName": "Task Deletion",
       "score": 86.655,
       "passed": true
+    },
+    {
+      "challengeId": "06-task-filtering",
+      "challengeName": "Task Filtering",
+      "score": 91.2,
+      "passed": true
     }
   ],
   "skillStrengths": [
@@ -44,7 +50,8 @@
     "Dynamic Task Rendering",
     "Adding New Tasks",
     "Task Completion Toggle",
-    "Task Deletion"
+    "Task Deletion",
+    "Task Filtering"
   ],
   "improvementAreas": []
 }
