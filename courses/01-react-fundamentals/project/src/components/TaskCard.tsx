@@ -1,4 +1,7 @@
- import { useState } from 'react'
+import { useState } from 'react'
+import Button from './Button'
+import Badge from './Badge'
+import StatusIndicator from './StatusIndicator'
 
 interface TaskCardProps {
   id: string | number
@@ -8,7 +11,7 @@ interface TaskCardProps {
   completed?: boolean
   onToggle?: () => void
   onDelete?: (id: string | number) => void
-  onUpdateTask?: (id: string | number, updates: { 
+  onUpdateTask?: (id: string | number, updates: {
     title: string
     description: string
     priority: 'Low' | 'Medium' | 'High'
@@ -25,12 +28,9 @@ interface TaskCardProps {
 function getDueDateLabel(dueDate: string, completed: boolean) {
   const today = new Date()
   today.setHours(0, 0, 0, 0)
-
   const due = new Date(dueDate)
   due.setHours(0, 0, 0, 0)
-
   const diffDays = Math.ceil((due.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
-
   if (!completed && diffDays < 0) return 'Overdue'
   if (diffDays === 0) return 'Due Today'
   if (diffDays <= 3) return 'Due Soon'
@@ -45,7 +45,6 @@ export default function TaskCard(props: TaskCardProps) {
   const [editError, setEditError] = useState('')
   const [editDueDate, setEditDueDate] = useState(props.dueDate ?? '')
 
-  // null aur undefined dono check karo — warna test fail hoga
   const isEditing = props.editingId !== null &&
                     props.editingId !== undefined &&
                     props.editingId === props.id
@@ -118,9 +117,9 @@ export default function TaskCard(props: TaskCardProps) {
           value={editDueDate}
           onChange={e => setEditDueDate(e.target.value)}
         />
-
-        <button onClick={handleSave}>Save</button>
-        <button onClick={handleCancel}>Cancel</button>
+        {/* component wala new button */}
+        <Button onClick={handleSave}>Save</Button>
+        <Button variant="secondary" onClick={handleCancel}>Cancel</Button>
 
       </article>
     )
@@ -148,13 +147,17 @@ export default function TaskCard(props: TaskCardProps) {
 
       <p>Priority: {props.priority}</p>
 
-      <p id="task-category">{props.category ?? 'General'}</p>
-
+      {/* badges for catogry */}
+      <Badge variant="category">
+        <span id="task-category">{props.category ?? 'General'}</span>
+      </Badge>
+        
+        {/* using badges in tags */}
       <div id="task-tags">
         {(props.tags ?? []).map(tag => (
-          <span key={tag} data-tag={tag}>
-            {tag}
-          </span>
+          <Badge key={tag} variant="tag">
+            <span data-tag={tag}>{tag}</span>
+          </Badge>
         ))}
       </div>
 
@@ -163,26 +166,33 @@ export default function TaskCard(props: TaskCardProps) {
           <p id="task-due-date">
             {new Date(props.dueDate).toLocaleDateString()}
           </p>
-          {getDueDateLabel(props.dueDate, props.completed ?? false) && (
-            <span
-              data-overdue={getDueDateLabel(props.dueDate, props.completed ?? false) === 'Overdue'}
-            >
-              {getDueDateLabel(props.dueDate, props.completed ?? false)}
-            </span>
+          {getDueDateLabel(props.dueDate, props.completed ?? false) === 'Overdue' && (
+            <StatusIndicator status="overdue" />
+          )}
+          {getDueDateLabel(props.dueDate, props.completed ?? false) === 'Due Today' && (
+            <StatusIndicator status="due-today" />
+          )}
+          {getDueDateLabel(props.dueDate, props.completed ?? false) === 'Due Soon' && (
+            <StatusIndicator status="due-soon" />
           )}
         </div>
       )}
 
       {props.onUpdateTask && (
-        <button onClick={handleEditStart}>Edit</button>
+        <Button onClick={handleEditStart}>Edit</Button>
       )}
 
       {props.onDelete && (
-        <button onClick={() => {
-          if (props.onDelete && props.id !== undefined) {
-            props.onDelete(props.id)
-          }
-        }}>Delete</button>
+        <Button
+          variant="danger"
+          onClick={() => {
+            if (props.onDelete && props.id !== undefined) {
+              props.onDelete(props.id)
+            }
+          }}
+        >
+          Delete
+        </Button>
       )}
 
     </article>

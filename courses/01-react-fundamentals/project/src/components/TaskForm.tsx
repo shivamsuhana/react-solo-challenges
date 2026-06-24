@@ -1,9 +1,9 @@
 import { useState } from 'react'
-
 import type { Task } from './TaskList'
+import Button from './Button'
+import FormInput from './FormInput'
 
 const CATEGORIES = ['General', 'Work', 'Personal']
-
 
 interface TaskFormProps {
   onAddTask: (task: Task) => void
@@ -12,44 +12,37 @@ interface TaskFormProps {
 export default function TaskForm(props: TaskFormProps) {
 
   const [title, setTitle] = useState('')
-
   const [description, setDescription] = useState('')
-
   const [priority, setPriority] = useState<'Low' | 'Medium' | 'High'>('Low')
-
   const [error, setError] = useState('')
-
-  const [category, setCategory] = useState('General')  
+  const [category, setCategory] = useState('General')
   const [tagsInput, setTagsInput] = useState('')
-
   const [dueDate, setDueDate] = useState('')
 
-
   function handleSubmit(e: React.FormEvent) {
-
     e.preventDefault()
 
     if (title.trim() === '') {
       setError('Title is required')
-      return 
+      return
     }
 
     setError('')
 
     const tags = tagsInput
-      .split(',')           
-      .map(t => t.trim())  
-      .filter(t => t !== '') 
+      .split(',')
+      .map(t => t.trim())
+      .filter(t => t !== '')
 
     const newTask: Task = {
-      id: Date.now(),       
-      title: title,         
-      description: description, 
+      id: Date.now(),
+      title: title,
+      description: description,
       priority: priority,
-      completed: false,  
-      category: category, 
-      tags: tags, 
-      dueDate: dueDate || undefined, 
+      completed: false,
+      category: category,
+      tags: tags,
+      dueDate: dueDate || undefined,
     }
 
     props.onAddTask(newTask)
@@ -65,18 +58,17 @@ export default function TaskForm(props: TaskFormProps) {
   return (
     <form onSubmit={handleSubmit}>
 
-      <input
-        id="task-title"            
-        type="text"
-        value={title}                
-        onChange={e => setTitle(e.target.value)}  
+      <FormInput
+        id="task-title"
+        value={title}
+        onChange={setTitle}
         placeholder="Task title"
+        error={error}
       />
 
-      <input
-        type="text"
+      <FormInput
         value={description}
-        onChange={e => setDescription(e.target.value)}
+        onChange={setDescription}
         placeholder="Task description"
       />
 
@@ -98,24 +90,19 @@ export default function TaskForm(props: TaskFormProps) {
         ))}
       </select>
 
-      <input
-        type="text"
+      <FormInput
         value={tagsInput}
-        onChange={e => setTagsInput(e.target.value)}
+        onChange={setTagsInput}
         placeholder="Tags (comma separated: urgent, work)"
       />
 
-      <input
-        type="date"               // browser ka date picker dikhega
+      <FormInput
+        type="date"
         value={dueDate}
-        onChange={e => setDueDate(e.target.value)}
+        onChange={setDueDate}
       />
 
-      {error && (
-        <p id="task-form-error">{error}</p>
-      )}
-
-      <button type="submit">Add Task</button>
+      <Button type="submit">Add Task</Button>
 
     </form>
   )
