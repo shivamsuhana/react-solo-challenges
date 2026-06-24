@@ -2,6 +2,9 @@ import { useState } from 'react'
 
 import type { Task } from './TaskList'
 
+const CATEGORIES = ['General', 'Work', 'Personal']
+
+
 interface TaskFormProps {
   onAddTask: (task: Task) => void
 }
@@ -16,6 +19,9 @@ export default function TaskForm(props: TaskFormProps) {
 
   const [error, setError] = useState('')
 
+  const [category, setCategory] = useState('General')  
+  const [tagsInput, setTagsInput] = useState('')
+
   function handleSubmit(e: React.FormEvent) {
 
     e.preventDefault()
@@ -27,12 +33,19 @@ export default function TaskForm(props: TaskFormProps) {
 
     setError('')
 
+    const tags = tagsInput
+      .split(',')           
+      .map(t => t.trim())  
+      .filter(t => t !== '') 
+
     const newTask: Task = {
       id: Date.now(),       
       title: title,         
       description: description, 
       priority: priority,
-      completed: false,   
+      completed: false,  
+      category: category, 
+      tags: tags,  
     }
 
     props.onAddTask(newTask)
@@ -40,6 +53,8 @@ export default function TaskForm(props: TaskFormProps) {
     setTitle('')
     setDescription('')
     setPriority('Low')
+    setCategory('General')
+    setTagsInput('')
   }
 
   return (
@@ -68,6 +83,22 @@ export default function TaskForm(props: TaskFormProps) {
         <option value="Medium">Medium</option>
         <option value="High">High</option>
       </select>
+
+      <select
+        value={category}
+        onChange={e => setCategory(e.target.value)}
+      >
+        {CATEGORIES.map(cat => (
+          <option key={cat} value={cat}>{cat}</option>
+        ))}
+      </select>
+
+      <input
+        type="text"
+        value={tagsInput}
+        onChange={e => setTagsInput(e.target.value)}
+        placeholder="Tags (comma separated: urgent, work)"
+      />
 
       {error && (
         <p id="task-form-error">{error}</p>

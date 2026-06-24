@@ -11,7 +11,9 @@ interface TaskCardProps {
   onUpdateTask?: (id: string | number, updates: { title: string; description: string; priority: 'Low' | 'Medium' | 'High' }) => void
   editingId?: string | number | null     
   onEditStart?: (id: string | number) => void   
-  onEditEnd?: () => void                         
+  onEditEnd?: () => void  
+  category?: string
+  tags?: string[]                       
 }
 
 export default function TaskCard(props: TaskCardProps) {
@@ -112,6 +114,22 @@ export default function TaskCard(props: TaskCardProps) {
       </p>
 
       <p>Priority: {props.priority}</p>
+      
+
+
+<p id="task-category">{props.category ?? 'General'}</p>
+
+
+<div id="task-tags">
+  {(props.tags ?? []).map(tag => (
+   
+    <span key={tag} data-tag={tag}>
+      {tag}
+    </span>
+  ))}
+</div>
+
+
 
       {props.onUpdateTask && (
         <button onClick={handleEditStart}>Edit</button>

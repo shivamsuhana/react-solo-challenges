@@ -10,11 +10,11 @@ import { ThemeProvider } from './contexts/ThemeContext'
 import type { Task } from './components/TaskList'
 
 const INITIAL_TASKS: Task[] = [
-  { id: 1, title: 'First Task', description: 'Description one', priority: 'High', completed: false },
-  { id: 2, title: 'Second Task', description: 'Description two', priority: 'Medium', completed: false },
-  { id: 3, title: 'Third Task', description: 'Description three', priority: 'Low', completed: false },
-  { id: 4, title: 'Fourth Task', description: 'Description four', priority: 'Medium', completed: false },
-  { id: 5, title: 'Fifth Task', description: 'Description five', priority: 'High', completed: false },
+  { id: 1, title: 'First Task', description: 'Description one', priority: 'High', completed: false, category: 'General', tags: [] },
+  { id: 2, title: 'Second Task', description: 'Description two', priority: 'Medium', completed: false, category: 'General', tags: [] },
+  { id: 3, title: 'Third Task', description: 'Description three', priority: 'Low', completed: false, category: 'General', tags: [] },
+  { id: 4, title: 'Fourth Task', description: 'Description four', priority: 'Medium', completed: false, category: 'General', tags: [] },
+  { id: 5, title: 'Fifth Task', description: 'Description five', priority: 'High', completed: false, category: 'General', tags: [] },
 ]
 
 function AppContent() {
@@ -39,7 +39,7 @@ function AppContent() {
             <Route path="/challenge/05-task-deletion" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" onDelete={handleDelete} />} />
             <Route path="/challenge/06-task-filtering" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" showFilterBar />} />
             <Route path="/challenge/07-priority-based-sorting" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" showFilterBar />} />
-            <Route path="/challenge/08-task-editing" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" />} />
+            <Route path="/challenge/08-task-editing" element={<TaskApp onDelete={handleDelete} tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" />} />
             <Route path="/challenge/09-search-functionality" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" showFilterBar />} />
             <Route path="/challenge/10-useeffect-local-storage" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" />} />
             <Route path="/challenge/11-useeffect-debounced-search" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" showFilterBar />} />

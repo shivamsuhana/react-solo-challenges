@@ -17,6 +17,9 @@ interface TaskAppProps {
   linkToTaskDetail?: boolean
 }
 
+
+
+
 const priorityOrder: Record<string, number> = {
   High: 3,
   Medium: 2,
@@ -37,6 +40,8 @@ export default function TaskApp(props: TaskAppProps) {
   const [editingId, setEditingId] = useState<string | number | null>(null)
   const [rawSearch, setRawSearch] = useState('')
   const [debouncedSearch, setDebouncedSearch] = useState('')
+  const [categoryFilter, setCategoryFilter] = useState('all')
+const categories = [...new Set(tasks.map(t => t.category).filter(Boolean))]
 
    const isSearching = rawSearch !== debouncedSearch
 
@@ -47,18 +52,23 @@ export default function TaskApp(props: TaskAppProps) {
     }, 300)
     return () => clearTimeout(timeout)
   }, [rawSearch]) 
-
+ //status filter
   const filteredTasks = filter === 'active'
     ? tasks.filter(t => !t.completed)
     : filter === 'completed'
     ? tasks.filter(t => t.completed)
     : tasks
 
+    //cat filter
+    const categoryFiltered = categoryFilter === 'all'
+  ? filteredTasks
+  : filteredTasks.filter(t => t.category === categoryFilter)
+
   //search filter function
-   const searchedTasks = filteredTasks.filter(t =>
+  const searchedTasks = categoryFiltered.filter(t =>
     t.title.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
     t.description.toLowerCase().includes(debouncedSearch.toLowerCase())
-  )
+)
 
   const sortedTasks = [...searchedTasks].sort((a, b) => {
     if (sort === 'priority-high-low') return priorityOrder[b.priority] - priorityOrder[a.priority]
@@ -107,15 +117,18 @@ export default function TaskApp(props: TaskAppProps) {
       )}
 
       {props.showFilterBar && (
-        <FilterBar
-          filter={filter}
-          onFilterChange={setFilter}
-          sort={sort}
-          onSortChange={setSort}
-          search={rawSearch}              // input mein rawSearch dikhayrga
-          onSearchChange={setRawSearch}    // search text badalne pe state update krega
-        />
-      )}
+  <FilterBar
+    filter={filter}
+    onFilterChange={setFilter}
+    sort={sort}
+    onSortChange={setSort}
+    search={rawSearch}
+    onSearchChange={setRawSearch}
+    categoryFilter={categoryFilter}        
+    onCategoryChange={setCategoryFilter}   
+    categories={categories}           
+  />
+)}
 
       {sortedTasks.length === 0 && (
         <p id="filter-empty-message">No tasks found</p>

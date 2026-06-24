@@ -5,6 +5,9 @@ interface FilterBarProps {
   onSortChange: (sort: string) => void
   search: string                      
   onSearchChange: (search: string) => void 
+  categoryFilter: string                         
+  onCategoryChange: (category: string) => void    
+  categories: string[] 
 }
 
 export default function FilterBar(props: FilterBarProps) {
@@ -25,6 +28,17 @@ export default function FilterBar(props: FilterBarProps) {
         data-active={props.filter === 'completed'}
         onClick={() => props.onFilterChange('completed')}
       >Completed</button>
+
+      <select
+        value={props.categoryFilter}
+        onChange={e => props.onCategoryChange(e.target.value)}
+      >
+        <option value="all">All categories</option>
+
+        {props.categories.map(cat => (
+          <option key={cat} value={cat}>{cat}</option>
+        ))}
+      </select>
 
       <select
         id="sort-order"

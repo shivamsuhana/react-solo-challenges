@@ -6,12 +6,15 @@ export interface Task {
   description: string
   priority: 'Low' | 'Medium' | 'High'
   completed: boolean
+  category: string     // naya field task ki category
+  tags: string[] 
+  
 }
 
 const HARDCODED_TASKS: Task[] = [
-  { id: 'h1', title: 'Task One',   description: 'First hardcoded task',  priority: 'High',   completed: false },
-  { id: 'h2', title: 'Task Two',   description: 'Second hardcoded task', priority: 'Medium', completed: false },
-  { id: 'h3', title: 'Task Three', description: 'Third hardcoded task',  priority: 'Low',    completed: false },
+  { id: 'h1', title: 'Task One',   description: 'First hardcoded task',  priority: 'High',   completed: false, category: 'General', tags: [] },
+  { id: 'h2', title: 'Task Two',   description: 'Second hardcoded task', priority: 'Medium', completed: false, category: 'General', tags: [] },
+  { id: 'h3', title: 'Task Three', description: 'Third hardcoded task',  priority: 'Low',    completed: false, category: 'General', tags: [] },
 ]
 
 interface TaskListProps {
@@ -42,7 +45,9 @@ export default function TaskList(props: TaskListProps) {
           onUpdateTask={props.onUpdateTask} 
           editingId={props.editingId}        
           onEditStart={props.onEditStart}    
-          onEditEnd={props.onEditEnd}       
+          onEditEnd={props.onEditEnd}    
+           category={task.category}   
+            tags={task.tags}    
         />
       ))}
     </section>
