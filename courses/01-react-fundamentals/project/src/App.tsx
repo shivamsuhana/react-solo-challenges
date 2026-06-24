@@ -9,14 +9,12 @@ import FetchDemoView from './components/FetchDemoView'
 import { ThemeProvider } from './contexts/ThemeContext'
 import type { Task } from './components/TaskList'
 
-// action type constants — typos se bachne ke liye
 const ADD_TASK = 'ADD_TASK'
 const UPDATE_TASK = 'UPDATE_TASK'
 const DELETE_TASK = 'DELETE_TASK'
 const TOGGLE_TASK = 'TOGGLE_TASK'
 const SET_TASKS = 'SET_TASKS'
 
-// har action ka TypeScript type
 type TaskAction =
   | { type: typeof ADD_TASK; payload: Task }
   | { type: typeof UPDATE_TASK; payload: Task }
@@ -24,34 +22,27 @@ type TaskAction =
   | { type: typeof TOGGLE_TASK; payload: string | number }
   | { type: typeof SET_TASKS; payload: Task[] }
 
-// reducer — pure function
-// state = abhi ke tasks, action = kya karna hai
-// return = naye tasks
+
 function taskReducer(state: Task[], action: TaskAction): Task[] {
   switch (action.type) {
 
     case ADD_TASK:
-      // naya task add karo — spread se purane tasks copy karo
       return [...state, action.payload]
 
     case UPDATE_TASK:
-      // us task ko update karo jiska id match kare
       return state.map(t =>
         t.id === action.payload.id ? { ...t, ...action.payload } : t
       )
 
     case DELETE_TASK:
-      // us task ko hatao jiska id match kare
       return state.filter(t => t.id !== action.payload)
 
     case TOGGLE_TASK:
-      // us task ka completed ulta karo
       return state.map(t =>
         t.id === action.payload ? { ...t, completed: !t.completed } : t
       )
 
     case SET_TASKS:
-      // saare tasks replace karo
       return action.payload
 
     default:
@@ -69,13 +60,10 @@ const INITIAL_TASKS: Task[] = [
 
 function AppContent() {
 
-  // useState ki jagah useReducer — taskReducer batayega kaise update hoga
   const [tasks, dispatch] = useReducer(taskReducer, INITIAL_TASKS)
 
-  // dispatch ko wrap karo — TaskApp ke dispatch prop se match karne ke liye
   const appDispatch = dispatch as (action: unknown) => void
 
-  // delete handler — dispatch use karta hai
   const handleDelete = (id: string | number) => {
     if (window.confirm('Are you sure?')) {
       dispatch({ type: DELETE_TASK, payload: id })
