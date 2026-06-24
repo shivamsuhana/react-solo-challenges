@@ -5,6 +5,9 @@ import TaskList from './TaskList'
 import TaskForm from './TaskForm'
 import FilterBar from './FilterBar'
 import StatsPanel from './StatsPanel'
+import { useTheme } from '../contexts/ThemeContext'
+
+
 
 interface TaskAppProps {
   tasks?: Task[]
@@ -37,6 +40,8 @@ const tasks = useMemo(() => props.tasks ?? [], [props.tasks])
   const [rawSearch, setRawSearch] = useState('')
   const [debouncedSearch, setDebouncedSearch] = useState('')
   const [categoryFilter, setCategoryFilter] = useState('all')
+  const { theme, toggleTheme } = useTheme()
+
 
   const categories = [...new Set(tasks.map(t => t.category).filter(Boolean))]
   const isSearching = rawSearch !== debouncedSearch
@@ -113,6 +118,14 @@ const tasks = useMemo(() => props.tasks ?? [], [props.tasks])
 
   return (
     <div>
+
+      <div data-theme={theme}>
+        <button id="theme-toggle" onClick={toggleTheme}>
+          {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
+        </button>
+        
+      </div>
+
       <p id="task-count">{countText}</p>
 
       {props.showStatsPanel && (

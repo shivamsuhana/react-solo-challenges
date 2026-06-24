@@ -1,11 +1,11 @@
 {
   "courseId": "01-react-fundamentals",
   "courseName": "React Fundamentals",
-  "lastUpdated": "2026-06-24T08:03:51.380Z",
+  "lastUpdated": "2026-06-24T08:25:26.340Z",
   "totalChallenges": 23,
-  "completedChallenges": 15,
-  "averageScore": 91.5,
-  "completionPercentage": 65.2,
+  "completedChallenges": 16,
+  "averageScore": 91.9,
+  "completionPercentage": 69.6,
   "badgeLevel": "bronze",
   "challengeResults": [
     {
@@ -97,6 +97,12 @@
       "challengeName": "Component Organization with Props",
       "score": 98.2,
       "passed": true
+    },
+    {
+      "challengeId": "16-context-api-theme",
+      "challengeName": "Context API - Theme Management",
+      "score": 97.60000000000001,
+      "passed": true
     }
   ],
   "skillStrengths": [
@@ -114,7 +120,8 @@
     "Categories and Tags",
     "Due Dates and Sorting",
     "Task Statistics Dashboard",
-    "Component Organization with Props"
+    "Component Organization with Props",
+    "Context API - Theme Management"
   ],
   "improvementAreas": []
 }
