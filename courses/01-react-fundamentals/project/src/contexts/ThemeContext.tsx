@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, useEffect, type ReactNode } from 'react'
+import { createContext, useContext, useEffect, type ReactNode } from 'react'
+import useLocalStorage from '../hooks/useLocalStorage'
 
 export type Theme = 'light' | 'dark'
 
@@ -12,21 +13,9 @@ export const ThemeContext = createContext<ThemeContextValue | null>(null)
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
 
-    // check kiye local storage pahle jo theme already hai wo gain karne ke liye 
-  const [theme, setTheme] = useState<Theme>(() => {
-    try {
-      const saved = localStorage.getItem('task-app-theme')
-      if (saved === 'dark' || saved === 'light') return saved
-      return 'light'  
-    } catch {
-      return 'light'
-    }
-  })
+  const [theme, setTheme] = useLocalStorage<Theme>('task-app-theme', 'light')
 
-  //  theme change hone pe localStorage mein save karo
-  //  aur document pe data-theme attribute lagaya— CSS ke liye
   useEffect(() => {
-    localStorage.setItem('task-app-theme', theme)
     document.documentElement.setAttribute('data-theme', theme)
   }, [theme])
 

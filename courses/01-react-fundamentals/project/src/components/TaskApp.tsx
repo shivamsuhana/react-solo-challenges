@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo  } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import type { Dispatch, SetStateAction } from 'react'
 import type { Task } from './TaskList'
 import TaskList from './TaskList'
@@ -6,8 +6,7 @@ import TaskForm from './TaskForm'
 import FilterBar from './FilterBar'
 import StatsPanel from './StatsPanel'
 import { useTheme } from '../contexts/ThemeContext'
-
-
+import useLocalStorage from '../hooks/useLocalStorage'
 
 interface TaskAppProps {
   tasks?: Task[]
@@ -28,11 +27,13 @@ const priorityOrder: Record<string, number> = {
 }
 
 export default function TaskApp(props: TaskAppProps) {
-const tasks = useMemo(() => props.tasks ?? [], [props.tasks])
 
-  useEffect(() => {
-    localStorage.setItem('task-app-tasks', JSON.stringify(tasks))
-  }, [tasks])
+  // useLocalStorage hook use kar rahe hain pehle useEffect se manually save karte the
+  // ab hook automatically save aur load karega
+  const [storedTasks, setStoredTasks] = useLocalStorage<Task[]>('task-app-tasks', [])
+
+  // props.tasks aaya to wo use karo  nahi to storedTasks use karega
+  const tasks = useMemo(() => props.tasks ?? storedTasks, [props.tasks, storedTasks])
 
   const [filter, setFilter] = useState<'all' | 'active' | 'completed'>('all')
   const [sort, setSort] = useState('recently-added')
@@ -41,7 +42,6 @@ const tasks = useMemo(() => props.tasks ?? [], [props.tasks])
   const [debouncedSearch, setDebouncedSearch] = useState('')
   const [categoryFilter, setCategoryFilter] = useState('all')
   const { theme, toggleTheme } = useTheme()
-
 
   const categories = [...new Set(tasks.map(t => t.category).filter(Boolean))]
   const isSearching = rawSearch !== debouncedSearch
@@ -92,12 +92,18 @@ const tasks = useMemo(() => props.tasks ?? [], [props.tasks])
   function handleAddTask(task: Task) {
     if (props.setTasks) {
       props.setTasks(prev => [...prev, task])
+    } else {
+      setStoredTasks(prev => [...prev, task])
     }
   }
 
   function handleToggle(id: string | number) {
     if (props.setTasks) {
       props.setTasks(prev => prev.map(t =>
+        t.id === id ? { ...t, completed: !t.completed } : t
+      ))
+    } else {
+      setStoredTasks(prev => prev.map(t =>
         t.id === id ? { ...t, completed: !t.completed } : t
       ))
     }
@@ -113,18 +119,19 @@ const tasks = useMemo(() => props.tasks ?? [], [props.tasks])
       props.setTasks(prev => prev.map(t =>
         t.id === id ? { ...t, ...updates } : t
       ))
+    } else {
+      setStoredTasks(prev => prev.map(t =>
+        t.id === id ? { ...t, ...updates } : t
+      ))
     }
   }
 
   return (
-    <div>
+    <div data-theme={theme}>
 
-      <div data-theme={theme}>
-        <button id="theme-toggle" onClick={toggleTheme}>
-          {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
-        </button>
-        
-      </div>
+      <button id="theme-toggle" onClick={toggleTheme}>
+        {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
+      </button>
 
       <p id="task-count">{countText}</p>
 
