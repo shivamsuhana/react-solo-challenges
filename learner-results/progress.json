@@ -1,23 +1,23 @@
 {
-  "lastUpdated": "2026-06-24T04:30:15.804Z",
+  "lastUpdated": "2026-06-24T04:50:32.480Z",
   "pathway": {
     "name": "Modern React Engineer",
     "version": "1.0.0",
-    "overallScore": 30.1,
-    "completionPercentage": 24.5,
+    "overallScore": 30,
+    "completionPercentage": 26.4,
     "badgeLevel": "none",
     "totalChallenges": 53,
-    "completedChallenges": 13
+    "completedChallenges": 14
   },
   "courses": {
     "01-react-fundamentals": {
       "courseId": "01-react-fundamentals",
       "courseName": "React Fundamentals",
-      "averageScore": 91.3,
-      "completionPercentage": 56.5,
+      "averageScore": 91,
+      "completionPercentage": 60.9,
       "badgeLevel": "bronze",
       "totalChallenges": 23,
-      "completedChallenges": 13,
+      "completedChallenges": 14,
       "challenges": {
         "01-static-task-display": {
           "challengeId": "01-static-task-display",
@@ -204,10 +204,25 @@
           "challengeName": "Due Dates and Sorting",
           "passed": true,
           "score": 97.9,
-          "lastRun": "2026-06-24T04:30:09.195Z",
+          "lastRun": "2026-06-24T04:31:27.155Z",
           "scores": {
             "functionalTests": 100,
             "codeQuality": 98,
+            "architecture": 100,
+            "bestPractices": 100,
+            "e2eTests": 100,
+            "aiReview": 88
+          }
+        },
+        "14-task-statistics-dashboard": {
+          "challengeId": "14-task-statistics-dashboard",
+          "challengeName": "Task Statistics Dashboard",
+          "passed": true,
+          "score": 86.545,
+          "lastRun": "2026-06-24T04:50:25.091Z",
+          "scores": {
+            "functionalTests": 66.7,
+            "codeQuality": 100,
             "architecture": 100,
             "bestPractices": 100,
             "e2eTests": 100,

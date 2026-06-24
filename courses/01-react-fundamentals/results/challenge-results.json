@@ -4547,7 +4547,7 @@
   {
     "challengeId": "13-due-dates-and-sorting",
     "challengeName": "Due Dates and Sorting",
-    "timestamp": "2026-06-24T04:30:09.195Z",
+    "timestamp": "2026-06-24T04:31:27.155Z",
     "scores": {
       "functionalTests": 100,
       "codeQuality": 98,
@@ -4577,7 +4577,7 @@
               "fullName": " Challenge 13: Due Dates and Sorting TaskCard should render title",
               "status": "passed",
               "title": "TaskCard should render title",
-              "duration": 11,
+              "duration": 10,
               "failureMessages": []
             },
             {
@@ -4588,12 +4588,12 @@
               "fullName": " Challenge 13: Due Dates and Sorting TaskList should render tasks",
               "status": "passed",
               "title": "TaskList should render tasks",
-              "duration": 2,
+              "duration": 3,
               "failureMessages": []
             }
           ],
-          "startTime": 1782275410039,
-          "endTime": 1782275410052,
+          "startTime": 1782275488061,
+          "endTime": 1782275488074,
           "status": "passed",
           "message": "",
           "name": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/tests/challenge-13.test.tsx"
@@ -4759,12 +4759,12 @@
                           "workerIndex": 0,
                           "parallelIndex": 0,
                           "status": "passed",
-                          "duration": 335,
+                          "duration": 341,
                           "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2026-06-24T04:30:12.567Z",
+                          "startTime": "2026-06-24T04:31:30.685Z",
                           "annotations": [],
                           "attachments": []
                         }
@@ -4786,41 +4786,335 @@
     },
     "aiReviewResults": {
       "challengeId": "13-due-dates-and-sorting",
-      "timestamp": "2026-06-24T04:30:13.284Z",
+      "timestamp": "2026-06-24T04:31:31.391Z",
       "score": 88,
       "feedback": [],
       "strengths": [
         "The code is well-structured and follows a consistent naming convention.",
-        "The use of TypeScript and functional components makes the code more maintainable and easier to understand.",
-        "The code includes clear and concise comments, which helps with readability."
+        "The use of TypeScript and functional components makes the code more maintainable and efficient.",
+        "The code includes clear and concise comments to explain the functionality."
       ],
       "improvements": [
-        "Some of the functions in the TaskCard component are quite long and complex. Consider breaking them down into smaller, more manageable functions.",
-        "The getDueDateLabel function could be simplified by using a more concise conditional statement.",
-        "The TaskApp component has a lot of state and props being passed around. Consider using a more modular approach, such as breaking it down into smaller components or using a state management library like Redux."
+        "Some of the functions, such as `getDueDateLabel`, are quite long and complex. Consider breaking them down into smaller functions for better readability and maintainability.",
+        "The `TaskCard` component has a lot of props. Consider using a prop validation library like `prop-types` to ensure that the props are correctly typed and to provide better error messages.",
+        "The `TaskForm` component uses a lot of state variables. Consider using a state management library like `react-hook-form` to simplify the state management and validation."
       ],
       "readability": 85,
       "maintainability": 90,
-      "overall": "The code is well-structured and maintainable, but there are some areas that could be improved for better readability and modularity. With some refactoring and simplification, this code could be even more efficient and easier to understand."
+      "overall": "The code is well-structured and maintainable, but there are some areas for improvement to make it even more efficient and scalable. With some refactoring and optimization, the code can be even more robust and easier to maintain."
     },
     "aiResults": {
       "challengeId": "13-due-dates-and-sorting",
-      "timestamp": "2026-06-24T04:30:13.284Z",
+      "timestamp": "2026-06-24T04:31:31.391Z",
       "score": 88,
       "feedback": [],
       "strengths": [
         "The code is well-structured and follows a consistent naming convention.",
-        "The use of TypeScript and functional components makes the code more maintainable and easier to understand.",
-        "The code includes clear and concise comments, which helps with readability."
+        "The use of TypeScript and functional components makes the code more maintainable and efficient.",
+        "The code includes clear and concise comments to explain the functionality."
       ],
       "improvements": [
-        "Some of the functions in the TaskCard component are quite long and complex. Consider breaking them down into smaller, more manageable functions.",
-        "The getDueDateLabel function could be simplified by using a more concise conditional statement.",
-        "The TaskApp component has a lot of state and props being passed around. Consider using a more modular approach, such as breaking it down into smaller components or using a state management library like Redux."
+        "Some of the functions, such as `getDueDateLabel`, are quite long and complex. Consider breaking them down into smaller functions for better readability and maintainability.",
+        "The `TaskCard` component has a lot of props. Consider using a prop validation library like `prop-types` to ensure that the props are correctly typed and to provide better error messages.",
+        "The `TaskForm` component uses a lot of state variables. Consider using a state management library like `react-hook-form` to simplify the state management and validation."
       ],
       "readability": 85,
       "maintainability": 90,
-      "overall": "The code is well-structured and maintainable, but there are some areas that could be improved for better readability and modularity. With some refactoring and simplification, this code could be even more efficient and easier to understand."
+      "overall": "The code is well-structured and maintainable, but there are some areas for improvement to make it even more efficient and scalable. With some refactoring and optimization, the code can be even more robust and easier to maintain."
+    }
+  },
+  {
+    "challengeId": "14-task-statistics-dashboard",
+    "challengeName": "Task Statistics Dashboard",
+    "timestamp": "2026-06-24T04:50:25.091Z",
+    "scores": {
+      "functionalTests": 66.7,
+      "codeQuality": 100,
+      "architecture": 100,
+      "bestPractices": 100,
+      "e2eTests": 100,
+      "aiReview": 88
+    },
+    "totalScore": 86.545,
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "testResults": {
+      "score": 66.7,
+      "passed": false,
+      "totalTests": 3,
+      "passedTests": 2,
+      "failedTests": 1,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 14: Task Statistics Dashboard"
+              ],
+              "fullName": " Challenge 14: Task Statistics Dashboard StatsPanel should have id=\"stats-panel\"",
+              "status": "passed",
+              "title": "StatsPanel should have id=\"stats-panel\"",
+              "duration": 15,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 14: Task Statistics Dashboard"
+              ],
+              "fullName": " Challenge 14: Task Statistics Dashboard StatsPanel should display total and completed",
+              "status": "failed",
+              "title": "StatsPanel should display total and completed",
+              "duration": 6,
+              "failureMessages": [
+                "Unable to find an element with the text: /total:\\s*2/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.\n\nIgnored nodes: comments, script, style\n\u001b[36m<body>\u001b[39m\n  \u001b[36m<div>\u001b[39m\n    \u001b[36m<div\u001b[39m\n      \u001b[33mid\u001b[39m=\u001b[32m\"stats-panel\"\u001b[39m\n    \u001b[36m>\u001b[39m\n      \u001b[36m<p>\u001b[39m\n        \u001b[0mTotal: \u001b[0m\n        \u001b[0m0\u001b[0m\n      \u001b[36m</p>\u001b[39m\n      \u001b[36m<p>\u001b[39m\n        \u001b[0mCompleted: \u001b[0m\n        \u001b[0m0\u001b[0m\n        \u001b[0m (\u001b[0m\n        \u001b[0m0\u001b[0m\n        \u001b[0m%)\u001b[0m\n      \u001b[36m</p>\u001b[39m\n      \u001b[36m<div\u001b[39m\n        \u001b[33maria-valuemax\u001b[39m=\u001b[32m\"100\"\u001b[39m\n        \u001b[33maria-valuemin\u001b[39m=\u001b[32m\"0\"\u001b[39m\n        \u001b[33maria-valuenow\u001b[39m=\u001b[32m\"0\"\u001b[39m\n        \u001b[33mrole\u001b[39m=\u001b[32m\"progressbar\"\u001b[39m\n        \u001b[33mstyle\u001b[39m=\u001b[32m\"width: 100%; background-color: rgb(238, 238, 238); height: 10px;\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<div\u001b[39m\n          \u001b[33mstyle\u001b[39m=\u001b[32m\"width: 0%; background-color: green; height: 10px;\"\u001b[39m\n        \u001b[36m/>\u001b[39m\n      \u001b[36m</div>\u001b[39m\n      \u001b[36m<p>\u001b[39m\n        \u001b[0mActive: \u001b[0m\n        \u001b[0m0\u001b[0m\n      \u001b[36m</p>\u001b[39m\n      \u001b[36m<p>\u001b[39m\n        \u001b[0mOverdue: \u001b[0m\n        \u001b[0m0\u001b[0m\n      \u001b[36m</p>\u001b[39m\n    \u001b[36m</div>\u001b[39m\n  \u001b[36m</div>\u001b[39m\n\u001b[36m</body>\u001b[39m"
+              ],
+              "location": {
+                "line": 37,
+                "column": 19
+              }
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 14: Task Statistics Dashboard"
+              ],
+              "fullName": " Challenge 14: Task Statistics Dashboard TaskList should render tasks",
+              "status": "passed",
+              "title": "TaskList should render tasks",
+              "duration": 4,
+              "failureMessages": []
+            }
+          ],
+          "startTime": 1782276626005,
+          "endTime": 1782276626030,
+          "status": "failed",
+          "message": "",
+          "name": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/tests/challenge-14.test.tsx"
+        }
+      ],
+      "error": "Command failed: npm test -- /Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/tests/challenge-14.test.tsx --run --reporter=json"
+    },
+    "lintResults": {
+      "score": 100,
+      "passed": true,
+      "totalIssues": 0,
+      "errors": 0,
+      "warnings": 0,
+      "details": [
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/src/components/StatsPanel.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/src/components/TaskApp.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        }
+      ]
+    },
+    "architectureResults": {
+      "score": 100,
+      "passed": true,
+      "patternsFound": [
+        "functionalComponent",
+        "useMemo",
+        "props"
+      ],
+      "patternsMissing": [],
+      "details": [
+        {
+          "file": "src/components/StatsPanel.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "useMemo",
+            "props"
+          ],
+          "patternsMissing": []
+        },
+        {
+          "file": "src/components/TaskApp.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "useMemo",
+            "props"
+          ],
+          "patternsMissing": []
+        }
+      ]
+    },
+    "bestPracticesResults": {
+      "score": 100,
+      "passed": true,
+      "issues": [],
+      "details": [],
+      "note": "No best practices requirements specified in challenge"
+    },
+    "e2eResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "details": [
+        {
+          "title": "challenge-14.spec.ts",
+          "file": "challenge-14.spec.ts",
+          "column": 0,
+          "line": 0,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Challenge 14: Task Statistics Dashboard - E2E",
+              "file": "challenge-14.spec.ts",
+              "line": 3,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "should display task list",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 303,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-24T04:50:28.537Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "be2334d46d68155f57f3-364480833597fd92a242",
+                  "file": "challenge-14.spec.ts",
+                  "line": 8,
+                  "column": 3
+                },
+                {
+                  "title": "should display stats panel when implemented",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 105,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-24T04:50:29.209Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "be2334d46d68155f57f3-3e6d44d38890e704d251",
+                  "file": "challenge-14.spec.ts",
+                  "line": 12,
+                  "column": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "screenshots": []
+    },
+    "aiReviewResults": {
+      "challengeId": "14-task-statistics-dashboard",
+      "timestamp": "2026-06-24T04:50:29.362Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "Effective use of memoization with `useMemo` to optimize performance",
+        "Clear and concise code structure with clear separation of concerns",
+        "Good use of TypeScript type annotations to ensure type safety"
+      ],
+      "improvements": [
+        "Consider adding more comments to explain complex logic and edge cases",
+        "Some variable names could be more descriptive (e.g., `debouncedSearch` could be `filteredSearchQuery`)",
+        "Consider using a more robust date library (e.g., `date-fns`) for date calculations"
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The code is well-structured, readable, and maintainable. However, there are some areas for improvement to make it even more robust and efficient."
+    },
+    "aiResults": {
+      "challengeId": "14-task-statistics-dashboard",
+      "timestamp": "2026-06-24T04:50:29.362Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "Effective use of memoization with `useMemo` to optimize performance",
+        "Clear and concise code structure with clear separation of concerns",
+        "Good use of TypeScript type annotations to ensure type safety"
+      ],
+      "improvements": [
+        "Consider adding more comments to explain complex logic and edge cases",
+        "Some variable names could be more descriptive (e.g., `debouncedSearch` could be `filteredSearchQuery`)",
+        "Consider using a more robust date library (e.g., `date-fns`) for date calculations"
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The code is well-structured, readable, and maintainable. However, there are some areas for improvement to make it even more robust and efficient."
     }
   }
 ]

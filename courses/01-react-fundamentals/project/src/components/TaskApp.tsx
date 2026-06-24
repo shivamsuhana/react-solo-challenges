@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo  } from 'react'
 import type { Dispatch, SetStateAction } from 'react'
 import type { Task } from './TaskList'
 import TaskList from './TaskList'
 import TaskForm from './TaskForm'
 import FilterBar from './FilterBar'
+import StatsPanel from './StatsPanel'
 
 interface TaskAppProps {
   tasks?: Task[]
@@ -24,7 +25,7 @@ const priorityOrder: Record<string, number> = {
 }
 
 export default function TaskApp(props: TaskAppProps) {
-  const tasks = props.tasks ?? []
+const tasks = useMemo(() => props.tasks ?? [], [props.tasks])
 
   useEffect(() => {
     localStorage.setItem('task-app-tasks', JSON.stringify(tasks))
@@ -113,6 +114,10 @@ export default function TaskApp(props: TaskAppProps) {
   return (
     <div>
       <p id="task-count">{countText}</p>
+
+      {props.showStatsPanel && (
+        <StatsPanel tasks={tasks} />
+      )}
 
       {isSearching && (
         <p id="searching-indicator">Searching...</p>
