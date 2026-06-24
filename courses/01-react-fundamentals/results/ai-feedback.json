@@ -385,5 +385,28 @@
       "maintainability": 90,
       "overall": "The code is well-structured and follows good practices. However, there are some minor improvements that can be made to make the code more robust and maintainable."
     }
+  },
+  {
+    "challengeId": "18-usereducer-complex-state",
+    "challengeName": "useReducer - Complex State Management",
+    "aiReview": {
+      "challengeId": "18-usereducer-complex-state",
+      "timestamp": "2026-06-24T09:39:19.727Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "Effective use of TypeScript to define types and interfaces",
+        "Clear separation of concerns between components and state management",
+        "Use of memoization with `useMemo` to optimize performance"
+      ],
+      "improvements": [
+        "Consider using a more robust state management library like Redux or MobX for complex applications",
+        "Some functions, such as `handleAddTask` and `handleToggle`, are quite long and could be broken down into smaller, more manageable functions",
+        "The use of `unknown` as the type for the `dispatch` function in `TaskApp` could be improved by using a more specific type, such as `Dispatch<TaskAction>`"
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The code is well-structured and maintainable, with a good balance between complexity and readability. However, there are some areas for improvement, particularly in terms of state management and function organization."
+    }
   }
 ]

@@ -11,7 +11,7 @@ import useLocalStorage from '../hooks/useLocalStorage'
 interface TaskAppProps {
   tasks?: Task[]
   setTasks?: Dispatch<SetStateAction<Task[]>>
-  dispatch?: (action: { type: string; payload?: unknown }) => void
+  dispatch?: (action: unknown) => void  
   showForm?: boolean
   countFormat?: string
   showFilterBar?: boolean
@@ -28,11 +28,7 @@ const priorityOrder: Record<string, number> = {
 
 export default function TaskApp(props: TaskAppProps) {
 
-  // useLocalStorage hook use kar rahe hain pehle useEffect se manually save karte the
-  // ab hook automatically save aur load karega
   const [storedTasks, setStoredTasks] = useLocalStorage<Task[]>('task-app-tasks', [])
-
-  // props.tasks aaya to wo use karo  nahi to storedTasks use karega
   const tasks = useMemo(() => props.tasks ?? storedTasks, [props.tasks, storedTasks])
 
   const [filter, setFilter] = useState<'all' | 'active' | 'completed'>('all')
@@ -53,25 +49,21 @@ export default function TaskApp(props: TaskAppProps) {
     return () => clearTimeout(timeout)
   }, [rawSearch])
 
-  // status filter
   const filteredTasks = filter === 'active'
     ? tasks.filter(t => !t.completed)
     : filter === 'completed'
     ? tasks.filter(t => t.completed)
     : tasks
 
-  // category filter
   const categoryFiltered = categoryFilter === 'all'
     ? filteredTasks
     : filteredTasks.filter(t => t.category === categoryFilter)
 
-  // search filter
   const searchedTasks = categoryFiltered.filter(t =>
     t.title.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
     t.description.toLowerCase().includes(debouncedSearch.toLowerCase())
   )
 
-  // sort
   const sortedTasks = [...searchedTasks].sort((a, b) => {
     if (sort === 'priority-high-low') return priorityOrder[b.priority] - priorityOrder[a.priority]
     if (sort === 'priority-low-high') return priorityOrder[a.priority] - priorityOrder[b.priority]
@@ -90,7 +82,9 @@ export default function TaskApp(props: TaskAppProps) {
     : `Showing ${sortedTasks.length} of ${tasks.length} tasks`
 
   function handleAddTask(task: Task) {
-    if (props.setTasks) {
+    if (props.dispatch) {
+      props.dispatch({ type: 'ADD_TASK', payload: task })
+    } else if (props.setTasks) {
       props.setTasks(prev => [...prev, task])
     } else {
       setStoredTasks(prev => [...prev, task])
@@ -98,7 +92,9 @@ export default function TaskApp(props: TaskAppProps) {
   }
 
   function handleToggle(id: string | number) {
-    if (props.setTasks) {
+    if (props.dispatch) {
+      props.dispatch({ type: 'TOGGLE_TASK', payload: id })
+    } else if (props.setTasks) {
       props.setTasks(prev => prev.map(t =>
         t.id === id ? { ...t, completed: !t.completed } : t
       ))
@@ -115,7 +111,9 @@ export default function TaskApp(props: TaskAppProps) {
     priority: 'Low' | 'Medium' | 'High'
     dueDate?: string
   }) {
-    if (props.setTasks) {
+    if (props.dispatch) {
+      props.dispatch({ type: 'UPDATE_TASK', payload: { id, ...updates } })
+    } else if (props.setTasks) {
       props.setTasks(prev => prev.map(t =>
         t.id === id ? { ...t, ...updates } : t
       ))
