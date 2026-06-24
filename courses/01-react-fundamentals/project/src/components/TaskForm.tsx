@@ -22,6 +22,9 @@ export default function TaskForm(props: TaskFormProps) {
   const [category, setCategory] = useState('General')  
   const [tagsInput, setTagsInput] = useState('')
 
+  const [dueDate, setDueDate] = useState('')
+
+
   function handleSubmit(e: React.FormEvent) {
 
     e.preventDefault()
@@ -45,7 +48,8 @@ export default function TaskForm(props: TaskFormProps) {
       priority: priority,
       completed: false,  
       category: category, 
-      tags: tags,  
+      tags: tags, 
+      dueDate: dueDate || undefined, 
     }
 
     props.onAddTask(newTask)
@@ -55,6 +59,7 @@ export default function TaskForm(props: TaskFormProps) {
     setPriority('Low')
     setCategory('General')
     setTagsInput('')
+    setDueDate('')
   }
 
   return (
@@ -98,6 +103,12 @@ export default function TaskForm(props: TaskFormProps) {
         value={tagsInput}
         onChange={e => setTagsInput(e.target.value)}
         placeholder="Tags (comma separated: urgent, work)"
+      />
+
+      <input
+        type="date"               // browser ka date picker dikhega
+        value={dueDate}
+        onChange={e => setDueDate(e.target.value)}
       />
 
       {error && (

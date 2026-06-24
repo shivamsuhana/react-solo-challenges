@@ -8,6 +8,7 @@ export interface Task {
   completed: boolean
   category: string     // naya field task ki category
   tags: string[] 
+  dueDate?: string 
   
 }
 
@@ -21,7 +22,7 @@ interface TaskListProps {
   tasks?: Task[]
   onToggle?: (id: string | number) => void
   onDelete?: (id: string | number) => void
-  onUpdateTask?: (id: string | number, updates: { title: string; description: string; priority: 'Low' | 'Medium' | 'High' }) => void
+  onUpdateTask?: (id: string | number, updates: { title: string; description: string; priority: 'Low' | 'Medium' | 'High'; dueDate?: string}) => void
   editingId?: string | number | null   
   onEditStart?: (id: string | number) => void 
   onEditEnd?: () => void                        
@@ -46,8 +47,9 @@ export default function TaskList(props: TaskListProps) {
           editingId={props.editingId}        
           onEditStart={props.onEditStart}    
           onEditEnd={props.onEditEnd}    
-           category={task.category}   
-            tags={task.tags}    
+          category={task.category}   
+          tags={task.tags}
+          dueDate={task.dueDate}    
         />
       ))}
     </section>

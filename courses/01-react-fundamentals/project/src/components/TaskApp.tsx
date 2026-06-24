@@ -1,4 +1,4 @@
-import { useState ,useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import type { Dispatch, SetStateAction } from 'react'
 import type { Task } from './TaskList'
 import TaskList from './TaskList'
@@ -17,9 +17,6 @@ interface TaskAppProps {
   linkToTaskDetail?: boolean
 }
 
-
-
-
 const priorityOrder: Record<string, number> = {
   High: 3,
   Medium: 2,
@@ -27,8 +24,6 @@ const priorityOrder: Record<string, number> = {
 }
 
 export default function TaskApp(props: TaskAppProps) {
-
-  
   const tasks = props.tasks ?? []
 
   useEffect(() => {
@@ -41,42 +36,48 @@ export default function TaskApp(props: TaskAppProps) {
   const [rawSearch, setRawSearch] = useState('')
   const [debouncedSearch, setDebouncedSearch] = useState('')
   const [categoryFilter, setCategoryFilter] = useState('all')
-const categories = [...new Set(tasks.map(t => t.category).filter(Boolean))]
 
-   const isSearching = rawSearch !== debouncedSearch
-
+  const categories = [...new Set(tasks.map(t => t.category).filter(Boolean))]
+  const isSearching = rawSearch !== debouncedSearch
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      setDebouncedSearch(rawSearch)  
+      setDebouncedSearch(rawSearch)
     }, 300)
     return () => clearTimeout(timeout)
-  }, [rawSearch]) 
- //status filter
+  }, [rawSearch])
+
+  // status filter
   const filteredTasks = filter === 'active'
     ? tasks.filter(t => !t.completed)
     : filter === 'completed'
     ? tasks.filter(t => t.completed)
     : tasks
 
-    //cat filter
-    const categoryFiltered = categoryFilter === 'all'
-  ? filteredTasks
-  : filteredTasks.filter(t => t.category === categoryFilter)
+  // category filter
+  const categoryFiltered = categoryFilter === 'all'
+    ? filteredTasks
+    : filteredTasks.filter(t => t.category === categoryFilter)
 
-  //search filter function
+  // search filter
   const searchedTasks = categoryFiltered.filter(t =>
     t.title.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
     t.description.toLowerCase().includes(debouncedSearch.toLowerCase())
-)
+  )
 
+  // sort
   const sortedTasks = [...searchedTasks].sort((a, b) => {
     if (sort === 'priority-high-low') return priorityOrder[b.priority] - priorityOrder[a.priority]
     if (sort === 'priority-low-high') return priorityOrder[a.priority] - priorityOrder[b.priority]
     if (sort === 'alphabetical') return a.title.toLowerCase().localeCompare(b.title.toLowerCase())
+    if (sort === 'due-date') {
+      if (!a.dueDate && !b.dueDate) return 0
+      if (!a.dueDate) return 1
+      if (!b.dueDate) return -1
+      return new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime()
+    }
     return 0
   })
-
 
   const countText = props.countFormat === 'completed'
     ? `${tasks.filter(t => t.completed).length} of ${tasks.length} completed`
@@ -96,7 +97,12 @@ const categories = [...new Set(tasks.map(t => t.category).filter(Boolean))]
     }
   }
 
-  function handleUpdateTask(id: string | number, updates: { title: string; description: string; priority: 'Low' | 'Medium' | 'High' }) {
+  function handleUpdateTask(id: string | number, updates: {
+    title: string
+    description: string
+    priority: 'Low' | 'Medium' | 'High'
+    dueDate?: string
+  }) {
     if (props.setTasks) {
       props.setTasks(prev => prev.map(t =>
         t.id === id ? { ...t, ...updates } : t
@@ -117,18 +123,18 @@ const categories = [...new Set(tasks.map(t => t.category).filter(Boolean))]
       )}
 
       {props.showFilterBar && (
-  <FilterBar
-    filter={filter}
-    onFilterChange={setFilter}
-    sort={sort}
-    onSortChange={setSort}
-    search={rawSearch}
-    onSearchChange={setRawSearch}
-    categoryFilter={categoryFilter}        
-    onCategoryChange={setCategoryFilter}   
-    categories={categories}           
-  />
-)}
+        <FilterBar
+          filter={filter}
+          onFilterChange={setFilter}
+          sort={sort}
+          onSortChange={setSort}
+          search={rawSearch}
+          onSearchChange={setRawSearch}
+          categoryFilter={categoryFilter}
+          onCategoryChange={setCategoryFilter}
+          categories={categories}
+        />
+      )}
 
       {sortedTasks.length === 0 && (
         <p id="filter-empty-message">No tasks found</p>

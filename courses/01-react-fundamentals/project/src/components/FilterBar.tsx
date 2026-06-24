@@ -41,15 +41,16 @@ export default function FilterBar(props: FilterBarProps) {
       </select>
 
       <select
-        id="sort-order"
-        value={props.sort}
-        onChange={e => props.onSortChange(e.target.value)}
-      >
-        <option value="recently-added">Recently Added</option>
-        <option value="priority-high-low">Priority: High to Low</option>
-        <option value="priority-low-high">Priority: Low to High</option>
-        <option value="alphabetical">Alphabetical</option>
-      </select>
+  id="sort-order"
+  value={props.sort}
+  onChange={e => props.onSortChange(e.target.value)}
+>
+  <option value="recently-added">Recently Added</option>
+  <option value="priority-high-low">Priority: High to Low</option>
+  <option value="priority-low-high">Priority: Low to High</option>
+  <option value="alphabetical">Alphabetical</option>
+  <option value="due-date">Due Date (Soonest First)</option>  
+</select>
 
       <input
         id="search-input"
