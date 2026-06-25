@@ -7,6 +7,8 @@ import FilterBar from './FilterBar'
 import StatsPanel from './StatsPanel'
 import { useTheme } from '../contexts/ThemeContext'
 import useLocalStorage from '../hooks/useLocalStorage'
+import ErrorBoundary from './ErrorBoundary'
+
 
 interface TaskAppProps {
   tasks?: Task[]
@@ -57,19 +59,16 @@ export default function TaskApp(props: TaskAppProps) {
   // sirf jab koi dependency change ho tab recalculate hoga
   const sortedTasks = useMemo(() => {
 
-    // status filter
     const filtered = filter === 'active'
       ? tasks.filter(t => !t.completed)
       : filter === 'completed'
       ? tasks.filter(t => t.completed)
       : tasks
 
-    // category filter
     const categoryFiltered = categoryFilter === 'all'
       ? filtered
       : filtered.filter(t => t.category === categoryFilter)
 
-    // search filter
     const searched = categoryFiltered.filter(t =>
       t.title.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
       t.description.toLowerCase().includes(debouncedSearch.toLowerCase())
@@ -90,14 +89,12 @@ export default function TaskApp(props: TaskAppProps) {
     })
 
   }, [tasks, filter, categoryFilter, debouncedSearch, sort])
-  // sirf jab yeh cheezein change hon tab recalculate karo
 
   const countText = props.countFormat === 'completed'
     ? `${tasks.filter(t => t.completed).length} of ${tasks.length} completed`
     : `Showing ${sortedTasks.length} of ${tasks.length} tasks`
 
-  // useCallback — har render pe naya function nahi banega
-  // TaskCard ko same function milega — unnecessary re-render nahi hoga
+
   const handleAddTask = useCallback((task: Task) => {
     if (props.dispatch) {
       props.dispatch({ type: 'ADD_TASK', payload: task })
@@ -180,6 +177,7 @@ export default function TaskApp(props: TaskAppProps) {
         <p id="filter-empty-message">No tasks found</p>
       )}
 
+      <ErrorBoundary>
       <TaskList
         tasks={sortedTasks}
         onToggle={handleToggle}
@@ -189,6 +187,7 @@ export default function TaskApp(props: TaskAppProps) {
         onEditStart={id => setEditingId(id)}
         onEditEnd={() => setEditingId(null)}
       />
+      </ErrorBoundary>
     </div>
   )
 }
