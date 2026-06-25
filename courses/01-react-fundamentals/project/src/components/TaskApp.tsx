@@ -186,6 +186,7 @@ export default function TaskApp(props: TaskAppProps) {
         editingId={editingId}
         onEditStart={id => setEditingId(id)}
         onEditEnd={() => setEditingId(null)}
+        linkToTaskDetail={props.linkToTaskDetail} 
       />
       </ErrorBoundary>
     </div>

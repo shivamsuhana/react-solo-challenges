@@ -6,10 +6,9 @@ export interface Task {
   description: string
   priority: 'Low' | 'Medium' | 'High'
   completed: boolean
-  category: string     // naya field task ki category
-  tags: string[] 
-  dueDate?: string 
-  
+  category: string
+  tags: string[]
+  dueDate?: string
 }
 
 const HARDCODED_TASKS: Task[] = [
@@ -22,10 +21,16 @@ interface TaskListProps {
   tasks?: Task[]
   onToggle?: (id: string | number) => void
   onDelete?: (id: string | number) => void
-  onUpdateTask?: (id: string | number, updates: { title: string; description: string; priority: 'Low' | 'Medium' | 'High'; dueDate?: string}) => void
-  editingId?: string | number | null   
-  onEditStart?: (id: string | number) => void 
-  onEditEnd?: () => void                        
+  onUpdateTask?: (id: string | number, updates: {
+    title: string
+    description: string
+    priority: 'Low' | 'Medium' | 'High'
+    dueDate?: string
+  }) => void
+  editingId?: string | number | null
+  onEditStart?: (id: string | number) => void
+  onEditEnd?: () => void
+  linkToTaskDetail?: boolean  // naya prop
 }
 
 export default function TaskList(props: TaskListProps) {
@@ -43,13 +48,14 @@ export default function TaskList(props: TaskListProps) {
           completed={task.completed}
           onToggle={props.onToggle ? () => props.onToggle!(task.id) : undefined}
           onDelete={props.onDelete}
-          onUpdateTask={props.onUpdateTask} 
-          editingId={props.editingId}        
-          onEditStart={props.onEditStart}    
-          onEditEnd={props.onEditEnd}    
-          category={task.category}   
+          onUpdateTask={props.onUpdateTask}
+          editingId={props.editingId}
+          onEditStart={props.onEditStart}
+          onEditEnd={props.onEditEnd}
+          category={task.category}
           tags={task.tags}
-          dueDate={task.dueDate}    
+          dueDate={task.dueDate}
+          linkToTaskDetail={props.linkToTaskDetail}  // naya — pass karo TaskCard ko
         />
       ))}
     </section>

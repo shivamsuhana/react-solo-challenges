@@ -7119,5 +7119,452 @@
       "maintainability": 90,
       "overall": "The code is well-written and demonstrates a good understanding of React and TypeScript. However, there are some minor improvements that can be made to enhance readability and maintainability."
     }
+  },
+  {
+    "challengeId": "21-react-router",
+    "challengeName": "React Router - Routing and Navigation",
+    "timestamp": "2026-06-25T07:06:37.906Z",
+    "scores": {
+      "functionalTests": 100,
+      "codeQuality": 94,
+      "architecture": 100,
+      "bestPractices": 100,
+      "e2eTests": 100,
+      "aiReview": 0
+    },
+    "totalScore": 84.1,
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "testResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 21: React Router - Routing and Navigation"
+              ],
+              "fullName": " Challenge 21: React Router - Routing and Navigation TaskDetailPage should use useParams and render task detail or not found",
+              "status": "passed",
+              "title": "TaskDetailPage should use useParams and render task detail or not found",
+              "duration": 8,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 21: React Router - Routing and Navigation"
+              ],
+              "fullName": " Challenge 21: React Router - Routing and Navigation TaskDetailPage should have back button with id task-detail-back",
+              "status": "passed",
+              "title": "TaskDetailPage should have back button with id task-detail-back",
+              "duration": 2,
+              "failureMessages": []
+            }
+          ],
+          "startTime": 1782371198821,
+          "endTime": 1782371198831,
+          "status": "passed",
+          "message": "",
+          "name": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/tests/challenge-21.test.tsx"
+        }
+      ]
+    },
+    "lintResults": {
+      "score": 94,
+      "passed": true,
+      "totalIssues": 3,
+      "errors": 0,
+      "warnings": 3,
+      "details": [
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/src/App.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/src/components/TaskApp.tsx",
+          "messages": [
+            {
+              "ruleId": "react-hooks/exhaustive-deps",
+              "severity": 1,
+              "message": "React Hook useCallback has a missing dependency: 'props'. Either include it or remove the dependency array. However, 'props' will change when *any* prop changes, so the preferred fix is to destructure the 'props' object outside of the useCallback call and refer to those specific props inside useCallback.",
+              "line": 106,
+              "column": 6,
+              "nodeType": "ArrayExpression",
+              "endLine": 106,
+              "endColumn": 54,
+              "suggestions": [
+                {
+                  "desc": "Update the dependencies array to be: [props, setStoredTasks]",
+                  "fix": {
+                    "range": [
+                      3631,
+                      3679
+                    ],
+                    "text": "[props, setStoredTasks]"
+                  }
+                }
+              ]
+            },
+            {
+              "ruleId": "react-hooks/exhaustive-deps",
+              "severity": 1,
+              "message": "React Hook useCallback has a missing dependency: 'props'. Either include it or remove the dependency array. However, 'props' will change when *any* prop changes, so the preferred fix is to destructure the 'props' object outside of the useCallback call and refer to those specific props inside useCallback.",
+              "line": 120,
+              "column": 6,
+              "nodeType": "ArrayExpression",
+              "endLine": 120,
+              "endColumn": 54,
+              "suggestions": [
+                {
+                  "desc": "Update the dependencies array to be: [props, setStoredTasks]",
+                  "fix": {
+                    "range": [
+                      4110,
+                      4158
+                    ],
+                    "text": "[props, setStoredTasks]"
+                  }
+                }
+              ]
+            },
+            {
+              "ruleId": "react-hooks/exhaustive-deps",
+              "severity": 1,
+              "message": "React Hook useCallback has a missing dependency: 'props'. Either include it or remove the dependency array. However, 'props' will change when *any* prop changes, so the preferred fix is to destructure the 'props' object outside of the useCallback call and refer to those specific props inside useCallback.",
+              "line": 139,
+              "column": 6,
+              "nodeType": "ArrayExpression",
+              "endLine": 139,
+              "endColumn": 54,
+              "suggestions": [
+                {
+                  "desc": "Update the dependencies array to be: [props, setStoredTasks]",
+                  "fix": {
+                    "range": [
+                      4702,
+                      4750
+                    ],
+                    "text": "[props, setStoredTasks]"
+                  }
+                }
+              ]
+            }
+          ],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 3,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "source": "import { useState, useEffect, useMemo, useCallback } from 'react'\nimport type { Dispatch, SetStateAction } from 'react'\nimport type { Task } from './TaskList'\nimport TaskList from './TaskList'\nimport TaskForm from './TaskForm'\nimport FilterBar from './FilterBar'\nimport StatsPanel from './StatsPanel'\nimport { useTheme } from '../contexts/ThemeContext'\nimport useLocalStorage from '../hooks/useLocalStorage'\nimport ErrorBoundary from './ErrorBoundary'\n\n\ninterface TaskAppProps {\n  tasks?: Task[]\n  setTasks?: Dispatch<SetStateAction<Task[]>>\n  dispatch?: (action: unknown) => void\n  showForm?: boolean\n  countFormat?: string\n  showFilterBar?: boolean\n  showStatsPanel?: boolean\n  onDelete?: (id: string | number) => void\n  linkToTaskDetail?: boolean\n}\n\nconst priorityOrder: Record<string, number> = {\n  High: 3,\n  Medium: 2,\n  Low: 1,\n}\n\nexport default function TaskApp(props: TaskAppProps) {\n\n  const [storedTasks, setStoredTasks] = useLocalStorage<Task[]>('task-app-tasks', [])\n  const tasks = useMemo(() => props.tasks ?? storedTasks, [props.tasks, storedTasks])\n\n  const [filter, setFilter] = useState<'all' | 'active' | 'completed'>('all')\n  const [sort, setSort] = useState('recently-added')\n  const [editingId, setEditingId] = useState<string | number | null>(null)\n  const [rawSearch, setRawSearch] = useState('')\n  const [debouncedSearch, setDebouncedSearch] = useState('')\n  const [categoryFilter, setCategoryFilter] = useState('all')\n  const { theme, toggleTheme } = useTheme()\n\n  const categories = useMemo(\n    () => [...new Set(tasks.map(t => t.category).filter(Boolean))],\n    [tasks]\n  )\n\n  const isSearching = rawSearch !== debouncedSearch\n\n  useEffect(() => {\n    const timeout = setTimeout(() => {\n      setDebouncedSearch(rawSearch)\n    }, 300)\n    return () => clearTimeout(timeout)\n  }, [rawSearch])\n\n  // useMemo — filter + search + sort sab ek saath\n  // sirf jab koi dependency change ho tab recalculate hoga\n  const sortedTasks = useMemo(() => {\n\n    const filtered = filter === 'active'\n      ? tasks.filter(t => !t.completed)\n      : filter === 'completed'\n      ? tasks.filter(t => t.completed)\n      : tasks\n\n    const categoryFiltered = categoryFilter === 'all'\n      ? filtered\n      : filtered.filter(t => t.category === categoryFilter)\n\n    const searched = categoryFiltered.filter(t =>\n      t.title.toLowerCase().includes(debouncedSearch.toLowerCase()) ||\n      t.description.toLowerCase().includes(debouncedSearch.toLowerCase())\n    )\n\n    // sort\n    return [...searched].sort((a, b) => {\n      if (sort === 'priority-high-low') return priorityOrder[b.priority] - priorityOrder[a.priority]\n      if (sort === 'priority-low-high') return priorityOrder[a.priority] - priorityOrder[b.priority]\n      if (sort === 'alphabetical') return a.title.toLowerCase().localeCompare(b.title.toLowerCase())\n      if (sort === 'due-date') {\n        if (!a.dueDate && !b.dueDate) return 0\n        if (!a.dueDate) return 1\n        if (!b.dueDate) return -1\n        return new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime()\n      }\n      return 0\n    })\n\n  }, [tasks, filter, categoryFilter, debouncedSearch, sort])\n\n  const countText = props.countFormat === 'completed'\n    ? `${tasks.filter(t => t.completed).length} of ${tasks.length} completed`\n    : `Showing ${sortedTasks.length} of ${tasks.length} tasks`\n\n\n  const handleAddTask = useCallback((task: Task) => {\n    if (props.dispatch) {\n      props.dispatch({ type: 'ADD_TASK', payload: task })\n    } else if (props.setTasks) {\n      props.setTasks(prev => [...prev, task])\n    } else {\n      setStoredTasks(prev => [...prev, task])\n    }\n  }, [props.dispatch, props.setTasks, setStoredTasks])\n\n  const handleToggle = useCallback((id: string | number) => {\n    if (props.dispatch) {\n      props.dispatch({ type: 'TOGGLE_TASK', payload: id })\n    } else if (props.setTasks) {\n      props.setTasks(prev => prev.map(t =>\n        t.id === id ? { ...t, completed: !t.completed } : t\n      ))\n    } else {\n      setStoredTasks(prev => prev.map(t =>\n        t.id === id ? { ...t, completed: !t.completed } : t\n      ))\n    }\n  }, [props.dispatch, props.setTasks, setStoredTasks])\n\n  const handleUpdateTask = useCallback((id: string | number, updates: {\n    title: string\n    description: string\n    priority: 'Low' | 'Medium' | 'High'\n    dueDate?: string\n  }) => {\n    if (props.dispatch) {\n      props.dispatch({ type: 'UPDATE_TASK', payload: { id, ...updates } })\n    } else if (props.setTasks) {\n      props.setTasks(prev => prev.map(t =>\n        t.id === id ? { ...t, ...updates } : t\n      ))\n    } else {\n      setStoredTasks(prev => prev.map(t =>\n        t.id === id ? { ...t, ...updates } : t\n      ))\n    }\n  }, [props.dispatch, props.setTasks, setStoredTasks])\n\n  return (\n    <div data-theme={theme}>\n\n      <button id=\"theme-toggle\" onClick={toggleTheme}>\n        {theme === 'light' ? 'Dark Mode' : 'Light Mode'}\n      </button>\n\n      <p id=\"task-count\">{countText}</p>\n\n      {props.showStatsPanel && (\n        <StatsPanel tasks={tasks} />\n      )}\n\n      {isSearching && (\n        <p id=\"searching-indicator\">Searching...</p>\n      )}\n\n      {props.showForm && (\n        <TaskForm onAddTask={handleAddTask} />\n      )}\n\n      {props.showFilterBar && (\n        <FilterBar\n          filter={filter}\n          onFilterChange={setFilter}\n          sort={sort}\n          onSortChange={setSort}\n          search={rawSearch}\n          onSearchChange={setRawSearch}\n          categoryFilter={categoryFilter}\n          onCategoryChange={setCategoryFilter}\n          categories={categories}\n        />\n      )}\n\n      {sortedTasks.length === 0 && (\n        <p id=\"filter-empty-message\">No tasks found</p>\n      )}\n\n      <ErrorBoundary>\n      <TaskList\n        tasks={sortedTasks}\n        onToggle={handleToggle}\n        onDelete={props.onDelete}\n        onUpdateTask={handleUpdateTask}\n        editingId={editingId}\n        onEditStart={id => setEditingId(id)}\n        onEditEnd={() => setEditingId(null)}\n        linkToTaskDetail={props.linkToTaskDetail} \n      />\n      </ErrorBoundary>\n    </div>\n  )\n}",
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/src/components/TaskCard.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/src/components/TaskDetailPage.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/src/components/TaskList.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        }
+      ]
+    },
+    "architectureResults": {
+      "score": 100,
+      "passed": true,
+      "patternsFound": [
+        "functionalComponent",
+        "props"
+      ],
+      "patternsMissing": [],
+      "details": [
+        {
+          "file": "src/components/TaskDetailPage.tsx",
+          "patternsFound": [
+            "functionalComponent"
+          ],
+          "patternsMissing": [
+            "props"
+          ]
+        },
+        {
+          "file": "src/App.tsx",
+          "patternsFound": [
+            "functionalComponent"
+          ],
+          "patternsMissing": [
+            "props"
+          ]
+        },
+        {
+          "file": "src/components/TaskApp.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "props"
+          ],
+          "patternsMissing": []
+        },
+        {
+          "file": "src/components/TaskList.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "props"
+          ],
+          "patternsMissing": []
+        },
+        {
+          "file": "src/components/TaskCard.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "props"
+          ],
+          "patternsMissing": []
+        }
+      ]
+    },
+    "bestPracticesResults": {
+      "score": 100,
+      "passed": true,
+      "issues": [],
+      "details": [],
+      "note": "No best practices requirements specified in challenge"
+    },
+    "e2eResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 3,
+      "passedTests": 3,
+      "failedTests": 0,
+      "details": [
+        {
+          "title": "challenge-21.spec.ts",
+          "file": "challenge-21.spec.ts",
+          "column": 0,
+          "line": 0,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Challenge 21: React Router - E2E",
+              "file": "challenge-21.spec.ts",
+              "line": 3,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "should display task list",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 336,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-25T07:06:41.493Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "22625d08e539c53447bc-d4276de94028c4486994",
+                  "file": "challenge-21.spec.ts",
+                  "line": 8,
+                  "column": 3
+                },
+                {
+                  "title": "task detail route should be reachable",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 118,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-25T07:06:42.219Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "22625d08e539c53447bc-0603557c1a6fa646b519",
+                  "file": "challenge-21.spec.ts",
+                  "line": 12,
+                  "column": 3
+                },
+                {
+                  "title": "back button should exist on task detail page",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 112,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-25T07:06:42.342Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "22625d08e539c53447bc-f85ca2164f7d61a1e83d",
+                  "file": "challenge-21.spec.ts",
+                  "line": 17,
+                  "column": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "screenshots": []
+    },
+    "aiReviewResults": {
+      "challengeId": "21-react-router",
+      "timestamp": "2026-06-25T07:06:42.504Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "error": "Groq API error (413): Request too large for model `llama-3.1-8b-instant` in organization `org_01kvqd0x9zf3hr9k0w9szc4pee` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Requested 6630, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
+    },
+    "aiResults": {
+      "challengeId": "21-react-router",
+      "timestamp": "2026-06-25T07:06:42.504Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "error": "Groq API error (413): Request too large for model `llama-3.1-8b-instant` in organization `org_01kvqd0x9zf3hr9k0w9szc4pee` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Requested 6630, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
+    }
   }
 ]
