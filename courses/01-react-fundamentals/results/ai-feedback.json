@@ -463,5 +463,28 @@
       "overall": "",
       "error": "Groq API error (413): Request too large for model `llama-3.1-8b-instant` in organization `org_01kvqd0x9zf3hr9k0w9szc4pee` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Requested 6630, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
     }
+  },
+  {
+    "challengeId": "22-data-fetching",
+    "challengeName": "Data Fetching - Loading and Error State",
+    "aiReview": {
+      "challengeId": "22-data-fetching",
+      "timestamp": "2026-06-25T07:09:06.057Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "The code is well-structured and follows a consistent naming convention.",
+        "The use of TypeScript and React hooks is correct and effective.",
+        "The code is well-commented, making it easy to understand the functionality."
+      ],
+      "improvements": [
+        "Consider adding more type annotations for the `fetchData` function and its variables.",
+        "The `AbortController` instance is not being used correctly. It should be used to cancel the fetch request when the component unmounts, but it's not being used in the `finally` block.",
+        "The error handling in the `fetchData` function can be improved. Instead of throwing an error, consider using a more robust error handling mechanism, such as a try-catch block with a specific error type."
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The code is well-structured and effectively implements the required functionality. However, there are some minor improvements that can be made to enhance the code's maintainability and readability."
+    }
   }
 ]

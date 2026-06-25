@@ -7566,5 +7566,289 @@
       "overall": "",
       "error": "Groq API error (413): Request too large for model `llama-3.1-8b-instant` in organization `org_01kvqd0x9zf3hr9k0w9szc4pee` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Requested 6630, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
     }
+  },
+  {
+    "challengeId": "22-data-fetching",
+    "challengeName": "Data Fetching - Loading and Error State",
+    "timestamp": "2026-06-25T07:08:59.767Z",
+    "scores": {
+      "functionalTests": 100,
+      "codeQuality": 100,
+      "architecture": 100,
+      "bestPractices": 100,
+      "e2eTests": 100,
+      "aiReview": 88
+    },
+    "totalScore": 98.2,
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "testResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 3,
+      "passedTests": 3,
+      "failedTests": 0,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 22: Data Fetching - Loading and Error State"
+              ],
+              "fullName": " Challenge 22: Data Fetching - Loading and Error State FetchDemoView should show loading state initially or fetch from API",
+              "status": "passed",
+              "title": "FetchDemoView should show loading state initially or fetch from API",
+              "duration": 13,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 22: Data Fetching - Loading and Error State"
+              ],
+              "fullName": " Challenge 22: Data Fetching - Loading and Error State FetchDemoView should have fetch-list when data is loaded",
+              "status": "passed",
+              "title": "FetchDemoView should have fetch-list when data is loaded",
+              "duration": 3,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 22: Data Fetching - Loading and Error State"
+              ],
+              "fullName": " Challenge 22: Data Fetching - Loading and Error State FetchDemoView should show fetch-error when fetch fails",
+              "status": "passed",
+              "title": "FetchDemoView should show fetch-error when fetch fails",
+              "duration": 2,
+              "failureMessages": []
+            }
+          ],
+          "startTime": 1782371340748,
+          "endTime": 1782371340766,
+          "status": "passed",
+          "message": "",
+          "name": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/tests/challenge-22.test.tsx"
+        }
+      ]
+    },
+    "lintResults": {
+      "score": 100,
+      "passed": true,
+      "totalIssues": 0,
+      "errors": 0,
+      "warnings": 0,
+      "details": [
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/src/App.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/01-react-fundamentals/project/src/components/FetchDemoView.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        }
+      ]
+    },
+    "architectureResults": {
+      "score": 100,
+      "passed": true,
+      "patternsFound": [
+        "functionalComponent",
+        "useState"
+      ],
+      "patternsMissing": [],
+      "details": [
+        {
+          "file": "src/components/FetchDemoView.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "useState"
+          ],
+          "patternsMissing": []
+        },
+        {
+          "file": "src/App.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "useState"
+          ],
+          "patternsMissing": []
+        }
+      ]
+    },
+    "bestPracticesResults": {
+      "score": 100,
+      "passed": true,
+      "issues": [],
+      "details": [],
+      "note": "No best practices requirements specified in challenge"
+    },
+    "e2eResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "details": [
+        {
+          "title": "challenge-22.spec.ts",
+          "file": "challenge-22.spec.ts",
+          "column": 0,
+          "line": 0,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Challenge 22: Data Fetching - E2E",
+              "file": "challenge-22.spec.ts",
+              "line": 3,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "should show loading or list",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 1914,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-25T07:09:03.578Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "897c0b09f5b8225a79bd-7bc66a1771cb4c50b87e",
+                  "file": "challenge-22.spec.ts",
+                  "line": 8,
+                  "column": 3
+                },
+                {
+                  "title": "should eventually show fetch-list when API succeeds",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 114,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-25T07:09:05.888Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "897c0b09f5b8225a79bd-874b54bff2542e762bf2",
+                  "file": "challenge-22.spec.ts",
+                  "line": 19,
+                  "column": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "screenshots": []
+    },
+    "aiReviewResults": {
+      "challengeId": "22-data-fetching",
+      "timestamp": "2026-06-25T07:09:06.057Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "The code is well-structured and follows a consistent naming convention.",
+        "The use of TypeScript and React hooks is correct and effective.",
+        "The code is well-commented, making it easy to understand the functionality."
+      ],
+      "improvements": [
+        "Consider adding more type annotations for the `fetchData` function and its variables.",
+        "The `AbortController` instance is not being used correctly. It should be used to cancel the fetch request when the component unmounts, but it's not being used in the `finally` block.",
+        "The error handling in the `fetchData` function can be improved. Instead of throwing an error, consider using a more robust error handling mechanism, such as a try-catch block with a specific error type."
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The code is well-structured and effectively implements the required functionality. However, there are some minor improvements that can be made to enhance the code's maintainability and readability."
+    },
+    "aiResults": {
+      "challengeId": "22-data-fetching",
+      "timestamp": "2026-06-25T07:09:06.057Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "The code is well-structured and follows a consistent naming convention.",
+        "The use of TypeScript and React hooks is correct and effective.",
+        "The code is well-commented, making it easy to understand the functionality."
+      ],
+      "improvements": [
+        "Consider adding more type annotations for the `fetchData` function and its variables.",
+        "The `AbortController` instance is not being used correctly. It should be used to cancel the fetch request when the component unmounts, but it's not being used in the `finally` block.",
+        "The error handling in the `fetchData` function can be improved. Instead of throwing an error, consider using a more robust error handling mechanism, such as a try-catch block with a specific error type."
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The code is well-structured and effectively implements the required functionality. However, there are some minor improvements that can be made to enhance the code's maintainability and readability."
+    }
   }
 ]
