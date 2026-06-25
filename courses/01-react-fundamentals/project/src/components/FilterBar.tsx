@@ -1,16 +1,27 @@
+import { useRef, useEffect } from 'react'  // useRef aur useEffect import karo
+
 interface FilterBarProps {
   filter: 'all' | 'active' | 'completed'
   onFilterChange: (filter: 'all' | 'active' | 'completed') => void
   sort: string
   onSortChange: (sort: string) => void
-  search: string                      
-  onSearchChange: (search: string) => void 
-  categoryFilter: string                         
-  onCategoryChange: (category: string) => void    
-  categories: string[] 
+  search: string
+  onSearchChange: (search: string) => void
+  categoryFilter: string
+  onCategoryChange: (category: string) => void
+  categories?: string[] 
 }
 
 export default function FilterBar(props: FilterBarProps) {
+
+ 
+  const searchInputRef = useRef<HTMLInputElement>(null)
+
+  
+  useEffect(() => {
+    searchInputRef.current?.focus()
+  }, [])  
+
   return (
     <div id="filter-bar">
 
@@ -34,28 +45,29 @@ export default function FilterBar(props: FilterBarProps) {
         onChange={e => props.onCategoryChange(e.target.value)}
       >
         <option value="all">All categories</option>
-
-        {props.categories.map(cat => (
+        {/* categories ?? [] — agar undefined aaye to empty array use karo */}
+        {(props.categories ?? []).map(cat => (
           <option key={cat} value={cat}>{cat}</option>
         ))}
       </select>
 
       <select
-  id="sort-order"
-  value={props.sort}
-  onChange={e => props.onSortChange(e.target.value)}
->
-  <option value="recently-added">Recently Added</option>
-  <option value="priority-high-low">Priority: High to Low</option>
-  <option value="priority-low-high">Priority: Low to High</option>
-  <option value="alphabetical">Alphabetical</option>
-  <option value="due-date">Due Date (Soonest First)</option>  
-</select>
+        id="sort-order"
+        value={props.sort}
+        onChange={e => props.onSortChange(e.target.value)}
+      >
+        <option value="recently-added">Recently Added</option>
+        <option value="priority-high-low">Priority: High to Low</option>
+        <option value="priority-low-high">Priority: Low to High</option>
+        <option value="alphabetical">Alphabetical</option>
+        <option value="due-date">Due Date (Soonest First)</option>
+      </select>
 
       <input
-        id="search-input"
+        id="search-input"          
         type="text"
-        value={props.search}                         
+        ref={searchInputRef}        
+        value={props.search}
         onChange={e => props.onSearchChange(e.target.value)}
         placeholder="Search tasks..."
       />
@@ -63,7 +75,7 @@ export default function FilterBar(props: FilterBarProps) {
       {props.search && (
         <button
           id="clear-search"
-          onClick={() => props.onSearchChange('')}  
+          onClick={() => props.onSearchChange('')}
         >
           Clear search
         </button>

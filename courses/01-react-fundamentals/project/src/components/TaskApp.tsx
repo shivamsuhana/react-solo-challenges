@@ -9,7 +9,6 @@ import { useTheme } from '../contexts/ThemeContext'
 import useLocalStorage from '../hooks/useLocalStorage'
 import ErrorBoundary from './ErrorBoundary'
 
-
 interface TaskAppProps {
   tasks?: Task[]
   setTasks?: Dispatch<SetStateAction<Task[]>>
@@ -29,6 +28,10 @@ const priorityOrder: Record<string, number> = {
 }
 
 export default function TaskApp(props: TaskAppProps) {
+
+  // props destructure kia ,useCallback mein directly use kra
+  // warna props will change on every render warning aarahi thi 
+  const { dispatch, setTasks, linkToTaskDetail } = props
 
   const [storedTasks, setStoredTasks] = useLocalStorage<Task[]>('task-app-tasks', [])
   const tasks = useMemo(() => props.tasks ?? storedTasks, [props.tasks, storedTasks])
@@ -55,8 +58,6 @@ export default function TaskApp(props: TaskAppProps) {
     return () => clearTimeout(timeout)
   }, [rawSearch])
 
-  // useMemo — filter + search + sort sab ek saath
-  // sirf jab koi dependency change ho tab recalculate hoga
   const sortedTasks = useMemo(() => {
 
     const filtered = filter === 'active'
@@ -74,7 +75,6 @@ export default function TaskApp(props: TaskAppProps) {
       t.description.toLowerCase().includes(debouncedSearch.toLowerCase())
     )
 
-    // sort
     return [...searched].sort((a, b) => {
       if (sort === 'priority-high-low') return priorityOrder[b.priority] - priorityOrder[a.priority]
       if (sort === 'priority-low-high') return priorityOrder[a.priority] - priorityOrder[b.priority]
@@ -94,22 +94,22 @@ export default function TaskApp(props: TaskAppProps) {
     ? `${tasks.filter(t => t.completed).length} of ${tasks.length} completed`
     : `Showing ${sortedTasks.length} of ${tasks.length} tasks`
 
-
+  // destructured values use kar rahe hain instead of props
   const handleAddTask = useCallback((task: Task) => {
-    if (props.dispatch) {
-      props.dispatch({ type: 'ADD_TASK', payload: task })
-    } else if (props.setTasks) {
-      props.setTasks(prev => [...prev, task])
+    if (dispatch) {
+      dispatch({ type: 'ADD_TASK', payload: task })
+    } else if (setTasks) {
+      setTasks(prev => [...prev, task])
     } else {
       setStoredTasks(prev => [...prev, task])
     }
-  }, [props.dispatch, props.setTasks, setStoredTasks])
+  }, [dispatch, setTasks, setStoredTasks])
 
   const handleToggle = useCallback((id: string | number) => {
-    if (props.dispatch) {
-      props.dispatch({ type: 'TOGGLE_TASK', payload: id })
-    } else if (props.setTasks) {
-      props.setTasks(prev => prev.map(t =>
+    if (dispatch) {
+      dispatch({ type: 'TOGGLE_TASK', payload: id })
+    } else if (setTasks) {
+      setTasks(prev => prev.map(t =>
         t.id === id ? { ...t, completed: !t.completed } : t
       ))
     } else {
@@ -117,7 +117,7 @@ export default function TaskApp(props: TaskAppProps) {
         t.id === id ? { ...t, completed: !t.completed } : t
       ))
     }
-  }, [props.dispatch, props.setTasks, setStoredTasks])
+  }, [dispatch, setTasks, setStoredTasks])
 
   const handleUpdateTask = useCallback((id: string | number, updates: {
     title: string
@@ -125,10 +125,10 @@ export default function TaskApp(props: TaskAppProps) {
     priority: 'Low' | 'Medium' | 'High'
     dueDate?: string
   }) => {
-    if (props.dispatch) {
-      props.dispatch({ type: 'UPDATE_TASK', payload: { id, ...updates } })
-    } else if (props.setTasks) {
-      props.setTasks(prev => prev.map(t =>
+    if (dispatch) {
+      dispatch({ type: 'UPDATE_TASK', payload: { id, ...updates } })
+    } else if (setTasks) {
+      setTasks(prev => prev.map(t =>
         t.id === id ? { ...t, ...updates } : t
       ))
     } else {
@@ -136,7 +136,7 @@ export default function TaskApp(props: TaskAppProps) {
         t.id === id ? { ...t, ...updates } : t
       ))
     }
-  }, [props.dispatch, props.setTasks, setStoredTasks])
+  }, [dispatch, setTasks, setStoredTasks])
 
   return (
     <div data-theme={theme}>
@@ -178,16 +178,16 @@ export default function TaskApp(props: TaskAppProps) {
       )}
 
       <ErrorBoundary>
-      <TaskList
-        tasks={sortedTasks}
-        onToggle={handleToggle}
-        onDelete={props.onDelete}
-        onUpdateTask={handleUpdateTask}
-        editingId={editingId}
-        onEditStart={id => setEditingId(id)}
-        onEditEnd={() => setEditingId(null)}
-        linkToTaskDetail={props.linkToTaskDetail} 
-      />
+        <TaskList
+          tasks={sortedTasks}
+          onToggle={handleToggle}
+          onDelete={props.onDelete}
+          onUpdateTask={handleUpdateTask}
+          editingId={editingId}
+          onEditStart={id => setEditingId(id)}
+          onEditEnd={() => setEditingId(null)}
+          linkToTaskDetail={linkToTaskDetail}
+        />
       </ErrorBoundary>
     </div>
   )

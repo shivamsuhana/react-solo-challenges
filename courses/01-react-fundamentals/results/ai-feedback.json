@@ -486,5 +486,21 @@
       "maintainability": 90,
       "overall": "The code is well-structured and effectively implements the required functionality. However, there are some minor improvements that can be made to enhance the code's maintainability and readability."
     }
+  },
+  {
+    "challengeId": "23-useref-focus-management",
+    "challengeName": "useRef - Focus Management",
+    "aiReview": {
+      "challengeId": "23-useref-focus-management",
+      "timestamp": "2026-06-25T07:21:58.098Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "error": "fetch failed"
+    }
   }
 ]
