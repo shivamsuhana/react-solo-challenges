@@ -1354,5 +1354,301 @@
       "overall": "## Review Output\n\n```json\n{\n  \"readability\": 90,\n  \"maintainability\": 85,\n  \"strengths\": [\n    \"Proper use of createSlice and configureStore\",\n    \"Correct TypeScript usage and type definitions\",\n    \"Logical code organization and separation of concerns\"\n  ],\n  \"improvements\": [\n    \"Consider adding a more robust error handling mechanism in uiSlice reducer (src/store/slices/uiSlice.ts)\",\n    \"In src/store/store.ts, consider using the `configureStore` options to enable features like devTools or s",
       "requirementCompliance": 0
     }
+  },
+  {
+    "challengeId": "05-async-thunks",
+    "challengeName": "Async Logic with createAsyncThunk",
+    "timestamp": "2026-07-15T20:44:50.162Z",
+    "scores": {
+      "functionalTests": 100,
+      "codeQuality": 100,
+      "architecture": 75,
+      "bestPractices": 100,
+      "e2eTests": 100,
+      "aiReview": 0
+    },
+    "totalScore": 82.5,
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "testResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 3,
+      "passedTests": 3,
+      "failedTests": 0,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 05: Async Logic with createAsyncThunk"
+              ],
+              "fullName": " Challenge 05: Async Logic with createAsyncThunk usersSlice uses createAsyncThunk",
+              "status": "passed",
+              "title": "usersSlice uses createAsyncThunk",
+              "duration": 1,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 05: Async Logic with createAsyncThunk"
+              ],
+              "fullName": " Challenge 05: Async Logic with createAsyncThunk usersSlice uses extraReducers",
+              "status": "passed",
+              "title": "usersSlice uses extraReducers",
+              "duration": 0,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 05: Async Logic with createAsyncThunk"
+              ],
+              "fullName": " Challenge 05: Async Logic with createAsyncThunk store includes users reducer",
+              "status": "passed",
+              "title": "store includes users reducer",
+              "duration": 0,
+              "failureMessages": []
+            }
+          ],
+          "startTime": 1784148291083,
+          "endTime": 1784148291084,
+          "status": "passed",
+          "message": "",
+          "name": "/Users/krishu/Desktop/challenge-engine-react/courses/02-redux-rtk-query/project/tests/challenge-05.test.tsx"
+        }
+      ]
+    },
+    "lintResults": {
+      "score": 100,
+      "passed": true,
+      "totalIssues": 0,
+      "errors": 0,
+      "warnings": 0,
+      "details": [
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/02-redux-rtk-query/project/src/store/slices/usersSlice.ts",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/02-redux-rtk-query/project/src/store/store.ts",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        }
+      ]
+    },
+    "architectureResults": {
+      "score": 75,
+      "passed": false,
+      "patternsFound": [
+        "reducer",
+        "reducer",
+        "middleware"
+      ],
+      "patternsMissing": [
+        "middleware"
+      ],
+      "details": [
+        {
+          "file": "src/store/slices/usersSlice.ts",
+          "patternsFound": [
+            "reducer"
+          ],
+          "patternsMissing": [
+            "middleware"
+          ]
+        },
+        {
+          "file": "src/store/store.ts",
+          "patternsFound": [
+            "reducer",
+            "middleware"
+          ],
+          "patternsMissing": []
+        }
+      ]
+    },
+    "bestPracticesResults": {
+      "score": 100,
+      "passed": true,
+      "issues": [],
+      "details": [],
+      "note": "No best practices requirements specified in challenge"
+    },
+    "e2eResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "details": [
+        {
+          "title": "challenge-05.spec.ts",
+          "file": "challenge-05.spec.ts",
+          "column": 0,
+          "line": 0,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Challenge 05: Async Thunks - E2E",
+              "file": "challenge-05.spec.ts",
+              "line": 3,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "should load challenge 05 page",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 196,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-07-15T20:44:54.623Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "ec25b63e8ac6a5e53e87-a0356a2890abe11abcb0",
+                  "file": "challenge-05.spec.ts",
+                  "line": 8,
+                  "column": 3
+                },
+                {
+                  "title": "should have challenge content",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 188,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-07-15T20:44:55.054Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "ec25b63e8ac6a5e53e87-35d9e52e621ddedf3eac",
+                  "file": "challenge-05.spec.ts",
+                  "line": 13,
+                  "column": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "screenshots": []
+    },
+    "aiReviewResults": {
+      "challengeId": "05-async-thunks",
+      "timestamp": "2026-07-15T20:44:55.312Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [
+        "Proper use of createAsyncThunk and extraReducers for handling pending, fulfilled, and rejected states.\",",
+        "Correct implementation of the users reducer and store integration.\",",
+        "Use of TypeScript for type safety and interface definitions.",
+        "improvements\": [",
+        "In usersSlice.ts, consider using a more robust error handling approach, such as storing the error message in the state instead of overwriting it with a generic message. (src/store/slices/usersSlice.ts)\","
+      ],
+      "improvements": [
+        "In usersSlice.ts, consider using a more robust error handling approach, such as storing the error message in the state instead of overwriting it with a generic message. (src/store/slices/usersSlice.ts)\",",
+        "In store.ts, consider adding a more robust middleware setup, such as enabling serializing and deserializing of actions. (src/store/store.ts)\",",
+        "In counterSlice.ts and uiSlice.ts, consider using the `createSlice` function with a more robust initialState setup, such as using a default value or a factory function. (src/store/slices/counterSlice.ts, src/store/slices/uiSlice.ts)",
+        "requirementCompliance\": 90"
+      ],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "## Review Output\n\n```json\n{\n  \"readability\": 85,\n  \"maintainability\": 80,\n  \"strengths\": [\n    \"Proper use of createAsyncThunk and extraReducers for handling pending, fulfilled, and rejected states.\",\n    \"Correct implementation of the users reducer and store integration.\",\n    \"Use of TypeScript for type safety and interface definitions.\"\n  ],\n  \"improvements\": [\n    \"In usersSlice.ts, consider using a more robust error handling approach, such as storing the error message in the state instead o",
+      "requirementCompliance": 0
+    },
+    "aiResults": {
+      "challengeId": "05-async-thunks",
+      "timestamp": "2026-07-15T20:44:55.312Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [
+        "Proper use of createAsyncThunk and extraReducers for handling pending, fulfilled, and rejected states.\",",
+        "Correct implementation of the users reducer and store integration.\",",
+        "Use of TypeScript for type safety and interface definitions.",
+        "improvements\": [",
+        "In usersSlice.ts, consider using a more robust error handling approach, such as storing the error message in the state instead of overwriting it with a generic message. (src/store/slices/usersSlice.ts)\","
+      ],
+      "improvements": [
+        "In usersSlice.ts, consider using a more robust error handling approach, such as storing the error message in the state instead of overwriting it with a generic message. (src/store/slices/usersSlice.ts)\",",
+        "In store.ts, consider adding a more robust middleware setup, such as enabling serializing and deserializing of actions. (src/store/store.ts)\",",
+        "In counterSlice.ts and uiSlice.ts, consider using the `createSlice` function with a more robust initialState setup, such as using a default value or a factory function. (src/store/slices/counterSlice.ts, src/store/slices/uiSlice.ts)",
+        "requirementCompliance\": 90"
+      ],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "## Review Output\n\n```json\n{\n  \"readability\": 85,\n  \"maintainability\": 80,\n  \"strengths\": [\n    \"Proper use of createAsyncThunk and extraReducers for handling pending, fulfilled, and rejected states.\",\n    \"Correct implementation of the users reducer and store integration.\",\n    \"Use of TypeScript for type safety and interface definitions.\"\n  ],\n  \"improvements\": [\n    \"In usersSlice.ts, consider using a more robust error handling approach, such as storing the error message in the state instead o",
+      "requirementCompliance": 0
+    }
   }
 ]
