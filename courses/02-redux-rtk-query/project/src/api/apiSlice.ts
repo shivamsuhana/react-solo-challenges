@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { mockApi } from './mockServer'
 
-// User ka type — name, email, username
 interface User {
   id: number
   name: string
@@ -12,9 +11,11 @@ interface User {
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({ baseUrl: '/' }),
+
+  tagTypes: ['User', 'Post'],
+
   endpoints: (builder) => ({
 
-    // getUsers query — User array return karra hai
     getUsers: builder.query<User[], void>({
       queryFn: async () => {
         try {
@@ -23,10 +24,33 @@ export const apiSlice = createApi({
         } catch (error) {
           return { error: { status: 'CUSTOM_ERROR', error: String(error) } }
         }
-      }
+      },
+
+     
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.map(({ id }) => ({ type: 'User' as const, id })),
+              { type: 'User' as const, id: 'LIST' },
+            ]
+          : [{ type: 'User' as const, id: 'LIST' }]
+    }),
+
+    addUser: builder.mutation<User, Partial<User>>({
+      queryFn: async (newUser) => {
+        try {
+          const data = { id: Date.now(), name: '', email: '', username: '', ...newUser }
+          return { data }
+        } catch (error) {
+          return { error: { status: 'CUSTOM_ERROR', error: String(error) } }
+        }
+      },
+
+   
+      invalidatesTags: [{ type: 'User', id: 'LIST' }]
     })
 
   })
 })
 
-export const { useGetUsersQuery } = apiSlice
+export const { useGetUsersQuery, useAddUserMutation } = apiSlice
