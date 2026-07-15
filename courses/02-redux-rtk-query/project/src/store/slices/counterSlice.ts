@@ -1,4 +1,3 @@
-// createSlice import karo Redux Toolkit se
 import { createSlice } from '@reduxjs/toolkit'
 
 const counterSlice = createSlice({

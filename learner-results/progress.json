@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-07-15T20:14:11.664Z",
+  "lastUpdated": "2026-07-15T20:31:32.853Z",
   "pathway": {
     "name": "Modern React Engineer",
     "version": "1.0.0",
-    "overallScore": 58.8,
-    "completionPercentage": 47.2,
+    "overallScore": 58.3,
+    "completionPercentage": 49.1,
     "badgeLevel": "none",
     "totalChallenges": 53,
-    "completedChallenges": 25
+    "completedChallenges": 26
   },
   "courses": {
     "01-react-fundamentals": {
@@ -369,11 +369,11 @@
     "02-redux-rtk-query": {
       "courseId": "02-redux-rtk-query",
       "courseName": "Redux & RTK Query",
-      "averageScore": 87.3,
-      "completionPercentage": 15.4,
+      "averageScore": 85.8,
+      "completionPercentage": 23.1,
       "badgeLevel": "none",
       "totalChallenges": 13,
-      "completedChallenges": 2,
+      "completedChallenges": 3,
       "challenges": {
         "01-store-setup": {
           "challengeId": "01-store-setup",
@@ -403,6 +403,21 @@
             "bestPractices": 100,
             "e2eTests": 100,
             "aiReview": 0
+          }
+        },
+        "03-reading-dispatching": {
+          "challengeId": "03-reading-dispatching",
+          "challengeName": "Reading and Dispatching in Components",
+          "passed": true,
+          "score": 82.905,
+          "lastRun": "2026-07-15T20:31:04.750Z",
+          "scores": {
+            "functionalTests": 100,
+            "codeQuality": 100,
+            "architecture": 0,
+            "bestPractices": 100,
+            "e2eTests": 66.7,
+            "aiReview": 86
           }
         }
       }
