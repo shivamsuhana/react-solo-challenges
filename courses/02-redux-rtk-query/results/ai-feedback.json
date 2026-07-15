@@ -206,5 +206,32 @@
       "overall": "The code meets most requirements and demonstrates a good understanding of RTK Query. However, there are areas for improvement regarding code organization, naming conventions, and error handling.",
       "requirementCompliance": 90
     }
+  },
+  {
+    "challengeId": "09-mutations",
+    "challengeName": "Mutations with useMutation",
+    "aiReview": {
+      "challengeId": "09-mutations",
+      "timestamp": "2026-07-15T21:23:15.672Z",
+      "score": 79,
+      "feedback": [],
+      "strengths": [
+        "Correct use of RTK Query",
+        "Proper hook usage",
+        "Store integration and reducer setup"
+      ],
+      "improvements": [
+        "Invalidate Post list tag when new user is added (apiSlice.ts)",
+        "Invalidate User list tag when new post is added (apiSlice.ts)",
+        "Handle mutation failure in AddPostForm (AddPostForm.tsx)",
+        "Break up mockServer.ts into smaller files",
+        "Break up apiSlice.ts into smaller files",
+        "Use react-hook-form to manage form state in AddPostForm (AddPostForm.tsx)"
+      ],
+      "readability": 80,
+      "maintainability": 70,
+      "overall": "The code meets most functional requirements and uses RTK Query correctly. However, there are a few areas that need improvement to make the code more maintainable and extensible.",
+      "requirementCompliance": 85
+    }
   }
 ]

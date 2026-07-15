@@ -8,10 +8,15 @@ interface User {
   username: string
 }
 
+interface Post {
+  id: number
+  title: string
+  body: string
+}
+
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({ baseUrl: '/' }),
-
   tagTypes: ['User', 'Post'],
 
   endpoints: (builder) => ({
@@ -25,8 +30,6 @@ export const apiSlice = createApi({
           return { error: { status: 'CUSTOM_ERROR', error: String(error) } }
         }
       },
-
-     
       providesTags: (result) =>
         result
           ? [
@@ -45,12 +48,31 @@ export const apiSlice = createApi({
           return { error: { status: 'CUSTOM_ERROR', error: String(error) } }
         }
       },
-
-   
       invalidatesTags: [{ type: 'User', id: 'LIST' }]
+    }),
+
+ 
+    addPost: builder.mutation<Post, Omit<Post, 'id'>>({
+      queryFn: async (newPost) => {
+        try {
+          const data: Post = {
+            id: Date.now(),
+            title: newPost.title,
+            body: newPost.body,
+          }
+          return { data }
+        } catch (error) {
+          return { error: { status: 'CUSTOM_ERROR', error: String(error) } }
+        }
+      },
+      invalidatesTags: [{ type: 'Post', id: 'LIST' }]
     })
 
   })
 })
 
-export const { useGetUsersQuery, useAddUserMutation } = apiSlice
+export const {
+  useGetUsersQuery,
+  useAddUserMutation,
+  useAddPostMutation,  
+} = apiSlice
