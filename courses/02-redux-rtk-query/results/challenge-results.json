@@ -1650,5 +1650,296 @@
       "overall": "## Review Output\n\n```json\n{\n  \"readability\": 85,\n  \"maintainability\": 80,\n  \"strengths\": [\n    \"Proper use of createAsyncThunk and extraReducers for handling pending, fulfilled, and rejected states.\",\n    \"Correct implementation of the users reducer and store integration.\",\n    \"Use of TypeScript for type safety and interface definitions.\"\n  ],\n  \"improvements\": [\n    \"In usersSlice.ts, consider using a more robust error handling approach, such as storing the error message in the state instead o",
       "requirementCompliance": 0
     }
+  },
+  {
+    "challengeId": "06-rtk-query-setup",
+    "challengeName": "RTK Query Setup and API Slice",
+    "timestamp": "2026-07-15T20:52:07.787Z",
+    "scores": {
+      "functionalTests": 100,
+      "codeQuality": 100,
+      "architecture": 100,
+      "bestPractices": 100,
+      "e2eTests": 100,
+      "aiReview": 50
+    },
+    "totalScore": 92.5,
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "testResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 3,
+      "passedTests": 3,
+      "failedTests": 0,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 06: RTK Query Setup"
+              ],
+              "fullName": " Challenge 06: RTK Query Setup apiSlice uses createApi",
+              "status": "passed",
+              "title": "apiSlice uses createApi",
+              "duration": 1,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 06: RTK Query Setup"
+              ],
+              "fullName": " Challenge 06: RTK Query Setup apiSlice has baseQuery or fetchBaseQuery",
+              "status": "passed",
+              "title": "apiSlice has baseQuery or fetchBaseQuery",
+              "duration": 0,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 06: RTK Query Setup"
+              ],
+              "fullName": " Challenge 06: RTK Query Setup store includes API reducer and middleware",
+              "status": "passed",
+              "title": "store includes API reducer and middleware",
+              "duration": 0,
+              "failureMessages": []
+            }
+          ],
+          "startTime": 1784148728687,
+          "endTime": 1784148728688,
+          "status": "passed",
+          "message": "",
+          "name": "/Users/krishu/Desktop/challenge-engine-react/courses/02-redux-rtk-query/project/tests/challenge-06.test.tsx"
+        }
+      ]
+    },
+    "lintResults": {
+      "score": 100,
+      "passed": true,
+      "totalIssues": 0,
+      "errors": 0,
+      "warnings": 0,
+      "details": [
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/02-redux-rtk-query/project/src/api/apiSlice.ts",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/02-redux-rtk-query/project/src/store/store.ts",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        }
+      ]
+    },
+    "architectureResults": {
+      "score": 100,
+      "passed": true,
+      "patternsFound": [
+        "reducer",
+        "middleware"
+      ],
+      "patternsMissing": [],
+      "details": [
+        {
+          "file": "src/store/store.ts",
+          "patternsFound": [
+            "reducer",
+            "middleware"
+          ],
+          "patternsMissing": []
+        },
+        {
+          "file": "src/api/apiSlice.ts",
+          "patternsFound": [],
+          "patternsMissing": []
+        }
+      ]
+    },
+    "bestPracticesResults": {
+      "score": 100,
+      "passed": true,
+      "issues": [],
+      "details": [],
+      "note": "No best practices requirements specified in challenge"
+    },
+    "e2eResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "details": [
+        {
+          "title": "challenge-06.spec.ts",
+          "file": "challenge-06.spec.ts",
+          "column": 0,
+          "line": 0,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Challenge 06: RTK Query Setup - E2E",
+              "file": "challenge-06.spec.ts",
+              "line": 3,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "should load challenge 06 page",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 440,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-07-15T20:52:12.254Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "fdfd0a4bbce1fa4a4eed-d3b758c659b53a3389b9",
+                  "file": "challenge-06.spec.ts",
+                  "line": 8,
+                  "column": 3
+                },
+                {
+                  "title": "should have challenge content",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 193,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-07-15T20:52:13.100Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "fdfd0a4bbce1fa4a4eed-da9ec0276072769975b0",
+                  "file": "challenge-06.spec.ts",
+                  "line": 13,
+                  "column": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "screenshots": []
+    },
+    "aiReviewResults": {
+      "challengeId": "06-rtk-query-setup",
+      "timestamp": "2026-07-15T20:52:13.376Z",
+      "score": 50,
+      "feedback": [],
+      "strengths": [
+        "readability\": 85,",
+        "maintainability\": 80,",
+        "improvements\": [",
+        "extract endpoints object into separate function\",",
+        "extract queryFn function into separate function\","
+      ],
+      "improvements": [
+        "readability\": 85,",
+        "maintainability\": 80,",
+        "strengths\": [\"correct use of createApi and fetchBaseQuery\", \"well-organized apiSlice\", \"good use of mockApi\"],",
+        "extract endpoints object into separate function\",",
+        "extract queryFn function into separate function\","
+      ],
+      "readability": 85,
+      "maintainability": 80,
+      "overall": "## Review\n\n### Readability: 85\nThe code is generally well-structured, but there are some areas that could be improved for better readability.\n\n### Maintainability: 80\nThe code is maintainable, but there are some potential code smells and anti-patterns that could be addressed.\n\n### Strengths:\n\n* The use of `createApi` and `fetchBaseQuery` is correct.\n* The `apiSlice` is well-organized and easy to understand.\n* The `mockApi` is a good way to simulate a REST API for development and testing.\n\n### Im",
+      "requirementCompliance": 0
+    },
+    "aiResults": {
+      "challengeId": "06-rtk-query-setup",
+      "timestamp": "2026-07-15T20:52:13.376Z",
+      "score": 50,
+      "feedback": [],
+      "strengths": [
+        "readability\": 85,",
+        "maintainability\": 80,",
+        "improvements\": [",
+        "extract endpoints object into separate function\",",
+        "extract queryFn function into separate function\","
+      ],
+      "improvements": [
+        "readability\": 85,",
+        "maintainability\": 80,",
+        "strengths\": [\"correct use of createApi and fetchBaseQuery\", \"well-organized apiSlice\", \"good use of mockApi\"],",
+        "extract endpoints object into separate function\",",
+        "extract queryFn function into separate function\","
+      ],
+      "readability": 85,
+      "maintainability": 80,
+      "overall": "## Review\n\n### Readability: 85\nThe code is generally well-structured, but there are some areas that could be improved for better readability.\n\n### Maintainability: 80\nThe code is maintainable, but there are some potential code smells and anti-patterns that could be addressed.\n\n### Strengths:\n\n* The use of `createApi` and `fetchBaseQuery` is correct.\n* The `apiSlice` is well-organized and easy to understand.\n* The `mockApi` is a good way to simulate a REST API for development and testing.\n\n### Im",
+      "requirementCompliance": 0
+    }
   }
 ]
