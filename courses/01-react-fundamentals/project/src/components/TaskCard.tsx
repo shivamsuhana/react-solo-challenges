@@ -125,14 +125,22 @@ const TaskCard = React.memo(function TaskCard(props: TaskCardProps) {
     <article id="task-card" data-completed={props.completed}>
 
       {props.onToggle && (
-        <input
+        
+        <label >
+
+          <input
           type="checkbox"
           checked={props.completed ?? false}
           onChange={props.onToggle}
         />
+
+        Completed...!
+        </label>
+
+        
+
       )}
 
-      {/* linkToTaskDetail true ho to title Link hoga — nahi to normal h2 */}
       {props.linkToTaskDetail ? (
         <h2>
           <Link to={`/challenge/21-react-router/task/${props.id}`}>

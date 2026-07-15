@@ -30,7 +30,7 @@ const priorityOrder: Record<string, number> = {
 export default function TaskApp(props: TaskAppProps) {
 
   // props destructure kia ,useCallback mein directly use kra
-  // warna props will change on every render warning aarahi thi 
+  // ni to  props will change on every render warning aarahi thi 
   const { dispatch, setTasks, linkToTaskDetail } = props
 
   const [storedTasks, setStoredTasks] = useLocalStorage<Task[]>('task-app-tasks', [])
