@@ -307,5 +307,21 @@
       "overall": "The code meets most requirements and demonstrates good RTK Query best practices, but there are some minor improvements to be made for better maintainability and user experience.",
       "requirementCompliance": 90
     }
+  },
+  {
+    "challengeId": "13-query-parameters",
+    "challengeName": "Query with Parameters and Detail View",
+    "aiReview": {
+      "challengeId": "13-query-parameters",
+      "timestamp": "2026-07-16T11:29:31.287Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "error": "Groq API error (413): Request too large for model `llama-3.1-8b-instant` in organization `org_01kvqd0x9zf3hr9k0w9szc4pee` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Requested 6766, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
+    }
   }
 ]

@@ -51,7 +51,6 @@ export const apiSlice = createApi({
       invalidatesTags: [{ type: 'User', id: 'LIST' }]
     }),
 
-
     getPosts: builder.query<Post[], void>({
       queryFn: async () => {
         try {
@@ -61,6 +60,24 @@ export const apiSlice = createApi({
         }
       },
       providesTags: [{ type: 'Post', id: 'LIST' }]
+    }),
+
+   
+    getPostById: builder.query<Post, number>({
+      queryFn: async (id) => {
+        try {
+          const data: Post = {
+            id,
+            title: `Post ${id}`,
+            body: `This is the body of post ${id}`,
+          }
+          return { data }
+        } catch (error) {
+          return { error: { status: 'CUSTOM_ERROR', error: String(error) } }
+        }
+      },
+ 
+      providesTags: (_result, _error, id) => [{ type: 'Post', id }]
     }),
 
     addPost: builder.mutation<Post, Omit<Post, 'id'>>({
@@ -78,21 +95,15 @@ export const apiSlice = createApi({
       },
       invalidatesTags: [{ type: 'Post', id: 'LIST' }],
 
-
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
-
-
         const patchResult = dispatch(
           apiSlice.util.updateQueryData('getPosts', undefined, (draft) => {
-
             draft.push({ ...arg, id: Date.now() })
           })
         )
-
         try {
           await queryFulfilled
         } catch {
-
           patchResult.undo()
         }
       }
@@ -106,4 +117,5 @@ export const {
   useAddUserMutation,
   useGetPostsQuery,
   useAddPostMutation,
+  useGetPostByIdQuery,  
 } = apiSlice

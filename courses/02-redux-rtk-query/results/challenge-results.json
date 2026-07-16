@@ -3840,5 +3840,266 @@
       "overall": "The code meets most requirements and demonstrates good RTK Query best practices, but there are some minor improvements to be made for better maintainability and user experience.",
       "requirementCompliance": 90
     }
+  },
+  {
+    "challengeId": "13-query-parameters",
+    "challengeName": "Query with Parameters and Detail View",
+    "timestamp": "2026-07-16T11:29:24.919Z",
+    "scores": {
+      "functionalTests": 100,
+      "codeQuality": 100,
+      "architecture": 100,
+      "bestPractices": 100,
+      "e2eTests": 100,
+      "aiReview": 0
+    },
+    "totalScore": 85,
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "testResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 3,
+      "passedTests": 3,
+      "failedTests": 0,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 13: Query with Parameters and Detail View"
+              ],
+              "fullName": " Challenge 13: Query with Parameters and Detail View API slice has getPostById query endpoint",
+              "status": "passed",
+              "title": "API slice has getPostById query endpoint",
+              "duration": 0,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 13: Query with Parameters and Detail View"
+              ],
+              "fullName": " Challenge 13: Query with Parameters and Detail View PostDetail uses useGetPostByIdQuery or generated query hook",
+              "status": "passed",
+              "title": "PostDetail uses useGetPostByIdQuery or generated query hook",
+              "duration": 1,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 13: Query with Parameters and Detail View"
+              ],
+              "fullName": " Challenge 13: Query with Parameters and Detail View PostDetail has post-detail data-testid",
+              "status": "passed",
+              "title": "PostDetail has post-detail data-testid",
+              "duration": 0,
+              "failureMessages": []
+            }
+          ],
+          "startTime": 1784201366061,
+          "endTime": 1784201366062,
+          "status": "passed",
+          "message": "",
+          "name": "/Users/krishu/Desktop/challenge-engine-react/courses/02-redux-rtk-query/project/tests/challenge-13.test.tsx"
+        }
+      ]
+    },
+    "lintResults": {
+      "score": 100,
+      "passed": true,
+      "totalIssues": 0,
+      "errors": 0,
+      "warnings": 0,
+      "details": [
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/02-redux-rtk-query/project/src/api/apiSlice.ts",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/02-redux-rtk-query/project/src/components/PostDetail.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        }
+      ]
+    },
+    "architectureResults": {
+      "score": 100,
+      "passed": true,
+      "patternsFound": [],
+      "patternsMissing": [],
+      "details": [
+        {
+          "file": "src/api/apiSlice.ts",
+          "patternsFound": [],
+          "patternsMissing": []
+        },
+        {
+          "file": "src/components/PostDetail.tsx",
+          "patternsFound": [],
+          "patternsMissing": []
+        }
+      ]
+    },
+    "bestPracticesResults": {
+      "score": 100,
+      "passed": true,
+      "issues": [],
+      "details": [],
+      "note": "No best practices requirements specified in challenge"
+    },
+    "e2eResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "details": [
+        {
+          "title": "challenge-13.spec.ts",
+          "file": "challenge-13.spec.ts",
+          "column": 0,
+          "line": 0,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Challenge 13: Query with Parameters - E2E",
+              "file": "challenge-13.spec.ts",
+              "line": 3,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "should load challenge 13 page with content",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 405,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-07-16T11:29:30.211Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b108b4dbebb7686e0d0c-62f94784cfb44da7d5be",
+                  "file": "challenge-13.spec.ts",
+                  "line": 8,
+                  "column": 3
+                },
+                {
+                  "title": "should show post detail area",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 197,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-07-16T11:29:31.011Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b108b4dbebb7686e0d0c-8dc240493b76fcf57221",
+                  "file": "challenge-13.spec.ts",
+                  "line": 13,
+                  "column": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "screenshots": []
+    },
+    "aiReviewResults": {
+      "challengeId": "13-query-parameters",
+      "timestamp": "2026-07-16T11:29:31.287Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "error": "Groq API error (413): Request too large for model `llama-3.1-8b-instant` in organization `org_01kvqd0x9zf3hr9k0w9szc4pee` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Requested 6766, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
+    },
+    "aiResults": {
+      "challengeId": "13-query-parameters",
+      "timestamp": "2026-07-16T11:29:31.287Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "error": "Groq API error (413): Request too large for model `llama-3.1-8b-instant` in organization `org_01kvqd0x9zf3hr9k0w9szc4pee` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Requested 6766, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
+    }
   }
 ]
