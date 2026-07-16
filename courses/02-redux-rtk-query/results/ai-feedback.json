@@ -257,5 +257,31 @@
       "overall": "The code meets most of the functional requirements and follows RTK Query best practices, but there are a few areas for improvement.",
       "requirementCompliance": 80
     }
+  },
+  {
+    "challengeId": "11-api-local-state",
+    "challengeName": "API and Local State Together",
+    "aiReview": {
+      "challengeId": "11-api-local-state",
+      "timestamp": "2026-07-16T10:17:29.603Z",
+      "score": 77,
+      "feedback": [],
+      "strengths": [
+        "Correct use of RTK Query",
+        "Proper use of TypeScript",
+        "Well-structured code"
+      ],
+      "improvements": [
+        "Break down the `PostsWithFilters` component into smaller components",
+        "Use the `fetchBaseQuery` to create a custom fetch function",
+        "Use the `skip` option to skip the query if the filter is not changed",
+        "Handle the `error` and `loading` states correctly",
+        "Simplify the component's code using the `useAppSelector` and `useAppDispatch` hooks"
+      ],
+      "readability": 80,
+      "maintainability": 70,
+      "overall": "The code meets most of the functional requirements, but there are a few areas for improvement. The code is generally well-structured and readable, but there are a few areas for improvement. The RTK Query best practices are followed correctly, but there are a few areas for improvement.",
+      "requirementCompliance": 80
+    }
   }
 ]
