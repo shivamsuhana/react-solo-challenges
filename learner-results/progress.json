@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-07-15T21:23:18.216Z",
+  "lastUpdated": "2026-07-16T10:10:05.778Z",
   "pathway": {
     "name": "Modern React Engineer",
     "version": "1.0.0",
-    "overallScore": 59.1,
-    "completionPercentage": 60.4,
+    "overallScore": 59.4,
+    "completionPercentage": 62.3,
     "badgeLevel": "none",
     "totalChallenges": 53,
-    "completedChallenges": 32
+    "completedChallenges": 33
   },
   "courses": {
     "01-react-fundamentals": {
@@ -369,11 +369,11 @@
     "02-redux-rtk-query": {
       "courseId": "02-redux-rtk-query",
       "courseName": "Redux & RTK Query",
-      "averageScore": 88,
-      "completionPercentage": 69.2,
-      "badgeLevel": "bronze",
+      "averageScore": 89,
+      "completionPercentage": 76.9,
+      "badgeLevel": "silver",
       "totalChallenges": 13,
-      "completedChallenges": 9,
+      "completedChallenges": 10,
       "challenges": {
         "01-store-setup": {
           "challengeId": "01-store-setup",
@@ -508,6 +508,21 @@
             "bestPractices": 100,
             "e2eTests": 100,
             "aiReview": 79
+          }
+        },
+        "10-optimistic-updates": {
+          "challengeId": "10-optimistic-updates",
+          "challengeName": "Optimistic Updates",
+          "passed": true,
+          "score": 97.75,
+          "lastRun": "2026-07-16T10:09:55.380Z",
+          "scores": {
+            "functionalTests": 100,
+            "codeQuality": 100,
+            "architecture": 100,
+            "bestPractices": 100,
+            "e2eTests": 100,
+            "aiReview": 85
           }
         }
       }

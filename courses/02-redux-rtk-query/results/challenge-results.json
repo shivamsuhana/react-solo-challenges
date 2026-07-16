@@ -3022,5 +3022,223 @@
       "overall": "The code meets most functional requirements and uses RTK Query correctly. However, there are a few areas that need improvement to make the code more maintainable and extensible.",
       "requirementCompliance": 85
     }
+  },
+  {
+    "challengeId": "10-optimistic-updates",
+    "challengeName": "Optimistic Updates",
+    "timestamp": "2026-07-16T10:09:55.380Z",
+    "scores": {
+      "functionalTests": 100,
+      "codeQuality": 100,
+      "architecture": 100,
+      "bestPractices": 100,
+      "e2eTests": 100,
+      "aiReview": 85
+    },
+    "totalScore": 97.75,
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "testResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 3,
+      "passedTests": 3,
+      "failedTests": 0,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 10: Optimistic Updates"
+              ],
+              "fullName": " Challenge 10: Optimistic Updates API slice mutation has onQueryStarted",
+              "status": "passed",
+              "title": "API slice mutation has onQueryStarted",
+              "duration": 1,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 10: Optimistic Updates"
+              ],
+              "fullName": " Challenge 10: Optimistic Updates optimistic update uses queryFulfilled or updateQueryData",
+              "status": "passed",
+              "title": "optimistic update uses queryFulfilled or updateQueryData",
+              "duration": 0,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 10: Optimistic Updates"
+              ],
+              "fullName": " Challenge 10: Optimistic Updates has rollback or undo on error",
+              "status": "passed",
+              "title": "has rollback or undo on error",
+              "duration": 1,
+              "failureMessages": []
+            }
+          ],
+          "startTime": 1784196596662,
+          "endTime": 1784196596664,
+          "status": "passed",
+          "message": "",
+          "name": "/Users/krishu/Desktop/challenge-engine-react/courses/02-redux-rtk-query/project/tests/challenge-10.test.tsx"
+        }
+      ]
+    },
+    "lintResults": {
+      "score": 100,
+      "passed": true,
+      "totalIssues": 0,
+      "errors": 0,
+      "warnings": 0,
+      "details": [
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/02-redux-rtk-query/project/src/api/apiSlice.ts",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        }
+      ]
+    },
+    "architectureResults": {
+      "score": 100,
+      "passed": true,
+      "patternsFound": [],
+      "patternsMissing": [],
+      "details": [
+        {
+          "file": "src/api/apiSlice.ts",
+          "patternsFound": [],
+          "patternsMissing": []
+        }
+      ]
+    },
+    "bestPracticesResults": {
+      "score": 100,
+      "passed": true,
+      "issues": [],
+      "details": [],
+      "note": "No best practices requirements specified in challenge"
+    },
+    "e2eResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "details": [
+        {
+          "title": "challenge-10.spec.ts",
+          "file": "challenge-10.spec.ts",
+          "column": 0,
+          "line": 0,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Challenge 10: Optimistic Updates - E2E",
+              "file": "challenge-10.spec.ts",
+              "line": 3,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "should load challenge 10 page with content",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 368,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-07-16T10:10:00.813Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "2b6a150d93e258235d20-c73851f46778bc6eb125",
+                  "file": "challenge-10.spec.ts",
+                  "line": 8,
+                  "column": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "screenshots": []
+    },
+    "aiReviewResults": {
+      "challengeId": "10-optimistic-updates",
+      "timestamp": "2026-07-16T10:10:01.679Z",
+      "score": 85,
+      "feedback": [],
+      "strengths": [
+        "Correct implementation of optimistic updates",
+        "Proper use of RTK Query best practices",
+        "Maintainable and extensible code"
+      ],
+      "improvements": [
+        "Break down long functions in mockServer.ts into smaller ones",
+        "Add JSDoc comments to explain the purpose of each function",
+        "Handle errors properly in the addPost mutation queryFn function"
+      ],
+      "readability": 90,
+      "maintainability": 85,
+      "overall": "The code meets most of the functional requirements and follows RTK Query best practices, but there are a few areas for improvement.",
+      "requirementCompliance": 80
+    },
+    "aiResults": {
+      "challengeId": "10-optimistic-updates",
+      "timestamp": "2026-07-16T10:10:01.679Z",
+      "score": 85,
+      "feedback": [],
+      "strengths": [
+        "Correct implementation of optimistic updates",
+        "Proper use of RTK Query best practices",
+        "Maintainable and extensible code"
+      ],
+      "improvements": [
+        "Break down long functions in mockServer.ts into smaller ones",
+        "Add JSDoc comments to explain the purpose of each function",
+        "Handle errors properly in the addPost mutation queryFn function"
+      ],
+      "readability": 90,
+      "maintainability": 85,
+      "overall": "The code meets most of the functional requirements and follows RTK Query best practices, but there are a few areas for improvement.",
+      "requirementCompliance": 80
+    }
   }
 ]
