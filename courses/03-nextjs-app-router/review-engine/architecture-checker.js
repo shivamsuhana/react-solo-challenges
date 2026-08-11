@@ -130,6 +130,7 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
       FunctionDeclaration(path) {
         if (path.node.async) {
           foundPatterns.add('asyncComponent');
+          foundPatterns.add('asyncServerComponent');
         }
         
         if (path.node.async && 
@@ -142,6 +143,7 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
       ArrowFunctionExpression(path) {
         if (path.node.async) {
           foundPatterns.add('asyncComponent');
+          foundPatterns.add('asyncServerComponent');
         }
       },
 
@@ -162,6 +164,9 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
 
       // Check for API route (route.ts)
       CallExpression(path) {
+        if (path.node.callee.name === 'fetch') {
+          foundPatterns.add('fetch');
+        }
         if (path.node.callee.name === 'NextResponse') {
           foundPatterns.add('apiRoute');
         }
@@ -171,6 +176,10 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
             path.node.callee.property.name === 'json') {
           foundPatterns.add('apiRoute');
         }
+      },
+
+      AwaitExpression(path) {
+        foundPatterns.add('await');
       },
 
       // Removed duplicate FunctionDeclaration visitor
