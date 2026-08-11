@@ -205,9 +205,11 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
         }
         if (path.node.callee.name === 'revalidatePath') {
           foundPatterns.add('revalidatePath');
+          foundPatterns.add('revalidate');
         }
         if (path.node.callee.name === 'revalidateTag') {
           foundPatterns.add('revalidateTag');
+          foundPatterns.add('revalidate');
         }
         
         const isResponseJson = path.node.callee.object && 
@@ -249,6 +251,13 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
           if (path.node.value && path.node.value.value === 'no-store') {
             foundPatterns.add('cacheNoStore');
           }
+          if (path.node.value && path.node.value.value === 'force-cache') {
+            foundPatterns.add('fetchCache');
+          }
+        }
+        if (path.node.key && path.node.key.name === 'revalidate') {
+          foundPatterns.add('fetchCache');
+          foundPatterns.add('revalidate');
         }
       },
 

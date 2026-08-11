@@ -14,7 +14,7 @@ export default async function PostsPage() {
   let error: string | null = null;
 
   try {
-    const res = await fetch('https://jsonplaceholder.typicode.com/posts', { cache: 'no-store' });
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts', { next: { revalidate: 60 } });
     if (!res.ok) {
       throw new Error('Failed to fetch posts');
     }
