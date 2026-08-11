@@ -1,21 +1,5 @@
 [
   {
-    "challengeId": "17-fullstack-capstone",
-    "challengeName": "Fullstack Capstone",
-    "aiReview": {
-      "challengeId": "17-fullstack-capstone",
-      "timestamp": "2026-08-11T14:12:32.051Z",
-      "score": 0,
-      "feedback": [],
-      "strengths": [],
-      "improvements": [],
-      "readability": 0,
-      "maintainability": 0,
-      "overall": "",
-      "error": "No files found to review"
-    }
-  },
-  {
     "challengeId": "01-app-router-pages-layout",
     "challengeName": "App Router, Pages, and Layout",
     "aiReview": {
@@ -379,6 +363,29 @@
       "readability": 85,
       "maintainability": 90,
       "overall": "The code is well-structured and follows best practices. However, there are some minor improvements that can be made to make the code even more maintainable and efficient."
+    }
+  },
+  {
+    "challengeId": "17-fullstack-capstone",
+    "challengeName": "Fullstack Capstone",
+    "aiReview": {
+      "challengeId": "17-fullstack-capstone",
+      "timestamp": "2026-08-11T16:35:51.026Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "The use of TypeScript and Next.js App Router is well-implemented, making the codebase robust and maintainable.",
+        "The error handling mechanism is comprehensive, catching both client-side and server-side errors.",
+        "The code is well-organized, with each component and utility function having a clear and specific responsibility."
+      ],
+      "improvements": [
+        "The `generateStaticParams` function is not being used effectively. Since the challenge requires dynamic routing, this function can be removed or modified to generate dynamic parameters.",
+        "The `notFound` function is being called in multiple places. Consider creating a centralized error handling utility function to handle this logic.",
+        "The `LikeButton` component can be improved by adding a loading state and handling edge cases, such as when the user clicks the button multiple times in quick succession."
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The codebase is well-structured and demonstrates a good understanding of Next.js App Router and TypeScript. However, there are some areas for improvement, such as optimizing the error handling mechanism and improving the `LikeButton` component."
     }
   }
 ]

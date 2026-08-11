@@ -3714,45 +3714,140 @@
   {
     "challengeId": "17-fullstack-capstone",
     "challengeName": "Fullstack Capstone",
-    "timestamp": "2026-08-11T14:12:31.141Z",
+    "timestamp": "2026-08-11T16:33:49.158Z",
     "scores": {
-      "functionalTests": 0,
-      "codeQuality": 0,
-      "architecture": 0,
+      "functionalTests": 100,
+      "codeQuality": 100,
+      "architecture": 75,
       "bestPractices": 100,
       "e2eTests": 0,
-      "aiReview": 0
+      "aiReview": 88
     },
-    "totalScore": 10,
-    "passed": false,
+    "totalScore": 80.7,
+    "passed": true,
     "errors": [],
     "warnings": [],
     "testResults": {
-      "score": 0,
-      "passed": false,
-      "error": "Command failed: npm test -- /Users/krishu/Desktop/challenge-engine-react/courses/03-nextjs-app-router/project/tests/challenge-17.test.tsx --run --reporter=json\nsh: vitest: command not found\n",
-      "details": []
+      "score": 100,
+      "passed": true,
+      "totalTests": 3,
+      "passedTests": 3,
+      "failedTests": 0,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 17: Fullstack Capstone"
+              ],
+              "fullName": " Challenge 17: Fullstack Capstone should have dynamic route page",
+              "status": "passed",
+              "title": "should have dynamic route page",
+              "duration": 1,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 17: Fullstack Capstone"
+              ],
+              "fullName": " Challenge 17: Fullstack Capstone should have error.tsx or not-found.tsx",
+              "status": "passed",
+              "title": "should have error.tsx or not-found.tsx",
+              "duration": 0,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 17: Fullstack Capstone"
+              ],
+              "fullName": " Challenge 17: Fullstack Capstone should have metadata or generateMetadata on dynamic page",
+              "status": "passed",
+              "title": "should have metadata or generateMetadata on dynamic page",
+              "duration": 0,
+              "failureMessages": []
+            }
+          ],
+          "startTime": 1786466029594,
+          "endTime": 1786466029595,
+          "status": "passed",
+          "message": "",
+          "name": "/Users/krishu/Desktop/challenge-engine-react/courses/03-nextjs-app-router/project/tests/challenge-17.test.tsx"
+        }
+      ]
     },
     "lintResults": {
-      "score": 0,
-      "passed": false,
-      "error": "None of the specified files exist",
-      "details": []
+      "score": 100,
+      "passed": true,
+      "totalIssues": 0,
+      "errors": 0,
+      "warnings": 0,
+      "details": [
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/03-nextjs-app-router/project/app/components/LikeButton.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": []
+        },
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/03-nextjs-app-router/project/app/error.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": []
+        },
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/03-nextjs-app-router/project/app/posts/[id]/page.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": []
+        }
+      ]
     },
     "architectureResults": {
-      "score": 0,
+      "score": 75,
       "passed": false,
-      "patternsFound": [],
-      "patternsMissing": [],
+      "patternsFound": [
+        "dynamicSegment",
+        "notFound",
+        "useClient",
+        "useClient"
+      ],
+      "patternsMissing": [
+        "useClient",
+        "metadata",
+        "dynamicSegment",
+        "notFound",
+        "metadata",
+        "dynamicSegment",
+        "notFound",
+        "metadata"
+      ],
       "details": [
         {
           "file": "app/posts/[id]/page.tsx",
-          "error": "File does not exist",
-          "patternsFound": [],
-          "patternsMissing": [
+          "patternsFound": [
             "dynamicSegment",
+            "notFound"
+          ],
+          "patternsMissing": [
             "useClient",
-            "notFound",
             "metadata"
           ]
         },
@@ -3777,6 +3872,28 @@
             "notFound",
             "metadata"
           ]
+        },
+        {
+          "file": "app/error.tsx",
+          "patternsFound": [
+            "useClient"
+          ],
+          "patternsMissing": [
+            "dynamicSegment",
+            "notFound",
+            "metadata"
+          ]
+        },
+        {
+          "file": "app/components/LikeButton.tsx",
+          "patternsFound": [
+            "useClient"
+          ],
+          "patternsMissing": [
+            "dynamicSegment",
+            "notFound",
+            "metadata"
+          ]
         }
       ]
     },
@@ -3790,33 +3907,49 @@
     "e2eResults": {
       "score": 0,
       "passed": false,
-      "error": "Exit 1\nError: Cannot find module '@playwright/test'\nRequire stack:\n- /Users/krishu/Desktop/challenge-engine-react/courses/03-nextjs-app-router/project/playwright.config.ts\n- /Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/common/index.js\n- /Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/program.js\n- /Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/cli.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1476:15)\n    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)\n    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)\n    at defaultResolve (node:internal/modules/cjs/loader:1124:20)\n    at nextStep (node:internal/modules/customization_hooks:189:26)\n    at resolve (/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/common/index.js:864:19)\n    at nextStep (node:internal/modules/customization_hooks:189:26)\n    at resolveWithHooks (node:internal/modules/customization_hooks:417:10)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1137:25)\n    at Module._load (node:internal/modules/cjs/loader:1262:25)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\n    at Module.require (node:internal/modules/cjs/loader:1576:12)\n    at require (node:internal/modules/helpers:153:16)\n    at Object.<anonymous> (/Users/krishu/Desktop/challenge-engine-react/courses/03-nextjs-app-router/project/playwright.config.ts:1:1)\n    at Module._compile (node:internal/modules/cjs/loader:1830:14)\n    at Object.<anonymous> (node:internal/modules/cjs/loader:1961:10)\n    at Module.load (node:internal/modules/cjs/loader:1553:32)\n    at Module._load (node:internal/modules/cjs/loader:1355:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\n    at Module.require (node:internal/modules/cjs/loader:1576:12)\n    at require (node:internal/modules/helpers:153:16)\n    at requireOrImport (/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/common/index.js:1138:18)\n    at loadUserConfig (/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/common/index.js:1323:52)\n    at loadConfig (/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/common/index.js:1330:28)\n    at Object.loadConfigFromFile (/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/common/index.js:1546:10)\n    at runTests (/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/cli/testActions.js:46:18)\n    at _Command.<anonymous> (/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/program.js:55:7) {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/Users/krishu/Desktop/challenge-engine-react/courses/03-nextjs-app-router/project/playwright.config.ts',\n    '/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/common/index.js',\n    '/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/program.js',\n    '/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/cli.js'\n  ]\n}",
+      "totalTests": 0,
+      "passedTests": 0,
+      "failedTests": 0,
       "details": [],
-      "note": "E2E failed. The app is started automatically by Playwright (webServer in playwright.config)."
+      "error": "Exit 1"
     },
     "aiReviewResults": {
       "challengeId": "17-fullstack-capstone",
-      "timestamp": "2026-08-11T14:12:32.051Z",
-      "score": 0,
+      "timestamp": "2026-08-11T16:35:51.026Z",
+      "score": 88,
       "feedback": [],
-      "strengths": [],
-      "improvements": [],
-      "readability": 0,
-      "maintainability": 0,
-      "overall": "",
-      "error": "No files found to review"
+      "strengths": [
+        "The use of TypeScript and Next.js App Router is well-implemented, making the codebase robust and maintainable.",
+        "The error handling mechanism is comprehensive, catching both client-side and server-side errors.",
+        "The code is well-organized, with each component and utility function having a clear and specific responsibility."
+      ],
+      "improvements": [
+        "The `generateStaticParams` function is not being used effectively. Since the challenge requires dynamic routing, this function can be removed or modified to generate dynamic parameters.",
+        "The `notFound` function is being called in multiple places. Consider creating a centralized error handling utility function to handle this logic.",
+        "The `LikeButton` component can be improved by adding a loading state and handling edge cases, such as when the user clicks the button multiple times in quick succession."
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The codebase is well-structured and demonstrates a good understanding of Next.js App Router and TypeScript. However, there are some areas for improvement, such as optimizing the error handling mechanism and improving the `LikeButton` component."
     },
     "aiResults": {
       "challengeId": "17-fullstack-capstone",
-      "timestamp": "2026-08-11T14:12:32.051Z",
-      "score": 0,
+      "timestamp": "2026-08-11T16:35:51.026Z",
+      "score": 88,
       "feedback": [],
-      "strengths": [],
-      "improvements": [],
-      "readability": 0,
-      "maintainability": 0,
-      "overall": "",
-      "error": "No files found to review"
+      "strengths": [
+        "The use of TypeScript and Next.js App Router is well-implemented, making the codebase robust and maintainable.",
+        "The error handling mechanism is comprehensive, catching both client-side and server-side errors.",
+        "The code is well-organized, with each component and utility function having a clear and specific responsibility."
+      ],
+      "improvements": [
+        "The `generateStaticParams` function is not being used effectively. Since the challenge requires dynamic routing, this function can be removed or modified to generate dynamic parameters.",
+        "The `notFound` function is being called in multiple places. Consider creating a centralized error handling utility function to handle this logic.",
+        "The `LikeButton` component can be improved by adding a loading state and handling edge cases, such as when the user clicks the button multiple times in quick succession."
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The codebase is well-structured and demonstrates a good understanding of Next.js App Router and TypeScript. However, there are some areas for improvement, such as optimizing the error handling mechanism and improving the `LikeButton` component."
     }
   }
 ]

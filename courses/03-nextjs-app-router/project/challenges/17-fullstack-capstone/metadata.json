@@ -4,6 +4,6 @@
   "difficulty": "advanced",
   "estimatedTime": "2 - 3 hours",
   "skills": ["Dynamic routes", "Server Components", "Client Components", "Error handling", "Metadata", "Server Actions"],
-  "filesToCheck": ["app/posts/[id]/page.tsx", "app/posts/error.tsx", "app/not-found.tsx"],
+  "filesToCheck": ["app/posts/[id]/page.tsx", "app/posts/error.tsx", "app/not-found.tsx", "app/error.tsx", "app/components/LikeButton.tsx"],
   "patternsRequired": ["dynamicSegment", "useClient", "notFound", "metadata"]
 }

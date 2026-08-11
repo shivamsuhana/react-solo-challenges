@@ -1,5 +1,6 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
+import LikeButton from '../../components/LikeButton';
 
 interface PostParams {
   params: {
@@ -14,22 +15,32 @@ export function generateStaticParams() {
   ];
 }
 
-export function generateMetadata({ params }: PostParams) {
+export async function generateMetadata({ params }: PostParams) {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
+  if (!res.ok) {
+    return { title: 'Post Not Found', description: 'This post could not be found' };
+  }
+  const post = await res.json();
   return {
-    title: `Post ${params.id}`,
+    title: post.title,
     description: `Details for post ${params.id}`
   };
 }
 
-export default function PostDetailPage({ params }: PostParams) {
-  if (params.id === '99999') {
+export default async function PostDetailPage({ params }: PostParams) {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
+  
+  if (!res.ok || params.id === '99999') {
     notFound();
   }
+  
+  const post = await res.json();
 
   return (
     <div style={{ padding: '20px' }}>
-      <h1>Post Details</h1>
-      <p>Displaying content for post ID: <strong>{params.id}</strong></p>
+      <h1>{post.title}</h1>
+      <p>{post.body}</p>
+      <LikeButton />
     </div>
   );
 }
