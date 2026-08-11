@@ -268,6 +268,10 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
         if (path.node.name === 'params') {
           foundPatterns.add('params');
         }
+        if (path.node.name === 'searchParams') {
+          foundPatterns.add('searchParams');
+          foundPatterns.add('pagination');
+        }
       },
 
       ObjectProperty(path) {

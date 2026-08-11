@@ -2954,16 +2954,16 @@
   {
     "challengeId": "13-images-and-fonts",
     "challengeName": "Images and Fonts",
-    "timestamp": "2026-08-11T15:57:45.211Z",
+    "timestamp": "2026-08-11T15:59:37.639Z",
     "scores": {
       "functionalTests": 100,
       "codeQuality": 100,
       "architecture": 100,
       "bestPractices": 100,
       "e2eTests": 0,
-      "aiReview": 88
+      "aiReview": 93
     },
-    "totalScore": 83.2,
+    "totalScore": 83.95,
     "passed": true,
     "errors": [],
     "warnings": [],
@@ -2999,8 +2999,8 @@
               "failureMessages": []
             }
           ],
-          "startTime": 1786463865618,
-          "endTime": 1786463865619,
+          "startTime": 1786463978097,
+          "endTime": 1786463978098,
           "status": "passed",
           "message": "",
           "name": "/Users/krishu/Desktop/challenge-engine-react/courses/03-nextjs-app-router/project/tests/challenge-13.test.tsx"
@@ -3088,85 +3088,120 @@
     },
     "aiReviewResults": {
       "challengeId": "13-images-and-fonts",
-      "timestamp": "2026-08-11T15:59:47.273Z",
-      "score": 88,
+      "timestamp": "2026-08-11T16:01:39.493Z",
+      "score": 93,
       "feedback": [],
       "strengths": [
-        "Effective use of Next.js features such as `next/image` and `next/font`",
-        "Clean and organized code structure",
-        "Proper use of TypeScript and ESLint"
+        "Effective use of Next.js features, such as `next/image` and `next/font`, to optimize images and fonts.",
+        "Clean and organized code structure, with clear separation of concerns between components and layout."
       ],
       "improvements": [
-        "Consider adding a default alt text to the `Image` component to improve accessibility",
-        "In `app/layout.tsx`, instead of directly applying the font's `className` to `<body>`, consider using a wrapper div with a unique class name to make it easier to override or remove the font style in the future",
-        "In `app/page.tsx`, consider using a more robust way to handle image loading, such as using the `loading` prop provided by `next/image`"
+        "Consider adding a fallback image or a loading indicator to the `Image` component to improve user experience when the image is loading or fails to load.",
+        "In the `RootLayout` component, consider using a more robust way to handle the `children` prop, such as using a `React.Fragment` or a `div` with a unique key."
       ],
-      "readability": 85,
+      "readability": 95,
       "maintainability": 90,
-      "overall": "The code is well-structured and effectively uses Next.js features. However, there are a few areas for improvement to enhance accessibility, maintainability, and robustness."
+      "overall": "The code is well-structured, readable, and effectively uses Next.js features to optimize images and fonts. With a few minor improvements, it can be even more maintainable and user-friendly."
     },
     "aiResults": {
       "challengeId": "13-images-and-fonts",
-      "timestamp": "2026-08-11T15:59:47.273Z",
-      "score": 88,
+      "timestamp": "2026-08-11T16:01:39.493Z",
+      "score": 93,
       "feedback": [],
       "strengths": [
-        "Effective use of Next.js features such as `next/image` and `next/font`",
-        "Clean and organized code structure",
-        "Proper use of TypeScript and ESLint"
+        "Effective use of Next.js features, such as `next/image` and `next/font`, to optimize images and fonts.",
+        "Clean and organized code structure, with clear separation of concerns between components and layout."
       ],
       "improvements": [
-        "Consider adding a default alt text to the `Image` component to improve accessibility",
-        "In `app/layout.tsx`, instead of directly applying the font's `className` to `<body>`, consider using a wrapper div with a unique class name to make it easier to override or remove the font style in the future",
-        "In `app/page.tsx`, consider using a more robust way to handle image loading, such as using the `loading` prop provided by `next/image`"
+        "Consider adding a fallback image or a loading indicator to the `Image` component to improve user experience when the image is loading or fails to load.",
+        "In the `RootLayout` component, consider using a more robust way to handle the `children` prop, such as using a `React.Fragment` or a `div` with a unique key."
       ],
-      "readability": 85,
+      "readability": 95,
       "maintainability": 90,
-      "overall": "The code is well-structured and effectively uses Next.js features. However, there are a few areas for improvement to enhance accessibility, maintainability, and robustness."
+      "overall": "The code is well-structured, readable, and effectively uses Next.js features to optimize images and fonts. With a few minor improvements, it can be even more maintainable and user-friendly."
     }
   },
   {
     "challengeId": "14-search-and-pagination",
     "challengeName": "Search and Pagination",
-    "timestamp": "2026-08-11T14:12:27.646Z",
+    "timestamp": "2026-08-11T16:02:29.695Z",
     "scores": {
-      "functionalTests": 0,
-      "codeQuality": 0,
-      "architecture": 0,
+      "functionalTests": 100,
+      "codeQuality": 100,
+      "architecture": 100,
       "bestPractices": 100,
       "e2eTests": 0,
-      "aiReview": 0
+      "aiReview": 83
     },
-    "totalScore": 10,
-    "passed": false,
+    "totalScore": 82.45,
+    "passed": true,
     "errors": [],
     "warnings": [],
     "testResults": {
-      "score": 0,
-      "passed": false,
-      "error": "Command failed: npm test -- /Users/krishu/Desktop/challenge-engine-react/courses/03-nextjs-app-router/project/tests/challenge-14.test.tsx --run --reporter=json\nsh: vitest: command not found\n",
-      "details": []
+      "score": 100,
+      "passed": true,
+      "totalTests": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 14: Search and Pagination"
+              ],
+              "fullName": " Challenge 14: Search and Pagination should have page that receives searchParams",
+              "status": "passed",
+              "title": "should have page that receives searchParams",
+              "duration": 0,
+              "failureMessages": []
+            }
+          ],
+          "startTime": 1786464150100,
+          "endTime": 1786464150100,
+          "status": "passed",
+          "message": "",
+          "name": "/Users/krishu/Desktop/challenge-engine-react/courses/03-nextjs-app-router/project/tests/challenge-14.test.tsx"
+        }
+      ]
     },
     "lintResults": {
-      "score": 0,
-      "passed": false,
-      "error": "None of the specified files exist",
-      "details": []
+      "score": 100,
+      "passed": true,
+      "totalIssues": 0,
+      "errors": 0,
+      "warnings": 0,
+      "details": [
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/03-nextjs-app-router/project/app/posts/page.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": []
+        }
+      ]
     },
     "architectureResults": {
-      "score": 0,
-      "passed": false,
-      "patternsFound": [],
+      "score": 100,
+      "passed": true,
+      "patternsFound": [
+        "searchParams",
+        "pagination"
+      ],
       "patternsMissing": [],
       "details": [
         {
           "file": "app/posts/page.tsx",
-          "error": "File does not exist",
-          "patternsFound": [],
-          "patternsMissing": [
+          "patternsFound": [
             "searchParams",
             "pagination"
-          ]
+          ],
+          "patternsMissing": []
         }
       ]
     },
@@ -3180,33 +3215,49 @@
     "e2eResults": {
       "score": 0,
       "passed": false,
-      "error": "Exit 1\nError: Cannot find module '@playwright/test'\nRequire stack:\n- /Users/krishu/Desktop/challenge-engine-react/courses/03-nextjs-app-router/project/playwright.config.ts\n- /Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/common/index.js\n- /Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/program.js\n- /Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/cli.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1476:15)\n    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)\n    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)\n    at defaultResolve (node:internal/modules/cjs/loader:1124:20)\n    at nextStep (node:internal/modules/customization_hooks:189:26)\n    at resolve (/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/common/index.js:864:19)\n    at nextStep (node:internal/modules/customization_hooks:189:26)\n    at resolveWithHooks (node:internal/modules/customization_hooks:417:10)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1137:25)\n    at Module._load (node:internal/modules/cjs/loader:1262:25)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\n    at Module.require (node:internal/modules/cjs/loader:1576:12)\n    at require (node:internal/modules/helpers:153:16)\n    at Object.<anonymous> (/Users/krishu/Desktop/challenge-engine-react/courses/03-nextjs-app-router/project/playwright.config.ts:1:1)\n    at Module._compile (node:internal/modules/cjs/loader:1830:14)\n    at Object.<anonymous> (node:internal/modules/cjs/loader:1961:10)\n    at Module.load (node:internal/modules/cjs/loader:1553:32)\n    at Module._load (node:internal/modules/cjs/loader:1355:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\n    at Module.require (node:internal/modules/cjs/loader:1576:12)\n    at require (node:internal/modules/helpers:153:16)\n    at requireOrImport (/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/common/index.js:1138:18)\n    at loadUserConfig (/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/common/index.js:1323:52)\n    at loadConfig (/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/common/index.js:1330:28)\n    at Object.loadConfigFromFile (/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/common/index.js:1546:10)\n    at runTests (/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/cli/testActions.js:46:18)\n    at _Command.<anonymous> (/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/program.js:55:7) {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/Users/krishu/Desktop/challenge-engine-react/courses/03-nextjs-app-router/project/playwright.config.ts',\n    '/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/common/index.js',\n    '/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/program.js',\n    '/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/cli.js'\n  ]\n}",
+      "totalTests": 0,
+      "passedTests": 0,
+      "failedTests": 0,
       "details": [],
-      "note": "E2E failed. The app is started automatically by Playwright (webServer in playwright.config)."
+      "error": "Exit 1"
     },
     "aiReviewResults": {
       "challengeId": "14-search-and-pagination",
-      "timestamp": "2026-08-11T14:12:28.403Z",
-      "score": 0,
+      "timestamp": "2026-08-11T16:04:31.865Z",
+      "score": 83,
       "feedback": [],
-      "strengths": [],
-      "improvements": [],
-      "readability": 0,
-      "maintainability": 0,
-      "overall": "",
-      "error": "No files found to review"
+      "strengths": [
+        "The code is well-structured and easy to follow, with clear separation of concerns.",
+        "The use of TypeScript and Next.js features such as dynamic routing and suspense is well-implemented.",
+        "The code includes proper error handling and input validation."
+      ],
+      "improvements": [
+        "The `fetch` call can be improved by using a more modern approach such as `useEffect` and `AbortController` to handle errors and cancellations.",
+        "The `paginatedPosts` calculation can be simplified by using the `slice` method with the `page` and `limit` variables.",
+        "The `Link` components can be improved by using the `as` prop to specify the exact URL instead of concatenating strings."
+      ],
+      "readability": 85,
+      "maintainability": 80,
+      "overall": "The code is well-structured and demonstrates a good understanding of Next.js and TypeScript features. However, there are some areas for improvement to make the code more maintainable and efficient."
     },
     "aiResults": {
       "challengeId": "14-search-and-pagination",
-      "timestamp": "2026-08-11T14:12:28.403Z",
-      "score": 0,
+      "timestamp": "2026-08-11T16:04:31.865Z",
+      "score": 83,
       "feedback": [],
-      "strengths": [],
-      "improvements": [],
-      "readability": 0,
-      "maintainability": 0,
-      "overall": "",
-      "error": "No files found to review"
+      "strengths": [
+        "The code is well-structured and easy to follow, with clear separation of concerns.",
+        "The use of TypeScript and Next.js features such as dynamic routing and suspense is well-implemented.",
+        "The code includes proper error handling and input validation."
+      ],
+      "improvements": [
+        "The `fetch` call can be improved by using a more modern approach such as `useEffect` and `AbortController` to handle errors and cancellations.",
+        "The `paginatedPosts` calculation can be simplified by using the `slice` method with the `page` and `limit` variables.",
+        "The `Link` components can be improved by using the `as` prop to specify the exact URL instead of concatenating strings."
+      ],
+      "readability": 85,
+      "maintainability": 80,
+      "overall": "The code is well-structured and demonstrates a good understanding of Next.js and TypeScript features. However, there are some areas for improvement to make the code more maintainable and efficient."
     }
   },
   {
