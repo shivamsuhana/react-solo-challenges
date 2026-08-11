@@ -64,12 +64,12 @@ npm run review -- --challenge=01-app-router-pages-layout
 
 ## 📊 Progress Evidence
 
-*Auto-updated when you run review. Last run: 8/11/2026, 8:49:18 PM*
+*Auto-updated when you run review. Last run: 8/11/2026, 9:00:52 PM*
 
 | Metric | Value |
 |--------|-------|
-| Challenges completed | 6 / 17 (35.3%) |
-| Average score | 43.8% |
+| Challenges completed | 7 / 17 (41.2%) |
+| Average score | 47.5% |
 
 | Challenge | Skills covered | Status |
 |-----------|----------------|--------|
@@ -79,7 +79,7 @@ npm run review -- --challenge=01-app-router-pages-layout
 | API Route Handlers | Route Handlers, app/api, GET, POST, Response.json | Passed |
 | Loading and Streaming | loading.tsx, Streaming, Suspense, Loading UI | Passed |
 | Dynamic Routes | Dynamic Routes, [id], params, generateStaticParams | Passed |
-| Static and Dynamic Rendering | Static Rendering, Dynamic Rendering, force-static, force-dynamic | Not passed |
+| Static and Dynamic Rendering | Static Rendering, Dynamic Rendering, force-static, force-dynamic | Passed |
 | SSR (Server-Side Rendering) | SSR, force-dynamic, cache: no-store, Server-side rendering | Not passed |
 | Server Actions and Revalidation | Server Actions, 'use server', revalidatePath, revalidateTag | Not passed |
 | Caching and Revalidating | fetch cache, revalidate, revalidatePath, revalidateTag | Not passed |

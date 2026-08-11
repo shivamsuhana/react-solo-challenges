@@ -6,6 +6,8 @@ interface Post {
   body: string;
 }
 
+export const dynamic = 'force-dynamic';
+
 export default async function PostsPage() {
   let posts: Post[] = [];
   let error: string | null = null;

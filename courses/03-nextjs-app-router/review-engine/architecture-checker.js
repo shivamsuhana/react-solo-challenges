@@ -142,12 +142,23 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
         }
       },
 
-      // Check for metadata export
+      // Check for metadata and dynamic export
       ExportNamedDeclaration(path) {
         if (path.node.declaration) {
           const decl = path.node.declaration;
           if (decl.id && decl.id.name === 'metadata') {
             foundPatterns.add('metadata');
+          }
+          if (decl.type === 'VariableDeclaration') {
+            decl.declarations.forEach(d => {
+              if (d.id && d.id.name === 'dynamic') {
+                foundPatterns.add('dynamicExport');
+                if (d.init && d.init.type === 'StringLiteral' && 
+                   (d.init.value === 'force-static' || d.init.value === 'force-dynamic')) {
+                  foundPatterns.add('forceStaticOrDynamic');
+                }
+              }
+            });
           }
         }
         path.node.specifiers.forEach(spec => {
