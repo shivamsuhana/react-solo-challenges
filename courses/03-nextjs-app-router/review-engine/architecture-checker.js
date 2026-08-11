@@ -91,11 +91,14 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
     const foundPatterns = new Set();
 
     traverse(ast, {
-      // Check for 'use client' directive
+      // Check for 'use client' and 'use server' directives
       Directive(path) {
         if (path.node.value.value === 'use client') {
           foundPatterns.add('useClient');
           foundPatterns.add('clientComponent');
+        }
+        if (path.node.value.value === 'use server') {
+          foundPatterns.add('useServer');
         }
       },
 
@@ -195,10 +198,16 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
         }
       },
 
-      // Check for API route (route.ts)
+      // Check for API route (route.ts) and Server Actions
       CallExpression(path) {
         if (path.node.callee.name === 'fetch') {
           foundPatterns.add('fetch');
+        }
+        if (path.node.callee.name === 'revalidatePath') {
+          foundPatterns.add('revalidatePath');
+        }
+        if (path.node.callee.name === 'revalidateTag') {
+          foundPatterns.add('revalidateTag');
         }
         
         const isResponseJson = path.node.callee.object && 

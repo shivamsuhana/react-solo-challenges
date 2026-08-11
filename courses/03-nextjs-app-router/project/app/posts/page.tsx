@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react';
+import AddPostForm from '../components/AddPostForm';
 
 interface Post {
   id: number;
@@ -33,6 +34,7 @@ export default async function PostsPage() {
   return (
     <div style={{ padding: '20px' }}>
       <h1>Posts</h1>
+      <AddPostForm />
       <Suspense fallback={<div>Loading posts stream...</div>}>
         <ul>
           {posts.map((post) => (
