@@ -126,19 +126,6 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
         }
       },
 
-      // Check for async component (Server Component data fetching) and Server Actions
-      FunctionDeclaration(path) {
-        if (path.node.async) {
-          foundPatterns.add('asyncComponent');
-          foundPatterns.add('asyncServerComponent');
-        }
-        
-        if (path.node.async && 
-            (path.node.id?.name?.includes('action') || 
-             content.includes('use server'))) {
-          foundPatterns.add('serverAction');
-        }
-      },
 
       ArrowFunctionExpression(path) {
         if (path.node.async) {
@@ -162,19 +149,44 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
         });
       },
 
+      // Check for GET export
+      FunctionDeclaration(path) {
+        if (path.node.id && path.node.id.name === 'GET') {
+          foundPatterns.add('GET');
+          foundPatterns.add('routeHandler');
+        }
+        if (path.node.id && path.node.id.name === 'POST') {
+          foundPatterns.add('POST');
+          foundPatterns.add('routeHandler');
+        }
+        
+        // Retain previous async logic
+        if (path.node.async) {
+          foundPatterns.add('asyncComponent');
+          foundPatterns.add('asyncServerComponent');
+        }
+        if (path.node.async && 
+            (path.node.id?.name?.includes('action') || 
+             content.includes('use server'))) {
+          foundPatterns.add('serverAction');
+        }
+      },
+
       // Check for API route (route.ts)
       CallExpression(path) {
         if (path.node.callee.name === 'fetch') {
           foundPatterns.add('fetch');
         }
-        if (path.node.callee.name === 'NextResponse') {
-          foundPatterns.add('apiRoute');
-        }
-        if (path.node.callee.object && 
-            path.node.callee.object.name === 'Response' &&
+        
+        const isResponseJson = path.node.callee.object && 
+            (path.node.callee.object.name === 'Response' || path.node.callee.object.name === 'NextResponse') &&
             path.node.callee.property &&
-            path.node.callee.property.name === 'json') {
+            path.node.callee.property.name === 'json';
+            
+        if (isResponseJson || path.node.callee.name === 'NextResponse') {
           foundPatterns.add('apiRoute');
+          foundPatterns.add('ResponseJson');
+          foundPatterns.add('routeHandler');
         }
       },
 
