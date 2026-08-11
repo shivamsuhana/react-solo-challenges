@@ -16,22 +16,24 @@
     "review:challenge": "node ../review-engine/index.js"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.12.0",
+    "next": "^14.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "next": "^14.0.0"
+    "react-redux": "^9.3.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@testing-library/jest-dom": "^6.1.5",
+    "@testing-library/react": "^14.1.2",
     "@types/node": "^20.10.0",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
-    "typescript": "^5.2.2",
     "eslint": "^8.55.0",
     "eslint-config-next": "^14.0.0",
-    "vitest": "^1.0.4",
-    "@testing-library/react": "^14.1.2",
-    "@testing-library/jest-dom": "^6.1.5",
-    "@playwright/test": "^1.40.0"
+    "typescript": "^5.2.2",
+    "vitest": "^1.0.4"
   }
 }

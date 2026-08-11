@@ -235,6 +235,15 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
         if (path.node.callee.name === 'notFound') {
           foundPatterns.add('notFound');
         }
+        if (path.node.callee.name === 'configureStore') {
+          foundPatterns.add('configureStore');
+        }
+        if (path.node.callee.name === 'useSelector') {
+          foundPatterns.add('useSelector');
+        }
+        if (path.node.callee.name === 'useDispatch') {
+          foundPatterns.add('useDispatch');
+        }
         
         const isResponseJson = path.node.callee.object && 
             (path.node.callee.object.name === 'Response' || path.node.callee.object.name === 'NextResponse') &&
@@ -261,6 +270,9 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
         }
         if (path.node.openingElement.name.name === 'Suspense') {
           foundPatterns.add('Suspense');
+        }
+        if (path.node.openingElement.name.name === 'Provider') {
+          foundPatterns.add('Provider');
         }
       },
 

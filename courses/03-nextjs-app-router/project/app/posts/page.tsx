@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
 import Link from 'next/link';
 import AddPostForm from '../components/AddPostForm';
-import { addPost } from '../actions';
 
 interface Post {
   id: number;
@@ -56,7 +55,7 @@ export default async function PostsPage({
         </form>
       </div>
 
-      <AddPostForm action={addPost} />
+      <AddPostForm />
       
       {error ? (
         <p style={{ color: 'red' }}>Error: {error}</p>

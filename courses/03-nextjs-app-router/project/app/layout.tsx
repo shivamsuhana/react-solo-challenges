@@ -1,6 +1,6 @@
 import Link from 'next/link';
-
 import { Inter } from 'next/font/google';
+import StoreProvider from './providers/StoreProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -12,10 +12,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <nav>
-          <Link href="/">Home</Link>
-        </nav>
-        {children}
+        <StoreProvider>
+          <nav>
+            <Link href="/">Home</Link>
+          </nav>
+          <hr />
+          {children}
+        </StoreProvider>
       </body>
     </html>
   );

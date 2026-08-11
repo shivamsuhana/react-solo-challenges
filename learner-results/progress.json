@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-08-11T16:04:33.563Z",
+  "lastUpdated": "2026-08-11T16:16:47.201Z",
   "pathway": {
     "name": "Modern React Engineer",
     "version": "1.0.0",
-    "overallScore": 86.2,
-    "completionPercentage": 94.3,
+    "overallScore": 87.5,
+    "completionPercentage": 96.2,
     "badgeLevel": "silver",
     "totalChallenges": 53,
-    "completedChallenges": 50
+    "completedChallenges": 51
   },
   "courses": {
     "01-react-fundamentals": {
@@ -575,11 +575,11 @@
     "03-nextjs-app-router": {
       "courseId": "03-nextjs-app-router",
       "courseName": "Next.js App Router",
-      "averageScore": 78.9,
-      "completionPercentage": 82.4,
+      "averageScore": 82.7,
+      "completionPercentage": 88.2,
       "badgeLevel": "silver",
       "totalChallenges": 17,
-      "completedChallenges": 14,
+      "completedChallenges": 15,
       "challenges": {
         "01-app-router-pages-layout": {
           "challengeId": "01-app-router-pages-layout",
@@ -794,16 +794,16 @@
         "15-redux-toolkit-with-nextjs": {
           "challengeId": "15-redux-toolkit-with-nextjs",
           "challengeName": "Redux Toolkit with Next.js",
-          "passed": false,
-          "score": 17.5,
-          "lastRun": "2026-08-11T14:12:28.404Z",
+          "passed": true,
+          "score": 83.2,
+          "lastRun": "2026-08-11T16:14:43.521Z",
           "scores": {
-            "functionalTests": 0,
-            "codeQuality": 50,
-            "architecture": 0,
+            "functionalTests": 100,
+            "codeQuality": 100,
+            "architecture": 100,
             "bestPractices": 100,
             "e2eTests": 0,
-            "aiReview": 0
+            "aiReview": 88
           }
         },
         "16-rtk-query-with-nextjs": {

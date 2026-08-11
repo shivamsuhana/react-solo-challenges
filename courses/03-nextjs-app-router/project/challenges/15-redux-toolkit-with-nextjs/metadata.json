@@ -4,6 +4,6 @@
   "difficulty": "intermediate",
   "estimatedTime": "1.5 - 2 hours",
   "skills": ["Redux Toolkit", "configureStore", "Provider", "useSelector", "useDispatch"],
-  "filesToCheck": ["app/store/store.ts", "app/providers/StoreProvider.tsx", "app/layout.tsx"],
+  "filesToCheck": ["app/store/store.ts", "app/providers/StoreProvider.tsx", "app/layout.tsx", "app/components/Counter.tsx"],
   "patternsRequired": ["configureStore", "Provider", "useSelector", "useDispatch"]
 }
