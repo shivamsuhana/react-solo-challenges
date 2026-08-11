@@ -114,6 +114,10 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
         if (fileName.includes('page.tsx') || fileName.includes('layout.tsx')) {
           foundPatterns.add('fileBasedRouting');
         }
+        
+        if (fileName.includes('loading.tsx')) {
+          foundPatterns.add('loadingTsx');
+        }
       },
 
       // Check for Link component
@@ -196,10 +200,13 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
 
       // Removed duplicate FunctionDeclaration visitor
 
-      // Check for form handling
+      // Check for form handling and Suspense
       JSXElement(path) {
         if (path.node.openingElement.name.name === 'form') {
           foundPatterns.add('formHandling');
+        }
+        if (path.node.openingElement.name.name === 'Suspense') {
+          foundPatterns.add('Suspense');
         }
       },
 

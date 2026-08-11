@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 
 interface Post {
   id: number;
@@ -31,14 +31,16 @@ export default async function PostsPage() {
   return (
     <div style={{ padding: '20px' }}>
       <h1>Posts</h1>
-      <ul>
-        {posts.map((post) => (
-          <li key={post.id} style={{ marginBottom: '10px' }}>
-            <strong>{post.title}</strong>
-            <p>{post.body}</p>
-          </li>
-        ))}
-      </ul>
+      <Suspense fallback={<div>Loading posts stream...</div>}>
+        <ul>
+          {posts.map((post) => (
+            <li key={post.id} style={{ marginBottom: '10px' }}>
+              <strong>{post.title}</strong>
+              <p>{post.body}</p>
+            </li>
+          ))}
+        </ul>
+      </Suspense>
     </div>
   );
 }
