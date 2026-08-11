@@ -244,6 +244,20 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
         if (path.node.callee.name === 'useDispatch') {
           foundPatterns.add('useDispatch');
         }
+        if (path.node.callee.name === 'createApi') {
+          foundPatterns.add('createApi');
+        }
+        if (path.node.callee.name === 'fetchBaseQuery') {
+          foundPatterns.add('fetchBaseQuery');
+        }
+        if (typeof path.node.callee.name === 'string') {
+          if (path.node.callee.name.startsWith('use') && path.node.callee.name.endsWith('Query')) {
+            foundPatterns.add('useQuery');
+          }
+          if (path.node.callee.name.startsWith('use') && path.node.callee.name.endsWith('Mutation')) {
+            foundPatterns.add('useMutation');
+          }
+        }
         
         const isResponseJson = path.node.callee.object && 
             (path.node.callee.object.name === 'Response' || path.node.callee.object.name === 'NextResponse') &&
