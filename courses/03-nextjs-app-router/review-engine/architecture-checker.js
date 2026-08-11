@@ -118,6 +118,10 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
         if (fileName.includes('loading.tsx')) {
           foundPatterns.add('loadingTsx');
         }
+        
+        if (fileName.includes('[id]') || fileName.includes('[slug]')) {
+          foundPatterns.add('dynamicSegment');
+        }
       },
 
       // Check for Link component
@@ -207,6 +211,12 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
         }
         if (path.node.openingElement.name.name === 'Suspense') {
           foundPatterns.add('Suspense');
+        }
+      },
+
+      Identifier(path) {
+        if (path.node.name === 'params') {
+          foundPatterns.add('params');
         }
       },
 
