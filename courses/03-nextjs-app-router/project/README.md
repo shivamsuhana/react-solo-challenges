@@ -64,32 +64,32 @@ npm run review -- --challenge=01-app-router-pages-layout
 
 ## 📊 Progress Evidence
 
-*Auto-updated when you run review. Last run: 7/16/2026, 4:59:34 PM*
+*Auto-updated when you run review. Last run: 8/11/2026, 7:56:58 PM*
 
 | Metric | Value |
 |--------|-------|
-| Challenges completed | 0 / 17 (0%) |
-| Average score | 0% |
+| Challenges completed | 1 / 17 (5.9%) |
+| Average score | 19.8% |
 
 | Challenge | Skills covered | Status |
 |-----------|----------------|--------|
-| App Router, Pages, and Layout | Next.js App Router, File-based Routing, Link Component, Layout, Page Structure | — |
-| Server and Client Components | Server Components, Client Components, 'use client', useState, Event handlers | — |
-| Data Fetching in Server Components | Async Server Components, fetch, Data fetching, Server-side data | — |
-| API Route Handlers | Route Handlers, app/api, GET, POST, Response.json | — |
-| Loading and Streaming | loading.tsx, Streaming, Suspense, Loading UI | — |
-| Dynamic Routes | Dynamic Routes, [id], params, generateStaticParams | — |
-| Static and Dynamic Rendering | Static Rendering, Dynamic Rendering, force-static, force-dynamic | — |
-| SSR (Server-Side Rendering) | SSR, force-dynamic, cache: no-store, Server-side rendering | — |
-| Server Actions and Revalidation | Server Actions, 'use server', revalidatePath, revalidateTag | — |
-| Caching and Revalidating | fetch cache, revalidate, revalidatePath, revalidateTag | — |
-| Error Handling | error.tsx, notFound(), not-found.tsx, Error boundaries | — |
-| Metadata and SEO | metadata, generateMetadata, Open Graph, SEO | — |
-| Images and Fonts | next/image, next/font, Image optimization, Font optimization | — |
-| Search and Pagination | searchParams, URL search params, Pagination, Filtering | — |
-| Redux Toolkit with Next.js | Redux Toolkit, configureStore, Provider, useSelector, useDispatch | — |
-| RTK Query with Next.js | RTK Query, createApi, fetchBaseQuery, useGetPostsQuery, useMutation | — |
-| Fullstack Capstone | Dynamic routes, Server Components, Client Components, Error handling, Metadata, Server Actions | — |
+| App Router, Pages, and Layout | Next.js App Router, File-based Routing, Link Component, Layout, Page Structure | Passed |
+| Server and Client Components | Server Components, Client Components, 'use client', useState, Event handlers | Not passed |
+| Data Fetching in Server Components | Async Server Components, fetch, Data fetching, Server-side data | Not passed |
+| API Route Handlers | Route Handlers, app/api, GET, POST, Response.json | Not passed |
+| Loading and Streaming | loading.tsx, Streaming, Suspense, Loading UI | Not passed |
+| Dynamic Routes | Dynamic Routes, [id], params, generateStaticParams | Not passed |
+| Static and Dynamic Rendering | Static Rendering, Dynamic Rendering, force-static, force-dynamic | Not passed |
+| SSR (Server-Side Rendering) | SSR, force-dynamic, cache: no-store, Server-side rendering | Not passed |
+| Server Actions and Revalidation | Server Actions, 'use server', revalidatePath, revalidateTag | Not passed |
+| Caching and Revalidating | fetch cache, revalidate, revalidatePath, revalidateTag | Not passed |
+| Error Handling | error.tsx, notFound(), not-found.tsx, Error boundaries | Not passed |
+| Metadata and SEO | metadata, generateMetadata, Open Graph, SEO | Not passed |
+| Images and Fonts | next/image, next/font, Image optimization, Font optimization | Not passed |
+| Search and Pagination | searchParams, URL search params, Pagination, Filtering | Not passed |
+| Redux Toolkit with Next.js | Redux Toolkit, configureStore, Provider, useSelector, useDispatch | Not passed |
+| RTK Query with Next.js | RTK Query, createApi, fetchBaseQuery, useGetPostsQuery, useMutation | Not passed |
+| Fullstack Capstone | Dynamic routes, Server Components, Client Components, Error handling, Metadata, Server Actions | Not passed |
 
 ## 📋 Challenge Workflow
 

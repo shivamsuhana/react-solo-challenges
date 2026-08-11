@@ -1,1 +1,302 @@
-[]
+[
+  {
+    "challengeId": "02-server-and-client-components",
+    "challengeName": "Server and Client Components",
+    "aiReview": {
+      "challengeId": "02-server-and-client-components",
+      "timestamp": "2026-08-11T14:12:11.096Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "Clear separation of concerns between Server and Client Components",
+        "Proper use of TypeScript and ESLint",
+        "Well-structured component hierarchy"
+      ],
+      "improvements": [
+        "Consider adding more interactive elements to the Client Component to demonstrate its capabilities",
+        "In the Server Component page, add a clear indication that it's a Server Component (e.g., a comment or a heading)",
+        "In the Client Component, consider adding a more complex event handler to demonstrate its capabilities"
+      ],
+      "readability": 90,
+      "maintainability": 85,
+      "overall": "The code demonstrates a good understanding of the App Router's Server and Client Components. However, to further improve, consider adding more interactive elements to the Client Component and adding clear indications of Server Components in the code. The code is well-structured and follows best practices."
+    }
+  },
+  {
+    "challengeId": "03-data-fetching-server",
+    "challengeName": "Data Fetching in Server Components",
+    "aiReview": {
+      "challengeId": "03-data-fetching-server",
+      "timestamp": "2026-08-11T14:12:13.705Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "error": "No files found to review"
+    }
+  },
+  {
+    "challengeId": "04-api-route-handlers",
+    "challengeName": "API Route Handlers",
+    "aiReview": {
+      "challengeId": "04-api-route-handlers",
+      "timestamp": "2026-08-11T14:12:15.140Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "error": "No files found to review"
+    }
+  },
+  {
+    "challengeId": "05-loading-and-streaming",
+    "challengeName": "Loading and Streaming",
+    "aiReview": {
+      "challengeId": "05-loading-and-streaming",
+      "timestamp": "2026-08-11T14:12:15.898Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "error": "No files found to review"
+    }
+  },
+  {
+    "challengeId": "06-dynamic-routes",
+    "challengeName": "Dynamic Routes",
+    "aiReview": {
+      "challengeId": "06-dynamic-routes",
+      "timestamp": "2026-08-11T14:12:16.772Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "error": "No files found to review"
+    }
+  },
+  {
+    "challengeId": "07-static-and-dynamic-rendering",
+    "challengeName": "Static and Dynamic Rendering",
+    "aiReview": {
+      "challengeId": "07-static-and-dynamic-rendering",
+      "timestamp": "2026-08-11T14:12:18.322Z",
+      "score": 93,
+      "feedback": [],
+      "strengths": [
+        "Simple and concise code",
+        "Correct usage of Next.js components",
+        "TypeScript usage"
+      ],
+      "improvements": [
+        "Add comments",
+        "Consider adding a dynamic import",
+        "Consider using dynamic APIs"
+      ],
+      "readability": 90,
+      "maintainability": 95,
+      "overall": "This code is a great example of simple and concise code that correctly uses Next.js components and TypeScript. However, it would benefit from the addition of comments and a dynamic import to demonstrate dynamic rendering."
+    }
+  },
+  {
+    "challengeId": "08-ssr-dynamic-rendering",
+    "challengeName": "SSR (Server-Side Rendering)",
+    "aiReview": {
+      "challengeId": "08-ssr-dynamic-rendering",
+      "timestamp": "2026-08-11T14:12:20.246Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "error": "No files found to review"
+    }
+  },
+  {
+    "challengeId": "09-server-actions-and-revalidation",
+    "challengeName": "Server Actions and Revalidation",
+    "aiReview": {
+      "challengeId": "09-server-actions-and-revalidation",
+      "timestamp": "2026-08-11T14:12:21.074Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "error": "No files found to review"
+    }
+  },
+  {
+    "challengeId": "10-caching-and-revalidating",
+    "challengeName": "Caching and Revalidating",
+    "aiReview": {
+      "challengeId": "10-caching-and-revalidating",
+      "timestamp": "2026-08-11T14:12:22.278Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "error": "No files found to review"
+    }
+  },
+  {
+    "challengeId": "11-error-handling",
+    "challengeName": "Error Handling",
+    "aiReview": {
+      "challengeId": "11-error-handling",
+      "timestamp": "2026-08-11T14:12:23.176Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "error": "No files found to review"
+    }
+  },
+  {
+    "challengeId": "12-metadata-and-seo",
+    "challengeName": "Metadata and SEO",
+    "aiReview": {
+      "challengeId": "12-metadata-and-seo",
+      "timestamp": "2026-08-11T14:12:24.646Z",
+      "score": 83,
+      "feedback": [],
+      "strengths": [
+        "The code is well-structured and easy to follow, with clear and concise function names and variable declarations.",
+        "The use of TypeScript ensures type safety and helps catch errors early in the development process.",
+        "The code adheres to Next.js best practices, making it easy to understand and maintain."
+      ],
+      "improvements": [
+        "The `RootLayout` component could benefit from additional metadata, such as a title and description, to improve SEO and social sharing.",
+        "The `HomePage` component could include a `generateMetadata` function to dynamically generate metadata based on the page's content.",
+        "The code could benefit from additional comments or documentation to explain the purpose and behavior of each component and function."
+      ],
+      "readability": 80,
+      "maintainability": 85,
+      "overall": "The provided code is well-structured and maintainable, but could benefit from additional metadata and dynamic metadata generation to improve SEO and social sharing. With some additional comments and documentation, this code would be even more robust and easy to understand."
+    }
+  },
+  {
+    "challengeId": "13-images-and-fonts",
+    "challengeName": "Images and Fonts",
+    "aiReview": {
+      "challengeId": "13-images-and-fonts",
+      "timestamp": "2026-08-11T14:12:27.447Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "error": "Groq API error (429): Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01kvqd0x9zf3hr9k0w9szc4pee` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 5652, Requested 1337. Please try again in 9.89s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
+    }
+  },
+  {
+    "challengeId": "14-search-and-pagination",
+    "challengeName": "Search and Pagination",
+    "aiReview": {
+      "challengeId": "14-search-and-pagination",
+      "timestamp": "2026-08-11T14:12:28.403Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "error": "No files found to review"
+    }
+  },
+  {
+    "challengeId": "15-redux-toolkit-with-nextjs",
+    "challengeName": "Redux Toolkit with Next.js",
+    "aiReview": {
+      "challengeId": "15-redux-toolkit-with-nextjs",
+      "timestamp": "2026-08-11T14:12:29.849Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "error": "Groq API error (429): Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01kvqd0x9zf3hr9k0w9szc4pee` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 5391, Requested 1492. Please try again in 8.83s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
+    }
+  },
+  {
+    "challengeId": "16-rtk-query-with-nextjs",
+    "challengeName": "RTK Query with Next.js",
+    "aiReview": {
+      "challengeId": "16-rtk-query-with-nextjs",
+      "timestamp": "2026-08-11T14:12:31.140Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "error": "No files found to review"
+    }
+  },
+  {
+    "challengeId": "17-fullstack-capstone",
+    "challengeName": "Fullstack Capstone",
+    "aiReview": {
+      "challengeId": "17-fullstack-capstone",
+      "timestamp": "2026-08-11T14:12:32.051Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "error": "No files found to review"
+    }
+  },
+  {
+    "challengeId": "01-app-router-pages-layout",
+    "challengeName": "App Router, Pages, and Layout",
+    "aiReview": {
+      "challengeId": "01-app-router-pages-layout",
+      "timestamp": "2026-08-11T14:26:56.992Z",
+      "score": 93,
+      "feedback": [],
+      "strengths": [
+        "The code is well-structured and follows a consistent naming convention.",
+        "The use of TypeScript and Next.js features such as Server Components and Link is well-implemented.",
+        "The code is concise and easy to understand."
+      ],
+      "improvements": [
+        "Consider adding a unique key to the Link components to prevent potential issues with React's reconciliation algorithm.",
+        "The navigation links could be wrapped in a container element for better accessibility and styling.",
+        "The code could benefit from additional comments or documentation to explain the purpose of each component and how they interact with each other."
+      ],
+      "readability": 95,
+      "maintainability": 90,
+      "overall": "The provided code is well-structured, maintainable, and effectively utilizes Next.js features. However, there are some minor improvements that could be made to enhance the code's readability and accessibility."
+    }
+  }
+]

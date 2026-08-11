@@ -1,7 +1,8 @@
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import { parse } from '@babel/parser';
-import traverse from '@babel/traverse';
+import traverseImport from '@babel/traverse';
+const traverse = traverseImport.default || traverseImport;
 
 /**
  * Checks architecture patterns using AST parsing
@@ -57,7 +58,7 @@ export async function checkArchitecture(challengeMetadata, projectDir) {
         patternsFound: fileResults.patternsFound,
         patternsMissing: fileResults.patternsMissing
       });
-    } catch (error) {
+    } catch (error) { console.error("BABEL ERROR:", error);
       results.details.push({
         file,
         error: error.message,
@@ -98,13 +99,20 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
         }
       },
 
-      // Check for Server Component (no 'use client')
+      // Check for Server Component (no 'use client') and app directory structure
       Program(path) {
         const hasUseClient = path.node.directives?.some(
           d => d.value.value === 'use client'
         );
-        if (!hasUseClient && fileName.includes('page.tsx')) {
+        if (!hasUseClient && (fileName.includes('page.tsx') || fileName.includes('layout.tsx'))) {
           foundPatterns.add('serverComponent');
+        }
+        
+        if (fileName.includes('app/')) {
+          foundPatterns.add('appDirectory');
+        }
+        if (fileName.includes('page.tsx') || fileName.includes('layout.tsx')) {
+          foundPatterns.add('fileBasedRouting');
         }
       },
 
@@ -118,10 +126,16 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
         }
       },
 
-      // Check for async component (Server Component data fetching)
+      // Check for async component (Server Component data fetching) and Server Actions
       FunctionDeclaration(path) {
         if (path.node.async) {
           foundPatterns.add('asyncComponent');
+        }
+        
+        if (path.node.async && 
+            (path.node.id?.name?.includes('action') || 
+             content.includes('use server'))) {
+          foundPatterns.add('serverAction');
         }
       },
 
@@ -159,14 +173,7 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
         }
       },
 
-      // Check for Server Actions
-      FunctionDeclaration(path) {
-        if (path.node.async && 
-            (path.node.id?.name?.includes('action') || 
-             content.includes('use server'))) {
-          foundPatterns.add('serverAction');
-        }
-      },
+      // Removed duplicate FunctionDeclaration visitor
 
       // Check for form handling
       JSXElement(path) {
@@ -175,15 +182,7 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
         }
       },
 
-      // Check for app directory structure
-      Program(path) {
-        if (fileName.includes('app/')) {
-          foundPatterns.add('appDirectory');
-        }
-        if (fileName.includes('page.tsx')) {
-          foundPatterns.add('fileBasedRouting');
-        }
-      }
+      // Removed duplicate Program visitor
     });
 
     // Check which required patterns were found
@@ -195,7 +194,7 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
       }
     }
 
-  } catch (error) {
+  } catch (error) { console.error("BABEL ERROR:", error);
     // If parsing fails, try simple string matching as fallback
     for (const pattern of patternsRequired) {
       if (content.includes(pattern) || content.includes(pattern.replace(/([A-Z])/g, '-$1').toLowerCase())) {

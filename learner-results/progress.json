@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-07-16T11:29:34.879Z",
+  "lastUpdated": "2026-08-11T14:26:58.204Z",
   "pathway": {
     "name": "Modern React Engineer",
     "version": "1.0.0",
-    "overallScore": 59.4,
-    "completionPercentage": 67.9,
-    "badgeLevel": "none",
+    "overallScore": 66.1,
+    "completionPercentage": 69.8,
+    "badgeLevel": "bronze",
     "totalChallenges": 53,
-    "completedChallenges": 36
+    "completedChallenges": 37
   },
   "courses": {
     "01-react-fundamentals": {
@@ -575,12 +575,268 @@
     "03-nextjs-app-router": {
       "courseId": "03-nextjs-app-router",
       "courseName": "Next.js App Router",
-      "averageScore": 0,
-      "completionPercentage": 0,
+      "averageScore": 19.8,
+      "completionPercentage": 5.9,
       "badgeLevel": "none",
       "totalChallenges": 17,
-      "completedChallenges": 0,
-      "challenges": {}
+      "completedChallenges": 1,
+      "challenges": {
+        "01-app-router-pages-layout": {
+          "challengeId": "01-app-router-pages-layout",
+          "challengeName": "App Router, Pages, and Layout",
+          "passed": true,
+          "score": 98.95,
+          "lastRun": "2026-08-11T14:26:51.640Z",
+          "scores": {
+            "functionalTests": 100,
+            "codeQuality": 100,
+            "architecture": 100,
+            "bestPractices": 100,
+            "e2eTests": 100,
+            "aiReview": 93
+          }
+        },
+        "02-server-and-client-components": {
+          "challengeId": "02-server-and-client-components",
+          "challengeName": "Server and Client Components",
+          "passed": false,
+          "score": 30.7,
+          "lastRun": "2026-08-11T14:12:09.483Z",
+          "scores": {
+            "functionalTests": 0,
+            "codeQuality": 50,
+            "architecture": 0,
+            "bestPractices": 100,
+            "e2eTests": 0,
+            "aiReview": 88
+          }
+        },
+        "03-data-fetching-server": {
+          "challengeId": "03-data-fetching-server",
+          "challengeName": "Data Fetching in Server Components",
+          "passed": false,
+          "score": 10,
+          "lastRun": "2026-08-11T14:12:12.540Z",
+          "scores": {
+            "functionalTests": 0,
+            "codeQuality": 0,
+            "architecture": 0,
+            "bestPractices": 100,
+            "e2eTests": 0,
+            "aiReview": 0
+          }
+        },
+        "04-api-route-handlers": {
+          "challengeId": "04-api-route-handlers",
+          "challengeName": "API Route Handlers",
+          "passed": false,
+          "score": 10,
+          "lastRun": "2026-08-11T14:12:13.706Z",
+          "scores": {
+            "functionalTests": 0,
+            "codeQuality": 0,
+            "architecture": 0,
+            "bestPractices": 100,
+            "e2eTests": 0,
+            "aiReview": 0
+          }
+        },
+        "05-loading-and-streaming": {
+          "challengeId": "05-loading-and-streaming",
+          "challengeName": "Loading and Streaming",
+          "passed": false,
+          "score": 10,
+          "lastRun": "2026-08-11T14:12:15.141Z",
+          "scores": {
+            "functionalTests": 0,
+            "codeQuality": 0,
+            "architecture": 0,
+            "bestPractices": 100,
+            "e2eTests": 0,
+            "aiReview": 0
+          }
+        },
+        "06-dynamic-routes": {
+          "challengeId": "06-dynamic-routes",
+          "challengeName": "Dynamic Routes",
+          "passed": false,
+          "score": 10,
+          "lastRun": "2026-08-11T14:12:15.899Z",
+          "scores": {
+            "functionalTests": 0,
+            "codeQuality": 0,
+            "architecture": 0,
+            "bestPractices": 100,
+            "e2eTests": 0,
+            "aiReview": 0
+          }
+        },
+        "07-static-and-dynamic-rendering": {
+          "challengeId": "07-static-and-dynamic-rendering",
+          "challengeName": "Static and Dynamic Rendering",
+          "passed": false,
+          "score": 31.45,
+          "lastRun": "2026-08-11T14:12:16.773Z",
+          "scores": {
+            "functionalTests": 0,
+            "codeQuality": 50,
+            "architecture": 0,
+            "bestPractices": 100,
+            "e2eTests": 0,
+            "aiReview": 93
+          }
+        },
+        "08-ssr-dynamic-rendering": {
+          "challengeId": "08-ssr-dynamic-rendering",
+          "challengeName": "SSR (Server-Side Rendering)",
+          "passed": false,
+          "score": 10,
+          "lastRun": "2026-08-11T14:12:19.322Z",
+          "scores": {
+            "functionalTests": 0,
+            "codeQuality": 0,
+            "architecture": 0,
+            "bestPractices": 100,
+            "e2eTests": 0,
+            "aiReview": 0
+          }
+        },
+        "09-server-actions-and-revalidation": {
+          "challengeId": "09-server-actions-and-revalidation",
+          "challengeName": "Server Actions and Revalidation",
+          "passed": false,
+          "score": 10,
+          "lastRun": "2026-08-11T14:12:20.246Z",
+          "scores": {
+            "functionalTests": 0,
+            "codeQuality": 0,
+            "architecture": 0,
+            "bestPractices": 100,
+            "e2eTests": 0,
+            "aiReview": 0
+          }
+        },
+        "10-caching-and-revalidating": {
+          "challengeId": "10-caching-and-revalidating",
+          "challengeName": "Caching and Revalidating",
+          "passed": false,
+          "score": 10,
+          "lastRun": "2026-08-11T14:12:21.074Z",
+          "scores": {
+            "functionalTests": 0,
+            "codeQuality": 0,
+            "architecture": 0,
+            "bestPractices": 100,
+            "e2eTests": 0,
+            "aiReview": 0
+          }
+        },
+        "11-error-handling": {
+          "challengeId": "11-error-handling",
+          "challengeName": "Error Handling",
+          "passed": false,
+          "score": 10,
+          "lastRun": "2026-08-11T14:12:22.278Z",
+          "scores": {
+            "functionalTests": 0,
+            "codeQuality": 0,
+            "architecture": 0,
+            "bestPractices": 100,
+            "e2eTests": 0,
+            "aiReview": 0
+          }
+        },
+        "12-metadata-and-seo": {
+          "challengeId": "12-metadata-and-seo",
+          "challengeName": "Metadata and SEO",
+          "passed": false,
+          "score": 29.95,
+          "lastRun": "2026-08-11T14:12:23.177Z",
+          "scores": {
+            "functionalTests": 0,
+            "codeQuality": 50,
+            "architecture": 0,
+            "bestPractices": 100,
+            "e2eTests": 0,
+            "aiReview": 83
+          }
+        },
+        "13-images-and-fonts": {
+          "challengeId": "13-images-and-fonts",
+          "challengeName": "Images and Fonts",
+          "passed": false,
+          "score": 17.5,
+          "lastRun": "2026-08-11T14:12:25.617Z",
+          "scores": {
+            "functionalTests": 0,
+            "codeQuality": 50,
+            "architecture": 0,
+            "bestPractices": 100,
+            "e2eTests": 0,
+            "aiReview": 0
+          }
+        },
+        "14-search-and-pagination": {
+          "challengeId": "14-search-and-pagination",
+          "challengeName": "Search and Pagination",
+          "passed": false,
+          "score": 10,
+          "lastRun": "2026-08-11T14:12:27.646Z",
+          "scores": {
+            "functionalTests": 0,
+            "codeQuality": 0,
+            "architecture": 0,
+            "bestPractices": 100,
+            "e2eTests": 0,
+            "aiReview": 0
+          }
+        },
+        "15-redux-toolkit-with-nextjs": {
+          "challengeId": "15-redux-toolkit-with-nextjs",
+          "challengeName": "Redux Toolkit with Next.js",
+          "passed": false,
+          "score": 17.5,
+          "lastRun": "2026-08-11T14:12:28.404Z",
+          "scores": {
+            "functionalTests": 0,
+            "codeQuality": 50,
+            "architecture": 0,
+            "bestPractices": 100,
+            "e2eTests": 0,
+            "aiReview": 0
+          }
+        },
+        "16-rtk-query-with-nextjs": {
+          "challengeId": "16-rtk-query-with-nextjs",
+          "challengeName": "RTK Query with Next.js",
+          "passed": false,
+          "score": 10,
+          "lastRun": "2026-08-11T14:12:30.255Z",
+          "scores": {
+            "functionalTests": 0,
+            "codeQuality": 0,
+            "architecture": 0,
+            "bestPractices": 100,
+            "e2eTests": 0,
+            "aiReview": 0
+          }
+        },
+        "17-fullstack-capstone": {
+          "challengeId": "17-fullstack-capstone",
+          "challengeName": "Fullstack Capstone",
+          "passed": false,
+          "score": 10,
+          "lastRun": "2026-08-11T14:12:31.141Z",
+          "scores": {
+            "functionalTests": 0,
+            "codeQuality": 0,
+            "architecture": 0,
+            "bestPractices": 100,
+            "e2eTests": 0,
+            "aiReview": 0
+          }
+        }
+      }
     }
   }
 }

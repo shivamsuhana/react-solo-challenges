@@ -1,13 +1,135 @@
 {
   "courseId": "03-nextjs-app-router",
   "courseName": "Next.js App Router",
-  "lastUpdated": null,
+  "lastUpdated": "2026-08-11T14:26:58.165Z",
   "totalChallenges": 17,
-  "completedChallenges": 0,
-  "averageScore": 0,
-  "completionPercentage": 0,
+  "completedChallenges": 1,
+  "averageScore": 19.8,
+  "completionPercentage": 5.9,
   "badgeLevel": "none",
-  "challengeResults": [],
-  "skillStrengths": [],
-  "improvementAreas": []
+  "challengeResults": [
+    {
+      "challengeId": "01-app-router-pages-layout",
+      "challengeName": "App Router, Pages, and Layout",
+      "score": 98.95,
+      "passed": true
+    },
+    {
+      "challengeId": "02-server-and-client-components",
+      "challengeName": "Server and Client Components",
+      "score": 30.7,
+      "passed": false
+    },
+    {
+      "challengeId": "03-data-fetching-server",
+      "challengeName": "Data Fetching in Server Components",
+      "score": 10,
+      "passed": false
+    },
+    {
+      "challengeId": "04-api-route-handlers",
+      "challengeName": "API Route Handlers",
+      "score": 10,
+      "passed": false
+    },
+    {
+      "challengeId": "05-loading-and-streaming",
+      "challengeName": "Loading and Streaming",
+      "score": 10,
+      "passed": false
+    },
+    {
+      "challengeId": "06-dynamic-routes",
+      "challengeName": "Dynamic Routes",
+      "score": 10,
+      "passed": false
+    },
+    {
+      "challengeId": "07-static-and-dynamic-rendering",
+      "challengeName": "Static and Dynamic Rendering",
+      "score": 31.45,
+      "passed": false
+    },
+    {
+      "challengeId": "08-ssr-dynamic-rendering",
+      "challengeName": "SSR (Server-Side Rendering)",
+      "score": 10,
+      "passed": false
+    },
+    {
+      "challengeId": "09-server-actions-and-revalidation",
+      "challengeName": "Server Actions and Revalidation",
+      "score": 10,
+      "passed": false
+    },
+    {
+      "challengeId": "10-caching-and-revalidating",
+      "challengeName": "Caching and Revalidating",
+      "score": 10,
+      "passed": false
+    },
+    {
+      "challengeId": "11-error-handling",
+      "challengeName": "Error Handling",
+      "score": 10,
+      "passed": false
+    },
+    {
+      "challengeId": "12-metadata-and-seo",
+      "challengeName": "Metadata and SEO",
+      "score": 29.95,
+      "passed": false
+    },
+    {
+      "challengeId": "13-images-and-fonts",
+      "challengeName": "Images and Fonts",
+      "score": 17.5,
+      "passed": false
+    },
+    {
+      "challengeId": "14-search-and-pagination",
+      "challengeName": "Search and Pagination",
+      "score": 10,
+      "passed": false
+    },
+    {
+      "challengeId": "15-redux-toolkit-with-nextjs",
+      "challengeName": "Redux Toolkit with Next.js",
+      "score": 17.5,
+      "passed": false
+    },
+    {
+      "challengeId": "16-rtk-query-with-nextjs",
+      "challengeName": "RTK Query with Next.js",
+      "score": 10,
+      "passed": false
+    },
+    {
+      "challengeId": "17-fullstack-capstone",
+      "challengeName": "Fullstack Capstone",
+      "score": 10,
+      "passed": false
+    }
+  ],
+  "skillStrengths": [
+    "App Router, Pages, and Layout"
+  ],
+  "improvementAreas": [
+    "Server and Client Components",
+    "Data Fetching in Server Components",
+    "API Route Handlers",
+    "Loading and Streaming",
+    "Dynamic Routes",
+    "Static and Dynamic Rendering",
+    "SSR (Server-Side Rendering)",
+    "Server Actions and Revalidation",
+    "Caching and Revalidating",
+    "Error Handling",
+    "Metadata and SEO",
+    "Images and Fonts",
+    "Search and Pagination",
+    "Redux Toolkit with Next.js",
+    "RTK Query with Next.js",
+    "Fullstack Capstone"
+  ]
 }
