@@ -153,9 +153,13 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
             decl.declarations.forEach(d => {
               if (d.id && d.id.name === 'dynamic') {
                 foundPatterns.add('dynamicExport');
-                if (d.init && d.init.type === 'StringLiteral' && 
-                   (d.init.value === 'force-static' || d.init.value === 'force-dynamic')) {
-                  foundPatterns.add('forceStaticOrDynamic');
+                if (d.init && d.init.type === 'StringLiteral') {
+                  if (d.init.value === 'force-static' || d.init.value === 'force-dynamic') {
+                    foundPatterns.add('forceStaticOrDynamic');
+                  }
+                  if (d.init.value === 'force-dynamic') {
+                    foundPatterns.add('forceDynamic');
+                  }
                 }
               }
             });
@@ -228,6 +232,14 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
       Identifier(path) {
         if (path.node.name === 'params') {
           foundPatterns.add('params');
+        }
+      },
+
+      ObjectProperty(path) {
+        if (path.node.key && path.node.key.name === 'cache') {
+          if (path.node.value && path.node.value.value === 'no-store') {
+            foundPatterns.add('cacheNoStore');
+          }
         }
       },
 

@@ -1786,45 +1786,84 @@
   {
     "challengeId": "08-ssr-dynamic-rendering",
     "challengeName": "SSR (Server-Side Rendering)",
-    "timestamp": "2026-08-11T14:12:19.322Z",
+    "timestamp": "2026-08-11T15:36:56.106Z",
     "scores": {
-      "functionalTests": 0,
-      "codeQuality": 0,
-      "architecture": 0,
+      "functionalTests": 100,
+      "codeQuality": 100,
+      "architecture": 100,
       "bestPractices": 100,
-      "e2eTests": 0,
-      "aiReview": 0
+      "e2eTests": 100,
+      "aiReview": 88
     },
-    "totalScore": 10,
-    "passed": false,
+    "totalScore": 98.2,
+    "passed": true,
     "errors": [],
     "warnings": [],
     "testResults": {
-      "score": 0,
-      "passed": false,
-      "error": "Command failed: npm test -- /Users/krishu/Desktop/challenge-engine-react/courses/03-nextjs-app-router/project/tests/challenge-08.test.tsx --run --reporter=json\nsh: vitest: command not found\n",
-      "details": []
+      "score": 100,
+      "passed": true,
+      "totalTests": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 08: SSR (Server-Side Rendering)"
+              ],
+              "fullName": " Challenge 08: SSR (Server-Side Rendering) should have page with force-dynamic or cache no-store",
+              "status": "passed",
+              "title": "should have page with force-dynamic or cache no-store",
+              "duration": 0,
+              "failureMessages": []
+            }
+          ],
+          "startTime": 1786462616548,
+          "endTime": 1786462616548,
+          "status": "passed",
+          "message": "",
+          "name": "/Users/krishu/Desktop/challenge-engine-react/courses/03-nextjs-app-router/project/tests/challenge-08.test.tsx"
+        }
+      ]
     },
     "lintResults": {
-      "score": 0,
-      "passed": false,
-      "error": "None of the specified files exist",
-      "details": []
+      "score": 100,
+      "passed": true,
+      "totalIssues": 0,
+      "errors": 0,
+      "warnings": 0,
+      "details": [
+        {
+          "filePath": "/Users/krishu/Desktop/challenge-engine-react/courses/03-nextjs-app-router/project/app/posts/page.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": []
+        }
+      ]
     },
     "architectureResults": {
-      "score": 0,
-      "passed": false,
-      "patternsFound": [],
+      "score": 100,
+      "passed": true,
+      "patternsFound": [
+        "forceDynamic",
+        "cacheNoStore"
+      ],
       "patternsMissing": [],
       "details": [
         {
           "file": "app/posts/page.tsx",
-          "error": "File does not exist",
-          "patternsFound": [],
-          "patternsMissing": [
+          "patternsFound": [
             "forceDynamic",
             "cacheNoStore"
-          ]
+          ],
+          "patternsMissing": []
         },
         {
           "file": "app/dashboard/page.tsx",
@@ -1845,35 +1884,103 @@
       "note": "No best practices requirements specified in challenge"
     },
     "e2eResults": {
-      "score": 0,
-      "passed": false,
-      "error": "Exit 1\nError: Cannot find module '@playwright/test'\nRequire stack:\n- /Users/krishu/Desktop/challenge-engine-react/courses/03-nextjs-app-router/project/playwright.config.ts\n- /Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/common/index.js\n- /Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/program.js\n- /Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/cli.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1476:15)\n    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)\n    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)\n    at defaultResolve (node:internal/modules/cjs/loader:1124:20)\n    at nextStep (node:internal/modules/customization_hooks:189:26)\n    at resolve (/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/common/index.js:864:19)\n    at nextStep (node:internal/modules/customization_hooks:189:26)\n    at resolveWithHooks (node:internal/modules/customization_hooks:417:10)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1137:25)\n    at Module._load (node:internal/modules/cjs/loader:1262:25)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\n    at Module.require (node:internal/modules/cjs/loader:1576:12)\n    at require (node:internal/modules/helpers:153:16)\n    at Object.<anonymous> (/Users/krishu/Desktop/challenge-engine-react/courses/03-nextjs-app-router/project/playwright.config.ts:1:1)\n    at Module._compile (node:internal/modules/cjs/loader:1830:14)\n    at Object.<anonymous> (node:internal/modules/cjs/loader:1961:10)\n    at Module.load (node:internal/modules/cjs/loader:1553:32)\n    at Module._load (node:internal/modules/cjs/loader:1355:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\n    at Module.require (node:internal/modules/cjs/loader:1576:12)\n    at require (node:internal/modules/helpers:153:16)\n    at requireOrImport (/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/common/index.js:1138:18)\n    at loadUserConfig (/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/common/index.js:1323:52)\n    at loadConfig (/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/common/index.js:1330:28)\n    at Object.loadConfigFromFile (/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/common/index.js:1546:10)\n    at runTests (/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/cli/testActions.js:46:18)\n    at _Command.<anonymous> (/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/program.js:55:7) {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/Users/krishu/Desktop/challenge-engine-react/courses/03-nextjs-app-router/project/playwright.config.ts',\n    '/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/common/index.js',\n    '/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/lib/program.js',\n    '/Users/krishu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/cli.js'\n  ]\n}",
-      "details": [],
-      "note": "E2E failed. The app is started automatically by Playwright (webServer in playwright.config)."
+      "score": 100,
+      "passed": true,
+      "totalTests": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "details": [
+        {
+          "title": "challenge-08.spec.ts",
+          "file": "challenge-08.spec.ts",
+          "column": 0,
+          "line": 0,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Challenge 08: SSR - E2E",
+              "file": "challenge-08.spec.ts",
+              "line": 7,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "should load posts or dashboard page",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 1046,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-08-11T15:37:11.786Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "cc4b1dfc0eb6cfe77aae-bc51cad160854582eafe",
+                  "file": "challenge-08.spec.ts",
+                  "line": 8,
+                  "column": 7
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "screenshots": []
     },
     "aiReviewResults": {
       "challengeId": "08-ssr-dynamic-rendering",
-      "timestamp": "2026-08-11T14:12:20.246Z",
-      "score": 0,
+      "timestamp": "2026-08-11T15:37:13.092Z",
+      "score": 88,
       "feedback": [],
-      "strengths": [],
-      "improvements": [],
-      "readability": 0,
-      "maintainability": 0,
-      "overall": "",
-      "error": "No files found to review"
+      "strengths": [
+        "The code is well-structured and easy to follow, with clear separation of concerns between data fetching and rendering.",
+        "The use of TypeScript and ESLint ensures a high level of code quality and maintainability.",
+        "The code is concise and to the point, with minimal unnecessary complexity."
+      ],
+      "improvements": [
+        "Consider adding type annotations for the `error` variable to make it clear what type of value it can hold.",
+        "The `Suspense` component is used to handle loading state, but it's not clear why it's necessary in this case. Consider removing it if it's not providing any additional value.",
+        "The code could benefit from some additional comments or documentation to explain the purpose of the `fetch` call and how it's being used to fetch data."
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "This code is well-structured and maintainable, with a clear separation of concerns between data fetching and rendering. However, there are a few areas where it could be improved to make it even more robust and efficient."
     },
     "aiResults": {
       "challengeId": "08-ssr-dynamic-rendering",
-      "timestamp": "2026-08-11T14:12:20.246Z",
-      "score": 0,
+      "timestamp": "2026-08-11T15:37:13.092Z",
+      "score": 88,
       "feedback": [],
-      "strengths": [],
-      "improvements": [],
-      "readability": 0,
-      "maintainability": 0,
-      "overall": "",
-      "error": "No files found to review"
+      "strengths": [
+        "The code is well-structured and easy to follow, with clear separation of concerns between data fetching and rendering.",
+        "The use of TypeScript and ESLint ensures a high level of code quality and maintainability.",
+        "The code is concise and to the point, with minimal unnecessary complexity."
+      ],
+      "improvements": [
+        "Consider adding type annotations for the `error` variable to make it clear what type of value it can hold.",
+        "The `Suspense` component is used to handle loading state, but it's not clear why it's necessary in this case. Consider removing it if it's not providing any additional value.",
+        "The code could benefit from some additional comments or documentation to explain the purpose of the `fetch` call and how it's being used to fetch data."
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "This code is well-structured and maintainable, with a clear separation of concerns between data fetching and rendering. However, there are a few areas where it could be improved to make it even more robust and efficient."
     }
   },
   {
