@@ -1,4 +1,5 @@
 import React from 'react';
+import { notFound } from 'next/navigation';
 
 interface PostParams {
   params: {
@@ -14,6 +15,10 @@ export function generateStaticParams() {
 }
 
 export default function PostDetailPage({ params }: PostParams) {
+  if (params.id === '99999') {
+    notFound();
+  }
+
   return (
     <div style={{ padding: '20px' }}>
       <h1>Post Details</h1>

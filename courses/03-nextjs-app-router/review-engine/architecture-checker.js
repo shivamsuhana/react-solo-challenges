@@ -125,6 +125,10 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
         if (fileName.includes('[id]') || fileName.includes('[slug]')) {
           foundPatterns.add('dynamicSegment');
         }
+        
+        if (fileName.includes('error.tsx')) {
+          foundPatterns.add('errorTsx');
+        }
       },
 
       // Check for Link component
@@ -210,6 +214,9 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
         if (path.node.callee.name === 'revalidateTag') {
           foundPatterns.add('revalidateTag');
           foundPatterns.add('revalidate');
+        }
+        if (path.node.callee.name === 'notFound') {
+          foundPatterns.add('notFound');
         }
         
         const isResponseJson = path.node.callee.object && 
