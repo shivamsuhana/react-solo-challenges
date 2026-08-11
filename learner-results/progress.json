@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-08-11T15:47:06.683Z",
+  "lastUpdated": "2026-08-11T15:51:28.912Z",
   "pathway": {
     "name": "Modern React Engineer",
     "version": "1.0.0",
-    "overallScore": 82.3,
-    "completionPercentage": 88.7,
+    "overallScore": 83.4,
+    "completionPercentage": 90.6,
     "badgeLevel": "silver",
     "totalChallenges": 53,
-    "completedChallenges": 47
+    "completedChallenges": 48
   },
   "courses": {
     "01-react-fundamentals": {
@@ -575,11 +575,11 @@
     "03-nextjs-app-router": {
       "courseId": "03-nextjs-app-router",
       "courseName": "Next.js App Router",
-      "averageScore": 67.3,
-      "completionPercentage": 64.7,
+      "averageScore": 70.7,
+      "completionPercentage": 70.6,
       "badgeLevel": "bronze",
       "totalChallenges": 17,
-      "completedChallenges": 11,
+      "completedChallenges": 12,
       "challenges": {
         "01-app-router-pages-layout": {
           "challengeId": "01-app-router-pages-layout",
@@ -749,16 +749,16 @@
         "12-metadata-and-seo": {
           "challengeId": "12-metadata-and-seo",
           "challengeName": "Metadata and SEO",
-          "passed": false,
-          "score": 29.95,
-          "lastRun": "2026-08-11T14:12:23.177Z",
+          "passed": true,
+          "score": 88.2,
+          "lastRun": "2026-08-11T15:51:22.674Z",
           "scores": {
-            "functionalTests": 0,
-            "codeQuality": 50,
+            "functionalTests": 100,
+            "codeQuality": 100,
             "architecture": 0,
             "bestPractices": 100,
-            "e2eTests": 0,
-            "aiReview": 83
+            "e2eTests": 100,
+            "aiReview": 88
           }
         },
         "13-images-and-fonts": {

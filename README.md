@@ -465,16 +465,17 @@ Each challenge is scored by:
 
 
 
+
 ## 📈 Progress Summary
 
-**Last updated:** 8/11/2026, 9:17:06 PM
+**Last updated:** 8/11/2026, 9:21:28 PM
 
 ### Pathway
 
 | Metric | Value |
 |--------|-------|
-| Challenges completed | 47 / 53 (88.7%) |
-| Overall score | 82.3% |
+| Challenges completed | 48 / 53 (90.6%) |
+| Overall score | 83.4% |
 
 ### By course
 
@@ -482,5 +483,5 @@ Each challenge is scored by:
 |--------|-----------|-------|--------|
 | React Fundamentals | 23/23 (100%) | 91% | Pass |
 | Redux & RTK Query | 13/13 (100%) | 89% | Pass |
-| Next.js App Router | 11/17 (64.7%) | 67.3% | Fail |
+| Next.js App Router | 12/17 (70.6%) | 70.7% | Fail |
 

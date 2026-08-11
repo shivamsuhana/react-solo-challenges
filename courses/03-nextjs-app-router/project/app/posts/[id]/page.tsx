@@ -14,6 +14,13 @@ export function generateStaticParams() {
   ];
 }
 
+export function generateMetadata({ params }: PostParams) {
+  return {
+    title: `Post ${params.id}`,
+    description: `Details for post ${params.id}`
+  };
+}
+
 export default function PostDetailPage({ params }: PostParams) {
   if (params.id === '99999') {
     notFound();

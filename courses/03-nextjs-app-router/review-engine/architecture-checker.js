@@ -156,6 +156,9 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
           if (decl.id && decl.id.name === 'metadata') {
             foundPatterns.add('metadata');
           }
+          if (decl.id && decl.id.name === 'generateMetadata') {
+            foundPatterns.add('generateMetadata');
+          }
           if (decl.type === 'VariableDeclaration') {
             decl.declarations.forEach(d => {
               if (d.id && d.id.name === 'dynamic') {
@@ -188,6 +191,9 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
         if (path.node.id && path.node.id.name === 'POST') {
           foundPatterns.add('POST');
           foundPatterns.add('routeHandler');
+        }
+        if (path.node.id && path.node.id.name === 'generateMetadata') {
+          foundPatterns.add('generateMetadata');
         }
         
         // Retain previous async logic

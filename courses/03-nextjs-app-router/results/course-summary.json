@@ -1,11 +1,11 @@
 {
   "courseId": "03-nextjs-app-router",
   "courseName": "Next.js App Router",
-  "lastUpdated": "2026-08-11T15:47:06.645Z",
+  "lastUpdated": "2026-08-11T15:51:28.873Z",
   "totalChallenges": 17,
-  "completedChallenges": 11,
-  "averageScore": 67.3,
-  "completionPercentage": 64.7,
+  "completedChallenges": 12,
+  "averageScore": 70.7,
+  "completionPercentage": 70.6,
   "badgeLevel": "bronze",
   "challengeResults": [
     {
@@ -77,8 +77,8 @@
     {
       "challengeId": "12-metadata-and-seo",
       "challengeName": "Metadata and SEO",
-      "score": 29.95,
-      "passed": false
+      "score": 88.2,
+      "passed": true
     },
     {
       "challengeId": "13-images-and-fonts",
@@ -122,10 +122,10 @@
     "SSR (Server-Side Rendering)",
     "Server Actions and Revalidation",
     "Caching and Revalidating",
-    "Error Handling"
+    "Error Handling",
+    "Metadata and SEO"
   ],
   "improvementAreas": [
-    "Metadata and SEO",
     "Images and Fonts",
     "Search and Pagination",
     "Redux Toolkit with Next.js",

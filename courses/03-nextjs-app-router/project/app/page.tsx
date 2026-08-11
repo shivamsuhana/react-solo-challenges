@@ -1,6 +1,11 @@
 import Link from 'next/link';
 import Counter from './components/Counter';
 
+export const metadata = {
+  title: 'Home Page',
+  description: 'Welcome to the Next.js challenges app',
+};
+
 export default function HomePage() {
   return (
     <main style={{ padding: '20px' }}>

@@ -64,12 +64,12 @@ npm run review -- --challenge=01-app-router-pages-layout
 
 ## 📊 Progress Evidence
 
-*Auto-updated when you run review. Last run: 8/11/2026, 9:17:06 PM*
+*Auto-updated when you run review. Last run: 8/11/2026, 9:21:28 PM*
 
 | Metric | Value |
 |--------|-------|
-| Challenges completed | 11 / 17 (64.7%) |
-| Average score | 67.3% |
+| Challenges completed | 12 / 17 (70.6%) |
+| Average score | 70.7% |
 
 | Challenge | Skills covered | Status |
 |-----------|----------------|--------|
@@ -84,7 +84,7 @@ npm run review -- --challenge=01-app-router-pages-layout
 | Server Actions and Revalidation | Server Actions, 'use server', revalidatePath, revalidateTag | Passed |
 | Caching and Revalidating | fetch cache, revalidate, revalidatePath, revalidateTag | Passed |
 | Error Handling | error.tsx, notFound(), not-found.tsx, Error boundaries | Passed |
-| Metadata and SEO | metadata, generateMetadata, Open Graph, SEO | Not passed |
+| Metadata and SEO | metadata, generateMetadata, Open Graph, SEO | Passed |
 | Images and Fonts | next/image, next/font, Image optimization, Font optimization | Not passed |
 | Search and Pagination | searchParams, URL search params, Pagination, Filtering | Not passed |
 | Redux Toolkit with Next.js | Redux Toolkit, configureStore, Provider, useSelector, useDispatch | Not passed |
