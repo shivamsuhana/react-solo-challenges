@@ -1,11 +1,11 @@
 {
   "courseId": "03-nextjs-app-router",
   "courseName": "Next.js App Router",
-  "lastUpdated": "2026-08-11T15:51:28.873Z",
+  "lastUpdated": "2026-08-11T15:59:48.541Z",
   "totalChallenges": 17,
-  "completedChallenges": 12,
-  "averageScore": 70.7,
-  "completionPercentage": 70.6,
+  "completedChallenges": 13,
+  "averageScore": 74.6,
+  "completionPercentage": 76.5,
   "badgeLevel": "bronze",
   "challengeResults": [
     {
@@ -83,8 +83,8 @@
     {
       "challengeId": "13-images-and-fonts",
       "challengeName": "Images and Fonts",
-      "score": 17.5,
-      "passed": false
+      "score": 83.2,
+      "passed": true
     },
     {
       "challengeId": "14-search-and-pagination",
@@ -123,10 +123,10 @@
     "Server Actions and Revalidation",
     "Caching and Revalidating",
     "Error Handling",
-    "Metadata and SEO"
+    "Metadata and SEO",
+    "Images and Fonts"
   ],
   "improvementAreas": [
-    "Images and Fonts",
     "Search and Pagination",
     "Redux Toolkit with Next.js",
     "RTK Query with Next.js",

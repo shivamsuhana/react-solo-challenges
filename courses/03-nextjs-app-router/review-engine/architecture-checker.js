@@ -28,8 +28,7 @@ export async function checkArchitecture(challengeMetadata, projectDir) {
     details: []
   };
 
-  let totalChecks = 0;
-  let passedChecks = 0;
+  let allPatternsFound = new Set();
 
   for (const file of filesToCheck) {
     const filePath = join(projectDir, file);
@@ -48,8 +47,7 @@ export async function checkArchitecture(challengeMetadata, projectDir) {
       const fileContent = readFileSync(filePath, 'utf-8');
       const fileResults = checkFileForPatterns(fileContent, patternsRequired, file);
       
-      totalChecks += patternsRequired.length;
-      passedChecks += fileResults.patternsFound.length;
+      fileResults.patternsFound.forEach(p => allPatternsFound.add(p));
       
       results.patternsFound.push(...fileResults.patternsFound);
       results.patternsMissing.push(...fileResults.patternsMissing);
@@ -68,9 +66,16 @@ export async function checkArchitecture(challengeMetadata, projectDir) {
     }
   }
 
-  // Calculate score
-  results.score = totalChecks > 0 
-    ? Math.round((passedChecks / totalChecks) * 100 * 10) / 10
+  // Calculate score based on unique patterns found across all files
+  let passedChecks = 0;
+  for (const pattern of patternsRequired) {
+    if (allPatternsFound.has(pattern)) {
+      passedChecks++;
+    }
+  }
+  
+  results.score = patternsRequired.length > 0 
+    ? Math.round((passedChecks / patternsRequired.length) * 100 * 10) / 10
     : 0;
   
   results.passed = results.score >= 80;
@@ -138,6 +143,12 @@ function checkFileForPatterns(content, patternsRequired, fileName) {
         }
         if (path.node.source.value === 'next/navigation') {
           foundPatterns.add('navigation');
+        }
+        if (path.node.source.value === 'next/image') {
+          foundPatterns.add('nextImage');
+        }
+        if (path.node.source.value.startsWith('next/font')) {
+          foundPatterns.add('nextFont');
         }
       },
 
